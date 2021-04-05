@@ -32,7 +32,4 @@ data class Quiz(
     @SerializedName("type")
     @ColumnInfo(name = "type")
     val type: String
-){
-    @ColumnInfo(name = "details")
-    lateinit var details: Details
-}
+)

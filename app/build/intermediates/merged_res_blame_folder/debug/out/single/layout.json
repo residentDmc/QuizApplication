@@ -4,10 +4,6 @@
         "source": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\src\\main\\res\\layout\\fragment_dashboard.xml"
     },
     {
-        "merged": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_splash.xml",
-        "source": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\src\\main\\res\\layout\\fragment_splash.xml"
-    },
-    {
         "merged": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
         "source": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\src\\main\\res\\layout\\activity_main.xml"
     },

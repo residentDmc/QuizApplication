@@ -11,7 +11,6 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 import com.vesam.quiz.data.model.quiz_list.Quiz;
-import com.vesam.quiz.utils.converter.DetailsConverter;
 import java.lang.Exception;
 import java.lang.Object;
 import java.lang.Override;
@@ -29,8 +28,6 @@ public final class QuizDAO_Impl implements QuizDAO {
 
   private final EntityInsertionAdapter<Quiz> __insertionAdapterOfQuiz;
 
-  private final DetailsConverter __detailsConverter = new DetailsConverter();
-
   private final EntityDeletionOrUpdateAdapter<Quiz> __updateAdapterOfQuiz;
 
   private final SharedSQLiteStatement __preparedStmtOfDelete;
@@ -40,82 +37,68 @@ public final class QuizDAO_Impl implements QuizDAO {
     this.__insertionAdapterOfQuiz = new EntityInsertionAdapter<Quiz>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR REPLACE INTO `get_quiz_list_entity` (`details`,`created_at`,`id`,`jalali_created_at`,`pass_condition`,`sort`,`title`,`type`) VALUES (?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `get_quiz_list_entity` (`created_at`,`id`,`jalali_created_at`,`pass_condition`,`sort`,`title`,`type`) VALUES (?,?,?,?,?,?,?)";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Quiz value) {
-        final String _tmp;
-        _tmp = __detailsConverter.fromValuesRuleModel(value.details);
-        if (_tmp == null) {
+        if (value.getCreatedAt() == null) {
           stmt.bindNull(1);
         } else {
-          stmt.bindString(1, _tmp);
+          stmt.bindString(1, value.getCreatedAt());
         }
-        if (value.getCreatedAt() == null) {
-          stmt.bindNull(2);
-        } else {
-          stmt.bindString(2, value.getCreatedAt());
-        }
-        stmt.bindLong(3, value.getId());
+        stmt.bindLong(2, value.getId());
         if (value.getJalaliCreatedAt() == null) {
-          stmt.bindNull(4);
+          stmt.bindNull(3);
         } else {
-          stmt.bindString(4, value.getJalaliCreatedAt());
+          stmt.bindString(3, value.getJalaliCreatedAt());
         }
-        stmt.bindLong(5, value.getPassCondition());
-        stmt.bindLong(6, value.getSort());
+        stmt.bindLong(4, value.getPassCondition());
+        stmt.bindLong(5, value.getSort());
         if (value.getTitle() == null) {
-          stmt.bindNull(7);
+          stmt.bindNull(6);
         } else {
-          stmt.bindString(7, value.getTitle());
+          stmt.bindString(6, value.getTitle());
         }
         if (value.getType() == null) {
-          stmt.bindNull(8);
+          stmt.bindNull(7);
         } else {
-          stmt.bindString(8, value.getType());
+          stmt.bindString(7, value.getType());
         }
       }
     };
     this.__updateAdapterOfQuiz = new EntityDeletionOrUpdateAdapter<Quiz>(__db) {
       @Override
       public String createQuery() {
-        return "UPDATE OR ABORT `get_quiz_list_entity` SET `details` = ?,`created_at` = ?,`id` = ?,`jalali_created_at` = ?,`pass_condition` = ?,`sort` = ?,`title` = ?,`type` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `get_quiz_list_entity` SET `created_at` = ?,`id` = ?,`jalali_created_at` = ?,`pass_condition` = ?,`sort` = ?,`title` = ?,`type` = ? WHERE `id` = ?";
       }
 
       @Override
       public void bind(SupportSQLiteStatement stmt, Quiz value) {
-        final String _tmp;
-        _tmp = __detailsConverter.fromValuesRuleModel(value.details);
-        if (_tmp == null) {
+        if (value.getCreatedAt() == null) {
           stmt.bindNull(1);
         } else {
-          stmt.bindString(1, _tmp);
+          stmt.bindString(1, value.getCreatedAt());
         }
-        if (value.getCreatedAt() == null) {
-          stmt.bindNull(2);
-        } else {
-          stmt.bindString(2, value.getCreatedAt());
-        }
-        stmt.bindLong(3, value.getId());
+        stmt.bindLong(2, value.getId());
         if (value.getJalaliCreatedAt() == null) {
-          stmt.bindNull(4);
+          stmt.bindNull(3);
         } else {
-          stmt.bindString(4, value.getJalaliCreatedAt());
+          stmt.bindString(3, value.getJalaliCreatedAt());
         }
-        stmt.bindLong(5, value.getPassCondition());
-        stmt.bindLong(6, value.getSort());
+        stmt.bindLong(4, value.getPassCondition());
+        stmt.bindLong(5, value.getSort());
         if (value.getTitle() == null) {
-          stmt.bindNull(7);
+          stmt.bindNull(6);
         } else {
-          stmt.bindString(7, value.getTitle());
+          stmt.bindString(6, value.getTitle());
         }
         if (value.getType() == null) {
-          stmt.bindNull(8);
+          stmt.bindNull(7);
         } else {
-          stmt.bindString(8, value.getType());
+          stmt.bindString(7, value.getType());
         }
-        stmt.bindLong(9, value.getId());
+        stmt.bindLong(8, value.getId());
       }
     };
     this.__preparedStmtOfDelete = new SharedSQLiteStatement(__db) {
@@ -206,7 +189,6 @@ public final class QuizDAO_Impl implements QuizDAO {
       public Quiz call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
-          final int _cursorIndexOfDetails = CursorUtil.getColumnIndexOrThrow(_cursor, "details");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "created_at");
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfJalaliCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "jalali_created_at");
@@ -231,9 +213,6 @@ public final class QuizDAO_Impl implements QuizDAO {
             final String _tmpType;
             _tmpType = _cursor.getString(_cursorIndexOfType);
             _result = new Quiz(_tmpCreatedAt,_tmpId,_tmpJalaliCreatedAt,_tmpPassCondition,_tmpSort,_tmpTitle,_tmpType);
-            final String _tmp;
-            _tmp = _cursor.getString(_cursorIndexOfDetails);
-            _result.details = __detailsConverter.toRuleModelValues(_tmp);
           } else {
             _result = null;
           }
@@ -255,7 +234,6 @@ public final class QuizDAO_Impl implements QuizDAO {
       public List<Quiz> call() throws Exception {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
-          final int _cursorIndexOfDetails = CursorUtil.getColumnIndexOrThrow(_cursor, "details");
           final int _cursorIndexOfCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "created_at");
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
           final int _cursorIndexOfJalaliCreatedAt = CursorUtil.getColumnIndexOrThrow(_cursor, "jalali_created_at");
@@ -281,9 +259,6 @@ public final class QuizDAO_Impl implements QuizDAO {
             final String _tmpType;
             _tmpType = _cursor.getString(_cursorIndexOfType);
             _item = new Quiz(_tmpCreatedAt,_tmpId,_tmpJalaliCreatedAt,_tmpPassCondition,_tmpSort,_tmpTitle,_tmpType);
-            final String _tmp;
-            _tmp = _cursor.getString(_cursorIndexOfDetails);
-            _item.details = __detailsConverter.toRuleModelValues(_tmp);
             _result.add(_item);
           }
           return _result;

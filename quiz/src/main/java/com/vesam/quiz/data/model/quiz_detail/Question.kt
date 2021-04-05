@@ -2,7 +2,13 @@ package com.vesam.quiz.data.model.quiz_detail
 
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
 import com.google.gson.annotations.SerializedName
+import com.vesam.quiz.data.model.quiz_list.Quiz
+import com.vesam.quiz.utils.build_config.BuildConfig
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.GET_QUIZ_WITH_DETAILS_ENTITY
+
 
 data class Question(
     @SerializedName("answers")

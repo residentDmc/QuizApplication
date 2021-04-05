@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vesam.quiz.data.model.quiz_list.Quiz
 import com.vesam.quiz.databinding.FragmentListQuizBinding
+import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.quiz_list.QuizAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
@@ -77,8 +78,26 @@ class ListQuizFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        binding.rcQuiz.layoutManager =LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        binding.rcQuiz.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rcQuiz.setHasFixedSize(true)
         binding.rcQuiz.adapter = quizAdapter
+        quizAdapter.setOnItemClickListener(object : OnClickListenerAny {
+            override fun onClickListener(any: Any) = initOnItemClick(any)
+        })
+    }
+
+    private fun initOnItemClick(any: Any) {
+        val quiz: Quiz = any as Quiz
+        quizViewModel.initQuizDetail(USER_UUID_VALUE, USER_API_TOKEN_VALUE,quiz.id).observe(
+            requireActivity(),
+            this::initResultQuizDetail
+        )
+    }
+
+    private fun initResultQuizDetail(it: Any) {
+        when (it) {
+            is Throwable -> initThrowable(it)
+        }
     }
 }

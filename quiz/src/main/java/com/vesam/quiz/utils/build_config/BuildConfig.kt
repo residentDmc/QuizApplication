@@ -36,6 +36,7 @@ class BuildConfig {
         // table
         const val GET_QUIZ_LIST_ENTITY = "get_quiz_list_entity"
         const val GET_QUIZ_WITH_DETAILS_ENTITY = "get_quiz_with_details_entity"
+        const val GET_QUESTION_LIST_WITH_DETAILS_ENTITY = "get_question_list_with_details_entity"
         const val SET_QUIZ_RESULT_ENTITY = "set_quiz_result_entity"
         const val GET_QUIZ_RESULT_ENTITY = "get_quiz_result_entity"
     }

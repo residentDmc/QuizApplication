@@ -5,16 +5,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.vesam.quiz.data.model.quiz_list.Quiz
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.GET_QUIZ_WITH_DETAILS_ENTITY
 
-@Entity(tableName = GET_QUIZ_WITH_DETAILS_ENTITY,
-    foreignKeys = [ForeignKey(entity = Quiz::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("id"),
-        onDelete = CASCADE)]
-)
 data class Details(
     @SerializedName("created_at")
     @ColumnInfo(name = "created_at")
@@ -26,8 +21,7 @@ data class Details(
     @ColumnInfo(name = "how_display_correct_answer")
     val howDisplayCorrectAnswer: String,
     @SerializedName("id")
-    @ColumnInfo(name = "id")
-    val id: Int,
+    val id: Int=-1,
     @SerializedName("is_active")
     @ColumnInfo(name = "is_active")
     val isActive: Int,

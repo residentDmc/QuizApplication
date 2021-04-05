@@ -14,6 +14,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_ANSWERS
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID
 import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
 
@@ -27,9 +28,11 @@ interface ApiService {
     ): ResponseQuizListModel
 
     @POST(QUIZ_DETAIL)
+    @FormUrlEncoded
     suspend fun initQuizDetail(
         @Header(USER_UUID) userUuid: String,
-        @Header(USER_API_TOKEN) userApiToken: String, @Field(QUIZ_ID) quizId: Int
+        @Header(USER_API_TOKEN) userApiToken: String,
+        @Field(QUIZ_ID) quizId: Int
     ): ResponseQuizDetailModel
 
     @POST(SET_QUIZ_RESULT)

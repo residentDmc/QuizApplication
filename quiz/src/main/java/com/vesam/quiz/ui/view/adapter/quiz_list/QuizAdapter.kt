@@ -7,11 +7,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_list.Quiz
+import com.vesam.quiz.interfaces.OnClickListenerAny
 import java.util.*
 
 class QuizAdapter : RecyclerView.Adapter<ViewHolderQuiz>() {
 
+    lateinit var onClickListenerAny : OnClickListenerAny
     private val list: ArrayList<Quiz> = ArrayList()
+
+    fun setOnItemClickListener( onClickListenerAny : OnClickListenerAny){
+        this.onClickListenerAny = onClickListenerAny
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderQuiz =
         ViewHolderQuiz(getViewHolder(parent))
@@ -20,11 +26,12 @@ class QuizAdapter : RecyclerView.Adapter<ViewHolderQuiz>() {
         .inflate(R.layout.item_quiz, parent, false)
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holderSheet: ViewHolderQuiz, position: Int) {
+    override fun onBindViewHolder(viewHolderQuiz: ViewHolderQuiz, position: Int) {
         val quiz = list[position]
         val number=position+1
-        holderSheet.txtNumber.text = "$number."
-        holderSheet.txtTitle.text = quiz.title
+        viewHolderQuiz.txtNumber.text = "$number."
+        viewHolderQuiz.txtTitle.text = quiz.title
+        viewHolderQuiz.lnParent.setOnClickListener { onClickListenerAny.onClickListener(quiz) }
     }
 
     override fun getItemCount(): Int = list.size

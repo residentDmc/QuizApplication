@@ -10,4 +10,5 @@ class ViewHolderQuiz(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val txtTitle = itemView.findViewById(R.id.txtTitle) as TextView
     val txtNumber = itemView.findViewById(R.id.txtNumber) as TextView
+    val lnParent = itemView.findViewById(R.id.lnParent) as View
 }

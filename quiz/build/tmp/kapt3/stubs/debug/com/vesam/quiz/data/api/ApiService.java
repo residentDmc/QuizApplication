@@ -15,6 +15,7 @@ public abstract interface ApiService {
     kotlin.coroutines.Continuation<? super com.vesam.quiz.data.model.quiz_list.ResponseQuizListModel> p2);
     
     @org.jetbrains.annotations.Nullable()
+    @retrofit2.http.FormUrlEncoded()
     @retrofit2.http.POST(value = "quiz/get-quiz-with-details")
     public abstract java.lang.Object initQuizDetail(@org.jetbrains.annotations.NotNull()
     @retrofit2.http.Header(value = "user_uuid")

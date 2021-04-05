@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="rcQuiz" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="lnParent" type="id" />
+    <item name="txtTitle" type="id" />
+    <item name="txtNumber" type="id" />
+    <item name="lottieAnimationView" type="id" />
+</resources>

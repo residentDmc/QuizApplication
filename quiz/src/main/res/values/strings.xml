@@ -1,0 +1,7 @@
+<resources>
+    <string name="no_connection">No Connection</string>
+    <string name="time_out">Time Out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="quiz_list">Quiz List</string>
+</resources>

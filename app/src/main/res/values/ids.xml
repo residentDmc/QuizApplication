@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnEnterExam" type="id" />
+    <item name="lottieAnimationView" type="id" />
+    <item name="tlBaseUrl" type="id" />
+    <item name="tlToken" type="id" />
+    <item name="tlUserId" type="id" />
+</resources>

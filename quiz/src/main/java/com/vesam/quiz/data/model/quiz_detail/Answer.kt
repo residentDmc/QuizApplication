@@ -14,4 +14,6 @@ data class Answer(
     val sort: Int,
     @SerializedName("title")
     val title: String
-)
+){
+    var isSuccess=0
+}

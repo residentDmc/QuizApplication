@@ -42,7 +42,7 @@ val appModule = module {
     single { return@single ToStringConverterFactory() }
     single { return@single KeyboardManager() }
     single { return@single NetworkTools() }
-    single { return@single BottomSheetDialog(get()) }
+    single { return@single BottomSheetDialog(activity) }
     single { provideOkHttpClient() }
 }
 

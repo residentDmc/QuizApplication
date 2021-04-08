@@ -1106,6 +1106,8 @@ int color cardview_shadow_start_color 0x0
 int color checkbox_themeable_attribute_color 0x0
 int color colorBlack 0x0
 int color colorGreyDashGap 0x0
+int color color_green_item 0x0
+int color color_red_item 0x0
 int color cyan_100 0x0
 int color cyan_200 0x0
 int color cyan_300 0x0
@@ -1459,7 +1461,7 @@ int color purple_A400 0x0
 int color purple_A700 0x0
 int color radiobutton_themeable_attribute_color 0x0
 int color redColor 0x0
-int color redColorColor 0x0
+int color redColorRipple 0x0
 int color red_100 0x0
 int color red_200 0x0
 int color red_300 0x0
@@ -2117,13 +2119,19 @@ int drawable design_ic_visibility 0x0
 int drawable design_ic_visibility_off 0x0
 int drawable design_password_eye 0x0
 int drawable design_snackbar_background 0x0
+int drawable green_progress_drawable 0x0
 int drawable ic_clock_black_24dp 0x0
+int drawable ic_close 0x0
+int drawable ic_current_history_question 0x0
 int drawable ic_keyboard_black_24dp 0x0
 int drawable ic_logo 0x0
 int drawable ic_mtrl_checked_circle 0x0
 int drawable ic_mtrl_chip_checked_black 0x0
 int drawable ic_mtrl_chip_checked_circle 0x0
 int drawable ic_mtrl_chip_close_circle 0x0
+int drawable ic_next_question 0x0
+int drawable ic_success 0x0
+int drawable ic_un_success 0x0
 int drawable material_cursor_drawable 0x0
 int drawable material_ic_calendar_black_24dp 0x0
 int drawable material_ic_clear_black_24dp 0x0
@@ -2159,6 +2167,9 @@ int drawable notification_template_icon_low_bg 0x0
 int drawable notification_tile_bg 0x0
 int drawable notify_panel_notification_icon_bg 0x0
 int drawable progressbar_blue 0x0
+int drawable rounded_green_shape 0x0
+int drawable rounded_grey_shape 0x0
+int drawable rounded_red_shape 0x0
 int drawable test_custom_background 0x0
 int drawable tooltip_frame_dark 0x0
 int drawable tooltip_frame_light 0x0
@@ -2221,6 +2232,7 @@ int id action_menu_presenter 0x0
 int id action_mode_bar 0x0
 int id action_mode_bar_stub 0x0
 int id action_mode_close_button 0x0
+int id action_quizDetailFragment_to_questionsFragment 0x0
 int id action_text 0x0
 int id actions 0x0
 int id activity_chooser_view_content 0x0
@@ -2229,6 +2241,7 @@ int id alertTitle 0x0
 int id aligned 0x0
 int id animateToEnd 0x0
 int id animateToStart 0x0
+int id appBar 0x0
 int id arc 0x0
 int id asConfigured 0x0
 int id async 0x0
@@ -2241,6 +2254,7 @@ int id barrier 0x0
 int id baseline 0x0
 int id blocking 0x0
 int id bottom 0x0
+int id bottomSheet 0x0
 int id bounce 0x0
 int id buttonPanel 0x0
 int id cancel_action 0x0
@@ -2324,6 +2338,9 @@ int id icon_group 0x0
 int id ignore 0x0
 int id ignoreRequest 0x0
 int id image 0x0
+int id imgBtnClose 0x0
+int id imgBtnSuccess 0x0
+int id imgBtnUnSuccess 0x0
 int id imgLogo 0x0
 int id info 0x0
 int id invisible 0x0
@@ -2341,8 +2358,9 @@ int id line1 0x0
 int id line3 0x0
 int id linear 0x0
 int id listMode 0x0
-int id listQuizFragment 0x0
 int id list_item 0x0
+int id lnCurrentHistoryQuestion 0x0
+int id lnNextQuestion 0x0
 int id lnParent 0x0
 int id lottieAnimationView 0x0
 int id lottie_layer_name 0x0
@@ -2438,7 +2456,10 @@ int id postLayout 0x0
 int id progressBar 0x0
 int id progress_circular 0x0
 int id progress_horizontal 0x0
+int id questionsFragment 0x0
+int id quizDetailFragment 0x0
 int id radio 0x0
+int id rcQuestion 0x0
 int id rcQuiz 0x0
 int id rectangles 0x0
 int id restart 0x0
@@ -2544,6 +2565,7 @@ int id transition_position 0x0
 int id transition_scene_layoutid_cache 0x0
 int id transition_transform 0x0
 int id triangle 0x0
+int id txtDescriptionAnswer 0x0
 int id txtNumber 0x0
 int id txtProgress 0x0
 int id txtTitle 0x0
@@ -2630,6 +2652,7 @@ int layout abc_search_view 0x0
 int layout abc_select_dialog_material 0x0
 int layout abc_tooltip 0x0
 int layout activity_quiz 0x0
+int layout bottom_sheet_text_format 0x0
 int layout custom_dialog 0x0
 int layout design_bottom_navigation_item 0x0
 int layout design_bottom_sheet_dialog 0x0
@@ -2647,8 +2670,11 @@ int layout design_navigation_menu_item 0x0
 int layout design_text_input_end_icon 0x0
 int layout design_text_input_password_icon 0x0
 int layout design_text_input_start_icon 0x0
-int layout fragment_list_quiz 0x0
+int layout fragment_bottom_sheet_dialog_format_view 0x0
 int layout fragment_loading 0x0
+int layout fragment_questions 0x0
+int layout fragment_quiz_detail 0x0
+int layout item_answer 0x0
 int layout item_quiz 0x0
 int layout material_chip_input_combo 0x0
 int layout material_clock_display 0x0
@@ -2778,6 +2804,7 @@ int string character_counter_overflowed_content_description 0x0
 int string character_counter_pattern 0x0
 int string chip_text 0x0
 int string clear_text_end_icon_content_description 0x0
+int string current_history_question 0x0
 int string error_icon_content_description 0x0
 int string exposed_dropdown_menu_content_description 0x0
 int string fab_transformation_scrim_behavior 0x0
@@ -2843,12 +2870,14 @@ int string mtrl_picker_toggle_to_text_input_mode 0x0
 int string mtrl_picker_toggle_to_year_selection 0x0
 int string nav_app_bar_navigate_up_description 0x0
 int string nav_app_bar_open_drawer_description 0x0
+int string next_question 0x0
 int string no_connection 0x0
 int string password_toggle_content_description 0x0
 int string path_password_eye 0x0
 int string path_password_eye_mask_strike_through 0x0
 int string path_password_eye_mask_visible 0x0
 int string path_password_strike_through 0x0
+int string question 0x0
 int string quiz_list 0x0
 int string search_menu_title 0x0
 int string status_bar_notification_info_overflow 0x0

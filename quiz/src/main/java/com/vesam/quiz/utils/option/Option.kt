@@ -10,14 +10,17 @@ class Option{
         const val BUNDLE_BASE_URL_VALUE = "base_url"
         const val BUNDLE_USER_UUID_VALUE = "user_uuid"
         const val BUNDLE_USER_API_TOKEN_VALUE = "user_api_token"
+        const val BUNDLE_QUIZ_ID_VALUE = "quiz_api"
         fun start(context: Context,
                   baseUrl: String,
                   token: String,
-                  userId: String) {
+                  userId: String,
+                  quizId: Int) {
             val intent = Intent()
             intent.putExtra(BUNDLE_BASE_URL_VALUE,baseUrl)
             intent.putExtra(BUNDLE_USER_API_TOKEN_VALUE,token)
             intent.putExtra(BUNDLE_USER_UUID_VALUE,userId)
+            intent.putExtra(BUNDLE_QUIZ_ID_VALUE,quizId)
             intent.setClass(context, QuizActivity::class.java)
             context.startActivity(intent)
         }

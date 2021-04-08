@@ -1106,6 +1106,8 @@ color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color colorBlack
 color colorGreyDashGap
+color color_green_item
+color color_red_item
 color cyan_100
 color cyan_200
 color cyan_300
@@ -1454,7 +1456,7 @@ color purple_A400
 color purple_A700
 color radiobutton_themeable_attribute_color
 color redColor
-color redColorColor
+color redColorRipple
 color red_100
 color red_200
 color red_300
@@ -2109,7 +2111,10 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable green_progress_drawable
 drawable ic_clock_black_24dp
+drawable ic_close
+drawable ic_current_history_question
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -2118,6 +2123,9 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_next_question
+drawable ic_success
+drawable ic_un_success
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -2152,6 +2160,9 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable progressbar_blue
+drawable rounded_green_shape
+drawable rounded_grey_shape
+drawable rounded_red_shape
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -2220,6 +2231,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_quizDetailFragment_to_questionsFragment
 id action_text
 id actions
 id activity_chooser_view_content
@@ -2230,6 +2242,7 @@ id all
 id always
 id animateToEnd
 id animateToStart
+id appBar
 id arc
 id asConfigured
 id async
@@ -2244,6 +2257,7 @@ id beginOnFirstDraw
 id beginning
 id blocking
 id bottom
+id bottomSheet
 id bounce
 id btnEnterExam
 id buttonPanel
@@ -2355,6 +2369,9 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imgBtnClose
+id imgBtnSuccess
+id imgBtnUnSuccess
 id imgLogo
 id info
 id invisible
@@ -2371,8 +2388,9 @@ id line1
 id line3
 id linear
 id listMode
-id listQuizFragment
 id list_item
+id lnCurrentHistoryQuestion
+id lnNextQuestion
 id lnParent
 id lottieAnimationView
 id lottie_layer_name
@@ -2471,8 +2489,11 @@ id postLayout
 id progressBar
 id progress_circular
 id progress_horizontal
+id questionsFragment
+id quizDetailFragment
 id radio
 id ratio
+id rcQuestion
 id rcQuiz
 id rectangles
 id restart
@@ -2575,6 +2596,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id tlBaseUrl
+id tlQuizId
 id tlToken
 id tlUserId
 id toggle
@@ -2590,6 +2612,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txtDescriptionAnswer
 id txtNumber
 id txtProgress
 id txtTitle
@@ -2679,6 +2702,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_quiz
+layout bottom_sheet_text_format
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2695,9 +2719,12 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_bottom_sheet_dialog_format_view
 layout fragment_dashboard
-layout fragment_list_quiz
 layout fragment_loading
+layout fragment_questions
+layout fragment_quiz_detail
+layout item_answer
 layout item_quiz
 layout material_chip_input_combo
 layout material_clock_display
@@ -2821,6 +2848,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string current_history_question
 string enter_exam
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -2887,12 +2915,16 @@ string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
+string next_question
 string no_connection
+string one
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string question
+string quiz_id
 string quiz_list
 string search_menu_title
 string status_bar_notification_info_overflow

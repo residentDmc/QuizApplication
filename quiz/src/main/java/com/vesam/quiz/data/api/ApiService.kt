@@ -2,7 +2,6 @@ package com.vesam.quiz.data.api
 
 import com.vesam.quiz.data.model.get_quiz_result.ResponseGetQuizResultModel
 import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
-import com.vesam.quiz.data.model.quiz_list.ResponseQuizListModel
 import com.vesam.quiz.data.model.set_quiz_result.ResponseSetQuizResultModel
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.GET_QUIZ_RESULT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.PERIOD_TIME
@@ -21,11 +20,6 @@ import retrofit2.http.POST
 interface ApiService {
 
     //quiz -------------------------------
-    @POST(QUIZ_LIST)
-    suspend fun initQuizList(
-        @Header(USER_UUID) userUuid: String,
-        @Header(USER_API_TOKEN) userApiToken: String
-    ): ResponseQuizListModel
 
     @POST(QUIZ_DETAIL)
     @FormUrlEncoded

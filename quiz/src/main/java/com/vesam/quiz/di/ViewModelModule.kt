@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
 
-    viewModel { QuizViewModel(get(),get(),get()) }
+    viewModel { QuizViewModel(get(),get()) }
 }

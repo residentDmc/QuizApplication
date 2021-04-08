@@ -324,7 +324,7 @@
     <color name="submit_a_suggestion_color">#3884C7</color>
     <color name="colorGreyDashGap">#A5A5A5</color>
     <color name="redColor">#ED2939</color>
-    <color name="redColorColor">#86ED2939</color>
+    <color name="redColorRipple">#86ED2939</color>
     <color name="greenColor">#23cc97</color>
     <color name="greenColorRipple">#8623CC97</color>
     <color name="yellowColor_x1">#4FFFDC00</color>

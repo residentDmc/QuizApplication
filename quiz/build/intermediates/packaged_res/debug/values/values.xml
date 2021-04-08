@@ -71,6 +71,8 @@
     <color name="brown_900">#3E2723</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGreyDashGap">#A5A5A5</color>
+    <color name="color_green_item">#F7FFF9</color>
+    <color name="color_red_item">#FFEEEB</color>
     <color name="cyan_100">#B2EBF2</color>
     <color name="cyan_200">#80DEEA</color>
     <color name="cyan_300">#4DD0E1</color>
@@ -274,7 +276,7 @@
     <color name="purple_A400">#D500F9</color>
     <color name="purple_A700">#AA00FF</color>
     <color name="redColor">#ED2939</color>
-    <color name="redColorColor">#86ED2939</color>
+    <color name="redColorRipple">#86ED2939</color>
     <color name="red_100">#FFCDD2</color>
     <color name="red_200">#EF9A9A</color>
     <color name="red_300">#E57373</color>
@@ -393,14 +395,26 @@
     <dimen name="text_size_24">24sp</dimen>
     <dimen name="viewpager_margin_overlap">-60dp</dimen>
     <dimen name="viewpager_margin_overlap_payment">-30dp</dimen>
+    <item name="appBar" type="id"/>
+    <item name="bottomSheet" type="id"/>
+    <item name="imgBtnClose" type="id"/>
+    <item name="imgBtnSuccess" type="id"/>
+    <item name="imgBtnUnSuccess" type="id"/>
+    <item name="lnCurrentHistoryQuestion" type="id"/>
+    <item name="lnNextQuestion" type="id"/>
     <item name="lnParent" type="id"/>
     <item name="lottieAnimationView" type="id"/>
+    <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
     <item name="toolbar" type="id"/>
+    <item name="txtDescriptionAnswer" type="id"/>
     <item name="txtNumber" type="id"/>
     <item name="txtTitle" type="id"/>
+    <string name="current_history_question">Current History Question</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next_question">Next Question</string>
     <string name="no_connection">No Connection</string>
+    <string name="question">Question</string>
     <string name="quiz_list">Quiz List</string>
     <string name="time_out">Time Out</string>
 </resources>

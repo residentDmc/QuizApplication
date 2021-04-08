@@ -18,6 +18,7 @@ class BuildConfig {
         // header value
         var USER_UUID_VALUE = ""
         var USER_API_TOKEN_VALUE = ""
+        var USER_QUIZ_ID_VALUE = -1
 
 
         // form_data
@@ -34,10 +35,17 @@ class BuildConfig {
         const val QUIZ_DATABASE = "quiz_database"
 
         // table
-        const val GET_QUIZ_LIST_ENTITY = "get_quiz_list_entity"
-        const val GET_QUIZ_WITH_DETAILS_ENTITY = "get_quiz_with_details_entity"
-        const val GET_QUESTION_LIST_WITH_DETAILS_ENTITY = "get_question_list_with_details_entity"
+        const val DETAILS_ENTITY = "details_entity"
         const val SET_QUIZ_RESULT_ENTITY = "set_quiz_result_entity"
         const val GET_QUIZ_RESULT_ENTITY = "get_quiz_result_entity"
+
+        // bundle
+        const val BUNDLE_QUESTION = "question"
+
+        // state format
+        const val FORMAT_TEXT = "text"
+        const val FORMAT_VIDEO = "video"
+        const val FORMAT_AUDIO = "audio"
+        const val FORMAT_IMAGE = "image"
     }
 }

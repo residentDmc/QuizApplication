@@ -13,6 +13,8 @@
     <color name="background">#EBEBEB</color>
     <color name="background_x1">#9B9B9B</color>
     <color name="background_x2">#F3F3F3</color>
+    <color name="color_red_item">#FFEEEB</color>
+    <color name="color_green_item">#F7FFF9</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
@@ -327,7 +329,7 @@
     <color name="submit_a_suggestion_color">#3884C7</color>
     <color name="colorGreyDashGap">#A5A5A5</color>
     <color name="redColor">#ED2939</color>
-    <color name="redColorColor">#86ED2939</color>
+    <color name="redColorRipple">#86ED2939</color>
     <color name="greenColor">#23cc97</color>
     <color name="greenColorRipple">#8623CC97</color>
     <color name="yellowColor_x1">#4FFFDC00</color>

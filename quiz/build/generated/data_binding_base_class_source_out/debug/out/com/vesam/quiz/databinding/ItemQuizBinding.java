@@ -22,16 +22,12 @@ public final class ItemQuizBinding implements ViewBinding {
   public final LinearLayout lnParent;
 
   @NonNull
-  public final TextView txtNumber;
-
-  @NonNull
   public final TextView txtTitle;
 
   private ItemQuizBinding(@NonNull LinearLayout rootView, @NonNull LinearLayout lnParent,
-      @NonNull TextView txtNumber, @NonNull TextView txtTitle) {
+      @NonNull TextView txtTitle) {
     this.rootView = rootView;
     this.lnParent = lnParent;
-    this.txtNumber = txtNumber;
     this.txtTitle = txtTitle;
   }
 
@@ -64,19 +60,13 @@ public final class ItemQuizBinding implements ViewBinding {
     missingId: {
       LinearLayout lnParent = (LinearLayout) rootView;
 
-      id = R.id.txtNumber;
-      TextView txtNumber = rootView.findViewById(id);
-      if (txtNumber == null) {
-        break missingId;
-      }
-
       id = R.id.txtTitle;
       TextView txtTitle = rootView.findViewById(id);
       if (txtTitle == null) {
         break missingId;
       }
 
-      return new ItemQuizBinding((LinearLayout) rootView, lnParent, txtNumber, txtTitle);
+      return new ItemQuizBinding((LinearLayout) rootView, lnParent, txtTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

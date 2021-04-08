@@ -6,4 +6,13 @@
     <item name="txtTitle" type="id" />
     <item name="txtNumber" type="id" />
     <item name="lottieAnimationView" type="id" />
+    <item name="rcQuestion" type="id" />
+    <item name="imgBtnSuccess" type="id" />
+    <item name="imgBtnUnSuccess" type="id" />
+    <item name="appBar" type="id" />
+    <item name="imgBtnClose" type="id" />
+    <item name="bottomSheet" type="id" />
+    <item name="lnNextQuestion" type="id" />
+    <item name="lnCurrentHistoryQuestion" type="id" />
+    <item name="txtDescriptionAnswer" type="id" />
 </resources>

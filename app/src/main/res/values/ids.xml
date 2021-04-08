@@ -5,4 +5,5 @@
     <item name="tlBaseUrl" type="id" />
     <item name="tlToken" type="id" />
     <item name="tlUserId" type="id" />
+    <item name="tlQuizId" type="id" />
 </resources>

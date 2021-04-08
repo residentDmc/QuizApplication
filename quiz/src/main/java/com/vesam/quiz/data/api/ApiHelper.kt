@@ -10,8 +10,6 @@ import retrofit2.http.Header
 interface ApiHelper {
 
     // quiz -----------------------------------
-    suspend fun initQuizList(userUuid: String, userApiToken: String): Any
-
     suspend fun initQuizDetail(userUuid: String, userApiToken: String, quizId: Int): Any
 
     suspend fun initSetQuizResult(

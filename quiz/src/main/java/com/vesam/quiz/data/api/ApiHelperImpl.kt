@@ -2,14 +2,7 @@ package com.vesam.quiz.data.api
 
 class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
 
-    // quiz -----------------------------------
-    override suspend fun initQuizList(userUuid: String, userApiToken: String) =
-        try {
-            apiService.initQuizList(userUuid, userApiToken)
-        } catch (e: Exception) {
-            e
-        }
-
+    // quiz ----------------------------------
     override suspend fun initQuizDetail(userUuid: String, userApiToken: String, quizId: Int) =
         try {
             apiService.initQuizDetail(userUuid, userApiToken, quizId)

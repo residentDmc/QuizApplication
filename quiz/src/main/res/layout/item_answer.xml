@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/margin_56"
+    android:layout_marginTop="@dimen/margin_4"
+    android:layout_marginBottom="@dimen/margin_4"
+    android:background="@drawable/rounded_white_shape"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@id/lnParentStart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@id/txtTitleStart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:textColor="@color/color_grey_text_answer"
+            android:textSize="@dimen/text_size_14"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@id/imgBtnSuccessStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            android:padding="@dimen/margin_16"
+            app:srcCompat="@drawable/ic_success"
+            app:tint="@color/greenColor" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@id/imgBtnUnSuccessStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            android:padding="@dimen/margin_16"
+            app:srcCompat="@drawable/ic_un_success"
+            app:tint="@color/redColor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/lnParentEnd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@id/imgBtnSuccessEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            android:padding="@dimen/margin_16"
+            app:srcCompat="@drawable/ic_success"
+            app:tint="@color/greenColor" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@id/imgBtnUnSuccessEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            android:padding="@dimen/margin_16"
+            app:srcCompat="@drawable/ic_un_success"
+            app:tint="@color/redColor" />
+
+        <TextView
+            android:id="@id/txtTitleEnd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginEnd="@dimen/margin_16"
+            android:layout_weight="1"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/color_grey_text_answer"
+            android:textSize="@dimen/text_size_14"/>
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

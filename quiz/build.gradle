@@ -107,6 +107,9 @@ dependencies {
     kapt 'androidx.room:room-ktx:2.2.6'
     kapt "androidx.room:room-compiler:2.2.6"
 
+    // videoCache
+    implementation 'com.danikula:videocache:2.7.1'
+
     // navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'

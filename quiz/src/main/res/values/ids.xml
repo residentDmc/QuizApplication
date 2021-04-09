@@ -15,4 +15,16 @@
     <item name="lnNextQuestion" type="id" />
     <item name="lnCurrentHistoryQuestion" type="id" />
     <item name="txtDescriptionAnswer" type="id" />
+    <item name="lnParentStart" type="id" />
+    <item name="txtTitleStart" type="id" />
+    <item name="imgBtnSuccessStart" type="id" />
+    <item name="imgBtnUnSuccessStart" type="id" />
+    <item name="imgBtnUnSuccessEnd" type="id" />
+    <item name="imgBtnSuccessEnd" type="id" />
+    <item name="txtTitleEnd" type="id" />
+    <item name="lnParentEnd" type="id" />
+    <item name="btnNextQuestion" type="id" />
+    <item name="btnCurrentHistoryQuestion" type="id" />
+    <item name="lnAction" type="id" />
+    <item name="progressPeriodTime" type="id" />
 </resources>

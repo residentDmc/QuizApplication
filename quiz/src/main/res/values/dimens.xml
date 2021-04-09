@@ -71,4 +71,6 @@
     <dimen name="margin_300">300dp</dimen>
     <dimen name="margin_77">77dp</dimen>
     <dimen name="margin_330">330dp</dimen>
+    <dimen name="margin_55">55dp</dimen>
+    <dimen name="margin_53">53dp</dimen>
 </resources>

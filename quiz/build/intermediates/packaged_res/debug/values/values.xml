@@ -71,7 +71,13 @@
     <color name="brown_900">#3E2723</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGreyDashGap">#A5A5A5</color>
-    <color name="color_green_item">#F7FFF9</color>
+    <color name="color_blue_button">#11CCFF</color>
+    <color name="color_blue_item">#F7FFF9</color>
+    <color name="color_green_item">#E5EDE6</color>
+    <color name="color_green_progress">#4DA248</color>
+    <color name="color_grey_item">#FDFCFC</color>
+    <color name="color_grey_text_answer">#727272</color>
+    <color name="color_grey_white_shape">#E1E1E1</color>
     <color name="color_red_item">#FFEEEB</color>
     <color name="cyan_100">#B2EBF2</color>
     <color name="cyan_200">#80DEEA</color>
@@ -361,7 +367,9 @@
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_50">50dp</dimen>
     <dimen name="margin_52">52dp</dimen>
+    <dimen name="margin_53">53dp</dimen>
     <dimen name="margin_54">54dp</dimen>
+    <dimen name="margin_55">55dp</dimen>
     <dimen name="margin_56">56dp</dimen>
     <dimen name="margin_6">6dp</dimen>
     <dimen name="margin_64">64dp</dimen>
@@ -397,19 +405,31 @@
     <dimen name="viewpager_margin_overlap_payment">-30dp</dimen>
     <item name="appBar" type="id"/>
     <item name="bottomSheet" type="id"/>
+    <item name="btnCurrentHistoryQuestion" type="id"/>
+    <item name="btnNextQuestion" type="id"/>
     <item name="imgBtnClose" type="id"/>
     <item name="imgBtnSuccess" type="id"/>
+    <item name="imgBtnSuccessEnd" type="id"/>
+    <item name="imgBtnSuccessStart" type="id"/>
     <item name="imgBtnUnSuccess" type="id"/>
+    <item name="imgBtnUnSuccessEnd" type="id"/>
+    <item name="imgBtnUnSuccessStart" type="id"/>
+    <item name="lnAction" type="id"/>
     <item name="lnCurrentHistoryQuestion" type="id"/>
     <item name="lnNextQuestion" type="id"/>
     <item name="lnParent" type="id"/>
+    <item name="lnParentEnd" type="id"/>
+    <item name="lnParentStart" type="id"/>
     <item name="lottieAnimationView" type="id"/>
+    <item name="progressPeriodTime" type="id"/>
     <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
     <item name="toolbar" type="id"/>
     <item name="txtDescriptionAnswer" type="id"/>
     <item name="txtNumber" type="id"/>
     <item name="txtTitle" type="id"/>
+    <item name="txtTitleEnd" type="id"/>
+    <item name="txtTitleStart" type="id"/>
     <string name="current_history_question">Current History Question</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_question">Next Question</string>

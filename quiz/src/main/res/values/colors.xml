@@ -14,7 +14,13 @@
     <color name="background_x1">#9B9B9B</color>
     <color name="background_x2">#F3F3F3</color>
     <color name="color_red_item">#FFEEEB</color>
-    <color name="color_green_item">#F7FFF9</color>
+    <color name="color_green_item">#E5EDE6</color>
+    <color name="color_green_progress">#4DA248</color>
+    <color name="color_blue_item">#F7FFF9</color>
+    <color name="color_grey_item">#FDFCFC</color>
+    <color name="color_grey_white_shape">#E1E1E1</color>
+    <color name="color_grey_text_answer">#727272</color>
+    <color name="color_blue_button">#11CCFF</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>

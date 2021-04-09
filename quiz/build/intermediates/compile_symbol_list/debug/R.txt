@@ -10,6 +10,7 @@ int anim abc_slide_out_bottom 0x0
 int anim abc_slide_out_top 0x0
 int anim abc_tooltip_enter 0x0
 int anim abc_tooltip_exit 0x0
+int anim anim_slide_in_left 0x0
 int anim btn_checkbox_to_checked_box_inner_merged_animation 0x0
 int anim btn_checkbox_to_checked_box_outer_merged_animation 0x0
 int anim btn_checkbox_to_checked_icon_null_animation 0x0
@@ -1106,7 +1107,13 @@ int color cardview_shadow_start_color 0x0
 int color checkbox_themeable_attribute_color 0x0
 int color colorBlack 0x0
 int color colorGreyDashGap 0x0
+int color color_blue_button 0x0
+int color color_blue_item 0x0
 int color color_green_item 0x0
+int color color_green_progress 0x0
+int color color_grey_item 0x0
+int color color_grey_text_answer 0x0
+int color color_grey_white_shape 0x0
 int color color_red_item 0x0
 int color cyan_100 0x0
 int color cyan_200 0x0
@@ -1717,7 +1724,9 @@ int dimen margin_40 0x0
 int dimen margin_5 0x0
 int dimen margin_50 0x0
 int dimen margin_52 0x0
+int dimen margin_53 0x0
 int dimen margin_54 0x0
+int dimen margin_55 0x0
 int dimen margin_56 0x0
 int dimen margin_6 0x0
 int dimen margin_64 0x0
@@ -2167,9 +2176,10 @@ int drawable notification_template_icon_low_bg 0x0
 int drawable notification_tile_bg 0x0
 int drawable notify_panel_notification_icon_bg 0x0
 int drawable progressbar_blue 0x0
+int drawable rounded_blue_shape 0x0
 int drawable rounded_green_shape 0x0
-int drawable rounded_grey_shape 0x0
 int drawable rounded_red_shape 0x0
+int drawable rounded_white_shape 0x0
 int drawable test_custom_background 0x0
 int drawable tooltip_frame_dark 0x0
 int drawable tooltip_frame_light 0x0
@@ -2256,6 +2266,8 @@ int id blocking 0x0
 int id bottom 0x0
 int id bottomSheet 0x0
 int id bounce 0x0
+int id btnCurrentHistoryQuestion 0x0
+int id btnNextQuestion 0x0
 int id buttonPanel 0x0
 int id cancel_action 0x0
 int id cancel_button 0x0
@@ -2340,7 +2352,11 @@ int id ignoreRequest 0x0
 int id image 0x0
 int id imgBtnClose 0x0
 int id imgBtnSuccess 0x0
+int id imgBtnSuccessEnd 0x0
+int id imgBtnSuccessStart 0x0
 int id imgBtnUnSuccess 0x0
+int id imgBtnUnSuccessEnd 0x0
+int id imgBtnUnSuccessStart 0x0
 int id imgLogo 0x0
 int id info 0x0
 int id invisible 0x0
@@ -2359,9 +2375,12 @@ int id line3 0x0
 int id linear 0x0
 int id listMode 0x0
 int id list_item 0x0
+int id lnAction 0x0
 int id lnCurrentHistoryQuestion 0x0
 int id lnNextQuestion 0x0
 int id lnParent 0x0
+int id lnParentEnd 0x0
+int id lnParentStart 0x0
 int id lottieAnimationView 0x0
 int id lottie_layer_name 0x0
 int id lyt_card 0x0
@@ -2454,6 +2473,7 @@ int id pin 0x0
 int id position 0x0
 int id postLayout 0x0
 int id progressBar 0x0
+int id progressPeriodTime 0x0
 int id progress_circular 0x0
 int id progress_horizontal 0x0
 int id questionsFragment 0x0
@@ -2569,6 +2589,8 @@ int id txtDescriptionAnswer 0x0
 int id txtNumber 0x0
 int id txtProgress 0x0
 int id txtTitle 0x0
+int id txtTitleEnd 0x0
+int id txtTitleStart 0x0
 int id unchecked 0x0
 int id uniform 0x0
 int id unlabeled 0x0
@@ -2652,7 +2674,6 @@ int layout abc_search_view 0x0
 int layout abc_select_dialog_material 0x0
 int layout abc_tooltip 0x0
 int layout activity_quiz 0x0
-int layout bottom_sheet_text_format 0x0
 int layout custom_dialog 0x0
 int layout design_bottom_navigation_item 0x0
 int layout design_bottom_sheet_dialog 0x0
@@ -2670,7 +2691,6 @@ int layout design_navigation_menu_item 0x0
 int layout design_text_input_end_icon 0x0
 int layout design_text_input_password_icon 0x0
 int layout design_text_input_start_icon 0x0
-int layout fragment_bottom_sheet_dialog_format_view 0x0
 int layout fragment_loading 0x0
 int layout fragment_questions 0x0
 int layout fragment_quiz_detail 0x0

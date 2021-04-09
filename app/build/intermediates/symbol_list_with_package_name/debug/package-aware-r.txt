@@ -11,6 +11,7 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim anim_slide_in_left
 anim btn_checkbox_to_checked_box_inner_merged_animation
 anim btn_checkbox_to_checked_box_outer_merged_animation
 anim btn_checkbox_to_checked_icon_null_animation
@@ -1106,7 +1107,13 @@ color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color colorBlack
 color colorGreyDashGap
+color color_blue_button
+color color_blue_item
 color color_green_item
+color color_green_progress
+color color_grey_item
+color color_grey_text_answer
+color color_grey_white_shape
 color color_red_item
 color cyan_100
 color cyan_200
@@ -1712,7 +1719,9 @@ dimen margin_40
 dimen margin_5
 dimen margin_50
 dimen margin_52
+dimen margin_53
 dimen margin_54
+dimen margin_55
 dimen margin_56
 dimen margin_6
 dimen margin_64
@@ -2160,9 +2169,10 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable progressbar_blue
+drawable rounded_blue_shape
 drawable rounded_green_shape
-drawable rounded_grey_shape
 drawable rounded_red_shape
+drawable rounded_white_shape
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -2259,7 +2269,9 @@ id blocking
 id bottom
 id bottomSheet
 id bounce
+id btnCurrentHistoryQuestion
 id btnEnterExam
+id btnNextQuestion
 id buttonPanel
 id cache_measures
 id cancel_action
@@ -2371,7 +2383,11 @@ id ignoreRequest
 id image
 id imgBtnClose
 id imgBtnSuccess
+id imgBtnSuccessEnd
+id imgBtnSuccessStart
 id imgBtnUnSuccess
+id imgBtnUnSuccessEnd
+id imgBtnUnSuccessStart
 id imgLogo
 id info
 id invisible
@@ -2389,9 +2405,12 @@ id line3
 id linear
 id listMode
 id list_item
+id lnAction
 id lnCurrentHistoryQuestion
 id lnNextQuestion
 id lnParent
+id lnParentEnd
+id lnParentStart
 id lottieAnimationView
 id lottie_layer_name
 id lyt_card
@@ -2487,6 +2506,7 @@ id pin
 id position
 id postLayout
 id progressBar
+id progressPeriodTime
 id progress_circular
 id progress_horizontal
 id questionsFragment
@@ -2616,6 +2636,8 @@ id txtDescriptionAnswer
 id txtNumber
 id txtProgress
 id txtTitle
+id txtTitleEnd
+id txtTitleStart
 id unchecked
 id uniform
 id unlabeled
@@ -2702,7 +2724,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_quiz
-layout bottom_sheet_text_format
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2719,7 +2740,6 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout fragment_bottom_sheet_dialog_format_view
 layout fragment_dashboard
 layout fragment_loading
 layout fragment_questions

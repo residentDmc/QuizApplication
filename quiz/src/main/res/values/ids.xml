@@ -27,4 +27,8 @@
     <item name="btnCurrentHistoryQuestion" type="id" />
     <item name="lnAction" type="id" />
     <item name="progressPeriodTime" type="id" />
+    <item name="imgFullScreen" type="id" />
+    <item name="viewVideo" type="id" />
+    <item name="cvVideo" type="id" />
+    <item name="imgPlay" type="id" />
 </resources>

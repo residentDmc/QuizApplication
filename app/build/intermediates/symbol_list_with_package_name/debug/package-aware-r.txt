@@ -1716,6 +1716,7 @@ dimen margin_330
 dimen margin_350
 dimen margin_4
 dimen margin_40
+dimen margin_48
 dimen margin_5
 dimen margin_50
 dimen margin_52
@@ -2124,6 +2125,7 @@ drawable green_progress_drawable
 drawable ic_clock_black_24dp
 drawable ic_close
 drawable ic_current_history_question
+drawable ic_fullscreen
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -2133,6 +2135,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_next_question
+drawable ic_play_circle
 drawable ic_success
 drawable ic_un_success
 drawable material_cursor_drawable
@@ -2307,6 +2310,7 @@ id custom
 id customPanel
 id custom_toast_layout_id
 id cut
+id cvVideo
 id dashboardFragment
 id dataBinding
 id date_picker_actions
@@ -2388,7 +2392,9 @@ id imgBtnSuccessStart
 id imgBtnUnSuccess
 id imgBtnUnSuccessEnd
 id imgBtnUnSuccessStart
+id imgFullScreen
 id imgLogo
+id imgPlay
 id info
 id invisible
 id inward
@@ -2643,6 +2649,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id viewVideo
 id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner

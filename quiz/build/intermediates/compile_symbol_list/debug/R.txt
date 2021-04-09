@@ -1721,6 +1721,7 @@ int dimen margin_330 0x0
 int dimen margin_350 0x0
 int dimen margin_4 0x0
 int dimen margin_40 0x0
+int dimen margin_48 0x0
 int dimen margin_5 0x0
 int dimen margin_50 0x0
 int dimen margin_52 0x0
@@ -2132,6 +2133,7 @@ int drawable green_progress_drawable 0x0
 int drawable ic_clock_black_24dp 0x0
 int drawable ic_close 0x0
 int drawable ic_current_history_question 0x0
+int drawable ic_fullscreen 0x0
 int drawable ic_keyboard_black_24dp 0x0
 int drawable ic_logo 0x0
 int drawable ic_mtrl_checked_circle 0x0
@@ -2139,6 +2141,7 @@ int drawable ic_mtrl_chip_checked_black 0x0
 int drawable ic_mtrl_chip_checked_circle 0x0
 int drawable ic_mtrl_chip_close_circle 0x0
 int drawable ic_next_question 0x0
+int drawable ic_play_circle 0x0
 int drawable ic_success 0x0
 int drawable ic_un_success 0x0
 int drawable material_cursor_drawable 0x0
@@ -2296,6 +2299,7 @@ int id custom 0x0
 int id customPanel 0x0
 int id custom_toast_layout_id 0x0
 int id cut 0x0
+int id cvVideo 0x0
 int id dataBinding 0x0
 int id date_picker_actions 0x0
 int id decelerate 0x0
@@ -2357,7 +2361,9 @@ int id imgBtnSuccessStart 0x0
 int id imgBtnUnSuccess 0x0
 int id imgBtnUnSuccessEnd 0x0
 int id imgBtnUnSuccessStart 0x0
+int id imgFullScreen 0x0
 int id imgLogo 0x0
+int id imgPlay 0x0
 int id info 0x0
 int id invisible 0x0
 int id inward 0x0
@@ -2595,6 +2601,7 @@ int id unchecked 0x0
 int id uniform 0x0
 int id unlabeled 0x0
 int id up 0x0
+int id viewVideo 0x0
 int id view_offset_helper 0x0
 int id view_tree_lifecycle_owner 0x0
 int id view_tree_saved_state_registry_owner 0x0

@@ -1,15 +1,17 @@
 com/vesam/quiz/BuildConfig.java
  com.vesam.quiz.BuildConfig
-com/vesam/quiz/databinding/FragmentQuizDetailBinding.java
- com.vesam.quiz.databinding.FragmentQuizDetailBinding
-com/vesam/quiz/databinding/ItemAnswerBinding.java
- com.vesam.quiz.databinding.ItemAnswerBinding
+com/vesam/quiz/utils/converter/DetailsConverter.java
+ com.vesam.quiz.utils.converter.DetailsConverter
+ com.vesam.quiz.utils.converter.DetailsConverter$1
+ com.vesam.quiz.utils.converter.DetailsConverter$2
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
 com/vesam/quiz/interfaces/OnCreateCameraImageFile.java
  com.vesam.quiz.interfaces.OnCreateCameraImageFile
-com/vesam/quiz/databinding/FragmentLoadingBinding.java
- com.vesam.quiz.databinding.FragmentLoadingBinding
-com/vesam/quiz/databinding/FragmentQuestionsBinding.java
- com.vesam.quiz.databinding.FragmentQuestionsBinding
+com/vesam/quiz/DataBindingTriggerClass.java
+ com.vesam.quiz.DataBindingTriggerClass
+com/vesam/quiz/BR.java
+ com.vesam.quiz.BR
 com/vesam/quiz/data/database/DetailsDAO_Impl.java
  com.vesam.quiz.data.database.DetailsDAO_Impl
  com.vesam.quiz.data.database.DetailsDAO_Impl$1
@@ -21,8 +23,8 @@ com/vesam/quiz/data/database/DetailsDAO_Impl.java
  com.vesam.quiz.data.database.DetailsDAO_Impl$7
 androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
-com/vesam/quiz/utils/tools/NetworkTools.java
- com.vesam.quiz.utils.tools.NetworkTools
+com/vesam/quiz/utils/type_converters/ToStringConverterFactory.java
+ com.vesam.quiz.utils.type_converters.ToStringConverterFactory
 com/vesam/quiz/DataBinderMapperImpl.java
  com.vesam.quiz.DataBinderMapperImpl
  com.vesam.quiz.DataBinderMapperImpl$InnerBrLookup
@@ -30,21 +32,19 @@ com/vesam/quiz/DataBinderMapperImpl.java
 com/vesam/quiz/data/database/QuizDatabase_Impl.java
  com.vesam.quiz.data.database.QuizDatabase_Impl
  com.vesam.quiz.data.database.QuizDatabase_Impl$1
-com/vesam/quiz/utils/converter/DetailsConverter.java
- com.vesam.quiz.utils.converter.DetailsConverter
- com.vesam.quiz.utils.converter.DetailsConverter$1
- com.vesam.quiz.utils.converter.DetailsConverter$2
+com/vesam/quiz/databinding/FragmentQuizDetailBinding.java
+ com.vesam.quiz.databinding.FragmentQuizDetailBinding
+com/vesam/quiz/databinding/ItemAnswerBinding.java
+ com.vesam.quiz.databinding.ItemAnswerBinding
 com/vesam/quiz/databinding/ActivityQuizBinding.java
  com.vesam.quiz.databinding.ActivityQuizBinding
-com/vesam/quiz/utils/type_converters/ToStringConverterFactory.java
- com.vesam.quiz.utils.type_converters.ToStringConverterFactory
-com/vesam/quiz/BR.java
- com.vesam.quiz.BR
-com/vesam/quiz/DataBindingTriggerClass.java
- com.vesam.quiz.DataBindingTriggerClass
+com/vesam/quiz/databinding/FragmentLoadingBinding.java
+ com.vesam.quiz.databinding.FragmentLoadingBinding
+com/vesam/quiz/databinding/FragmentQuestionsBinding.java
+ com.vesam.quiz.databinding.FragmentQuestionsBinding
 com/vesam/quiz/databinding/ToastLayoutBinding.java
  com.vesam.quiz.databinding.ToastLayoutBinding
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent
+com/vesam/quiz/utils/tools/NetworkTools.java
+ com.vesam.quiz.utils.tools.NetworkTools
 com/vesam/quiz/databinding/ItemQuizBinding.java
  com.vesam.quiz.databinding.ItemQuizBinding

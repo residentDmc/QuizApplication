@@ -350,6 +350,7 @@ dimen margin_330
 dimen margin_350
 dimen margin_4
 dimen margin_40
+dimen margin_48
 dimen margin_5
 dimen margin_50
 dimen margin_52
@@ -392,8 +393,10 @@ dimen viewpager_margin_overlap_payment
 drawable green_progress_drawable
 drawable ic_close
 drawable ic_current_history_question
+drawable ic_fullscreen
 drawable ic_logo
 drawable ic_next_question
+drawable ic_play_circle
 drawable ic_success
 drawable ic_un_success
 drawable progressbar_blue
@@ -407,6 +410,7 @@ id bottomSheet
 id btnCurrentHistoryQuestion
 id btnNextQuestion
 id custom_toast_layout_id
+id cvVideo
 id imgBtnClose
 id imgBtnSuccess
 id imgBtnSuccessEnd
@@ -414,7 +418,9 @@ id imgBtnSuccessStart
 id imgBtnUnSuccess
 id imgBtnUnSuccessEnd
 id imgBtnUnSuccessStart
+id imgFullScreen
 id imgLogo
+id imgPlay
 id lnAction
 id lnCurrentHistoryQuestion
 id lnNextQuestion
@@ -439,6 +445,7 @@ id txtProgress
 id txtTitle
 id txtTitleEnd
 id txtTitleStart
+id viewVideo
 layout activity_quiz
 layout fragment_loading
 layout fragment_questions

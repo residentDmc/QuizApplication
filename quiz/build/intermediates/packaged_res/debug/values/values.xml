@@ -364,6 +364,7 @@
     <dimen name="margin_350">350dp</dimen>
     <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_48">48dp</dimen>
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_50">50dp</dimen>
     <dimen name="margin_52">52dp</dimen>
@@ -407,6 +408,7 @@
     <item name="bottomSheet" type="id"/>
     <item name="btnCurrentHistoryQuestion" type="id"/>
     <item name="btnNextQuestion" type="id"/>
+    <item name="cvVideo" type="id"/>
     <item name="imgBtnClose" type="id"/>
     <item name="imgBtnSuccess" type="id"/>
     <item name="imgBtnSuccessEnd" type="id"/>
@@ -414,6 +416,8 @@
     <item name="imgBtnUnSuccess" type="id"/>
     <item name="imgBtnUnSuccessEnd" type="id"/>
     <item name="imgBtnUnSuccessStart" type="id"/>
+    <item name="imgFullScreen" type="id"/>
+    <item name="imgPlay" type="id"/>
     <item name="lnAction" type="id"/>
     <item name="lnCurrentHistoryQuestion" type="id"/>
     <item name="lnNextQuestion" type="id"/>
@@ -430,6 +434,7 @@
     <item name="txtTitle" type="id"/>
     <item name="txtTitleEnd" type="id"/>
     <item name="txtTitleStart" type="id"/>
+    <item name="viewVideo" type="id"/>
     <string name="current_history_question">Current History Question</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_question">Next Question</string>

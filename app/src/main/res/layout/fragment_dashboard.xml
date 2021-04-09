@@ -39,6 +39,29 @@
             android:layout_height="@dimen/margin_5" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@id/tlBaseUrlImageAndVideo"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/base_url_image_and_video"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/TypeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:text="@string/base_url_image_and_video_value"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_5" />
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@id/tlToken"
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"

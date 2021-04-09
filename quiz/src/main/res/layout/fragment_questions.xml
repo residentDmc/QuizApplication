@@ -22,13 +22,15 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <LinearLayout
+                android:id="@id/lnText"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_white_shape"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@id/txtTitle"
+                    android:id="@id/txtQuestion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/margin_16"
@@ -41,7 +43,7 @@
                     tools:text="@string/hello_blank_fragment" />
 
                 <ProgressBar
-                    android:id="@id/progressPeriodTime"
+                    android:id="@id/progressPeriodTextTime"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin_6"
@@ -51,6 +53,33 @@
                     android:progressDrawable="@drawable/green_progress_drawable" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/lnImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_170"
+                android:visibility="gone"
+                android:background="@drawable/rounded_white_shape"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@id/imgQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_2" />
+
+                <ProgressBar
+                    android:id="@id/progressPeriodImageTime"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_6"
+                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginEnd="@dimen/margin_8"
+                    android:layout_marginBottom="@dimen/margin_1"
+                    android:progressDrawable="@drawable/green_progress_drawable" />
+
+            </LinearLayout>
+
 
             <View
                 android:layout_width="match_parent"
@@ -84,10 +113,10 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@id/cvVideo"
-                android:visibility="gone"
                 android:layout_width="@dimen/margin_250"
                 android:layout_height="@dimen/margin_150"
                 android:layout_gravity="center_horizontal"
+                android:visibility="gone"
                 app:cardCornerRadius="@dimen/margin_8">
 
                 <VideoView
@@ -111,8 +140,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:visibility="gone"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -143,48 +172,23 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-            <LinearLayout
-                android:id="@id/lnAction"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:id="@id/btnNextQuestion"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_55"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_32"
+                android:layout_marginBottom="@dimen/margin_4"
                 android:orientation="vertical"
-                android:visibility="gone">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@id/btnNextQuestion"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/margin_55"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/margin_4"
-                    android:paddingLeft="@dimen/margin_53"
-                    android:paddingRight="@dimen/margin_53"
-                    android:text="@string/next_question"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/color_blue_button"
-                    app:cornerRadius="@dimen/margin_32"
-                    app:rippleColor="@color/accent" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/margin_5" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@id/btnCurrentHistoryQuestion"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/margin_55"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/margin_4"
-                    android:paddingLeft="@dimen/margin_40"
-                    android:paddingRight="@dimen/margin_40"
-                    android:text="@string/current_history_question"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/color_blue_button"
-                    app:cornerRadius="@dimen/margin_32"
-                    app:rippleColor="@color/accent" />
-            </LinearLayout>
+                android:paddingLeft="@dimen/margin_53"
+                android:paddingRight="@dimen/margin_53"
+                android:text="@string/next_question"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:backgroundTint="@color/color_blue_button"
+                app:cornerRadius="@dimen/margin_32"
+                app:rippleColor="@color/accent" />
 
         </LinearLayout>
 

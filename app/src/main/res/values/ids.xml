@@ -6,4 +6,5 @@
     <item name="tlToken" type="id" />
     <item name="tlUserId" type="id" />
     <item name="tlQuizId" type="id" />
+    <item name="tlBaseUrlImageAndVideo" type="id" />
 </resources>

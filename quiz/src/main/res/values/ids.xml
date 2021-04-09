@@ -26,9 +26,14 @@
     <item name="btnNextQuestion" type="id" />
     <item name="btnCurrentHistoryQuestion" type="id" />
     <item name="lnAction" type="id" />
-    <item name="progressPeriodTime" type="id" />
+    <item name="progressPeriodTextTime" type="id" />
     <item name="imgFullScreen" type="id" />
     <item name="viewVideo" type="id" />
     <item name="cvVideo" type="id" />
     <item name="imgPlay" type="id" />
+    <item name="lnText" type="id" />
+    <item name="lnImage" type="id" />
+    <item name="txtQuestion" type="id" />
+    <item name="imgQuestion" type="id" />
+    <item name="progressPeriodImageTime" type="id" />
 </resources>

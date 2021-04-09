@@ -26,6 +26,9 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextInputLayout tlBaseUrl;
 
   @NonNull
+  public final TextInputLayout tlBaseUrlImageAndVideo;
+
+  @NonNull
   public final TextInputLayout tlQuizId;
 
   @NonNull
@@ -36,11 +39,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
 
   private FragmentDashboardBinding(@NonNull ConstraintLayout rootView,
       @NonNull MaterialButton btnEnterExam, @NonNull TextInputLayout tlBaseUrl,
-      @NonNull TextInputLayout tlQuizId, @NonNull TextInputLayout tlToken,
-      @NonNull TextInputLayout tlUserId) {
+      @NonNull TextInputLayout tlBaseUrlImageAndVideo, @NonNull TextInputLayout tlQuizId,
+      @NonNull TextInputLayout tlToken, @NonNull TextInputLayout tlUserId) {
     this.rootView = rootView;
     this.btnEnterExam = btnEnterExam;
     this.tlBaseUrl = tlBaseUrl;
+    this.tlBaseUrlImageAndVideo = tlBaseUrlImageAndVideo;
     this.tlQuizId = tlQuizId;
     this.tlToken = tlToken;
     this.tlUserId = tlUserId;
@@ -85,6 +89,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tlBaseUrlImageAndVideo;
+      TextInputLayout tlBaseUrlImageAndVideo = rootView.findViewById(id);
+      if (tlBaseUrlImageAndVideo == null) {
+        break missingId;
+      }
+
       id = R.id.tlQuizId;
       TextInputLayout tlQuizId = rootView.findViewById(id);
       if (tlQuizId == null) {
@@ -104,7 +114,7 @@ public final class FragmentDashboardBinding implements ViewBinding {
       }
 
       return new FragmentDashboardBinding((ConstraintLayout) rootView, btnEnterExam, tlBaseUrl,
-          tlQuizId, tlToken, tlUserId);
+          tlBaseUrlImageAndVideo, tlQuizId, tlToken, tlUserId);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

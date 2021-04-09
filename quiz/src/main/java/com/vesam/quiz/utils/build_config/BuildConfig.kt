@@ -4,6 +4,7 @@ package com.vesam.quiz.utils.build_config
 class BuildConfig {
     companion object {
         var BASE_URL = ""
+        var BASE_URL_IMAGE_AND_VIDEO_VALUE = ""
 
         // header
         const val CONTENT_TYPE_HEADER = "Content-Type"

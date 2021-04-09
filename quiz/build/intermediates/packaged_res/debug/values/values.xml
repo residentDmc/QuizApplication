@@ -350,6 +350,8 @@
     <dimen name="margin_15">15dp</dimen>
     <dimen name="margin_150">150dp</dimen>
     <dimen name="margin_16">16sp</dimen>
+    <dimen name="margin_160">160dp</dimen>
+    <dimen name="margin_170">170dp</dimen>
     <dimen name="margin_18">18dp</dimen>
     <dimen name="margin_2">2dp</dimen>
     <dimen name="margin_20">20dp</dimen>
@@ -418,19 +420,24 @@
     <item name="imgBtnUnSuccessStart" type="id"/>
     <item name="imgFullScreen" type="id"/>
     <item name="imgPlay" type="id"/>
+    <item name="imgQuestion" type="id"/>
     <item name="lnAction" type="id"/>
     <item name="lnCurrentHistoryQuestion" type="id"/>
+    <item name="lnImage" type="id"/>
     <item name="lnNextQuestion" type="id"/>
     <item name="lnParent" type="id"/>
     <item name="lnParentEnd" type="id"/>
     <item name="lnParentStart" type="id"/>
+    <item name="lnText" type="id"/>
     <item name="lottieAnimationView" type="id"/>
-    <item name="progressPeriodTime" type="id"/>
+    <item name="progressPeriodImageTime" type="id"/>
+    <item name="progressPeriodTextTime" type="id"/>
     <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
     <item name="toolbar" type="id"/>
     <item name="txtDescriptionAnswer" type="id"/>
     <item name="txtNumber" type="id"/>
+    <item name="txtQuestion" type="id"/>
     <item name="txtTitle" type="id"/>
     <item name="txtTitleEnd" type="id"/>
     <item name="txtTitleStart" type="id"/>

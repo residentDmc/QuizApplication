@@ -1,0 +1,10 @@
+package com.vesam.quiz.utils.extention
+
+import android.util.Log
+import android.widget.ProgressBar
+import java.util.concurrent.TimeUnit
+
+fun initTick(millisUntilFinished: Long, progressBar: ProgressBar) {
+    val second = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
+    progressBar.progress = second.toInt()
+}

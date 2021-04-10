@@ -19,8 +19,8 @@ com/vesam/quiz/data/database/DetailsDAO_Impl.java
  com.vesam.quiz.data.database.DetailsDAO_Impl$7
 androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent
+com/vesam/quiz/utils/tools/NetworkTools.java
+ com.vesam.quiz.utils.tools.NetworkTools
 com/vesam/quiz/DataBinderMapperImpl.java
  com.vesam.quiz.DataBinderMapperImpl
  com.vesam.quiz.DataBinderMapperImpl$InnerBrLookup
@@ -42,5 +42,5 @@ com/vesam/quiz/DataBindingTriggerClass.java
  com.vesam.quiz.DataBindingTriggerClass
 com/vesam/quiz/databinding/ToastLayoutBinding.java
  com.vesam.quiz.databinding.ToastLayoutBinding
-com/vesam/quiz/utils/tools/NetworkTools.java
- com.vesam.quiz.utils.tools.NetworkTools
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent

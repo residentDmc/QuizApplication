@@ -16,4 +16,5 @@ data class Answer(
     val title: String
 ){
     var isSuccess=0
+    var isEnable=false
 }

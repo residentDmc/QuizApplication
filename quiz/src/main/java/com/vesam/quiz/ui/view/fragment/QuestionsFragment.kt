@@ -31,7 +31,6 @@ import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
 import com.vesam.quiz.utils.tools.ToastTools
 import org.koin.android.ext.android.inject
-import java.util.concurrent.TimeUnit
 
 
 class QuestionsFragment : Fragment() {
@@ -71,7 +70,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initOnClick() {
-        binding.btnNextQuestion.setOnClickListener {  initQuestion() }
+        binding.btnNextQuestion.setOnClickListener {  initCheckQuestion() }
     }
 
     private fun initRequestListQuiz() {
@@ -95,6 +94,19 @@ class QuestionsFragment : Fragment() {
     private fun initQuizDetailModel(it: ResponseQuizDetailModel) {
         questionList.addAll(it.questions)
         initQuestion()
+    }
+
+    private fun initCheckQuestion() {
+        questionList.let {
+            when {
+                it.isEmpty() -> initResult()
+                else -> initQuestion()
+            }
+        }
+    }
+
+    private fun initResult() {
+        toastTools.toast("result")
     }
 
     private fun initQuestion() {
@@ -123,7 +135,7 @@ class QuestionsFragment : Fragment() {
     private fun initQuestionFormatImage(question: Question) {
         initShowQuestionFormatImage()
         initPeriodImageTime(question)
-        glideTools.displayImageOriginal(binding.imgQuestion,question.quizDescription.urlContent)
+        glideTools.displayImageOriginal(binding.imgQuestion, question.quizDescription.urlContent)
     }
 
     private fun initQuestionFormatAudio(question: Question) {
@@ -164,14 +176,17 @@ class QuestionsFragment : Fragment() {
         binding.progressPeriodImageTime.max = question.periodTime
         binding.progressPeriodImageTime.progress = question.periodTime
         timer = object : CountDownTimer((question.periodTime * 1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) = initTick(millisUntilFinished,binding.progressPeriodImageTime)
+            override fun onTick(millisUntilFinished: Long) = initTick(
+                millisUntilFinished,
+                binding.progressPeriodImageTime
+            )
             override fun onFinish() = initFinish()
         }
         timer.start()
     }
 
     private fun initFinish() {
-        initQuestion()
+        initCheckQuestion()
     }
 
     private fun initThrowable(it: Throwable) {

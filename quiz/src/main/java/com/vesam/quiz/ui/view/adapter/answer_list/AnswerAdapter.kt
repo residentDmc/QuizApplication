@@ -13,10 +13,10 @@ import java.util.*
 
 class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
 
-    lateinit var onClickListenerAny : OnClickListenerAny
+    lateinit var onClickListenerAny: OnClickListenerAny
     private val list: ArrayList<Answer> = ArrayList()
 
-    fun setOnItemClickListener( onClickListenerAny : OnClickListenerAny){
+    fun setOnItemClickListener(onClickListenerAny: OnClickListenerAny) {
         this.onClickListenerAny = onClickListenerAny
     }
 
@@ -29,48 +29,67 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolderAnswer: ViewHolderAnswer, position: Int) {
         val answer = list[position]
-        checkPersianCharacter(answer.title,viewHolderAnswer.lnParentStart,viewHolderAnswer.lnParentEnd)
-        initStateCorrect(viewHolderAnswer,answer)
+        checkPersianCharacter(
+            answer.title,
+            viewHolderAnswer.lnParentStart,
+            viewHolderAnswer.lnParentEnd
+        )
+        initStateCorrect(viewHolderAnswer, answer)
+        initEnabled(viewHolderAnswer, answer)
         viewHolderAnswer.txtTitleStart.text = answer.title
         viewHolderAnswer.txtTitleEnd.text = answer.title
-        viewHolderAnswer.lnParentStart.setOnClickListener { onClickListenerAny.onClickListener(answer) }
+        viewHolderAnswer.lnParentStart.setOnClickListener {
+            onClickListenerAny.onClickListener(
+                answer
+            )
+        }
         viewHolderAnswer.lnParentEnd.setOnClickListener { onClickListenerAny.onClickListener(answer) }
     }
 
-    private fun initStateCorrect(viewHolderAnswer: ViewHolderAnswer,answer: Answer) =
+    private fun initEnabled(viewHolderAnswer: ViewHolderAnswer, answer: Answer) {
+        viewHolderAnswer.lnParentStart.isEnabled = !answer.isEnable
+        viewHolderAnswer.lnParentEnd.isEnabled = !answer.isEnable
+    }
+
+    private fun initStateCorrect(viewHolderAnswer: ViewHolderAnswer, answer: Answer) {
         when (answer.isSuccess) {
             0 -> initDefault(viewHolderAnswer)
             1 -> initSuccess(viewHolderAnswer)
             2 -> initUnSuccess(viewHolderAnswer)
-            else -> {}
         }
+    }
 
     private fun initDefault(viewHolderAnswer: ViewHolderAnswer) {
-        viewHolderAnswer.imgBtnSuccessStart.visibility=View.GONE
-        viewHolderAnswer.imgBtnUnSuccessStart.visibility=View.GONE
+        viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_white_shape)
-        viewHolderAnswer.imgBtnSuccessEnd.visibility=View.GONE
-        viewHolderAnswer.imgBtnUnSuccessEnd.visibility=View.GONE
+
+
+        viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_white_shape)
+
+
+
     }
 
     private fun initSuccess(viewHolderAnswer: ViewHolderAnswer) {
-        viewHolderAnswer.imgBtnSuccessStart.visibility=View.VISIBLE
-        viewHolderAnswer.imgBtnUnSuccessStart.visibility=View.GONE
+        viewHolderAnswer.imgBtnSuccessStart.visibility = View.VISIBLE
+        viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_green_shape)
 
-        viewHolderAnswer.imgBtnSuccessEnd.visibility=View.VISIBLE
-        viewHolderAnswer.imgBtnUnSuccessEnd.visibility=View.GONE
+        viewHolderAnswer.imgBtnSuccessEnd.visibility = View.VISIBLE
+        viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_green_shape)
     }
 
     private fun initUnSuccess(viewHolderAnswer: ViewHolderAnswer) {
-        viewHolderAnswer.imgBtnSuccessStart.visibility=View.GONE
-        viewHolderAnswer.imgBtnUnSuccessStart.visibility=View.VISIBLE
+        viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.VISIBLE
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_red_shape)
 
-        viewHolderAnswer.imgBtnSuccessEnd.visibility=View.GONE
-        viewHolderAnswer.imgBtnUnSuccessEnd.visibility=View.VISIBLE
+        viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.VISIBLE
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_red_shape)
     }
 
@@ -83,14 +102,18 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     }
 
     fun answerSuccessQuestion(answer: Answer) {
-        val indexOf=list.indexOf(answer)
-        answer.isSuccess=1
-        notifyItemChanged(indexOf)
+        val indexOf = list.indexOf(answer)
+        answer.isSuccess = 1
+        list[indexOf] = answer
+        list.forEach { it.isEnable = true }
+        notifyDataSetChanged()
     }
 
     fun answerUnSuccessQuestion(answer: Answer) {
-        val indexOf=list.indexOf(answer)
-        answer.isSuccess=2
-        notifyItemChanged(indexOf)
+        val indexOf = list.indexOf(answer)
+        answer.isSuccess = 2
+        list[indexOf] = answer
+        list.forEach { it.isEnable = true }
+        notifyDataSetChanged()
     }
 }

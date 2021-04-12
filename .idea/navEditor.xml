@@ -64,23 +64,14 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="quizDetailFragment">
+                  <entry key="resultQuizFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="12" />
-                            <option name="y" value="12" />
+                            <option name="x" value="473" />
+                            <option name="y" value="14" />
                           </Point>
-                        </option>
-                        <option name="myPositions">
-                          <map>
-                            <entry key="action_quizDetailFragment_to_questionsFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

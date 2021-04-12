@@ -25,6 +25,8 @@ com/vesam/quiz/utils/converter/DetailsConverter.java
  com.vesam.quiz.utils.converter.DetailsConverter
  com.vesam.quiz.utils.converter.DetailsConverter$1
  com.vesam.quiz.utils.converter.DetailsConverter$2
+com/vesam/quiz/databinding/ItemResultAnswerBinding.java
+ com.vesam.quiz.databinding.ItemResultAnswerBinding
 com/vesam/quiz/databinding/ActivityQuizBinding.java
  com.vesam.quiz.databinding.ActivityQuizBinding
 com/vesam/quiz/BR.java
@@ -54,6 +56,8 @@ com/vesam/quiz/utils/type_converters/ToStringConverterFactory.java
  com.vesam.quiz.utils.type_converters.ToStringConverterFactory
 com/vesam/quiz/DataBindingTriggerClass.java
  com.vesam.quiz.DataBindingTriggerClass
+com/vesam/quiz/databinding/FragmentResultQuizBinding.java
+ com.vesam.quiz.databinding.FragmentResultQuizBinding
 com/vesam/quiz/databinding/ToastLayoutBinding.java
  com.vesam.quiz.databinding.ToastLayoutBinding
 androidx/databinding/DataBindingComponent.java

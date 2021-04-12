@@ -68,6 +68,29 @@
     <item name="waveformSeekBarQuestion" type="id" />
     <item name="imgAnswer" type="id" />
     <item name="lnAnswerImage" type="id" />
+    <item name="btnRetestEnd" type="id" />
+    <item name="lnParentSuccessEnd" type="id" />
+    <item name="lnParentUnSuccessEnd" type="id" />
+    <item name="lnParentDefaultEnd" type="id" />
+    <item name="btnRetest" type="id" />
+    <item name="lnParentSuccessStart" type="id" />
+    <item name="lnParentUnSuccessStart" type="id" />
+    <item name="lnParentDefaultStart" type="id" />
+    <item name="txtSuccessTitleStart" type="id" />
+    <item name="txtUnSuccessTitleStart" type="id" />
+    <item name="txtDefaultTitleStart" type="id" />
+    <item name="progressUnSuccess" type="id" />
+    <item name="progressSuccess" type="id" />
+    <item name="txtUnSuccessAnswer" type="id" />
+    <item name="lnQuestionResultStart" type="id" />
+    <item name="lnQuestionResultEnd" type="id" />
+    <item name="txtSuccessTitleEnd" type="id" />
+    <item name="txtUnSuccessTitleEnd" type="id" />
+    <item name="txtDefaultTitleEnd" type="id" />
+    <item name="lnResultEnd" type="id" />
+    <item name="lnResultStart" type="id" />
+    <item name="txtSuccessQuestionResult" type="id" />
+    <item name="rcResultAnswer" type="id" />
 
 
 </resources>

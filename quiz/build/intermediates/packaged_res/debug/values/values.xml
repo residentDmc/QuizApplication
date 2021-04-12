@@ -80,6 +80,10 @@
     <color name="color_grey_text_answer">#727272</color>
     <color name="color_grey_white_shape">#E1E1E1</color>
     <color name="color_red_item">#FFEEEB</color>
+    <color name="color_success_green_progress">#09A62B</color>
+    <color name="color_text_success_green_progress">#09A62B</color>
+    <color name="color_text_un_success_red_progress">#C6071F</color>
+    <color name="color_un_success_red_progress">#C6071F</color>
     <color name="cyan_100">#B2EBF2</color>
     <color name="cyan_200">#80DEEA</color>
     <color name="cyan_300">#4DD0E1</color>
@@ -417,6 +421,8 @@
     <item name="bottomSheet" type="id"/>
     <item name="btnCurrentHistoryQuestion" type="id"/>
     <item name="btnNextQuestion" type="id"/>
+    <item name="btnRetest" type="id"/>
+    <item name="btnRetestEnd" type="id"/>
     <item name="cvAnswerVideo" type="id"/>
     <item name="cvQuestionVideo" type="id"/>
     <item name="cvVideo" type="id"/>
@@ -448,12 +454,22 @@
     <item name="lnImage" type="id"/>
     <item name="lnNextQuestion" type="id"/>
     <item name="lnParent" type="id"/>
+    <item name="lnParentDefaultEnd" type="id"/>
+    <item name="lnParentDefaultStart" type="id"/>
     <item name="lnParentEnd" type="id"/>
     <item name="lnParentStart" type="id"/>
+    <item name="lnParentSuccessEnd" type="id"/>
+    <item name="lnParentSuccessStart" type="id"/>
+    <item name="lnParentUnSuccessEnd" type="id"/>
+    <item name="lnParentUnSuccessStart" type="id"/>
     <item name="lnQuestionImageLayout" type="id"/>
+    <item name="lnQuestionResultEnd" type="id"/>
+    <item name="lnQuestionResultStart" type="id"/>
     <item name="lnQuestionSoundLayout" type="id"/>
     <item name="lnQuestionTextLayout" type="id"/>
     <item name="lnQuestionVideoLayout" type="id"/>
+    <item name="lnResultEnd" type="id"/>
+    <item name="lnResultStart" type="id"/>
     <item name="lnSound" type="id"/>
     <item name="lnText" type="id"/>
     <item name="lnVideo" type="id"/>
@@ -462,24 +478,44 @@
     <item name="progressPeriodSoundTime" type="id"/>
     <item name="progressPeriodTextTime" type="id"/>
     <item name="progressPeriodVideoTime" type="id"/>
+    <item name="progressSuccess" type="id"/>
+    <item name="progressUnSuccess" type="id"/>
     <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
+    <item name="rcResultAnswer" type="id"/>
     <item name="toolbar" type="id"/>
+    <item name="txtDefaultTitleEnd" type="id"/>
+    <item name="txtDefaultTitleStart" type="id"/>
     <item name="txtNumber" type="id"/>
     <item name="txtQuestion" type="id"/>
+    <item name="txtSuccessQuestionResult" type="id"/>
+    <item name="txtSuccessTitleEnd" type="id"/>
+    <item name="txtSuccessTitleStart" type="id"/>
     <item name="txtTextAnswer" type="id"/>
     <item name="txtTitle" type="id"/>
     <item name="txtTitleEnd" type="id"/>
     <item name="txtTitleStart" type="id"/>
+    <item name="txtUnSuccessAnswer" type="id"/>
+    <item name="txtUnSuccessTitleEnd" type="id"/>
+    <item name="txtUnSuccessTitleStart" type="id"/>
     <item name="viewVideo" type="id"/>
     <item name="viewVideoQuestion" type="id"/>
     <item name="waveformSeekBarAnswer" type="id"/>
     <item name="waveformSeekBarQuestion" type="id"/>
+    <string name="correct">Correct</string>
     <string name="current_history_question">Current History Question</string>
+    <string name="exam_results">Exam Results</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_question">Next Question</string>
     <string name="no_connection">No Connection</string>
     <string name="question">Question</string>
+    <string name="question_number">Question Number</string>
     <string name="quiz_list">Quiz List</string>
+    <string name="retest">Retest</string>
     <string name="time_out">Time Out</string>
+    <string name="wrong">Wrong</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="android:windowDisablePreview">true</item>
+    </style>
 </resources>

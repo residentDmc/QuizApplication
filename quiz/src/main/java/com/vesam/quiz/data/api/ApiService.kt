@@ -30,12 +30,12 @@ interface ApiService {
     ): ResponseQuizDetailModel
 
     @POST(SET_QUIZ_RESULT)
+    @FormUrlEncoded
     suspend fun initSetQuizResult(
         @Header(USER_UUID) userUuid: String,
         @Header(USER_API_TOKEN) userApiToken: String,
         @Field(QUIZ_ID) quizId: Int,
-        @Field(PERIOD_TIME) periodTime: Int,
-        @Field(USER_ANSWERS) userAnswer: ArrayList<Int>
+        @Field(USER_ANSWERS) userAnswer: String
     ): ResponseSetQuizResultModel
 
     @POST(GET_QUIZ_RESULT)

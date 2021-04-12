@@ -42,6 +42,8 @@ class BuildConfig {
 
         // bundle
         const val BUNDLE_QUESTION = "question"
+        const val BUNDLE_USER_ANSWER_LIST = "userAnswerList"
+        const val BUNDLE_USER_ANSWER_LIST_ID = "userAnswerListId"
 
         // state format
         const val FORMAT_TEXT = "text"

@@ -16,6 +16,10 @@
     <color name="color_red_item">#FFEEEB</color>
     <color name="color_green_item">#E5EDE6</color>
     <color name="color_green_progress">#4DA248</color>
+    <color name="color_success_green_progress">#09A62B</color>
+    <color name="color_text_success_green_progress">#09A62B</color>
+    <color name="color_un_success_red_progress">#C6071F</color>
+    <color name="color_text_un_success_red_progress">#C6071F</color>
     <color name="color_blue_item">#F7FFF9</color>
     <color name="color_grey_item">#FDFCFC</color>
     <color name="color_grey_white_shape">#E1E1E1</color>

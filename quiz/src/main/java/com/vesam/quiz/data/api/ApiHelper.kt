@@ -13,9 +13,10 @@ interface ApiHelper {
     suspend fun initQuizDetail(userUuid: String, userApiToken: String, quizId: Int): Any
 
     suspend fun initSetQuizResult(
-        userUuid: String, userApiToken: String, quizId: Int,
-        periodTime: Int,
-        userAnswer: ArrayList<Int>
+        userUuid: String,
+        userApiToken: String,
+        quizId: Int,
+        userAnswer: String
     ): Any
 
     suspend fun initGetQuizResult(userUuid: String, userApiToken: String, quizId: Int): Any

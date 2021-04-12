@@ -1,5 +1,6 @@
 package com.vesam.quiz.utils.option
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.vesam.quiz.ui.view.activity.QuizActivity
@@ -12,7 +13,7 @@ class Option{
         const val BUNDLE_USER_UUID_VALUE = "user_uuid"
         const val BUNDLE_USER_API_TOKEN_VALUE = "user_api_token"
         const val BUNDLE_QUIZ_ID_VALUE = "quiz_api"
-        fun start(context: Context,
+        fun start(activity: Activity,
                   baseUrl: String,
                   baseUrlImageAndVideo: String,
                   token: String,
@@ -24,8 +25,8 @@ class Option{
             intent.putExtra(BUNDLE_USER_API_TOKEN_VALUE,token)
             intent.putExtra(BUNDLE_USER_UUID_VALUE,userId)
             intent.putExtra(BUNDLE_QUIZ_ID_VALUE,quizId)
-            intent.setClass(context, QuizActivity::class.java)
-            context.startActivity(intent)
+            intent.setClass(activity, QuizActivity::class.java)
+            activity.startActivity(intent)
         }
     }
 }

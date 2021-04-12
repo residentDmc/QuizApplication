@@ -45,10 +45,10 @@ class QuizViewModel(
         }
     }
 
-    fun initSetQuizResult(userUuid: String,userApiToken: String,quizId:Int,periodTime:Int,userAnswer:ArrayList<Int>): LiveData<Any> {
+    fun initSetQuizResult(userUuid: String,userApiToken: String,quizId:Int,userAnswer:String): LiveData<Any> {
         val mutableLiveDataVersionApp = MutableLiveData<Any>()
         viewModelScope.launch {
-            withContext(IO) { quizRepository.initSetQuizResult(userUuid, userApiToken, quizId, periodTime, userAnswer) }.let(mutableLiveDataVersionApp::postValue)
+            withContext(IO) { quizRepository.initSetQuizResult(userUuid, userApiToken, quizId, userAnswer) }.let(mutableLiveDataVersionApp::postValue)
         }
         return mutableLiveDataVersionApp
     }

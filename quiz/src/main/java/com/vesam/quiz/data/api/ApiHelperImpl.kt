@@ -13,11 +13,10 @@ class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
     override suspend fun initSetQuizResult(
         userUuid: String, userApiToken: String,
         quizId: Int,
-        periodTime: Int,
-        userAnswer: ArrayList<Int>
+        userAnswer: String
     ) =
         try {
-            apiService.initSetQuizResult(userUuid, userApiToken, quizId, periodTime, userAnswer)
+            apiService.initSetQuizResult(userUuid, userApiToken, quizId, userAnswer)
         } catch (e: Exception) {
             e
         }

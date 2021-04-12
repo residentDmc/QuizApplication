@@ -7,4 +7,9 @@
     <string name="question">Question</string>
     <string name="next_question">Next Question</string>
     <string name="current_history_question">Current History Question</string>
+    <string name="exam_results">Exam Results</string>
+    <string name="wrong">Wrong</string>
+    <string name="correct">Correct</string>
+    <string name="retest">Retest</string>
+    <string name="question_number">Question Number</string>
 </resources>

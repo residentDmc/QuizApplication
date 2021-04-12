@@ -38,7 +38,7 @@ class DashboardFragment : Fragment() {
         val token= binding.tlToken.editText!!.text.toString()
         val userId= binding.tlUserId.editText!!.text.toString()
         val quizId= binding.tlQuizId.editText!!.text.toString().toInt()
-        Option.start(requireContext(),baseUrl,baseUrlImageAndVideo,token,userId,quizId)
+        Option.start(requireActivity(),baseUrl,baseUrlImageAndVideo,token,userId,quizId)
     }
 
 }

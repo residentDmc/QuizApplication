@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/margin_56"
+    android:layout_marginTop="@dimen/margin_4"
+    android:layout_marginBottom="@dimen/margin_4"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@id/lnParent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_56"
+        android:gravity="center_vertical|start"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_margin="@dimen/margin_16"
+            app:srcCompat="@drawable/ic_success"
+            app:tint="@color/greenColor" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgUnSuccess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_un_success"
+            app:tint="@color/redColor" />
+
+        <TextView
+            android:id="@id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/current_history_question"
+            android:textColor="@color/color_grey_text_answer"
+            android:textSize="@dimen/text_size_14" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_1"
+            android:layout_weight="1" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            app:srcCompat="@drawable/ic_arrow"
+            app:tint="@color/secondary_text" />
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

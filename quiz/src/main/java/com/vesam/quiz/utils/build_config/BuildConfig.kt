@@ -48,5 +48,10 @@ class BuildConfig {
         const val FORMAT_VIDEO = "video"
         const val FORMAT_AUDIO = "audio"
         const val FORMAT_IMAGE = "image"
+
+        // state question
+        const val STEP_BY_STEP = "stepByStep"
+        const val FINAL_LEVEL = "finalLevel"
+        var HOW_DISPLAY_CORRECT_ANSWER = ""
     }
 }

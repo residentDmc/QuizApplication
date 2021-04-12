@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/lnAnswerText"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/margin_170"
+    android:background="@drawable/rounded_white_shape"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/txtTextAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_4"
+        android:gravity="start|top"
+        android:padding="@dimen/margin_8"
+        android:textColor="@color/black"
+        android:textSize="@dimen/margin_16"
+        android:textStyle="bold" />
+</LinearLayout>

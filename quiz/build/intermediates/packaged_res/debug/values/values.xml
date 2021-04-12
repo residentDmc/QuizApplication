@@ -73,6 +73,7 @@
     <color name="colorGreyDashGap">#A5A5A5</color>
     <color name="color_blue_button">#11CCFF</color>
     <color name="color_blue_item">#F7FFF9</color>
+    <color name="color_blue_sound">#03D8FF</color>
     <color name="color_green_item">#E5EDE6</color>
     <color name="color_green_progress">#4DA248</color>
     <color name="color_grey_item">#FDFCFC</color>
@@ -407,10 +408,21 @@
     <dimen name="viewpager_margin_overlap">-60dp</dimen>
     <dimen name="viewpager_margin_overlap_payment">-30dp</dimen>
     <item name="appBar" type="id"/>
+    <item name="audioWaveform" type="id"/>
+    <item name="audioWaveformAnswer" type="id"/>
+    <item name="audioWaveformQuestion" type="id"/>
+    <item name="barVisualizer" type="id"/>
+    <item name="barVisualizerAnswer" type="id"/>
+    <item name="barVisualizerQuestion" type="id"/>
     <item name="bottomSheet" type="id"/>
     <item name="btnCurrentHistoryQuestion" type="id"/>
     <item name="btnNextQuestion" type="id"/>
+    <item name="cvAnswerVideo" type="id"/>
+    <item name="cvQuestionVideo" type="id"/>
     <item name="cvVideo" type="id"/>
+    <item name="imgAnswer" type="id"/>
+    <item name="imgAnswerPauseSound" type="id"/>
+    <item name="imgAnswerPlaySound" type="id"/>
     <item name="imgBtnClose" type="id"/>
     <item name="imgBtnSuccess" type="id"/>
     <item name="imgBtnSuccessEnd" type="id"/>
@@ -420,28 +432,49 @@
     <item name="imgBtnUnSuccessStart" type="id"/>
     <item name="imgFullScreen" type="id"/>
     <item name="imgPlay" type="id"/>
+    <item name="imgPlaySound" type="id"/>
     <item name="imgQuestion" type="id"/>
+    <item name="imgQuestionPauseSound" type="id"/>
+    <item name="imgQuestionPlaySound" type="id"/>
     <item name="lnAction" type="id"/>
+    <item name="lnAnswerImage" type="id"/>
+    <item name="lnAnswerImageLayout" type="id"/>
+    <item name="lnAnswerSound" type="id"/>
+    <item name="lnAnswerSoundLayout" type="id"/>
+    <item name="lnAnswerText" type="id"/>
+    <item name="lnAnswerTextLayout" type="id"/>
+    <item name="lnAnswerVideoLayout" type="id"/>
     <item name="lnCurrentHistoryQuestion" type="id"/>
     <item name="lnImage" type="id"/>
     <item name="lnNextQuestion" type="id"/>
     <item name="lnParent" type="id"/>
     <item name="lnParentEnd" type="id"/>
     <item name="lnParentStart" type="id"/>
+    <item name="lnQuestionImageLayout" type="id"/>
+    <item name="lnQuestionSoundLayout" type="id"/>
+    <item name="lnQuestionTextLayout" type="id"/>
+    <item name="lnQuestionVideoLayout" type="id"/>
+    <item name="lnSound" type="id"/>
     <item name="lnText" type="id"/>
+    <item name="lnVideo" type="id"/>
     <item name="lottieAnimationView" type="id"/>
     <item name="progressPeriodImageTime" type="id"/>
+    <item name="progressPeriodSoundTime" type="id"/>
     <item name="progressPeriodTextTime" type="id"/>
+    <item name="progressPeriodVideoTime" type="id"/>
     <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
     <item name="toolbar" type="id"/>
-    <item name="txtDescriptionAnswer" type="id"/>
     <item name="txtNumber" type="id"/>
     <item name="txtQuestion" type="id"/>
+    <item name="txtTextAnswer" type="id"/>
     <item name="txtTitle" type="id"/>
     <item name="txtTitleEnd" type="id"/>
     <item name="txtTitleStart" type="id"/>
     <item name="viewVideo" type="id"/>
+    <item name="viewVideoQuestion" type="id"/>
+    <item name="waveformSeekBarAnswer" type="id"/>
+    <item name="waveformSeekBarQuestion" type="id"/>
     <string name="current_history_question">Current History Question</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="next_question">Next Question</string>

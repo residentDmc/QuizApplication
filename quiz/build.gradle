@@ -59,7 +59,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // material
-    implementation 'com.google.android.material:material:1.4.0-alpha01'
+    implementation 'com.google.android.material:material:1.4.0-alpha02'
 
     // multidex
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -68,7 +68,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // recyclerview
-    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.0"
 
     // lifecycle
     implementation 'android.arch.lifecycle:extensions:1.1.1'
@@ -115,7 +115,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
 
     // coroutine
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
     implementation 'ru.gildor.coroutines:kotlin-coroutines-retrofit:1.1.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'

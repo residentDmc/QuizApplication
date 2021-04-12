@@ -116,4 +116,18 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
         list.forEach { it.isEnable = true }
         notifyDataSetChanged()
     }
+
+    fun initFindIsCorrectAnswer(): Answer? {
+        list.forEach {
+            when (it.isCorrect) {
+                1 -> return it
+            }
+        }
+        return null
+    }
+
+    fun disableClick() {
+        list.forEach { it.isEnable = true }
+        notifyDataSetChanged()
+    }
 }

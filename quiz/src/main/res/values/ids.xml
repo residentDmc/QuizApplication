@@ -14,7 +14,7 @@
     <item name="bottomSheet" type="id" />
     <item name="lnNextQuestion" type="id" />
     <item name="lnCurrentHistoryQuestion" type="id" />
-    <item name="txtDescriptionAnswer" type="id" />
+    <item name="txtTextAnswer" type="id" />
     <item name="lnParentStart" type="id" />
     <item name="txtTitleStart" type="id" />
     <item name="imgBtnSuccessStart" type="id" />
@@ -36,4 +36,38 @@
     <item name="txtQuestion" type="id" />
     <item name="imgQuestion" type="id" />
     <item name="progressPeriodImageTime" type="id" />
+    <item name="lnSound" type="id" />
+    <item name="progressPeriodSoundTime" type="id" />
+    <item name="audioWaveform" type="id" />
+    <item name="imgPlaySound" type="id" />
+    <item name="lnAnswerSound" type="id" />
+    <item name="lnAnswerText" type="id" />
+    <item name="imgAnswerPlaySound" type="id" />
+    <item name="imgAnswerPauseSound" type="id" />
+    <item name="audioWaveformAnswer" type="id" />
+    <item name="imgQuestionPlaySound" type="id" />
+    <item name="imgQuestionPauseSound" type="id" />
+    <item name="audioWaveformQuestion" type="id" />
+    <item name="lnQuestionTextLayout" type="id" />
+    <item name="lnQuestionSoundLayout" type="id" />
+    <item name="lnQuestionImageLayout" type="id" />
+    <item name="lnAnswerTextLayout" type="id" />
+    <item name="lnAnswerSoundLayout" type="id" />
+    <item name="lnAnswerImageLayout" type="id" />
+    <item name="lnAnswerVideoLayout" type="id" />
+    <item name="cvAnswerVideo" type="id" />
+    <item name="viewVideoQuestion" type="id" />
+    <item name="progressPeriodVideoTime" type="id" />
+    <item name="lnVideo" type="id" />
+    <item name="lnQuestionVideoLayout" type="id" />
+    <item name="cvQuestionVideo" type="id" />
+    <item name="barVisualizer" type="id" />
+    <item name="barVisualizerQuestion" type="id" />
+    <item name="barVisualizerAnswer" type="id" />
+    <item name="waveformSeekBarAnswer" type="id" />
+    <item name="waveformSeekBarQuestion" type="id" />
+    <item name="imgAnswer" type="id" />
+    <item name="lnAnswerImage" type="id" />
+
+
 </resources>

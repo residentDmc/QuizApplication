@@ -478,6 +478,7 @@
     <item name="progressPeriodSoundTime" type="id"/>
     <item name="progressPeriodTextTime" type="id"/>
     <item name="progressPeriodVideoTime" type="id"/>
+    <item name="progressStepByStep" type="id"/>
     <item name="progressSuccess" type="id"/>
     <item name="progressUnSuccess" type="id"/>
     <item name="rcQuestion" type="id"/>
@@ -515,7 +516,7 @@
     <string name="time_out">Time Out</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        
+        <!-- Customize your theme here. -->
         <item name="android:windowDisablePreview">true</item>
     </style>
 </resources>

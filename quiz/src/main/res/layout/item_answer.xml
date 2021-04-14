@@ -23,7 +23,7 @@
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
             android:layout_weight="1"
-            android:gravity="center_vertical|end"
+            android:gravity="center_vertical|start"
             android:textColor="@color/color_grey_text_answer"
             android:textSize="@dimen/text_size_14"/>
 
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageButton

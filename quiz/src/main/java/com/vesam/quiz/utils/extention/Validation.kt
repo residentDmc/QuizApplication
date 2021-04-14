@@ -40,6 +40,7 @@ fun checkPersianCharacter(
     val rtlCharacter: Pattern =
         Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
     val matcher: Matcher = rtlCharacter.matcher(persianCharacter)
+    Log.d("TAG", "checkPersianCharacter: "+matcher.find())
     when {
         matcher.find() -> {
             viewStart.visibility = View.GONE

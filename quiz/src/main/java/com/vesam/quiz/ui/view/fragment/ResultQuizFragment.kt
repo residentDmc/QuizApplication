@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.vesam.quiz.R
-import com.vesam.quiz.data.model.quiz_detail.Answer
+import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.data.model.set_quiz_result.ResponseSetQuizResultModel
 import com.vesam.quiz.databinding.FragmentResultQuizBinding
+import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_result_list.AnswerResultAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
-import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
@@ -28,7 +30,7 @@ import com.vesam.quiz.utils.tools.ToastTools
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ResultQuizFragment : DialogFragment() {
+class ResultQuizFragment : Fragment() {
 
     private lateinit var binding: FragmentResultQuizBinding
     private val handelErrorTools: HandelErrorTools by inject()
@@ -37,13 +39,8 @@ class ResultQuizFragment : DialogFragment() {
     private val answerResultAdapter: AnswerResultAdapter by inject()
     private val gson: Gson by inject()
     private val quizViewModel: QuizViewModel by viewModel()
-    private var resultAnswerList: ArrayList<Answer> = ArrayList()
+    private var resultAnswerList: ArrayList<Question> = ArrayList()
     private val resultAnswerListId: ArrayList<Int> = ArrayList()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.AppTheme)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,11 +72,28 @@ class ResultQuizFragment : DialogFragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rcResultAnswer.setHasFixedSize(true)
         binding.rcResultAnswer.adapter = answerResultAdapter
+        answerResultAdapter.setOnItemClickListener(object : OnClickListenerAny {
+            override fun onClickListener(any: Any) {
+                initShowItemResultQuestion(any)
+            }
+        })
+
+    }
+
+    private fun initShowItemResultQuestion(any: Any) {
+        val question: Question = any as Question
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val itemQuestionsFragment = ItemQuestionsFragment()
+        itemQuestionsFragment.setQuestion(question)
+        val transaction = fragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        transaction.add(android.R.id.content, itemQuestionsFragment).addToBackStack(null)
+            .commit()
     }
 
     private fun initBundle() {
-        val userAnswerList = requireArguments().getString(BUNDLE_USER_ANSWER_LIST, "")
-        val answerList = gson.fromJson(userAnswerList, Array<Answer>::class.java).asList()
+        val userQuestionList = requireArguments().getString(BUNDLE_USER_QUESTION_LIST, "")
+        val answerList = gson.fromJson(userQuestionList, Array<Question>::class.java).asList()
         resultAnswerList.clear()
         resultAnswerListId.clear()
         resultAnswerList.addAll(answerList)

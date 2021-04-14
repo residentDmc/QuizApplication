@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/lnAnswerText"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_170"
+    android:layout_height="wrap_content"
     android:background="@drawable/rounded_white_shape"
     android:orientation="vertical"
     android:visibility="gone">

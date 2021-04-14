@@ -16,5 +16,5 @@ data class ResponseQuizDetailModel(
     @SerializedName("details")
     val details: Details,
     @SerializedName("questions")
-    val questions: List<Question>
+    val questions: ArrayList<Question>
 )

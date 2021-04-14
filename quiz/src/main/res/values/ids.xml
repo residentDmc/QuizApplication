@@ -91,6 +91,7 @@
     <item name="lnResultStart" type="id" />
     <item name="txtSuccessQuestionResult" type="id" />
     <item name="rcResultAnswer" type="id" />
+    <item name="progressStepByStep" type="id" />
 
 
 </resources>

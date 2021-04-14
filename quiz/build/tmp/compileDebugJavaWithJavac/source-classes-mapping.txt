@@ -1,3 +1,5 @@
+com/vesam/quiz/databinding/QuestionTextResultLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionTextResultLayoutBinding
 com/vesam/quiz/interfaces/OnCreateCameraImageFile.java
  com.vesam.quiz.interfaces.OnCreateCameraImageFile
 com/vesam/quiz/databinding/FragmentLoadingBinding.java
@@ -25,6 +27,8 @@ com/vesam/quiz/utils/converter/DetailsConverter.java
  com.vesam.quiz.utils.converter.DetailsConverter
  com.vesam.quiz.utils.converter.DetailsConverter$1
  com.vesam.quiz.utils.converter.DetailsConverter$2
+com/vesam/quiz/databinding/FragmentItemQuestionsBinding.java
+ com.vesam.quiz.databinding.FragmentItemQuestionsBinding
 com/vesam/quiz/databinding/ItemResultAnswerBinding.java
  com.vesam.quiz.databinding.ItemResultAnswerBinding
 com/vesam/quiz/databinding/ActivityQuizBinding.java
@@ -41,8 +45,10 @@ com/vesam/quiz/databinding/AnswerImageLayoutBinding.java
  com.vesam.quiz.databinding.AnswerImageLayoutBinding
 com/vesam/quiz/databinding/AnswerSoundLayoutBinding.java
  com.vesam.quiz.databinding.AnswerSoundLayoutBinding
-com/vesam/quiz/databinding/AnswerVideoLayoutBinding.java
- com.vesam.quiz.databinding.AnswerVideoLayoutBinding
+com/vesam/quiz/databinding/QuestionImageResultLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionImageResultLayoutBinding
+com/vesam/quiz/utils/tools/NetworkTools.java
+ com.vesam.quiz.utils.tools.NetworkTools
 com/vesam/quiz/data/database/QuizDatabase_Impl.java
  com.vesam.quiz.data.database.QuizDatabase_Impl
  com.vesam.quiz.data.database.QuizDatabase_Impl$1
@@ -58,9 +64,13 @@ com/vesam/quiz/DataBindingTriggerClass.java
  com.vesam.quiz.DataBindingTriggerClass
 com/vesam/quiz/databinding/FragmentResultQuizBinding.java
  com.vesam.quiz.databinding.FragmentResultQuizBinding
+com/vesam/quiz/databinding/QuestionVideoResultLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionVideoResultLayoutBinding
 com/vesam/quiz/databinding/ToastLayoutBinding.java
  com.vesam.quiz.databinding.ToastLayoutBinding
 androidx/databinding/DataBindingComponent.java
  androidx.databinding.DataBindingComponent
-com/vesam/quiz/utils/tools/NetworkTools.java
- com.vesam.quiz.utils.tools.NetworkTools
+com/vesam/quiz/databinding/AnswerVideoLayoutBinding.java
+ com.vesam.quiz.databinding.AnswerVideoLayoutBinding
+com/vesam/quiz/databinding/QuestionSoundResultLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionSoundResultLayoutBinding

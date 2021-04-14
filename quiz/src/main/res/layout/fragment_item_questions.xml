@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_x2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/lnParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_8"
+        android:paddingEnd="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_8"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/progressStepByStep"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@id/lnQuestionTextLayout"
+                layout="@layout/question_text_result_layout" />
+
+            <include
+                android:id="@id/lnQuestionImageLayout"
+                layout="@layout/question_image_result_layout" />
+
+            <include
+                android:id="@id/lnQuestionSoundLayout"
+                layout="@layout/question_sound_result_layout" />
+
+            <include
+                android:id="@id/lnQuestionVideoLayout"
+                layout="@layout/question_video_result_layout" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_16" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@id/rcQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/margin_16" />
+
+                    <include
+                        android:id="@id/lnAnswerTextLayout"
+                        layout="@layout/answer_text_layout" />
+
+                    <include
+                        android:id="@id/lnAnswerSoundLayout"
+                        layout="@layout/answer_sound_layout" />
+
+                    <include
+                        android:id="@id/lnAnswerVideoLayout"
+                        layout="@layout/answer_video_layout" />
+
+                    <include
+                        android:id="@id/lnAnswerImageLayout"
+                        layout="@layout/answer_image_layout" />
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,16 +13,14 @@ class ListQuestionConverter {
 
         @TypeConverter
         @JvmStatic
-        fun fromTimestamp(data: String?): List<Question>?
-        {
-            if (data == null)
-                return Collections.emptyList()
-            val listType = object : TypeToken<List<Question>>() {}.type
+        fun fromTimestamp(data: String?): ArrayList<Question>? {
+            val listType = object : TypeToken<ArrayList<Question>>() {}.type
             return gson.fromJson(data, listType)
         }
 
         @TypeConverter
         @JvmStatic
-        fun someObjectListToString(someObjects: List<Question>?): String? = gson.toJson(someObjects)
+        fun someObjectListToString(someObjects: ArrayList<Question>?): String? =
+            gson.toJson(someObjects)
     }
 }

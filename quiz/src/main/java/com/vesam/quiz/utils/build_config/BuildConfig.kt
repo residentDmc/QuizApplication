@@ -42,7 +42,7 @@ class BuildConfig {
 
         // bundle
         const val BUNDLE_QUESTION = "question"
-        const val BUNDLE_USER_ANSWER_LIST = "userAnswerList"
+        const val BUNDLE_USER_QUESTION_LIST = "userQuestionList"
         const val BUNDLE_USER_ANSWER_LIST_ID = "userAnswerListId"
 
         // state format
@@ -55,5 +55,6 @@ class BuildConfig {
         const val STEP_BY_STEP = "stepByStep"
         const val FINAL_LEVEL = "finalLevel"
         var HOW_DISPLAY_CORRECT_ANSWER = ""
+        var PASS_CONDITION = -1
     }
 }

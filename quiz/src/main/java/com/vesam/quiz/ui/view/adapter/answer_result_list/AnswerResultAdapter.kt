@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
+import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.interfaces.OnClickListenerAny
-import com.vesam.quiz.utils.extention.checkPersianCharacter
 import java.util.*
 
 class AnswerResultAdapter(private val context: Context) :
     RecyclerView.Adapter<ViewHolderAnswerResult>() {
 
     lateinit var onClickListenerAny: OnClickListenerAny
-    private val list: ArrayList<Answer> = ArrayList()
+    private val list: ArrayList<Question> = ArrayList()
 
     fun setOnItemClickListener(onClickListenerAny: OnClickListenerAny) {
         this.onClickListenerAny = onClickListenerAny
@@ -30,19 +30,23 @@ class AnswerResultAdapter(private val context: Context) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolderAnswer: ViewHolderAnswerResult, position: Int) {
-        val answer = list[position]
+        val question = list[position]
         val number = position + 1
-        initStateCorrect(viewHolderAnswer, answer)
+        initStateCorrect(viewHolderAnswer, question)
         viewHolderAnswer.txtTitle.text =
             context.resources.getString(R.string.question_number) + " " + number
-        //viewHolderAnswer.lnParent.setOnClickListener { onClickListenerAny.onClickListener(answer) }
+        viewHolderAnswer.lnParent.setOnClickListener { onClickListenerAny.onClickListener(question) }
     }
 
-    private fun initStateCorrect(viewHolderAnswer: ViewHolderAnswerResult, answer: Answer) {
-        when (answer.isSuccess) {
-            0 -> initDefault(viewHolderAnswer)
-            1 -> initSuccess(viewHolderAnswer)
-            2 -> initUnSuccess(viewHolderAnswer)
+    private fun initStateCorrect(viewHolderAnswer: ViewHolderAnswerResult, question: Question) {
+
+        question.answers.forEach {
+            if (it.isSelected)
+                when (it.isSuccess) {
+                    0 -> initDefault(viewHolderAnswer)
+                    1 -> initSuccess(viewHolderAnswer)
+                    2 -> initUnSuccess(viewHolderAnswer)
+                }
         }
     }
 
@@ -66,9 +70,9 @@ class AnswerResultAdapter(private val context: Context) :
 
     override fun getItemCount(): Int = list.size
 
-    fun updateList(listAnswer: List<Answer>) {
+    fun updateList(listQuestion: List<Question>) {
         list.clear()
-        list.addAll(listAnswer)
+        list.addAll(listQuestion)
         notifyDataSetChanged()
     }
 }

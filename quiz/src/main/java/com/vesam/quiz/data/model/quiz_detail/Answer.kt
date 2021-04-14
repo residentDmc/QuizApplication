@@ -14,7 +14,8 @@ data class Answer(
     val sort: Int,
     @SerializedName("title")
     val title: String
-){
-    var isSuccess=0
-    var isEnable=false
+) {
+    var isSuccess = 0
+    var isSelected = false
+    var isEnable = false
 }

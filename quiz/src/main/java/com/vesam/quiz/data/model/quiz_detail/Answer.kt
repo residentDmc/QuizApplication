@@ -16,6 +16,7 @@ data class Answer(
     val title: String
 ) {
     var isSuccess = 0
+    var isCheckLevel = 0
     var isSelected = false
     var isEnable = false
 }

@@ -403,12 +403,20 @@ class QuestionsFragment : Fragment() {
 
     private fun iniResultAnswerFinish(answer: Answer) {
         initSelected(answer)
-        initAnswerFinish(answer)
+        when (HOW_DISPLAY_CORRECT_ANSWER) {
+            STEP_BY_STEP -> initAnswerStepByStepFinish(answer)
+            else -> initAnswerFinalLevel()
+        }
     }
 
-    private fun initAnswerFinish(it: Answer) {
+    private fun initAnswerStepByStepFinish(it: Answer) {
         answerAdapter.disableClick()
         initStateListFormat(it)
+    }
+
+    private fun initAnswerFinalLevel() {
+        answerAdapter.disableClick()
+        binding.btnNextQuestion.visibility = View.VISIBLE
     }
 
     private fun initThrowable(it: Throwable) {
@@ -428,7 +436,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initOnItemClick(any: Any) {
-        val resultAnswer= initSelected(any)
+        val resultAnswer = initSelected(any)
         when (HOW_DISPLAY_CORRECT_ANSWER) {
             STEP_BY_STEP -> initResultStepByStep(resultAnswer)
             else -> initResultFinalLevel(resultAnswer)
@@ -436,11 +444,11 @@ class QuestionsFragment : Fragment() {
 
     }
 
-    private fun initSelected(any: Any) :Answer{
+    private fun initSelected(any: Any): Answer {
         val answer: Answer = any as Answer
-        val index= question.answers.indexOf(answer)
-       val resultAnswer= question.answers[index]
-        resultAnswer.isSelected=true
+        val index = question.answers.indexOf(answer)
+        val resultAnswer = question.answers[index]
+        resultAnswer.isSelected = true
         return resultAnswer
     }
 
@@ -473,13 +481,14 @@ class QuestionsFragment : Fragment() {
         initStateListFormat(answer)
         answer.isSuccess = 1
         resultAnswerListId.add(answer.id)
+        initStopVideo()
         initPassCondition()
     }
 
     private fun initPassCondition() {
         var currentProgress = binding.progressStepByStep.progress
         currentProgress += 1
-        binding.progressStepByStep.progress=currentProgress
+        binding.progressStepByStep.progress = currentProgress
         when (PASS_CONDITION) {
             currentProgress -> initResult()
         }
@@ -502,12 +511,16 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         answer.isSuccess = 1
         resultAnswerListId.add(answer.id)
+        answerAdapter.answerCheckLevel(answer)
+        initCancelTimer()
     }
 
     private fun initUnSuccessAnswerFinalLevel(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         answer.isSuccess = 2
         resultAnswerListId.add(answer.id)
+        answerAdapter.answerCheckLevel(answer)
+        initCancelTimer()
     }
 
     private fun initStateListFormat(answer: Answer) = when (answer.description.format) {
@@ -557,6 +570,7 @@ class QuestionsFragment : Fragment() {
         initConvertHtml(answer)
         initShowAnswerFormatText()
         initCancelTimer()
+        initStopQuestionVideo()
     }
 
     private fun initConvertHtml(answer: Answer) {
@@ -575,6 +589,7 @@ class QuestionsFragment : Fragment() {
         initStopVideoQuestion()
         initVideoView(answer.description.urlContent)
         initCancelTimer()
+        initStopQuestionVideo()
     }
 
     private fun initVideoView(content: String) {
@@ -599,6 +614,11 @@ class QuestionsFragment : Fragment() {
             binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
     }
 
+    private fun initStopQuestionVideo() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+    }
+
     private fun initPauseVideo() {
         if (binding.lnAnswerVideoLayout.viewVideo.isPlaying)
             binding.lnAnswerVideoLayout.viewVideo.pause()
@@ -615,12 +635,14 @@ class QuestionsFragment : Fragment() {
         initShowAnswerFormatSound()
         initSoundAnswer(answer.description.urlContent)
         initCancelTimer()
+        initStopQuestionVideo()
     }
 
     private fun initListFormatImage(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatImage()
         initCancelTimer()
+        initStopQuestionVideo()
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,
             answer.description.urlContent

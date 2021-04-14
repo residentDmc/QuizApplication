@@ -35,6 +35,7 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
             viewHolderAnswer.lnParentEnd
         )
         initStateCorrect(viewHolderAnswer, answer)
+        initStateCheckLevel(viewHolderAnswer, answer)
         initEnabled(viewHolderAnswer, answer)
         viewHolderAnswer.txtTitleStart.text = answer.title
         viewHolderAnswer.txtTitleEnd.text = answer.title
@@ -44,6 +45,37 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
             )
         }
         viewHolderAnswer.lnParentEnd.setOnClickListener { onClickListenerAny.onClickListener(answer) }
+    }
+
+    private fun initStateCheckLevel(viewHolderAnswer: ViewHolderAnswer, answer: Answer) {
+        when (answer.isCheckLevel) {
+            0 -> initDefaultCheckLevel(viewHolderAnswer)
+            1 -> initCheckLevel(viewHolderAnswer)
+        }
+    }
+
+    private fun initDefaultCheckLevel(viewHolderAnswer: ViewHolderAnswer) {
+        viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_white_shape)
+
+
+        viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_white_shape)
+
+    }
+
+    private fun initCheckLevel(viewHolderAnswer: ViewHolderAnswer) {
+        viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_blue_shape)
+
+
+        viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_blue_shape)
+
     }
 
     private fun initEnabled(viewHolderAnswer: ViewHolderAnswer, answer: Answer) {
@@ -68,8 +100,6 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
         viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_white_shape)
-
-
 
     }
 
@@ -127,6 +157,14 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     }
 
     fun disableClick() {
+        list.forEach { it.isEnable = true }
+        notifyDataSetChanged()
+    }
+
+    fun answerCheckLevel(answer: Answer) {
+        val indexOf = list.indexOf(answer)
+        answer.isCheckLevel = 1
+        list[indexOf] = answer
         list.forEach { it.isEnable = true }
         notifyDataSetChanged()
     }

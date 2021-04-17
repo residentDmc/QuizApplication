@@ -35,6 +35,8 @@ anim fragment_fade_exit
 anim fragment_fast_out_extra_slow_in
 anim fragment_open_enter
 anim fragment_open_exit
+anim move_down
+anim move_up
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
@@ -119,6 +121,7 @@ attr arcMode
 attr argType
 attr arrowHeadLength
 attr arrowShaftLength
+attr assetName
 attr attributeName
 attr autoCompleteTextViewStyle
 attr autoSizeMaxTextSize
@@ -731,6 +734,7 @@ attr paddingRightSystemWindowInsets
 attr paddingStart
 attr paddingTopNoTitle
 attr paddingTopSystemWindowInsets
+attr panEnabled
 attr panelBackground
 attr panelMenuListTheme
 attr panelMenuListWidth
@@ -768,6 +772,7 @@ attr progressBarPadding
 attr progressBarStyle
 attr queryBackground
 attr queryHint
+attr quickScaleEnabled
 attr radioButtonStyle
 attr rangeFillColor
 attr ratingBarStyle
@@ -821,6 +826,7 @@ attr spinBars
 attr spinnerDropDownItemStyle
 attr spinnerStyle
 attr splitTrack
+attr src
 attr srcCompat
 attr stackFromEnd
 attr staggered
@@ -936,6 +942,7 @@ attr tickMark
 attr tickMarkTint
 attr tickMarkTintMode
 attr tickVisible
+attr tileBackgroundColor
 attr tint
 attr tintMode
 attr title
@@ -1006,6 +1013,7 @@ attr windowNoTitle
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
+attr zoomEnabled
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -2142,6 +2150,7 @@ drawable ic_arrow
 drawable ic_clock_black_24dp
 drawable ic_close
 drawable ic_current_history_question
+drawable ic_error
 drawable ic_forward
 drawable ic_fullscreen
 drawable ic_fullscreen_exit
@@ -2155,8 +2164,10 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_next_question
+drawable ic_no_pic_detail
 drawable ic_pause
 drawable ic_pause_circle
+drawable ic_photo
 drawable ic_play
 drawable ic_play_circle
 drawable ic_rew
@@ -2302,8 +2313,11 @@ id blocking
 id bottom
 id bottomSheet
 id bounce
+id btnClozeTest
 id btnCurrentHistoryQuestion
+id btnEnterCloze
 id btnEnterExam
+id btnEnterTest
 id btnNextQuestion
 id btnRetest
 id btnRetestEnd
@@ -2329,6 +2343,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id clozeFragment
 id collapseActionView
 id confirm_button
 id container
@@ -2397,6 +2412,7 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
+id gallery
 id ghost_view
 id ghost_view_holder
 id glide_custom_view_target_tag
@@ -2429,6 +2445,7 @@ id imgBtnSuccessStart
 id imgBtnUnSuccess
 id imgBtnUnSuccessEnd
 id imgBtnUnSuccessStart
+id imgCloze
 id imgFullScreen
 id imgLogo
 id imgPlay
@@ -2462,6 +2479,7 @@ id lnAnswerSoundLayout
 id lnAnswerText
 id lnAnswerTextLayout
 id lnAnswerVideoLayout
+id lnClozeImageLayout
 id lnCurrentHistoryQuestion
 id lnImage
 id lnNextQuestion
@@ -2567,6 +2585,7 @@ id onDateChanged
 id outline
 id outward
 id packed
+id pager
 id parallax
 id parent
 id parentPanel
@@ -2593,6 +2612,7 @@ id progress_horizontal
 id questionsFragment
 id radio
 id ratio
+id rcCloze
 id rcQuestion
 id rcQuiz
 id rcResultAnswer
@@ -2819,12 +2839,14 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_cloze
 layout activity_main
 layout activity_quiz
 layout answer_image_layout
 layout answer_sound_layout
 layout answer_text_layout
 layout answer_video_layout
+layout cloze_image_layout
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2841,13 +2863,17 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_cloze
 layout fragment_dashboard
+layout fragment_fullscreen_slider
 layout fragment_item_questions
 layout fragment_loading
 layout fragment_questions
 layout fragment_result_quiz
 layout item_answer
 layout item_result_answer
+layout item_slidingimages
+layout item_slidingimages_zoomable
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -2936,6 +2962,7 @@ layout text_view_without_line_height
 layout toast_layout
 mipmap ic_launcher
 mipmap ic_launcher_round
+navigation nav_graph_cloze
 navigation nav_graph_main
 navigation nav_graph_quiz
 plurals mtrl_badge_content_description
@@ -2980,9 +3007,11 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string cloze_test
 string correct
 string current_history_question
 string enter_exam
+string enter_test
 string error_icon_content_description
 string exam_results
 string exposed_dropdown_menu_content_description
@@ -2992,6 +3021,7 @@ string four
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
+string is_empty_list
 string item_view_role_description
 string material_clock_display_divider
 string material_clock_toggle_content_description
@@ -3052,6 +3082,8 @@ string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string next_question
 string no_connection
+string not_cloze
+string not_multimedia
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through
@@ -3932,6 +3964,7 @@ styleable State android_id constraints
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
 styleable StateSet defaultState
+styleable SubsamplingScaleImageView assetName panEnabled quickScaleEnabled src tileBackgroundColor zoomEnabled
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text

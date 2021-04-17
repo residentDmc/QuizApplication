@@ -436,6 +436,7 @@
     <item name="imgBtnUnSuccess" type="id"/>
     <item name="imgBtnUnSuccessEnd" type="id"/>
     <item name="imgBtnUnSuccessStart" type="id"/>
+    <item name="imgCloze" type="id"/>
     <item name="imgFullScreen" type="id"/>
     <item name="imgPlay" type="id"/>
     <item name="imgPlaySound" type="id"/>
@@ -450,6 +451,7 @@
     <item name="lnAnswerText" type="id"/>
     <item name="lnAnswerTextLayout" type="id"/>
     <item name="lnAnswerVideoLayout" type="id"/>
+    <item name="lnClozeImageLayout" type="id"/>
     <item name="lnCurrentHistoryQuestion" type="id"/>
     <item name="lnImage" type="id"/>
     <item name="lnNextQuestion" type="id"/>
@@ -481,6 +483,7 @@
     <item name="progressStepByStep" type="id"/>
     <item name="progressSuccess" type="id"/>
     <item name="progressUnSuccess" type="id"/>
+    <item name="rcCloze" type="id"/>
     <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
     <item name="rcResultAnswer" type="id"/>
@@ -507,8 +510,11 @@
     <string name="current_history_question">Current History Question</string>
     <string name="exam_results">Exam Results</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="is_empty_list">Quiz list is empty</string>
     <string name="next_question">Next Question</string>
     <string name="no_connection">No Connection</string>
+    <string name="not_cloze">The exam is not cloze</string>
+    <string name="not_multimedia">The exam is not multimedia</string>
     <string name="question">Question</string>
     <string name="question_number">Question Number</string>
     <string name="quiz_list">Quiz List</string>

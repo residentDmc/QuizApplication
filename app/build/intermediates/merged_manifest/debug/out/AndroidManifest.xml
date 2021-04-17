@@ -38,6 +38,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.QuizSystem"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.vesam.quiz.ui.view.activity.ClozeActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.QuizSystem"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.vesam.quiz.ui.view.activity.MainTestActivity" />
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

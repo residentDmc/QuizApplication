@@ -8,4 +8,7 @@
     <item name="tlQuizId" type="id" />
     <item name="tlBaseUrlImageAndVideo" type="id" />
     <item name="resultQuizFragment" type="id" />
+    <item name="btnClozeTest" type="id" />
+    <item name="btnEnterTest" type="id" />
+    <item name="btnEnterCloze" type="id" />
 </resources>

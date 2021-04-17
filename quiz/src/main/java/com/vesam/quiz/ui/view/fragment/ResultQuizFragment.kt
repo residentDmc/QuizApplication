@@ -122,7 +122,7 @@ class ResultQuizFragment : Fragment() {
             USER_QUIZ_ID_VALUE,
             userAnswerListId
         ).observe(
-            requireActivity(),
+            viewLifecycleOwner,
             this::initResultSetQuiz
         )
     }

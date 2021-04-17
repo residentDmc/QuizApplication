@@ -20,6 +20,9 @@ public final class FragmentDashboardBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final MaterialButton btnEnterCloze;
+
+  @NonNull
   public final MaterialButton btnEnterExam;
 
   @NonNull
@@ -38,10 +41,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
   public final TextInputLayout tlUserId;
 
   private FragmentDashboardBinding(@NonNull ConstraintLayout rootView,
-      @NonNull MaterialButton btnEnterExam, @NonNull TextInputLayout tlBaseUrl,
-      @NonNull TextInputLayout tlBaseUrlImageAndVideo, @NonNull TextInputLayout tlQuizId,
-      @NonNull TextInputLayout tlToken, @NonNull TextInputLayout tlUserId) {
+      @NonNull MaterialButton btnEnterCloze, @NonNull MaterialButton btnEnterExam,
+      @NonNull TextInputLayout tlBaseUrl, @NonNull TextInputLayout tlBaseUrlImageAndVideo,
+      @NonNull TextInputLayout tlQuizId, @NonNull TextInputLayout tlToken,
+      @NonNull TextInputLayout tlUserId) {
     this.rootView = rootView;
+    this.btnEnterCloze = btnEnterCloze;
     this.btnEnterExam = btnEnterExam;
     this.tlBaseUrl = tlBaseUrl;
     this.tlBaseUrlImageAndVideo = tlBaseUrlImageAndVideo;
@@ -77,6 +82,12 @@ public final class FragmentDashboardBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnEnterCloze;
+      MaterialButton btnEnterCloze = rootView.findViewById(id);
+      if (btnEnterCloze == null) {
+        break missingId;
+      }
+
       id = R.id.btnEnterExam;
       MaterialButton btnEnterExam = rootView.findViewById(id);
       if (btnEnterExam == null) {
@@ -113,8 +124,8 @@ public final class FragmentDashboardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentDashboardBinding((ConstraintLayout) rootView, btnEnterExam, tlBaseUrl,
-          tlBaseUrlImageAndVideo, tlQuizId, tlToken, tlUserId);
+      return new FragmentDashboardBinding((ConstraintLayout) rootView, btnEnterCloze, btnEnterExam,
+          tlBaseUrl, tlBaseUrlImageAndVideo, tlQuizId, tlToken, tlUserId);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

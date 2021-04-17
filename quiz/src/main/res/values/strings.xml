@@ -12,4 +12,7 @@
     <string name="correct">Correct</string>
     <string name="retest">Retest</string>
     <string name="question_number">Question Number</string>
+    <string name="not_multimedia">The exam is not multimedia</string>
+    <string name="is_empty_list">Quiz list is empty</string>
+    <string name="not_cloze" >The exam is not cloze</string>
 </resources>

@@ -44,12 +44,17 @@ class BuildConfig {
         const val BUNDLE_QUESTION = "question"
         const val BUNDLE_USER_QUESTION_LIST = "userQuestionList"
         const val BUNDLE_USER_ANSWER_LIST_ID = "userAnswerListId"
+        const val BUNDLE_MULTIMEDIA = "multimedia"
 
         // state format
         const val FORMAT_TEXT = "text"
         const val FORMAT_VIDEO = "video"
         const val FORMAT_AUDIO = "audio"
         const val FORMAT_IMAGE = "image"
+
+        // state type
+        const val MULTIMEDIA = "multimedia"
+        const val CLOZE = "cloze"
 
         // state question
         const val STEP_BY_STEP = "stepByStep"

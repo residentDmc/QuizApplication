@@ -13,4 +13,6 @@
     <string name="user_id_value">56a1c311-306c-4082-9a11-b91e7698ccbe</string>
     <string name="quiz_id">Quiz Id</string>
     <string name="four">4</string>
+    <string name="cloze_test">Cloze Test</string>
+    <string name="enter_test">Exam Test</string>
 </resources>

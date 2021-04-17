@@ -1,7 +1,4 @@
-@file:Suppress("DEPRECATION")
-
 package com.vesam.quiz.ui.view.fragment
-
 
 import android.media.MediaPlayer
 import android.net.Uri
@@ -27,12 +24,13 @@ import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
-import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.HOW_DISPLAY_CORRECT_ANSWER
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MULTIMEDIA
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.PASS_CONDITION
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.STEP_BY_STEP
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
@@ -49,7 +47,6 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-
 
 class QuestionsFragment : Fragment() {
     private lateinit var binding: FragmentQuestionsBinding
@@ -105,7 +102,7 @@ class QuestionsFragment : Fragment() {
     private fun initAction() {
         initAdapter()
         initOnClick()
-        initRequestListQuiz()
+        initRequestQuiz()
         initOnBackPress()
     }
 
@@ -117,15 +114,15 @@ class QuestionsFragment : Fragment() {
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.setOnClickListener { initPauseSoundAnswer() }
     }
 
-    private fun initRequestListQuiz() {
+    private fun initRequestQuiz() {
         initShowLoading()
         quizViewModel.initQuizDetail(
             USER_UUID_VALUE,
             USER_API_TOKEN_VALUE,
             USER_QUIZ_ID_VALUE
         ).observe(
-            requireActivity(),
-            this::initResultListQuiz
+            viewLifecycleOwner,
+            this::initResultQuiz
         )
     }
 
@@ -139,15 +136,25 @@ class QuestionsFragment : Fragment() {
         binding.progressBar.visibility = View.GONE
     }
 
-    private fun initResultListQuiz(it: Any) {
-        initHideLoading()
+    private fun initResultQuiz(it: Any) {
         when (it) {
             is ResponseQuizDetailModel -> initQuizDetailModel(it)
             is Throwable -> initThrowable(it)
         }
     }
 
-    private fun initQuizDetailModel(it: ResponseQuizDetailModel) {
+    private fun initQuizDetailModel(it: ResponseQuizDetailModel) = when (it.details.type) {
+        MULTIMEDIA -> initMultimediaQuiz(it)
+        else -> initNotMultimedia()
+    }
+
+    private fun initNotMultimedia() {
+        toastTools.toast(resources.getString(R.string.not_multimedia))
+        initOnBackPressed()
+    }
+
+    private fun initMultimediaQuiz(it: ResponseQuizDetailModel) {
+        initHideLoading()
         questionList.addAll(it.questions)
         initHowDisplayCorrectAnswer(it)
         initQuestion()
@@ -193,7 +200,12 @@ class QuestionsFragment : Fragment() {
         return bundle
     }
 
-    private fun initQuestion() {
+    private fun initQuestion() = when {
+        questionList.isEmpty() -> initEmptyList()
+        else -> initResultList()
+    }
+
+    private fun initResultList() {
         question = questionList.first()
         questionList.removeFirst()
         initCancelTimer()
@@ -203,6 +215,11 @@ class QuestionsFragment : Fragment() {
         checkPersianCharacter(question.title, binding.lnQuestionTextLayout.txtQuestion)
         initHideAnswerQuestion()
         answerAdapter.updateList(question.answers)
+    }
+
+    private fun initEmptyList() {
+        toastTools.toast(resources.getString(R.string.is_empty_list))
+        initOnBackPressed()
     }
 
     private fun initHideAnswerQuestion() {
@@ -420,6 +437,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initThrowable(it: Throwable) {
+        initHideLoading()
         val message = throwableTools.getThrowableError(it)
         handelErrorTools.handelError(it)
         toastTools.toast(message)

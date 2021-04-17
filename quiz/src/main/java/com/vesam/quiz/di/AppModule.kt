@@ -13,6 +13,7 @@ import com.vesam.quiz.utils.application.AppQuiz.Companion.activity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.APPLICATION_JSON_HEADER
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BASE_URL
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.CONTENT_TYPE_HEADER
+import com.vesam.quiz.utils.image.ZoomOutSlideTransformer
 import com.vesam.quiz.utils.manager.GridLayoutCountManager
 import com.vesam.quiz.utils.manager.KeyboardManager
 import com.vesam.quiz.utils.network_helper.NetworkHelper
@@ -43,6 +44,7 @@ val appModule = module {
     single { return@single KeyboardManager() }
     single { return@single NetworkTools() }
     single { return@single BottomSheetDialog(activity) }
+    single { return@single ZoomOutSlideTransformer() }
     single { provideOkHttpClient() }
 }
 

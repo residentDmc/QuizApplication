@@ -22,6 +22,12 @@ data class Details(
     @SerializedName("jalali_created_at")
     @ColumnInfo(name = "jalali_created_at")
     val jalaliCreatedAt: String,
+    @SerializedName("period_time")
+    @ColumnInfo(name = "period_time")
+    val periodTime: String,
+    @SerializedName("question_description")
+    @ColumnInfo(name = "question_description")
+    val questionDescription: Description,
     @SerializedName("pass_condition")
     @ColumnInfo(name = "pass_condition")
     val passCondition: Int,

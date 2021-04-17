@@ -1,9 +1,15 @@
 package com.vesam.quiz.utils.tools
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.davemorrissey.labs.subscaleview.ImageSource
+import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.vesam.quiz.R
 
 class GlideTools(private val context: Context, private val handelErrorTools: HandelErrorTools) {
@@ -18,6 +24,51 @@ class GlideTools(private val context: Context, private val handelErrorTools: Han
                     .into(it)
             }
         } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
+    fun displayHome(img: ImageView, url: String) {
+        try {
+            val options: RequestOptions = RequestOptions()
+                .error(R.drawable.ic_error)
+                .placeholder(R.drawable.ic_photo)
+            Glide.with(context).load(url)
+                .apply(options)
+                .into(img)
+        } catch (e: java.lang.Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
+    fun displayImageSliderZoom(imageViewZoomable: SubsamplingScaleImageView, url: String?) {
+        try {
+            Glide.with(context)
+                .asBitmap()
+                .load(url)
+                .into(object : CustomTarget<Bitmap?>() {
+                    override fun onLoadCleared(placeholder: Drawable?) {}
+                    override fun onResourceReady(
+                        resource: Bitmap,
+                        transition: Transition<in Bitmap?>?,
+                    ) {
+                        imageViewZoomable.setImage(ImageSource.bitmap(resource))
+                    }
+                })
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
+    fun displayImageSliderDefault(img: ImageView, url: String) {
+        try {
+            val options: RequestOptions = RequestOptions()
+                .placeholder(R.drawable.ic_no_pic_detail)
+                .error(R.drawable.ic_error)
+            Glide.with(context).load(url)
+                .apply(options)
+                .into(img)
+        } catch (e: java.lang.Exception) {
             handelErrorTools.handelError(e)
         }
     }

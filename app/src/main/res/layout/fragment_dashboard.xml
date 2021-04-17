@@ -29,8 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
-                android:text="@string/base_url_value"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@string/base_url_value" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,8 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
-                android:text="@string/base_url_image_and_video_value"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@string/base_url_image_and_video_value" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,8 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
-                android:text="@string/token_value"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@string/token_value" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,10 +98,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
-                android:text="@string/user_id_value"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@string/user_id_value" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <View
             android:layout_width="0dp"
             android:layout_height="@dimen/margin_5" />
@@ -121,8 +122,8 @@
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
                 android:inputType="number"
-                android:text="@string/four"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:text="@string/four" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,11 +136,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/enter_exam"
-            android:textColor="@color/secondary_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/secondary_text" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/margin_5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@id/btnEnterCloze"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cloze_test"
+            android:textColor="@color/secondary_text" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

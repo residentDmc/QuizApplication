@@ -10,5 +10,14 @@
         android:id="@+id/clozeFragment"
         android:name="com.vesam.quiz.ui.view.fragment.ClozeFragment"
         android:label="fragment_cloze"
-        tools:layout="@layout/fragment_cloze" />
+        tools:layout="@layout/fragment_cloze" >
+        <action
+            android:id="@+id/action_clozeFragment_to_resultClozeFragment"
+            app:destination="@id/resultClozeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultClozeFragment"
+        android:name="com.vesam.quiz.ResultClozeFragment"
+        android:label="fragment_result_cloze"
+        tools:layout="@layout/fragment_result_cloze" />
 </navigation>

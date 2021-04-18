@@ -1121,7 +1121,9 @@ int color colorBlack 0x0
 int color colorGreyDashGap 0x0
 int color color_blue_button 0x0
 int color color_blue_item 0x0
+int color color_blue_item_answer_cloze 0x0
 int color color_blue_sound 0x0
+int color color_blue_title_cloze 0x0
 int color color_green_item 0x0
 int color color_green_progress 0x0
 int color color_grey_item 0x0
@@ -2214,6 +2216,7 @@ int drawable notification_template_icon_low_bg 0x0
 int drawable notification_tile_bg 0x0
 int drawable notify_panel_notification_icon_bg 0x0
 int drawable progressbar_blue 0x0
+int drawable rounded_blue_item_answer_cloze_shape 0x0
 int drawable rounded_blue_shape 0x0
 int drawable rounded_green_shape 0x0
 int drawable rounded_red_shape 0x0
@@ -2271,6 +2274,7 @@ int id action_bar_root 0x0
 int id action_bar_spinner 0x0
 int id action_bar_subtitle 0x0
 int id action_bar_title 0x0
+int id action_clozeFragment_to_resultClozeFragment 0x0
 int id action_container 0x0
 int id action_context_bar 0x0
 int id action_divider 0x0
@@ -2314,6 +2318,7 @@ int id btnCurrentHistoryQuestion 0x0
 int id btnNextQuestion 0x0
 int id btnRetest 0x0
 int id btnRetestEnd 0x0
+int id btnSubmit 0x0
 int id buttonPanel 0x0
 int id cancel_action 0x0
 int id cancel_button 0x0
@@ -2449,6 +2454,7 @@ int id lnAnswerVideoLayout 0x0
 int id lnClozeImageLayout 0x0
 int id lnCurrentHistoryQuestion 0x0
 int id lnImage 0x0
+int id lnNavFragment 0x0
 int id lnNextQuestion 0x0
 int id lnParent 0x0
 int id lnParentDefaultEnd 0x0
@@ -2469,6 +2475,7 @@ int id lnResultEnd 0x0
 int id lnResultStart 0x0
 int id lnSound 0x0
 int id lnText 0x0
+int id lnTitle 0x0
 int id lnVideo 0x0
 int id lottieAnimationView 0x0
 int id lottie_layer_name 0x0
@@ -2564,6 +2571,7 @@ int id pin 0x0
 int id position 0x0
 int id postLayout 0x0
 int id progressBar 0x0
+int id progressClozeTest 0x0
 int id progressPeriodImageTime 0x0
 int id progressPeriodSoundTime 0x0
 int id progressPeriodTextTime 0x0
@@ -2575,12 +2583,14 @@ int id progress_circular 0x0
 int id progress_horizontal 0x0
 int id questionsFragment 0x0
 int id radio 0x0
+int id rcAnswerCloze 0x0
 int id rcCloze 0x0
 int id rcQuestion 0x0
 int id rcQuiz 0x0
 int id rcResultAnswer 0x0
 int id rectangles 0x0
 int id restart 0x0
+int id resultClozeFragment 0x0
 int id resultQuizFragment 0x0
 int id reverse 0x0
 int id reverseSawtooth 0x0
@@ -2786,7 +2796,6 @@ int layout abc_search_dropdown_item_icons_2line 0x0
 int layout abc_search_view 0x0
 int layout abc_select_dialog_material 0x0
 int layout abc_tooltip 0x0
-int layout activity_cloze 0x0
 int layout activity_quiz 0x0
 int layout answer_image_layout 0x0
 int layout answer_sound_layout 0x0
@@ -2815,8 +2824,11 @@ int layout fragment_fullscreen_slider 0x0
 int layout fragment_item_questions 0x0
 int layout fragment_loading 0x0
 int layout fragment_questions 0x0
+int layout fragment_result_cloze 0x0
 int layout fragment_result_quiz 0x0
-int layout item_answer 0x0
+int layout item_answer_cloze 0x0
+int layout item_answer_quiz 0x0
+int layout item_question_cloze 0x0
 int layout item_result_answer 0x0
 int layout item_slidingimages 0x0
 int layout item_slidingimages_zoomable 0x0
@@ -2957,6 +2969,7 @@ int string character_counter_overflowed_content_description 0x0
 int string character_counter_pattern 0x0
 int string chip_text 0x0
 int string clear_text_end_icon_content_description 0x0
+int string cloze_results 0x0
 int string correct 0x0
 int string current_history_question 0x0
 int string error_icon_content_description 0x0

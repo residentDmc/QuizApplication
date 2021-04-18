@@ -1,4 +1,4 @@
-package com.vesam.quiz.ui.view.adapter.answer_result_list
+package com.vesam.quiz.ui.view.adapter.answer_quiz_result_list
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vesam.quiz.R
-import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import java.util.*

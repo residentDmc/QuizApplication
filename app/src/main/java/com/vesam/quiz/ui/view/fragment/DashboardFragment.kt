@@ -30,7 +30,6 @@ class DashboardFragment : Fragment() {
 
     private fun initOnClick() {
         binding.btnEnterExam.setOnClickListener { initIntentQuizActivity() }
-        binding.btnEnterCloze.setOnClickListener { initIntentClozeActivity() }
     }
 
     private fun initIntentQuizActivity() {
@@ -39,16 +38,6 @@ class DashboardFragment : Fragment() {
         val token= binding.tlToken.editText!!.text.toString()
         val userId= binding.tlUserId.editText!!.text.toString()
         val quizId= binding.tlQuizId.editText!!.text.toString().toInt()
-        Option.startQuizActivity(requireActivity(),baseUrl,baseUrlImageAndVideo,token,userId,quizId)
+        Option.start(requireActivity(),baseUrl,baseUrlImageAndVideo,token,userId,quizId)
     }
-
-    private fun initIntentClozeActivity() {
-        val baseUrl= binding.tlBaseUrl.editText!!.text.toString()
-        val baseUrlImageAndVideo= binding.tlBaseUrlImageAndVideo.editText!!.text.toString()
-        val token= binding.tlToken.editText!!.text.toString()
-        val userId= binding.tlUserId.editText!!.text.toString()
-        val quizId= binding.tlQuizId.editText!!.text.toString().toInt()
-        Option.startClozeActivity(requireActivity(),baseUrl,baseUrlImageAndVideo,token,userId,quizId)
-    }
-
 }

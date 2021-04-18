@@ -1121,7 +1121,9 @@ color colorBlack
 color colorGreyDashGap
 color color_blue_button
 color color_blue_item
+color color_blue_item_answer_cloze
 color color_blue_sound
+color color_blue_title_cloze
 color color_green_item
 color color_green_progress
 color color_grey_item
@@ -2207,6 +2209,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable progressbar_blue
+drawable rounded_blue_item_answer_cloze_shape
 drawable rounded_blue_shape
 drawable rounded_green_shape
 drawable rounded_red_shape
@@ -2270,6 +2273,7 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_clozeFragment_to_resultClozeFragment
 id action_container
 id action_context_bar
 id action_divider
@@ -2321,6 +2325,7 @@ id btnEnterTest
 id btnNextQuestion
 id btnRetest
 id btnRetestEnd
+id btnSubmit
 id buttonPanel
 id cache_measures
 id cancel_action
@@ -2482,6 +2487,7 @@ id lnAnswerVideoLayout
 id lnClozeImageLayout
 id lnCurrentHistoryQuestion
 id lnImage
+id lnNavFragment
 id lnNextQuestion
 id lnParent
 id lnParentDefaultEnd
@@ -2502,6 +2508,7 @@ id lnResultEnd
 id lnResultStart
 id lnSound
 id lnText
+id lnTitle
 id lnVideo
 id lottieAnimationView
 id lottie_layer_name
@@ -2600,6 +2607,7 @@ id pin
 id position
 id postLayout
 id progressBar
+id progressClozeTest
 id progressPeriodImageTime
 id progressPeriodSoundTime
 id progressPeriodTextTime
@@ -2612,12 +2620,14 @@ id progress_horizontal
 id questionsFragment
 id radio
 id ratio
+id rcAnswerCloze
 id rcCloze
 id rcQuestion
 id rcQuiz
 id rcResultAnswer
 id rectangles
 id restart
+id resultClozeFragment
 id resultQuizFragment
 id reverse
 id reverseSawtooth
@@ -2839,7 +2849,6 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_cloze
 layout activity_main
 layout activity_quiz
 layout answer_image_layout
@@ -2869,8 +2878,11 @@ layout fragment_fullscreen_slider
 layout fragment_item_questions
 layout fragment_loading
 layout fragment_questions
+layout fragment_result_cloze
 layout fragment_result_quiz
-layout item_answer
+layout item_answer_cloze
+layout item_answer_quiz
+layout item_question_cloze
 layout item_result_answer
 layout item_slidingimages
 layout item_slidingimages_zoomable
@@ -3007,6 +3019,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
+string cloze_results
 string cloze_test
 string correct
 string current_history_question

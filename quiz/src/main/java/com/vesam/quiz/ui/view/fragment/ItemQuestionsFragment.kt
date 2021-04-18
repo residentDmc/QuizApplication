@@ -13,17 +13,13 @@ import android.view.ViewGroup
 import android.widget.MediaController
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.danikula.videocache.HttpProxyCacheServer
-import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.databinding.FragmentItemQuestionsBinding
-import com.vesam.quiz.ui.view.adapter.answer_list.AnswerAdapter
-import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
-import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
+import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
@@ -32,8 +28,6 @@ import com.vesam.quiz.utils.extention.getProxy
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import org.koin.android.ext.android.inject
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
 
 
 class ItemQuestionsFragment : DialogFragment() {

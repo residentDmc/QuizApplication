@@ -1,4 +1,4 @@
-package com.vesam.quiz.ui.view.adapter.answer_list
+package com.vesam.quiz.ui.view.adapter.answer_quiz_list
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.interfaces.OnClickListenerAny
+import com.vesam.quiz.utils.build_config.BuildConfig
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FINAL_LEVEL
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.HOW_DISPLAY_CORRECT_ANSWER
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.STEP_BY_STEP
 import com.vesam.quiz.utils.extention.checkPersianCharacter
 import java.util.*
 
@@ -24,7 +28,7 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
         ViewHolderAnswer(getViewHolder(parent))
 
     private fun getViewHolder(parent: ViewGroup): View = LayoutInflater.from(parent.context)
-        .inflate(R.layout.item_answer, parent, false)
+        .inflate(R.layout.item_answer_quiz, parent, false)
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolderAnswer: ViewHolderAnswer, position: Int) {
@@ -34,8 +38,7 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
             viewHolderAnswer.lnParentStart,
             viewHolderAnswer.lnParentEnd
         )
-        initStateCorrect(viewHolderAnswer, answer)
-        initStateCheckLevel(viewHolderAnswer, answer)
+        initType(viewHolderAnswer, answer)
         initEnabled(viewHolderAnswer, answer)
         viewHolderAnswer.txtTitleStart.text = answer.title
         viewHolderAnswer.txtTitleEnd.text = answer.title
@@ -45,6 +48,11 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
             )
         }
         viewHolderAnswer.lnParentEnd.setOnClickListener { onClickListenerAny.onClickListener(answer) }
+    }
+
+    private fun initType(viewHolderAnswer: ViewHolderAnswer, answer: Answer) = when (HOW_DISPLAY_CORRECT_ANSWER) {
+        STEP_BY_STEP -> initStateCorrect(viewHolderAnswer, answer)
+        else -> initStateCheckLevel(viewHolderAnswer, answer)
     }
 
     private fun initStateCheckLevel(viewHolderAnswer: ViewHolderAnswer, answer: Answer) {

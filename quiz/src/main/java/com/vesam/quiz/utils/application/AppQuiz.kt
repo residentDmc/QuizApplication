@@ -3,6 +3,7 @@ package com.vesam.quiz.utils.application
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
@@ -20,7 +21,7 @@ class AppQuiz : MultiDexApplication() {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
         @SuppressLint("StaticFieldLeak")
-        lateinit var activity: Activity
+        lateinit var activity: AppCompatActivity
     }
 
     override fun attachBaseContext(base: Context?) {

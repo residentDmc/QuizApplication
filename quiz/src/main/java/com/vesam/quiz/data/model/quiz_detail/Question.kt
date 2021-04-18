@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 data class Question(
     @SerializedName("answers")
     @ColumnInfo(name = "answers")
-    val answers: List<Answer>,
+    val answers: ArrayList<Answer>,
     @SerializedName("description")
     @ColumnInfo(name = "description")
     val quizDescription: QuizDescription,
@@ -24,4 +24,6 @@ data class Question(
     @SerializedName("title")
     @ColumnInfo(name = "title")
     val title: String
-)
+){
+    var isSelected = false
+}

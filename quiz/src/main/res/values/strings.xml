@@ -14,5 +14,6 @@
     <string name="question_number">Question Number</string>
     <string name="not_multimedia">The exam is not multimedia</string>
     <string name="is_empty_list">Quiz list is empty</string>
-    <string name="not_cloze" >The exam is not cloze</string>
+    <string name="not_cloze">The exam is not cloze</string>
+    <string name="cloze_results">Cloze Result</string>
 </resources>

@@ -25,6 +25,8 @@
     <color name="color_grey_white_shape">#E1E1E1</color>
     <color name="color_grey_text_answer">#727272</color>
     <color name="color_blue_button">#11CCFF</color>
+    <color name="color_blue_title_cloze">#22C1FE</color>
+    <color name="color_blue_item_answer_cloze">#0ECBFF</color>
     <color name="color_blue_sound">#03D8FF</color>
 
     <color name="overlay_dark_10">#1A000000</color>

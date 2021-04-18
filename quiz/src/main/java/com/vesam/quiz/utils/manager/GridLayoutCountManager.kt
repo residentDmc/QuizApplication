@@ -19,4 +19,17 @@ class GridLayoutCountManager(private val context: Context) {
         else -> 1
     }
 
+    fun getColumnWidthAnswer(): Int = when {
+        context.resources.configuration.screenLayout and
+                Configuration.SCREENLAYOUT_SIZE_MASK ===
+                Configuration.SCREENLAYOUT_SIZE_XLARGE -> 3
+        context.resources.configuration.screenLayout and
+                Configuration.SCREENLAYOUT_SIZE_MASK ===
+                Configuration.SCREENLAYOUT_SIZE_LARGE -> 2
+        context.resources.configuration.screenLayout and
+                Configuration.SCREENLAYOUT_SIZE_MASK ===
+                Configuration.SCREENLAYOUT_SIZE_NORMAL -> 2
+        else -> 1
+    }
+
 }

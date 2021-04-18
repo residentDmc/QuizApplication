@@ -21,7 +21,7 @@ import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
 import com.vesam.quiz.databinding.FragmentQuestionsBinding
 import com.vesam.quiz.interfaces.OnClickListenerAny
-import com.vesam.quiz.ui.view.adapter.answer_list.AnswerAdapter
+import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
@@ -128,12 +128,10 @@ class QuestionsFragment : Fragment() {
 
     private fun initShowLoading() {
         binding.lnParent.visibility = View.GONE
-        binding.progressBar.visibility = View.VISIBLE
     }
 
     private fun initHideLoading() {
         binding.lnParent.visibility = View.VISIBLE
-        binding.progressBar.visibility = View.GONE
     }
 
     private fun initResultQuiz(it: Any) {

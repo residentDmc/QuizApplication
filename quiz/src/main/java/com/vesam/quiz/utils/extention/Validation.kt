@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
@@ -32,6 +33,17 @@ fun checkPersianCharacter(persianCharacter: String, view: LinearLayout) {
 }
 
 @SuppressLint("RtlHardcoded")
+fun checkPersianCharacter(persianCharacter: String, view: LinearLayoutCompat) {
+    val rtlCharacter: Pattern =
+        Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
+    val matcher: Matcher = rtlCharacter.matcher(persianCharacter)
+    when {
+        matcher.find() -> view.gravity = Gravity.CENTER_VERTICAL or Gravity.RIGHT
+        else -> view.gravity = Gravity.CENTER_VERTICAL or Gravity.LEFT
+    }
+}
+
+@SuppressLint("RtlHardcoded")
 fun checkPersianCharacter(
     persianCharacter: String,
     viewStart: LinearLayout,
@@ -40,7 +52,6 @@ fun checkPersianCharacter(
     val rtlCharacter: Pattern =
         Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
     val matcher: Matcher = rtlCharacter.matcher(persianCharacter)
-    Log.d("TAG", "checkPersianCharacter: "+matcher.find())
     when {
         matcher.find() -> {
             viewStart.visibility = View.GONE

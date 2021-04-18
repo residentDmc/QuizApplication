@@ -24,7 +24,7 @@ data class Details(
     val jalaliCreatedAt: String,
     @SerializedName("period_time")
     @ColumnInfo(name = "period_time")
-    val periodTime: String,
+    val periodTime: Int,
     @SerializedName("question_description")
     @ColumnInfo(name = "question_description")
     val questionDescription: Description,

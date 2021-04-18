@@ -14,9 +14,8 @@ import com.google.gson.Gson
 import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.data.model.set_quiz_result.ResponseSetQuizResultModel
 import com.vesam.quiz.databinding.FragmentResultQuizBinding
-import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
-import com.vesam.quiz.ui.view.adapter.answer_result_list.AnswerResultAdapter
+import com.vesam.quiz.ui.view.adapter.answer_quiz_result_list.AnswerResultAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST

@@ -1,4 +1,4 @@
-package com.vesam.quiz.ui.view.adapter.answer_result_list
+package com.vesam.quiz.ui.view.adapter.answer_quiz_result_list
 
 
 import android.view.View

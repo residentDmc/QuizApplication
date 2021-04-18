@@ -138,17 +138,6 @@
             android:text="@string/enter_exam"
             android:textColor="@color/secondary_text" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="@dimen/margin_5" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@id/btnEnterCloze"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cloze_test"
-            android:textColor="@color/secondary_text" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

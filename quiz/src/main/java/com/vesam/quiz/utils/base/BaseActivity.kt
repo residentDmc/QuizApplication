@@ -9,7 +9,6 @@ import com.vesam.quiz.utils.application.AppQuiz.Companion.activity
 @Suppress("DEPRECATION")
 open class BaseActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) window.decorView.layoutDirection = View.LAYOUT_DIRECTION_LTR

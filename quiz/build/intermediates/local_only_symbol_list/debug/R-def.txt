@@ -61,7 +61,9 @@ color colorBlack
 color colorGreyDashGap
 color color_blue_button
 color color_blue_item
+color color_blue_item_answer_cloze
 color color_blue_sound
+color color_blue_title_cloze
 color color_green_item
 color color_green_progress
 color color_grey_item
@@ -422,10 +424,12 @@ drawable ic_rew
 drawable ic_success
 drawable ic_un_success
 drawable progressbar_blue
+drawable rounded_blue_item_answer_cloze_shape
 drawable rounded_blue_shape
 drawable rounded_green_shape
 drawable rounded_red_shape
 drawable rounded_white_shape
+id action_clozeFragment_to_resultClozeFragment
 id action_questionsFragment_to_resultQuizFragment
 id appBar
 id audioWaveform
@@ -439,6 +443,7 @@ id btnCurrentHistoryQuestion
 id btnNextQuestion
 id btnRetest
 id btnRetestEnd
+id btnSubmit
 id clozeFragment
 id custom_toast_layout_id
 id cvAnswerVideo
@@ -477,6 +482,7 @@ id lnAnswerVideoLayout
 id lnClozeImageLayout
 id lnCurrentHistoryQuestion
 id lnImage
+id lnNavFragment
 id lnNextQuestion
 id lnParent
 id lnParentDefaultEnd
@@ -497,6 +503,7 @@ id lnResultEnd
 id lnResultStart
 id lnSound
 id lnText
+id lnTitle
 id lnVideo
 id lottieAnimationView
 id lyt_card
@@ -505,6 +512,7 @@ id nav_graph
 id nav_graph.xml
 id pager
 id progressBar
+id progressClozeTest
 id progressPeriodImageTime
 id progressPeriodSoundTime
 id progressPeriodTextTime
@@ -513,10 +521,12 @@ id progressStepByStep
 id progressSuccess
 id progressUnSuccess
 id questionsFragment
+id rcAnswerCloze
 id rcCloze
 id rcQuestion
 id rcQuiz
 id rcResultAnswer
+id resultClozeFragment
 id resultQuizFragment
 id text
 id toolbar
@@ -540,7 +550,6 @@ id viewVideo
 id viewVideoQuestion
 id waveformSeekBarAnswer
 id waveformSeekBarQuestion
-layout activity_cloze
 layout activity_quiz
 layout answer_image_layout
 layout answer_sound_layout
@@ -552,8 +561,11 @@ layout fragment_fullscreen_slider
 layout fragment_item_questions
 layout fragment_loading
 layout fragment_questions
+layout fragment_result_cloze
 layout fragment_result_quiz
-layout item_answer
+layout item_answer_cloze
+layout item_answer_quiz
+layout item_question_cloze
 layout item_result_answer
 layout item_slidingimages
 layout item_slidingimages_zoomable
@@ -569,6 +581,7 @@ layout toast_layout
 navigation nav_graph_cloze
 navigation nav_graph_quiz
 raw quiz
+string cloze_results
 string correct
 string current_history_question
 string exam_results

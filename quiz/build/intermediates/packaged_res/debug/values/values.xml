@@ -73,7 +73,9 @@
     <color name="colorGreyDashGap">#A5A5A5</color>
     <color name="color_blue_button">#11CCFF</color>
     <color name="color_blue_item">#F7FFF9</color>
+    <color name="color_blue_item_answer_cloze">#0ECBFF</color>
     <color name="color_blue_sound">#03D8FF</color>
+    <color name="color_blue_title_cloze">#22C1FE</color>
     <color name="color_green_item">#E5EDE6</color>
     <color name="color_green_progress">#4DA248</color>
     <color name="color_grey_item">#FDFCFC</color>
@@ -423,6 +425,7 @@
     <item name="btnNextQuestion" type="id"/>
     <item name="btnRetest" type="id"/>
     <item name="btnRetestEnd" type="id"/>
+    <item name="btnSubmit" type="id"/>
     <item name="cvAnswerVideo" type="id"/>
     <item name="cvQuestionVideo" type="id"/>
     <item name="cvVideo" type="id"/>
@@ -454,6 +457,7 @@
     <item name="lnClozeImageLayout" type="id"/>
     <item name="lnCurrentHistoryQuestion" type="id"/>
     <item name="lnImage" type="id"/>
+    <item name="lnNavFragment" type="id"/>
     <item name="lnNextQuestion" type="id"/>
     <item name="lnParent" type="id"/>
     <item name="lnParentDefaultEnd" type="id"/>
@@ -474,8 +478,10 @@
     <item name="lnResultStart" type="id"/>
     <item name="lnSound" type="id"/>
     <item name="lnText" type="id"/>
+    <item name="lnTitle" type="id"/>
     <item name="lnVideo" type="id"/>
     <item name="lottieAnimationView" type="id"/>
+    <item name="progressClozeTest" type="id"/>
     <item name="progressPeriodImageTime" type="id"/>
     <item name="progressPeriodSoundTime" type="id"/>
     <item name="progressPeriodTextTime" type="id"/>
@@ -483,6 +489,7 @@
     <item name="progressStepByStep" type="id"/>
     <item name="progressSuccess" type="id"/>
     <item name="progressUnSuccess" type="id"/>
+    <item name="rcAnswerCloze" type="id"/>
     <item name="rcCloze" type="id"/>
     <item name="rcQuestion" type="id"/>
     <item name="rcQuiz" type="id"/>
@@ -506,6 +513,7 @@
     <item name="viewVideoQuestion" type="id"/>
     <item name="waveformSeekBarAnswer" type="id"/>
     <item name="waveformSeekBarQuestion" type="id"/>
+    <string name="cloze_results">Cloze Result</string>
     <string name="correct">Correct</string>
     <string name="current_history_question">Current History Question</string>
     <string name="exam_results">Exam Results</string>
@@ -522,7 +530,7 @@
     <string name="time_out">Time Out</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        
         <item name="android:windowDisablePreview">true</item>
     </style>
 </resources>

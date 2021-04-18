@@ -95,6 +95,11 @@
     <item name="imgCloze" type="id" />
     <item name="lnClozeImageLayout" type="id" />
     <item name="rcCloze" type="id" />
+    <item name="lnNavFragment" type="id" />
+    <item name="rcAnswerCloze" type="id" />
+    <item name="lnTitle" type="id" />
+    <item name="progressClozeTest" type="id" />
+    <item name="btnSubmit" type="id" />
 
 
 </resources>

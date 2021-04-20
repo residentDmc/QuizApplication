@@ -494,6 +494,7 @@ int attr initialActivityCount 0x0
 int attr insetForeground 0x0
 int attr isLightTheme 0x0
 int attr isMaterialTheme 0x0
+int attr isNeedRestoreProgress 0x0
 int attr itemBackground 0x0
 int attr itemFillColor 0x0
 int attr itemHorizontalPadding 0x0
@@ -594,6 +595,7 @@ int attr layout_scrollInterpolator 0x0
 int attr liftOnScroll 0x0
 int attr liftOnScrollTargetViewId 0x0
 int attr limitBoundsTo 0x0
+int attr lineColor 0x0
 int attr lineHeight 0x0
 int attr lineSpacing 0x0
 int attr linearProgressIndicatorStyle 0x0
@@ -769,6 +771,11 @@ int attr preserveIconSpacing 0x0
 int attr pressedTranslationZ 0x0
 int attr progressBarPadding 0x0
 int attr progressBarStyle 0x0
+int attr progressColor 0x0
+int attr progressPadding 0x0
+int attr progressPercents 0x0
+int attr progressSteps 0x0
+int attr progressWidth 0x0
 int attr queryBackground 0x0
 int attr queryHint 0x0
 int attr quickScaleEnabled 0x0
@@ -813,6 +820,7 @@ int attr showText 0x0
 int attr showTitle 0x0
 int attr shrinkMotionSpec 0x0
 int attr singleChoiceItemLayout 0x0
+int attr singleDisplayedTime 0x0
 int attr singleLine 0x0
 int attr singleSelection 0x0
 int attr sizePercent 0x0
@@ -1129,9 +1137,11 @@ int color cardview_shadow_start_color 0x0
 int color checkbox_themeable_attribute_color 0x0
 int color colorBlack 0x0
 int color colorGreyDashGap 0x0
+int color colorOrange 0x0
 int color color_blue_button 0x0
 int color color_blue_item 0x0
 int color color_blue_item_answer_cloze 0x0
+int color color_blue_question 0x0
 int color color_blue_sound 0x0
 int color color_blue_title_cloze 0x0
 int color color_green_item 0x0
@@ -2232,6 +2242,7 @@ int drawable notify_panel_notification_icon_bg 0x0
 int drawable progressbar_blue 0x0
 int drawable rounded_blue_item_answer_cloze_shape 0x0
 int drawable rounded_blue_shape 0x0
+int drawable rounded_bottom_shape 0x0
 int drawable rounded_correct_shape 0x0
 int drawable rounded_green_shape 0x0
 int drawable rounded_in_correct_shape 0x0
@@ -5085,6 +5096,15 @@ int[] styleable MotionTelltales { 0x0, 0x0, 0x0 }
 int styleable MotionTelltales_telltales_tailColor 0
 int styleable MotionTelltales_telltales_tailScale 1
 int styleable MotionTelltales_telltales_velocityMode 2
+int[] styleable MultiProgressBar { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
+int styleable MultiProgressBar_isNeedRestoreProgress 0
+int styleable MultiProgressBar_lineColor 1
+int styleable MultiProgressBar_progressColor 2
+int styleable MultiProgressBar_progressPadding 3
+int styleable MultiProgressBar_progressPercents 4
+int styleable MultiProgressBar_progressSteps 5
+int styleable MultiProgressBar_progressWidth 6
+int styleable MultiProgressBar_singleDisplayedTime 7
 int[] styleable NavAction { 0x10100d0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 }
 int styleable NavAction_android_id 0
 int styleable NavAction_destination 1

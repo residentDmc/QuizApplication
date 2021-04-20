@@ -18,6 +18,7 @@ import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
 import com.vesam.quiz.databinding.FragmentClozeBinding
+import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.question_cloze_list.QuestionClozeAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
@@ -27,6 +28,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VA
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
 import com.vesam.quiz.utils.extention.initTick
+import com.vesam.quiz.utils.extention.timeDownProgressBar
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
@@ -40,7 +42,6 @@ import java.util.concurrent.TimeUnit
 @Suppress("CAST_NEVER_SUCCEEDS")
 class ClozeFragment : Fragment() {
     private lateinit var binding: FragmentClozeBinding
-    private lateinit var timer: CountDownTimer
     private val toastTools: ToastTools by inject()
     private val glideTools: GlideTools by inject()
     private val throwableTools: ThrowableTools by inject()
@@ -154,6 +155,7 @@ class ClozeFragment : Fragment() {
 
     private fun initOnClick() {
         binding.lnClozeImageLayout.lnImage.setOnClickListener { initFullScreenImage(false) }
+        binding.lnQuestion.setOnClickListener { initFullScreenImage(true)}
         binding.btnState.setOnClickListener { initStateBtn() }
     }
 
@@ -163,13 +165,11 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initSubmit() {
-        initCancelTimer()
         initChangeTextBtnSubmit()
         initResultQuizInAdapter()
     }
 
     private fun initProceed() {
-        initCancelTimer()
         initResultFragment()
     }
 
@@ -249,20 +249,15 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initPeriod(it: Int) {
-        binding.progressClozeTest.max = it
-        binding.progressClozeTest.progress = it
-        timer = object : CountDownTimer((it * 1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) =
-                initTick(millisUntilFinished, binding.progressClozeTest)
-
-            override fun onFinish() = initFinish()
-        }
-        timer.start()
+        timeDownProgressBar(binding.progressClozeTest,
+            it,
+            object : OnClickListener {
+                override fun onClickListener() = initFinish()
+            })
     }
 
     private fun initFinish() {
         initShowSubmitBtn()
-        initCancelTimer()
         initChangeTextBtnSubmit()
         initResultQuizInAdapter()
     }
@@ -288,12 +283,6 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initOnBackPressed() {
-        initCancelTimer()
         AppQuiz.activity.finish()
-    }
-
-    private fun initCancelTimer() {
-        if (this::timer.isInitialized)
-            timer.cancel()
     }
 }

@@ -3,7 +3,6 @@ package com.vesam.quiz.ui.view.fragment
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
 import com.vesam.quiz.databinding.FragmentQuestionsBinding
+import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
@@ -41,7 +41,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.WRONG_ANSWER
 import com.vesam.quiz.utils.extention.checkPersianCharacter
 import com.vesam.quiz.utils.extention.getProxy
-import com.vesam.quiz.utils.extention.initTick
+import com.vesam.quiz.utils.extention.timeDownProgressBar
 import com.vesam.quiz.utils.music_manager.BeatBox
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
@@ -52,11 +52,11 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
+
 class QuestionsFragment : Fragment() {
     private lateinit var binding: FragmentQuestionsBinding
     private lateinit var mediaPlayerQuestion: MediaPlayer
     private lateinit var mediaPlayerAnswer: MediaPlayer
-    private lateinit var timer: CountDownTimer
     private lateinit var question: Question
     private val toastTools: ToastTools by inject()
     private val glideTools: GlideTools by inject()
@@ -178,7 +178,6 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initResult() {
-        initCancelTimer()
         initPauseVideo()
         releaseMPQuestion()
         releaseMPAnswer()
@@ -210,7 +209,6 @@ class QuestionsFragment : Fragment() {
     private fun initResultList() {
         question = questionList.first()
         questionList.removeFirst()
-        initCancelTimer()
         initStopVideo()
         initHideAllAnswer()
         initStateQuestionFormat()
@@ -365,57 +363,35 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initPeriodTextTime(question: Question) {
-        binding.lnQuestionTextLayout.progressPeriodTextTime.max = question.periodTime
-        binding.lnQuestionTextLayout.progressPeriodTextTime.progress = question.periodTime
-        timer = object : CountDownTimer((question.periodTime * 1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) =
-                initTick(millisUntilFinished, binding.lnQuestionTextLayout.progressPeriodTextTime)
-
-            override fun onFinish() = initFinish()
-        }
-        timer.start()
+        timeDownProgressBar(binding.lnQuestionTextLayout.progressPeriodTextTime,
+            question.periodTime,
+            object : OnClickListener {
+                override fun onClickListener() = initFinish()
+            })
     }
 
     private fun initPeriodImageTime(question: Question) {
-        binding.lnQuestionImageLayout.progressPeriodImageTime.max = question.periodTime
-        binding.lnQuestionImageLayout.progressPeriodImageTime.progress = question.periodTime
-        timer = object : CountDownTimer((question.periodTime * 1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) = initTick(
-                millisUntilFinished,
-                binding.lnQuestionImageLayout.progressPeriodImageTime
-            )
-
-            override fun onFinish() = initFinish()
-        }
-        timer.start()
+        timeDownProgressBar(binding.lnQuestionImageLayout.progressPeriodImageTime,
+            question.periodTime,
+            object : OnClickListener {
+                override fun onClickListener() = initFinish()
+            })
     }
 
     private fun initPeriodVideoTime(question: Question) {
-        binding.lnQuestionVideoLayout.progressPeriodVideoTime.max = question.periodTime
-        binding.lnQuestionVideoLayout.progressPeriodVideoTime.progress = question.periodTime
-        timer = object : CountDownTimer((question.periodTime * 1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) = initTick(
-                millisUntilFinished,
-                binding.lnQuestionVideoLayout.progressPeriodVideoTime
-            )
-
-            override fun onFinish() = initFinish()
-        }
-        timer.start()
+        timeDownProgressBar(binding.lnQuestionVideoLayout.progressPeriodVideoTime,
+            question.periodTime,
+            object : OnClickListener {
+                override fun onClickListener() = initFinish()
+            })
     }
 
     private fun initPeriodSoundTime(question: Question) {
-        binding.lnQuestionSoundLayout.progressPeriodSoundTime.max = question.periodTime
-        binding.lnQuestionSoundLayout.progressPeriodSoundTime.progress = question.periodTime
-        timer = object : CountDownTimer((question.periodTime * 1000).toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) = initTick(
-                millisUntilFinished,
-                binding.lnQuestionSoundLayout.progressPeriodSoundTime
-            )
-
-            override fun onFinish() = initFinish()
-        }
-        timer.start()
+        timeDownProgressBar(binding.lnQuestionSoundLayout.progressPeriodSoundTime,
+            question.periodTime,
+            object : OnClickListener {
+                override fun onClickListener() = initFinish()
+            })
     }
 
     private fun initFinish() = iniResultAnswerFinish(answerAdapter.initFindIsCorrectAnswer()!!)
@@ -507,10 +483,10 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initPlayCorrectAnswer() {
-        val beatBox = BeatBox(requireContext(),handelErrorTools)
-        val mediaPlayer= MediaPlayer()
-        for (item in beatBox.soundsList){
-            if (item.soundName == CORRECT_ANSWER){
+        val beatBox = BeatBox(requireContext(), handelErrorTools)
+        val mediaPlayer = MediaPlayer()
+        for (item in beatBox.soundsList) {
+            if (item.soundName == CORRECT_ANSWER) {
                 beatBox.play(
                     item,
                     mediaPlayer,
@@ -521,10 +497,10 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initPlayExamPass() {
-        val beatBox = BeatBox(requireContext(),handelErrorTools)
-        val mediaPlayer= MediaPlayer()
+        val beatBox = BeatBox(requireContext(), handelErrorTools)
+        val mediaPlayer = MediaPlayer()
         for (item in beatBox.soundsList) {
-            if (item.soundName == EXAM_PASS){
+            if (item.soundName == EXAM_PASS) {
                 beatBox.play(
                     item,
                     mediaPlayer,
@@ -535,10 +511,10 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initPlayWrongAnswer() {
-        val beatBox = BeatBox(requireContext(),handelErrorTools)
-        val mediaPlayer= MediaPlayer()
-        for (item in beatBox.soundsList){
-            if (item.soundName == WRONG_ANSWER){
+        val beatBox = BeatBox(requireContext(), handelErrorTools)
+        val mediaPlayer = MediaPlayer()
+        for (item in beatBox.soundsList) {
+            if (item.soundName == WRONG_ANSWER) {
                 beatBox.play(
                     item,
                     mediaPlayer,
@@ -581,7 +557,6 @@ class QuestionsFragment : Fragment() {
         answer.isSuccess = 1
         resultAnswerListId.add(answer.id)
         answerAdapter.answerCheckLevel(answer)
-        initCancelTimer()
     }
 
     private fun initUnSuccessAnswerFinalLevel(answer: Answer) {
@@ -589,7 +564,6 @@ class QuestionsFragment : Fragment() {
         answer.isSuccess = 2
         resultAnswerListId.add(answer.id)
         answerAdapter.answerCheckLevel(answer)
-        initCancelTimer()
     }
 
     private fun initStateListFormat(answer: Answer) = when (answer.description.format) {
@@ -638,7 +612,6 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initConvertHtml(answer)
         initShowAnswerFormatText()
-        initCancelTimer()
         initStopQuestionVideo()
     }
 
@@ -657,7 +630,6 @@ class QuestionsFragment : Fragment() {
         initShowAnswerFormatVideo()
         initStopVideoQuestion()
         initVideoView(answer.description.urlContent)
-        initCancelTimer()
         initStopQuestionVideo()
     }
 
@@ -703,14 +675,12 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatSound()
         initSoundAnswer(answer.description.urlContent)
-        initCancelTimer()
         initStopQuestionVideo()
     }
 
     private fun initListFormatImage(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatImage()
-        initCancelTimer()
         initStopQuestionVideo()
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,
@@ -742,15 +712,9 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initOnBackPressed() {
-        initCancelTimer()
         initPauseVideo()
         releaseMPQuestion()
         releaseMPAnswer()
         AppQuiz.activity.finish()
-    }
-
-    private fun initCancelTimer() {
-        if (this::timer.isInitialized)
-            timer.cancel()
     }
 }

@@ -8,10 +8,15 @@
     android:layout_gravity="center_horizontal"
     android:visibility="gone"
     app:cardCornerRadius="@dimen/margin_8">
-
-    <VideoView
-        android:id="@id/viewVideo"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#000000">
+        <VideoView
+            android:id="@id/viewVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

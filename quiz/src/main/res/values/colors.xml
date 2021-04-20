@@ -28,6 +28,9 @@
     <color name="color_blue_title_cloze">#22C1FE</color>
     <color name="color_blue_item_answer_cloze">#0ECBFF</color>
     <color name="color_blue_sound">#03D8FF</color>
+    <color name="color_stroke_blue_state_correct_sound">#45BFC1</color>
+    <color name="color_green_state_correct_sound">#15B337</color>
+    <color name="color_red_state_correct_sound">#DB403C</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>

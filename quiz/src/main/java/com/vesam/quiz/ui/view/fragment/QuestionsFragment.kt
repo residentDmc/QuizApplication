@@ -26,6 +26,8 @@ import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.CORRECT_ANSWER
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.EXAM_PASS
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
@@ -36,9 +38,11 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.STEP_BY_STEP
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.WRONG_ANSWER
 import com.vesam.quiz.utils.extention.checkPersianCharacter
 import com.vesam.quiz.utils.extention.getProxy
 import com.vesam.quiz.utils.extention.initTick
+import com.vesam.quiz.utils.music_manager.BeatBox
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
@@ -494,6 +498,7 @@ class QuestionsFragment : Fragment() {
 
     private fun initSuccessAnswerStepByStep(answer: Answer) {
         answerAdapter.answerSuccessQuestion(answer)
+        initPlayCorrectAnswer()
         initStateListFormat(answer)
         answer.isSuccess = 1
         resultAnswerListId.add(answer.id)
@@ -501,19 +506,67 @@ class QuestionsFragment : Fragment() {
         initPassCondition()
     }
 
+    private fun initPlayCorrectAnswer() {
+        val beatBox = BeatBox(requireContext(),handelErrorTools)
+        val mediaPlayer= MediaPlayer()
+        for (item in beatBox.soundsList){
+            if (item.soundName == CORRECT_ANSWER){
+                beatBox.play(
+                    item,
+                    mediaPlayer,
+                    false
+                )
+            }
+        }
+    }
+
+    private fun initPlayExamPass() {
+        val beatBox = BeatBox(requireContext(),handelErrorTools)
+        val mediaPlayer= MediaPlayer()
+        for (item in beatBox.soundsList) {
+            if (item.soundName == EXAM_PASS){
+                beatBox.play(
+                    item,
+                    mediaPlayer,
+                    false
+                )
+            }
+        }
+    }
+
+    private fun initPlayWrongAnswer() {
+        val beatBox = BeatBox(requireContext(),handelErrorTools)
+        val mediaPlayer= MediaPlayer()
+        for (item in beatBox.soundsList){
+            if (item.soundName == WRONG_ANSWER){
+                beatBox.play(
+                    item,
+                    mediaPlayer,
+                    false
+                )
+            }
+        }
+    }
+
     private fun initPassCondition() {
         var currentProgress = binding.progressStepByStep.progress
         currentProgress += 1
         binding.progressStepByStep.progress = currentProgress
         when (PASS_CONDITION) {
-            currentProgress -> initResult()
+            currentProgress -> initResultPassCondition()
         }
+    }
+
+    private fun initResultPassCondition() {
+        initPlayExamPass()
+        initResult()
     }
 
     private fun initUnSuccessAnswerStepByStep(answer: Answer) {
         val isCorrectAnswer = answerAdapter.initFindIsCorrectAnswer()
         answerAdapter.answerUnSuccessQuestion(answer)
         initStateListFormat(isCorrectAnswer!!)
+        initPlayWrongAnswer()
         answer.isSuccess = 2
         resultAnswerListId.add(answer.id)
     }

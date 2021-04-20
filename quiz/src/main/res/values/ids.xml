@@ -100,6 +100,14 @@
     <item name="lnTitle" type="id" />
     <item name="progressClozeTest" type="id" />
     <item name="btnSubmit" type="id" />
+    <item name="btnState" type="id" />
+    <item name="zoomView" type="id" />
+    <item name="nestedScrollView" type="id" />
+    <item name="collapsingImageLayout" type="id" />
+    <item name="nestedContent" type="id" />
+    <item name="txtCounter" type="id" />
+    <item name="lnQuestion" type="id" />
+    <item name="lnItemQuestion" type="id" />
 
 
 </resources>

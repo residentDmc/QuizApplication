@@ -1,12 +1,14 @@
 package com.vesam.quiz.ui.view.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.widget.NestedScrollView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
@@ -20,7 +22,6 @@ import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.question_cloze_list.QuestionClozeAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
-import com.vesam.quiz.utils.build_config.BuildConfig
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
@@ -35,6 +36,8 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
+
+@Suppress("CAST_NEVER_SUCCEEDS")
 class ClozeFragment : Fragment() {
     private lateinit var binding: FragmentClozeBinding
     private lateinit var timer: CountDownTimer
@@ -67,8 +70,32 @@ class ClozeFragment : Fragment() {
     private fun initAction() {
         initAdapter()
         initOnClick()
+        initAnimationImage()
         initRequestQuiz()
         initOnBackPress()
+    }
+
+    private fun initAnimationImage() {
+        binding.nestedScrollView.setFadingEdgeLength(170)
+        binding.nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY: Int, _, _ ->
+            initOnScrollChangeListener(
+                scrollY
+            )
+        })
+    }
+
+    private fun initOnScrollChangeListener(scrollY: Int) = when {
+        scrollY > 170 -> initShowCounterQuestion()
+        else -> initHideCounterQuestion()
+    }
+
+    private fun initHideCounterQuestion() {
+        binding.lnQuestion.visibility = View.GONE
+    }
+
+    private fun initShowCounterQuestion() {
+        binding.lnQuestion.visibility = View.VISIBLE
+        initSetCounterText(resultAnswerListId.size)
     }
 
     private fun initAdapter() {
@@ -92,13 +119,23 @@ class ClozeFragment : Fragment() {
             answer.isSelected -> resultAnswerListId.add(answer.id)
             else -> initRemoveId(answer.id)
         }
-        initShowSubmitBtn(resultAnswerListId.size)
+        initSetCounterText(resultAnswerListId.size)
+        initStateShowSubmitBtn(resultAnswerListId.size)
 
     }
 
-    private fun initShowSubmitBtn(size: Int) = when (questionClozeAdapter.itemCount) {
-        size -> binding.btnSubmit.visibility=View.VISIBLE
-        else -> binding.btnSubmit.visibility=View.GONE
+    @SuppressLint("SetTextI18n")
+    private fun initSetCounterText(size: Int) {
+        binding.txtCounter.text = "${size}/${questionClozeAdapter.itemCount}"
+    }
+
+    private fun initStateShowSubmitBtn(size: Int) = when (questionClozeAdapter.itemCount) {
+        size -> binding.btnState.visibility = View.VISIBLE
+        else -> binding.btnState.visibility = View.GONE
+    }
+
+    private fun initShowSubmitBtn() {
+        binding.btnState.visibility = View.VISIBLE
     }
 
     private fun initRemoveId(id: Int) {
@@ -116,13 +153,32 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initOnClick() {
-        binding.lnClozeImageLayout.lnImage.setOnClickListener { initFullScreenImage() }
-        binding.btnSubmit.setOnClickListener { initSubmit() }
+        binding.lnClozeImageLayout.lnImage.setOnClickListener { initFullScreenImage(false) }
+        binding.btnState.setOnClickListener { initStateBtn() }
+    }
+
+    private fun initStateBtn() = when (binding.btnState.text.toString()) {
+        resources.getString(R.string.submit) -> initSubmit()
+        else -> initProceed()
     }
 
     private fun initSubmit() {
         initCancelTimer()
+        initChangeTextBtnSubmit()
+        initResultQuizInAdapter()
+    }
+
+    private fun initProceed() {
+        initCancelTimer()
         initResultFragment()
+    }
+
+    private fun initResultQuizInAdapter() {
+        questionClozeAdapter.initCorrectAndInCorrectItem()
+    }
+
+    private fun initChangeTextBtnSubmit() {
+        binding.btnState.text = resources.getString(R.string.proceed)
     }
 
     private fun initResultFragment() {
@@ -141,15 +197,15 @@ class ClozeFragment : Fragment() {
         return bundle
     }
 
-    private fun initFullScreenImage() {
-        val urlContent: String = binding.lnClozeImageLayout.imgCloze.tag as String
+    private fun initFullScreenImage(isShowBtnClose: Boolean) {
+        val urlContent: String = binding.lnClozeImageLayout.lnImage.tag as String
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentFullscreenSlider = FragmentFullscreenSlider()
         val transaction = fragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         transaction.add(android.R.id.content, fragmentFullscreenSlider).addToBackStack(null)
             .commit()
-        fragmentFullscreenSlider.setImage(urlContent)
+        fragmentFullscreenSlider.setImage(urlContent, isShowBtnClose)
     }
 
     private fun initRequestQuiz() {
@@ -198,14 +254,17 @@ class ClozeFragment : Fragment() {
         timer = object : CountDownTimer((it * 1000).toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) =
                 initTick(millisUntilFinished, binding.progressClozeTest)
+
             override fun onFinish() = initFinish()
         }
         timer.start()
     }
 
     private fun initFinish() {
+        initShowSubmitBtn()
         initCancelTimer()
-        initResultFragment()
+        initChangeTextBtnSubmit()
+        initResultQuizInAdapter()
     }
 
     private fun initUpdateAdapter(it: ResponseQuizDetailModel) {
@@ -213,7 +272,7 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initLoadImageQuestion(it: ResponseQuizDetailModel) {
-        binding.lnClozeImageLayout.imgCloze.tag = it.details.questionDescription.urlContent
+        binding.lnClozeImageLayout.lnImage.tag = it.details.questionDescription.urlContent
         glideTools.displayImageOriginal(
             binding.lnClozeImageLayout.imgCloze,
             it.details.questionDescription.urlContent

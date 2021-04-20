@@ -56,6 +56,14 @@ class BuildConfig {
         const val MULTIMEDIA = "multimedia"
         const val CLOZE = "cloze"
 
+        // sound
+        const val CORRECT_ANSWER = "correct_answer.wav"
+        const val EXAM_PASS = "exam_pass.wav"
+        const val WRONG_ANSWER = "wrong_answer.wav"
+
+        // animation
+        const val HIDE_THRESHOLD = 20
+
         // state question
         const val STEP_BY_STEP = "stepByStep"
         const val FINAL_LEVEL = "finalLevel"

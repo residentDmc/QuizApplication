@@ -19,4 +19,5 @@ data class Answer(
     var isCheckLevel = 0
     var isSelected = false
     var isEnable = false
+    var isCorrectItem = false
 }

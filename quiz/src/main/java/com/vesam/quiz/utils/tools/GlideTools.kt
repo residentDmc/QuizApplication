@@ -2,7 +2,9 @@ package com.vesam.quiz.utils.tools
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
+import android.os.StrictMode
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -11,6 +13,10 @@ import com.bumptech.glide.request.transition.Transition
 import com.davemorrissey.labs.subscaleview.ImageSource
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.vesam.quiz.R
+import com.vesam.quiz.utils.zoomage.ZoomageView
+import java.io.IOException
+import java.io.InputStream
+import java.net.URL
 
 class GlideTools(private val context: Context, private val handelErrorTools: HandelErrorTools) {
 
@@ -36,7 +42,7 @@ class GlideTools(private val context: Context, private val handelErrorTools: Han
             Glide.with(context).load(url)
                 .apply(options)
                 .into(img)
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
@@ -60,6 +66,17 @@ class GlideTools(private val context: Context, private val handelErrorTools: Han
         }
     }
 
+    fun displayImageSliderZoom(imageViewZoomable: ZoomageView, url: String?) {
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+        try {
+            val urls = URL(url)
+            imageViewZoomable.setImageBitmap(BitmapFactory.decodeStream(urls.content as InputStream))
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
     fun displayImageSliderDefault(img: ImageView, url: String) {
         try {
             val options: RequestOptions = RequestOptions()
@@ -68,7 +85,7 @@ class GlideTools(private val context: Context, private val handelErrorTools: Han
             Glide.with(context).load(url)
                 .apply(options)
                 .into(img)
-        } catch (e: java.lang.Exception) {
+        } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }

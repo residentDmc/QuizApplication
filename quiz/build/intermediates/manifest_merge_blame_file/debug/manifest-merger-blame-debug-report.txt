@@ -19,7 +19,7 @@
 13-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:7:22-64
 14
 15    <application
-15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:9:5-18:19
+15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:9:5-16:30
 16        android:name="com.vesam.quiz.utils.application.AppQuiz"
 16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:9-50
 17        android:allowBackup="true"
@@ -32,11 +32,7 @@
 20-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-35
 21        android:usesCleartextTraffic="true"
 21-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:15:9-44
-22        tools:targetApi="n" >
+22        tools:targetApi="n" />
 22-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:16:9-28
-23        <activity android:name="com.vesam.quiz.ui.view.activity.MainTestActivity" />
-23-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:9-80
-23-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:19-68
-24    </application>
-25
-26</manifest>
+23
+24</manifest>

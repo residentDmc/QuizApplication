@@ -1014,6 +1014,16 @@ attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
 attr zoomEnabled
+attr zoomage_animateOnReset
+attr zoomage_autoCenter
+attr zoomage_autoResetMode
+attr zoomage_doubleTapToZoom
+attr zoomage_doubleTapToZoomScaleFactor
+attr zoomage_maxScale
+attr zoomage_minScale
+attr zoomage_restrictBounds
+attr zoomage_translatable
+attr zoomage_zoomable
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -1126,10 +1136,13 @@ color color_blue_sound
 color color_blue_title_cloze
 color color_green_item
 color color_green_progress
+color color_green_state_correct_sound
 color color_grey_item
 color color_grey_text_answer
 color color_grey_white_shape
 color color_red_item
+color color_red_state_correct_sound
+color color_stroke_blue_state_correct_sound
 color color_success_green_progress
 color color_text_success_green_progress
 color color_text_un_success_red_progress
@@ -2172,6 +2185,7 @@ drawable ic_pause_circle
 drawable ic_photo
 drawable ic_play
 drawable ic_play_circle
+drawable ic_question
 drawable ic_rew
 drawable ic_success
 drawable ic_un_success
@@ -2211,19 +2225,25 @@ drawable notify_panel_notification_icon_bg
 drawable progressbar_blue
 drawable rounded_blue_item_answer_cloze_shape
 drawable rounded_blue_shape
+drawable rounded_correct_shape
 drawable rounded_green_shape
+drawable rounded_in_correct_shape
+drawable rounded_question_white_shape
 drawable rounded_red_shape
 drawable rounded_white_shape
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
+id ALWAYS
 id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
 id META
+id NEVER
 id NO_DEBUG
+id OVER
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -2231,6 +2251,7 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id UNDER
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -2325,6 +2346,7 @@ id btnEnterTest
 id btnNextQuestion
 id btnRetest
 id btnRetestEnd
+id btnState
 id btnSubmit
 id buttonPanel
 id cache_measures
@@ -2350,6 +2372,7 @@ id clip_vertical
 id clockwise
 id clozeFragment
 id collapseActionView
+id collapsingImageLayout
 id confirm_button
 id container
 id content
@@ -2417,7 +2440,6 @@ id flip
 id floating
 id forever
 id fragment_container_view_tag
-id gallery
 id ghost_view
 id ghost_view_holder
 id glide_custom_view_target_tag
@@ -2487,6 +2509,7 @@ id lnAnswerVideoLayout
 id lnClozeImageLayout
 id lnCurrentHistoryQuestion
 id lnImage
+id lnItemQuestion
 id lnNavFragment
 id lnNextQuestion
 id lnParent
@@ -2498,6 +2521,7 @@ id lnParentSuccessEnd
 id lnParentSuccessStart
 id lnParentUnSuccessEnd
 id lnParentUnSuccessStart
+id lnQuestion
 id lnQuestionImageLayout
 id lnQuestionResultEnd
 id lnQuestionResultStart
@@ -2578,6 +2602,8 @@ id navigation_bar_item_labels_group
 id navigation_bar_item_large_label_view
 id navigation_bar_item_small_label_view
 id navigation_header_container
+id nestedContent
+id nestedScrollView
 id never
 id noScroll
 id none
@@ -2592,7 +2618,6 @@ id onDateChanged
 id outline
 id outward
 id packed
-id pager
 id parallax
 id parent
 id parentPanel
@@ -2745,6 +2770,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txtCounter
 id txtDefaultTitleEnd
 id txtDefaultTitleStart
 id txtNumber
@@ -2781,6 +2807,7 @@ id withinBounds
 id wrap
 id wrap_content
 id zero_corner_chip
+id zoomView
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -3102,6 +3129,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string proceed
 string question
 string question_number
 string quiz_id
@@ -3109,6 +3137,7 @@ string quiz_list
 string retest
 string search_menu_title
 string status_bar_notification_info_overflow
+string submit
 string time_out
 string token
 string token_value
@@ -3995,6 +4024,7 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
+styleable ZoomageView zoomage_animateOnReset zoomage_autoCenter zoomage_autoResetMode zoomage_doubleTapToZoom zoomage_doubleTapToZoomScaleFactor zoomage_maxScale zoomage_minScale zoomage_restrictBounds zoomage_translatable zoomage_zoomable
 xml network_security_config
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end

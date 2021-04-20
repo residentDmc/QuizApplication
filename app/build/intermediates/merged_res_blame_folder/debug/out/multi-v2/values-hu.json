@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hu\\values-hu.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\a8c9809df774f94c998d56ca6de3b230\\navigation-ui-2.3.4\\res\\values-hu\\values-hu.xml",
+                    "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\faceabc70b97d729f84f8bec6a441d6e\\navigation-ui-2.3.5\\res\\values-hu\\values-hu.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

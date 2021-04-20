@@ -15,7 +15,8 @@ import com.vesam.quiz.utils.extention.checkPersianCharacter
 import java.util.*
 
 @Suppress("DEPRECATION")
-class AnswerClozeAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolderAnswerCloze>() {
+class AnswerClozeAdapter(private val context: Context) :
+    RecyclerView.Adapter<ViewHolderAnswerCloze>() {
 
     private lateinit var onClickListenerAny: OnClickListenerAny
     private val list: ArrayList<Answer> = ArrayList()
@@ -34,11 +35,41 @@ class AnswerClozeAdapter(private val context: Context) : RecyclerView.Adapter<Vi
     override fun onBindViewHolder(viewHolderAnswerCloze: ViewHolderAnswerCloze, position: Int) {
         val answer = list[position]
         viewHolderAnswerCloze.txtTitle.text = answer.title
-        initStateCheckLevel(viewHolderAnswerCloze,answer)
-        viewHolderAnswerCloze.lnParent.setOnClickListener { onClickListenerAny.onClickListener(answer) }
+        initState(viewHolderAnswerCloze, answer)
+        initIsEnabled(viewHolderAnswerCloze, answer)
+    }
+
+    private fun initIsEnabled(viewHolderAnswerCloze: ViewHolderAnswerCloze, answer: Answer) {
+        if (!answer.isEnable){
+            viewHolderAnswerCloze.lnParent.setOnClickListener {
+                onClickListenerAny.onClickListener(
+                    answer
+                )
+            }
+        }
+    }
+
+    private fun initState(viewHolderAnswerCloze: ViewHolderAnswerCloze, answer: Answer) = when {
+        answer.isCorrectItem -> initCheckCorrectItem(viewHolderAnswerCloze, answer)
+        else -> initStateCheckLevel(viewHolderAnswerCloze, answer)
     }
 
     override fun getItemCount(): Int = list.size
+
+    private fun initCheckCorrectItem(viewHolderAnswerCloze: ViewHolderAnswerCloze, answer: Answer) {
+        when (answer.isSelected) {
+            true -> initCheckCorrectItemSelect(viewHolderAnswerCloze, answer)
+            false -> correctAnswerItem(viewHolderAnswerCloze)
+        }
+    }
+
+    private fun initCheckCorrectItemSelect(
+        viewHolderAnswerCloze: ViewHolderAnswerCloze,
+        answer: Answer
+    ) = when (answer.isCorrect) {
+        1 -> correctAnswerItem(viewHolderAnswerCloze)
+        else -> inCorrectAnswerItem(viewHolderAnswerCloze)
+    }
 
     private fun initStateCheckLevel(viewHolderAnswerCloze: ViewHolderAnswerCloze, answer: Answer) {
         when (answer.isSelected) {
@@ -55,6 +86,16 @@ class AnswerClozeAdapter(private val context: Context) : RecyclerView.Adapter<Vi
     private fun answerSelectQuestionItem(viewHolderAnswerCloze: ViewHolderAnswerCloze) {
         viewHolderAnswerCloze.txtTitle.setTextColor(context.resources.getColor(R.color.black))
         viewHolderAnswerCloze.lnParent.setBackgroundResource(R.drawable.rounded_blue_item_answer_cloze_shape)
+    }
+
+    private fun correctAnswerItem(viewHolderAnswerCloze: ViewHolderAnswerCloze) {
+        viewHolderAnswerCloze.txtTitle.setTextColor(context.resources.getColor(R.color.white))
+        viewHolderAnswerCloze.lnParent.setBackgroundResource(R.drawable.rounded_correct_shape)
+    }
+
+    private fun inCorrectAnswerItem(viewHolderAnswerCloze: ViewHolderAnswerCloze) {
+        viewHolderAnswerCloze.txtTitle.setTextColor(context.resources.getColor(R.color.white))
+        viewHolderAnswerCloze.lnParent.setBackgroundResource(R.drawable.rounded_in_correct_shape)
     }
 
     fun updateList(listAnswer: List<Answer>) {

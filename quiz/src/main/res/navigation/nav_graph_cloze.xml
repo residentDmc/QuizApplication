@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/resultClozeFragment"
-        android:name="com.vesam.quiz.ResultClozeFragment"
+        android:name="com.vesam.quiz.ui.view.fragment.ResultClozeFragment"
         android:label="fragment_result_cloze"
         tools:layout="@layout/fragment_result_cloze" />
 </navigation>

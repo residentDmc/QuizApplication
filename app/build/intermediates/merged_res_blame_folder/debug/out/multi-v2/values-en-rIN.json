@@ -4,6 +4,23 @@
             "outputFile": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\faceabc70b97d729f84f8bec6a441d6e\\navigation-ui-2.3.5\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,161",
+                        "endColumns": "105,116",
+                        "endOffsets": "156,273"
+                    },
+                    "to": {
+                        "startLines": "29,30",
+                        "startColumns": "4,4",
+                        "startOffsets": "2762,2868",
+                        "endColumns": "105,116",
+                        "endOffsets": "2863,2980"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\68600a5be4367d49d50b69b04e4caf8f\\core-1.3.2\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2",
@@ -18,23 +35,6 @@
                         "startOffsets": "3068",
                         "endColumns": "100",
                         "endOffsets": "3164"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\a8c9809df774f94c998d56ca6de3b230\\navigation-ui-2.3.4\\res\\values-en-rIN\\values-en-rIN.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,161",
-                        "endColumns": "105,116",
-                        "endOffsets": "156,273"
-                    },
-                    "to": {
-                        "startLines": "29,30",
-                        "startColumns": "4,4",
-                        "startOffsets": "2762,2868",
-                        "endColumns": "105,116",
-                        "endOffsets": "2863,2980"
                     }
                 },
                 {

@@ -1,25 +1,25 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
 	package
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:4:5-29
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-20:12
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:1-18:12
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:2:11-69
@@ -32,7 +32,7 @@ ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src
 	android:name
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:7:22-64
 application
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:9:5-18:19
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:9:5-16:30
 	android:requestLegacyExternalStorage
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:13:9-52
 	android:supportsRtl
@@ -47,10 +47,6 @@ ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:15:9-44
 	android:name
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:9-50
-activity#com.vesam.quiz.ui.view.activity.MainTestActivity
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:9-80
-	android:name
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:19-68
 uses-sdk
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml

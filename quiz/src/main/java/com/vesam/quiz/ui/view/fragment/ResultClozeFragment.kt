@@ -1,4 +1,4 @@
-package com.vesam.quiz
+package com.vesam.quiz.ui.view.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,16 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.data.model.set_quiz_result.ResponseSetQuizResultModel
 import com.vesam.quiz.databinding.FragmentResultClozeBinding
-import com.vesam.quiz.databinding.FragmentResultQuizBinding
-import com.vesam.quiz.interfaces.OnClickListenerAny
-import com.vesam.quiz.ui.view.adapter.answer_quiz_result_list.AnswerResultAdapter
 import com.vesam.quiz.ui.view.fragment.ItemQuestionsFragment
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz

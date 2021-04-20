@@ -79,22 +79,43 @@ class QuestionClozeAdapter(
         initItemQuestion(it, answer)
     }
 
-    private fun initItemQuestion(question: Question, answer: Answer) {
-        val indexOf = question.answers.indexOf(answer)
-        val validIndexOf = indexOf > -1
-        val validSelect = initCheckAnswer(question, answer)
-        val resultValid = validSelect && validIndexOf
-        when {
-            resultValid -> initResultIndexOf(question, answer, indexOf)
+    fun initCorrectAndInCorrectItem() {
+        list.forEach {
+            initCorrectItemQuestion(it)
+        }
+        notifyDataSetChanged()
+    }
+
+    private fun initCorrectItemQuestion(it: Question) {
+        it.answers.forEach {
+            initCorrectItemAnswer(it)
         }
     }
 
-    private fun initCheckAnswer(question: Question, answer: Answer): Boolean {
-        var resultValid = false
-        question.answers.forEach { if (it.isSelected) resultValid = it.isSelected }
-        return when {
-            answer.isSelected -> answer.isSelected
-            else -> !resultValid
+    private fun initCorrectItemAnswer(it: Answer) {
+        if (it.isCorrect == 1)
+            it.isCorrectItem = true
+        if (it.isSelected)
+            it.isCorrectItem = true
+        it.isEnable = true
+    }
+
+    private fun initItemQuestion(question: Question, answer: Answer) {
+        val indexOf = question.answers.indexOf(answer)
+        val validIndexOf = indexOf > -1
+        if (validIndexOf)
+            initValidIndexOf(question, answer, indexOf)
+    }
+
+    private fun initValidIndexOf(question: Question, answer: Answer, indexOf: Int) {
+        question.answers.forEach(this::initSelected)
+        initResultIndexOf(question, answer, indexOf)
+    }
+
+    private fun initSelected(it: Answer) {
+        if (it.isSelected) {
+            it.isSelected = false
+            onClickListenerItemCount.onClickListener(it)
         }
     }
 

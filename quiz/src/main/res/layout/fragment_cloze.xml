@@ -13,7 +13,60 @@
         android:orientation="vertical"
         android:visibility="visible">
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@id/lnQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:background="@drawable/rounded_question_white_shape"
+            android:paddingStart="@dimen/margin_24"
+            android:paddingTop="@dimen/margin_4"
+            android:paddingEnd="@dimen/margin_24"
+            android:paddingBottom="@dimen/margin_4"
+            app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nestedScrollView"
+            app:layout_constraintVertical_bias="0.0">
+
+            <ImageView
+                android:layout_width="@dimen/margin_32"
+                android:layout_height="@dimen/margin_32"
+                app:srcCompat="@drawable/ic_question"
+                app:tint="@color/secondary_text" />
+
+            <View
+                android:layout_width="@dimen/margin_8"
+                android:layout_height="@dimen/margin_1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/question"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_size_14" />
+
+                <TextView
+                    android:id="@id/txtCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_size_14" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.core.widget.NestedScrollView
+            android:id="@id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
@@ -21,6 +74,7 @@
             android:paddingTop="@dimen/margin_8"
             android:paddingEnd="@dimen/margin_16"
             android:paddingBottom="@dimen/margin_8"
+            android:requiresFadingEdge="vertical"
             app:layout_constraintBottom_toTopOf="@+id/progressClozeTest"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +99,7 @@
                     tools:ignore="UnusedAttribute" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@id/btnSubmit"
+                    android:id="@id/btnState"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/margin_55"
@@ -79,14 +133,13 @@
             app:layout_constraintVertical_bias="1.0" />
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
         android:id="@id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

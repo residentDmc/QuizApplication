@@ -1,6 +1,7 @@
 package com.vesam.quiz.di
 
 import android.content.Context
+import android.media.MediaPlayer
 import androidx.navigation.Navigation
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
@@ -16,6 +17,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.CONTENT_TYPE_HEAD
 import com.vesam.quiz.utils.image.ZoomOutSlideTransformer
 import com.vesam.quiz.utils.manager.GridLayoutCountManager
 import com.vesam.quiz.utils.manager.KeyboardManager
+import com.vesam.quiz.utils.music_manager.BeatBox
 import com.vesam.quiz.utils.network_helper.NetworkHelper
 import com.vesam.quiz.utils.tools.*
 import okhttp3.Interceptor
@@ -45,6 +47,8 @@ val appModule = module {
     single { return@single NetworkTools() }
     single { return@single BottomSheetDialog(activity) }
     single { return@single ZoomOutSlideTransformer() }
+    single { return@single BeatBox(get(),get()) }
+    single { return@single MediaPlayer() }
     single { provideOkHttpClient() }
 }
 

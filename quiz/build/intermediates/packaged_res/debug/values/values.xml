@@ -545,7 +545,7 @@
     <string name="time_out">Time Out</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        
+        <!-- Customize your theme here. -->
         <item name="android:windowDisablePreview">true</item>
     </style>
     <declare-styleable name="MultiProgressBar">

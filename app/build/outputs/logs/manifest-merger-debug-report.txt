@@ -4,7 +4,7 @@ ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-35:12
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-35:12
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-35:12
-MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-24:12
+MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-25:12
 MERGED from [androidx.databinding:databinding-adapters:4.1.3] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c99e5452dfdf5d306bd375b654b80280\databinding-adapters-4.1.3\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:4.1.3] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\5bdd1a70f042a0e9e356f1f94c5a9742\databinding-runtime-4.1.3\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:viewbinding:4.1.3] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\64a11fdc278561de5d78e5bcbe5e658a\jetified-viewbinding-4.1.3\AndroidManifest.xml:17:1-22:12
@@ -105,8 +105,8 @@ INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\s
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:11-69
 application
 ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:6:5-33:19
-MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-22:31
-MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-22:31
+MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-23:31
+MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-23:31
 MERGED from [org.koin:koin-android-viewmodel:2.1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\70ac830a1ec989a9a781137d4c0d7e7c\jetified-koin-android-viewmodel-2.1.6\AndroidManifest.xml:7:5-20
 MERGED from [org.koin:koin-android-viewmodel:2.1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\70ac830a1ec989a9a781137d4c0d7e7c\jetified-koin-android-viewmodel-2.1.6\AndroidManifest.xml:7:5-20
 MERGED from [org.koin:koin-android-scope:2.1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\5a22b6cafd56648e9274312b00fd73f2\jetified-koin-android-scope-2.1.6\AndroidManifest.xml:7:5-20
@@ -134,7 +134,7 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradl
 MERGED from [com.danikula:videocache:2.7.1] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\ba4ecd11f29dd9ae6597934aa986d0c4\jetified-videocache-2.7.1\AndroidManifest.xml:12:5-20
 MERGED from [com.danikula:videocache:2.7.1] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\ba4ecd11f29dd9ae6597934aa986d0c4\jetified-videocache-2.7.1\AndroidManifest.xml:12:5-20
 	android:requestLegacyExternalStorage
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-52
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\68600a5be4367d49d50b69b04e4caf8f\core-1.3.2\AndroidManifest.xml:24:18-86
 	android:supportsRtl
@@ -144,19 +144,19 @@ MERGED from [com.danikula:videocache:2.7.1] C:\Users\Android\.gradle\caches\tran
 	android:roundIcon
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:10:9-54
 	tools:targetApi
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-28
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:9-28
 	android:icon
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:8:9-43
 	android:allowBackup
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:7:9-35
 	android:networkSecurityConfig
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-69
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-69
 	android:theme
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:12:9-48
 	android:usesCleartextTraffic
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-44
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-44
 	android:name
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-64
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-64
 activity#com.vesam.quiz.ui.view.activity.MainActivity
 ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:14:9-20:20
 	android:name
@@ -377,6 +377,10 @@ uses-permission#android.permission.INTERNET
 ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-67
 	android:name
 		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:22-64
+uses-permission#android.permission.VIBRATE
+ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:5-66
+	android:name
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:22-63
 service#androidx.room.MultiInstanceInvalidationService
 ADDED from [androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:25:9-28:40
 	android:exported

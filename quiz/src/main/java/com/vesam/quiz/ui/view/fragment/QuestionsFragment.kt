@@ -1,13 +1,18 @@
 package com.vesam.quiz.ui.view.fragment
 
+import android.content.Context.VIBRATOR_SERVICE
 import android.media.MediaPlayer
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
+import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -41,12 +46,16 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.WRONG_ANSWER
 import com.vesam.quiz.utils.extention.checkPersianCharacter
 import com.vesam.quiz.utils.extention.getProxy
-import com.vesam.quiz.utils.extention.timeDownProgressBar
 import com.vesam.quiz.utils.music_manager.BeatBox
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
 import com.vesam.quiz.utils.tools.ToastTools
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.concurrent.Executors
@@ -56,6 +65,7 @@ import java.util.concurrent.TimeUnit
 class QuestionsFragment : Fragment() {
     private lateinit var binding: FragmentQuestionsBinding
     private lateinit var mediaPlayerQuestion: MediaPlayer
+    private lateinit var disposableObserver: Disposable
     private lateinit var mediaPlayerAnswer: MediaPlayer
     private lateinit var question: Question
     private val toastTools: ToastTools by inject()
@@ -432,6 +442,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initOnItemClick(any: Any) {
+        initDispose()
         val resultAnswer = initSelected(any)
         when (HOW_DISPLAY_CORRECT_ANSWER) {
             STEP_BY_STEP -> initResultStepByStep(resultAnswer)
@@ -494,6 +505,7 @@ class QuestionsFragment : Fragment() {
                 )
             }
         }
+        initVibration()
     }
 
     private fun initPlayExamPass() {
@@ -508,6 +520,7 @@ class QuestionsFragment : Fragment() {
                 )
             }
         }
+        initVibration()
     }
 
     private fun initPlayWrongAnswer() {
@@ -521,6 +534,20 @@ class QuestionsFragment : Fragment() {
                     false
                 )
             }
+        }
+        initVibration()
+    }
+
+    private fun initVibration() {
+        val v = requireActivity().getSystemService(VIBRATOR_SERVICE) as Vibrator?
+        when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> v!!.vibrate(
+                VibrationEffect.createOneShot(
+                    500,
+                    VibrationEffect.DEFAULT_AMPLITUDE
+                )
+            )
+            else -> v!!.vibrate(500)
         }
     }
 
@@ -702,6 +729,28 @@ class QuestionsFragment : Fragment() {
         }
     }
 
+    private fun timeDownProgressBar(
+        progressBar: ProgressBar,
+        time: Int,
+        onClickListener: OnClickListener
+    ) {
+        var differentTime = time.toLong() * 8
+        progressBar.max = differentTime.toInt()
+        progressBar.progress = differentTime.toInt()
+        disposableObserver= Observable.intervalRange(0, differentTime, 0, 50, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnComplete(onClickListener::onClickListener)
+            .subscribe {
+                differentTime--
+                progressBar.progress = (differentTime).toInt()
+            }
+    }
+
+    private fun initDispose() {
+        if (::disposableObserver.isInitialized)
+            disposableObserver.dispose()
+    }
 
     private fun initOnBackPress() {
         requireActivity().onBackPressedDispatcher.addCallback(

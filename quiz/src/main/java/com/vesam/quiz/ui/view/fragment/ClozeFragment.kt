@@ -2,10 +2,10 @@ package com.vesam.quiz.ui.view.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
@@ -27,12 +27,15 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
-import com.vesam.quiz.utils.extention.initTick
-import com.vesam.quiz.utils.extention.timeDownProgressBar
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
 import com.vesam.quiz.utils.tools.ToastTools
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.concurrent.Executors
@@ -42,6 +45,7 @@ import java.util.concurrent.TimeUnit
 @Suppress("CAST_NEVER_SUCCEEDS")
 class ClozeFragment : Fragment() {
     private lateinit var binding: FragmentClozeBinding
+    private lateinit var disposableObserver: Disposable
     private val toastTools: ToastTools by inject()
     private val glideTools: GlideTools by inject()
     private val throwableTools: ThrowableTools by inject()
@@ -165,6 +169,7 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initSubmit() {
+        initDispose()
         initChangeTextBtnSubmit()
         initResultQuizInAdapter()
     }
@@ -272,6 +277,30 @@ class ClozeFragment : Fragment() {
             binding.lnClozeImageLayout.imgCloze,
             it.details.questionDescription.urlContent
         )
+    }
+
+    private fun timeDownProgressBar(
+        progressBar: ProgressBar,
+        time: Int,
+        onClickListener: OnClickListener
+    ) {
+        var differentTime = time.toLong() * 8
+        progressBar.max = differentTime.toInt()
+        progressBar.progress = differentTime.toInt()
+        disposableObserver=Observable.intervalRange(0, differentTime, 0, 50, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.computation())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnComplete(onClickListener::onClickListener)
+            .subscribe {
+                differentTime--
+                progressBar.progress = (differentTime).toInt()
+            }
+
+    }
+
+    private fun initDispose() {
+        if (::disposableObserver.isInitialized)
+            disposableObserver.dispose()
     }
 
     private fun initOnBackPress() {

@@ -57,7 +57,7 @@
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/margin_53"
                     android:paddingRight="@dimen/margin_53"
-                    android:text="@string/next_question"
+                    android:text="@string/submit"
                     android:textColor="@color/white"
                     android:visibility="gone"
                     app:backgroundTint="@color/color_blue_button"

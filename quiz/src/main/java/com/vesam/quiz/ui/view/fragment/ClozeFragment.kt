@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.NestedScrollView
@@ -33,7 +34,6 @@ import com.vesam.quiz.utils.tools.ThrowableTools
 import com.vesam.quiz.utils.tools.ToastTools
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
@@ -135,12 +135,40 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initStateShowSubmitBtn(size: Int) = when (questionClozeAdapter.itemCount) {
-        size -> binding.btnState.visibility = View.VISIBLE
+        size -> initShowSubmitBtn()
         else -> binding.btnState.visibility = View.GONE
     }
 
     private fun initShowSubmitBtn() {
         binding.btnState.visibility = View.VISIBLE
+        initScrollDown()
+    }
+
+    private fun initScrollDown() {
+        binding.nestedScrollView.post { binding.nestedScrollView.smoothScrollTo(0, binding.nestedScrollView.getChildAt(0).height) }
+        binding.nestedScrollView.viewTreeObserver
+            .addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    val scrollViewHeight: Int = binding.nestedScrollView.height
+                    if (scrollViewHeight > 0) {
+                        binding.nestedScrollView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                        val lastView: View =
+                            binding.nestedScrollView.getChildAt(binding.nestedScrollView.childCount - 1)
+                        val lastViewBottom: Int =
+                            lastView.bottom + binding.nestedScrollView.paddingBottom
+                        val deltaScrollY: Int =
+                            lastViewBottom - scrollViewHeight - binding.nestedScrollView.scrollY
+                        binding.nestedScrollView.smoothScrollBy(
+                            0,
+                            deltaScrollY
+                        )
+                        binding.nestedScrollView.scrollBy(
+                            0,
+                            deltaScrollY
+                        )
+                    }
+                }
+            })
     }
 
     private fun initRemoveId(id: Int) {
@@ -159,7 +187,7 @@ class ClozeFragment : Fragment() {
 
     private fun initOnClick() {
         binding.lnClozeImageLayout.lnImage.setOnClickListener { initFullScreenImage(false) }
-        binding.lnQuestion.setOnClickListener { initFullScreenImage(true)}
+        binding.lnQuestion.setOnClickListener { initFullScreenImage(true) }
         binding.btnState.setOnClickListener { initStateBtn() }
     }
 
@@ -287,14 +315,15 @@ class ClozeFragment : Fragment() {
         var differentTime = time.toLong() * 8
         progressBar.max = differentTime.toInt()
         progressBar.progress = differentTime.toInt()
-        disposableObserver=Observable.intervalRange(0, differentTime, 0, 50, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete(onClickListener::onClickListener)
-            .subscribe {
-                differentTime--
-                progressBar.progress = (differentTime).toInt()
-            }
+        disposableObserver =
+            Observable.intervalRange(0, differentTime, 0, 50, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete(onClickListener::onClickListener)
+                .subscribe {
+                    differentTime--
+                    progressBar.progress = (differentTime).toInt()
+                }
 
     }
 

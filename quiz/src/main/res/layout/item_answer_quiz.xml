@@ -2,17 +2,16 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_56"
+    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/margin_4"
     android:layout_marginBottom="@dimen/margin_4"
-    android:background="@drawable/rounded_white_shape"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@id/lnParentStart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -22,6 +21,8 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_18"
+            android:layout_marginBottom="@dimen/margin_18"
             android:layout_weight="1"
             android:gravity="center_vertical|start"
             android:textColor="@color/color_grey_text_answer"
@@ -52,6 +53,8 @@
         android:id="@id/lnParentEnd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginBottom="@dimen/margin_18"
         android:gravity="center_vertical"
         android:visibility="gone"
         android:orientation="horizontal">
@@ -82,6 +85,8 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginEnd="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_18"
+            android:layout_marginBottom="@dimen/margin_18"
             android:layout_weight="1"
             android:gravity="center_vertical|start"
             android:textColor="@color/color_grey_text_answer"

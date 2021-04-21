@@ -233,7 +233,7 @@ class ClozeFragment : Fragment() {
     private fun initFullScreenImage(isShowBtnClose: Boolean) {
         val urlContent: String = binding.lnClozeImageLayout.lnImage.tag as String
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val fragmentFullscreenSlider = FragmentFullscreenSlider()
+        val fragmentFullscreenSlider = FragmentFullscreenSliderImageCloze()
         val transaction = fragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
         transaction.add(android.R.id.content, fragmentFullscreenSlider).addToBackStack(null)

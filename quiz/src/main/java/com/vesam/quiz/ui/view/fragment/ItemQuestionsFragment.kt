@@ -65,15 +65,9 @@ class ItemQuestionsFragment : DialogFragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        initResumeVideo()
-    }
-
     override fun onPause() {
         super.onPause()
         initPauseVideo()
-
     }
 
     override fun onDestroy() {
@@ -295,11 +289,7 @@ class ItemQuestionsFragment : DialogFragment() {
     private fun initVideoView(content: String) {
         val proxy: HttpProxyCacheServer = getProxy(requireContext())
         val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnAnswerVideoLayout.viewVideo.setVideoPath(proxyUrl)
-        val mediaController = MediaController(requireContext())
-        binding.lnAnswerVideoLayout.viewVideo.setMediaController(mediaController)
-        mediaController.setAnchorView(binding.lnAnswerVideoLayout.viewVideo)
-        binding.lnAnswerVideoLayout.viewVideo.start()
+        binding.lnAnswerVideoLayout.videoView.setVideoPath(proxyUrl).player.start()
     }
 
     private fun initStopVideoQuestion() {
@@ -308,21 +298,17 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initStopVideo() {
-        if (binding.lnAnswerVideoLayout.viewVideo.isPlaying)
-            binding.lnAnswerVideoLayout.viewVideo.pause()
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.pause()
         if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
             binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
     }
 
     private fun initPauseVideo() {
-        if (binding.lnAnswerVideoLayout.viewVideo.isPlaying)
-            binding.lnAnswerVideoLayout.viewVideo.pause()
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.pause()
         if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
             binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
-    }
-
-    private fun initResumeVideo() {
-        binding.lnAnswerVideoLayout.viewVideo.resume()
     }
 
     private fun initListFormatSound(answer: Answer) {

@@ -21,7 +21,7 @@
 13-->[:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:22-63
 14
 15    <application
-15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:6:5-33:19
+15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:6:5-28:19
 16        android:name="com.vesam.quiz.utils.application.AppQuiz"
 16-->[:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-64
 17        android:allowBackup="true"
@@ -64,8 +64,8 @@
 36-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:22:9-26:57
 37            android:name="com.vesam.quiz.ui.view.activity.QuizActivity"
 37-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:22:19-64
-38            android:configChanges="keyboard|keyboardHidden|orientation"
-38-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:23:13-72
+38            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+38-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:23:13-83
 39            android:screenOrientation="portrait"
 39-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:24:13-49
 40            android:theme="@style/Theme.QuizSystem"
@@ -73,37 +73,36 @@
 41            android:windowSoftInputMode="adjustResize" />
 41-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:26:13-55
 42        <activity
-42-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:28:9-32:57
-43            android:name="com.vesam.quiz.ui.view.activity.ClozeActivity"
-43-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:28:19-65
-44            android:configChanges="keyboard|keyboardHidden|orientation"
-44-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:29:13-72
-45            android:screenOrientation="portrait"
-45-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:30:13-49
-46            android:theme="@style/Theme.QuizSystem"
-46-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:31:13-52
-47            android:windowSoftInputMode="adjustResize" />
-47-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:32:13-55
-48
-49        <service
-49-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:25:9-28:40
-50            android:name="androidx.room.MultiInstanceInvalidationService"
-50-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:26:13-74
-51            android:directBootAware="true"
-51-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:27:13-43
-52            android:exported="false" />
-52-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:28:13-37
-53
-54        <provider
-54-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-55            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-55-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-56            android:authorities="com.vesam.quiz.lifecycle-process"
-56-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-57            android:exported="false"
-57-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-58            android:multiprocess="true" />
-58-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-59    </application>
-60
-61</manifest>
+42-->[com.github.tcking:giraffeplayer2:0.1.25] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\2c74f8abf97fff2f95aa3f3581f8f9e8\jetified-giraffeplayer2-0.1.25\AndroidManifest.xml:19:9-22:54
+43            android:name="tcking.github.com.giraffeplayer2.PlayerActivity"
+43-->[com.github.tcking:giraffeplayer2:0.1.25] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\2c74f8abf97fff2f95aa3f3581f8f9e8\jetified-giraffeplayer2-0.1.25\AndroidManifest.xml:20:13-75
+44            android:configChanges="keyboardHidden|orientation|screenSize"
+44-->[com.github.tcking:giraffeplayer2:0.1.25] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\2c74f8abf97fff2f95aa3f3581f8f9e8\jetified-giraffeplayer2-0.1.25\AndroidManifest.xml:21:13-74
+45            android:screenOrientation="fullSensor" />
+45-->[com.github.tcking:giraffeplayer2:0.1.25] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\2c74f8abf97fff2f95aa3f3581f8f9e8\jetified-giraffeplayer2-0.1.25\AndroidManifest.xml:22:13-51
+46
+47        <service android:name="tcking.github.com.giraffeplayer2.LazyLoadManager" />
+47-->[com.github.tcking:giraffeplayer2:0.1.25] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\2c74f8abf97fff2f95aa3f3581f8f9e8\jetified-giraffeplayer2-0.1.25\AndroidManifest.xml:24:9-84
+47-->[com.github.tcking:giraffeplayer2:0.1.25] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\2c74f8abf97fff2f95aa3f3581f8f9e8\jetified-giraffeplayer2-0.1.25\AndroidManifest.xml:24:18-81
+48        <service
+48-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:25:9-28:40
+49            android:name="androidx.room.MultiInstanceInvalidationService"
+49-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:26:13-74
+50            android:directBootAware="true"
+50-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:27:13-43
+51            android:exported="false" />
+51-->[androidx.room:room-runtime:2.2.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c79bccabbdbdedc2508a9a296f8ff7b3\room-runtime-2.2.6\AndroidManifest.xml:28:13-37
+52
+53        <provider
+53-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+54            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+54-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+55            android:authorities="com.vesam.quiz.lifecycle-process"
+55-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+56            android:exported="false"
+56-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+57            android:multiprocess="true" />
+57-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\86dcaaad5b3490e72e97f20f84b959c9\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+58    </application>
+59
+60</manifest>

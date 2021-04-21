@@ -11,30 +11,45 @@
         android:id="@id/lnParentStart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:background="@drawable/rounded_white_shape"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
-        <TextView
-            android:id="@id/txtTitleStart"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_6"
             android:layout_marginEnd="@dimen/margin_16"
-            android:layout_marginTop="@dimen/margin_18"
-            android:layout_marginBottom="@dimen/margin_18"
+            android:layout_marginBottom="@dimen/margin_6"
             android:layout_weight="1"
-            android:gravity="center_vertical|start"
-            android:textColor="@color/color_grey_text_answer"
-            android:textSize="@dimen/text_size_14"/>
+            android:gravity="center_vertical|start">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@id/radioButtonStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false" />
+
+            <TextView
+                android:id="@id/txtTitleStart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_grey_text_answer"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@id/imgBtnSuccessStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
-            android:visibility="gone"
             android:padding="@dimen/margin_16"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_success"
             app:tint="@color/greenColor" />
 
@@ -43,8 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
-            android:visibility="gone"
             android:padding="@dimen/margin_16"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_un_success"
             app:tint="@color/redColor" />
     </LinearLayout>
@@ -53,19 +68,18 @@
         android:id="@id/lnParentEnd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_18"
-        android:layout_marginBottom="@dimen/margin_18"
+        android:background="@drawable/rounded_white_shape"
         android:gravity="center_vertical"
-        android:visibility="gone"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@id/imgBtnSuccessEnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
-            android:visibility="gone"
             android:padding="@dimen/margin_16"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_success"
             app:tint="@color/greenColor" />
 
@@ -74,23 +88,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
-            android:visibility="gone"
             android:padding="@dimen/margin_16"
+            android:visibility="gone"
             app:srcCompat="@drawable/ic_un_success"
             app:tint="@color/redColor" />
 
-        <TextView
-            android:id="@id/txtTitleEnd"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_6"
             android:layout_marginEnd="@dimen/margin_16"
-            android:layout_marginTop="@dimen/margin_18"
-            android:layout_marginBottom="@dimen/margin_18"
+            android:layout_marginBottom="@dimen/margin_6"
             android:layout_weight="1"
-            android:gravity="center_vertical|start"
-            android:textColor="@color/color_grey_text_answer"
-            android:textSize="@dimen/text_size_14"/>
+            android:gravity="center_vertical|end">
+
+            <TextView
+                android:id="@id/txtTitleEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_grey_text_answer"
+                android:textSize="@dimen/text_size_14" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@id/radioButtonEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false" />
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -35,6 +35,7 @@
     <color name="background_x1">#9B9B9B</color>
     <color name="background_x2">#F3F3F3</color>
     <color name="black">#FF000000</color>
+    <color name="blackTransparent">#07DDDDDD</color>
     <color name="blue_100">#BBDEFB</color>
     <color name="blue_200">#90CAF9</color>
     <color name="blue_300">#64B5F6</color>
@@ -70,21 +71,30 @@
     <color name="brown_800">#4E342E</color>
     <color name="brown_900">#3E2723</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorGrayLight">#D3D7D8</color>
     <color name="colorGreyDashGap">#A5A5A5</color>
     <color name="colorOrange">@android:color/holo_orange_dark</color>
     <color name="color_blue_button">#11CCFF</color>
     <color name="color_blue_item">#F7FFF9</color>
     <color name="color_blue_item_answer_cloze">#0ECBFF</color>
+    <color name="color_blue_light_radio_button">#EAFAFF</color>
     <color name="color_blue_question">#03D8FF</color>
+    <color name="color_blue_radio_button">#11CCFF</color>
     <color name="color_blue_sound">#03D8FF</color>
     <color name="color_blue_title_cloze">#22C1FE</color>
+    <color name="color_default_light_radio_button">#FF888888</color>
+    <color name="color_default_radio_button">#FF888888</color>
     <color name="color_green_item">#E5EDE6</color>
+    <color name="color_green_light_radio_button">#E5EDE6</color>
     <color name="color_green_progress">#4DA248</color>
+    <color name="color_green_radio_button">#15B337</color>
     <color name="color_green_state_correct_sound">#15B337</color>
     <color name="color_grey_item">#FDFCFC</color>
     <color name="color_grey_text_answer">#727272</color>
     <color name="color_grey_white_shape">#E1E1E1</color>
     <color name="color_red_item">#FFEEEB</color>
+    <color name="color_red_light_radio_button">#FFEEEB</color>
+    <color name="color_red_radio_button">#DB403C</color>
     <color name="color_red_state_correct_sound">#DB403C</color>
     <color name="color_stroke_blue_state_correct_sound">#45BFC1</color>
     <color name="color_success_green_progress">#09A62B</color>
@@ -134,6 +144,7 @@
     <color name="deep_purple_A200">#7C4DFF</color>
     <color name="deep_purple_A400">#651FFF</color>
     <color name="deep_purple_A700">#6200EA</color>
+    <color name="dialog_bg">#bc000000</color>
     <color name="divider">#BDBDBD</color>
     <color name="filter_color">#330000ff</color>
     <color name="greenColor">#23cc97</color>
@@ -361,7 +372,7 @@
     <dimen name="margin_120">120dp</dimen>
     <dimen name="margin_15">15dp</dimen>
     <dimen name="margin_150">150dp</dimen>
-    <dimen name="margin_16">16sp</dimen>
+    <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_160">160dp</dimen>
     <dimen name="margin_170">170dp</dimen>
     <dimen name="margin_18">18dp</dimen>
@@ -395,6 +406,8 @@
     <dimen name="margin_90">90dp</dimen>
     <dimen name="nav_header_height">200dp</dimen>
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="player_base_height">220dp</dimen>
+    <dimen name="player_controller_base_height">40dp</dimen>
     <dimen name="spacing_large">15dp</dimen>
     <dimen name="spacing_medium">5dp</dimen>
     <dimen name="spacing_middle">10dp</dimen>
@@ -436,6 +449,7 @@
     <item name="cvAnswerVideo" type="id"/>
     <item name="cvQuestionVideo" type="id"/>
     <item name="cvVideo" type="id"/>
+    <item name="imageView" type="id"/>
     <item name="imgAnswer" type="id"/>
     <item name="imgAnswerPauseSound" type="id"/>
     <item name="imgAnswerPlaySound" type="id"/>
@@ -492,6 +506,7 @@
     <item name="lottieAnimationView" type="id"/>
     <item name="nestedContent" type="id"/>
     <item name="nestedScrollView" type="id"/>
+    <item name="niceVideoPlayer" type="id"/>
     <item name="progressClozeTest" type="id"/>
     <item name="progressPeriodImageTime" type="id"/>
     <item name="progressPeriodSoundTime" type="id"/>
@@ -500,6 +515,8 @@
     <item name="progressStepByStep" type="id"/>
     <item name="progressSuccess" type="id"/>
     <item name="progressUnSuccess" type="id"/>
+    <item name="radioButtonEnd" type="id"/>
+    <item name="radioButtonStart" type="id"/>
     <item name="rcAnswerCloze" type="id"/>
     <item name="rcCloze" type="id"/>
     <item name="rcQuestion" type="id"/>
@@ -521,11 +538,13 @@
     <item name="txtUnSuccessAnswer" type="id"/>
     <item name="txtUnSuccessTitleEnd" type="id"/>
     <item name="txtUnSuccessTitleStart" type="id"/>
+    <item name="videoView" type="id"/>
     <item name="viewVideo" type="id"/>
     <item name="viewVideoQuestion" type="id"/>
     <item name="waveformSeekBarAnswer" type="id"/>
     <item name="waveformSeekBarQuestion" type="id"/>
     <item name="zoomView" type="id"/>
+    <string name="buffer">Buffer...</string>
     <string name="cloze_results">Cloze Result</string>
     <string name="correct">Correct</string>
     <string name="current_history_question">Current History Question</string>
@@ -536,17 +555,29 @@
     <string name="no_connection">No Connection</string>
     <string name="not_cloze">The exam is not cloze</string>
     <string name="not_multimedia">The exam is not multimedia</string>
+    <string name="play">Play</string>
+    <string name="playback_error_please_try_again">Playback error, please try again</string>
     <string name="proceed">Proceed</string>
     <string name="question">Question</string>
     <string name="question_number">Question Number</string>
     <string name="quiz_list">Quiz List</string>
     <string name="retest">Retest</string>
+    <string name="retry">Retry</string>
+    <string name="sd_720">SD 270P</string>
+    <string name="share_it">Share Tt</string>
     <string name="submit">Submit</string>
     <string name="time_out">Time Out</string>
+    <string name="title_retry">Try Again!</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        
         <item name="android:windowDisablePreview">true</item>
+    </style>
+    <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@color/dialog_bg</item>
     </style>
     <declare-styleable name="MultiProgressBar">
         <attr format="color" name="lineColor"/>

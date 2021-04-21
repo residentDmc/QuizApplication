@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
 import com.vesam.quiz.R
-import com.vesam.quiz.databinding.FragmentFullscreenSliderBinding
+import com.vesam.quiz.databinding.FragmentFullscreenSliderImageClozeBinding
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import org.koin.android.ext.android.inject
 
 @Suppress("DEPRECATION")
-class FragmentFullscreenSlider : DialogFragment() {
+class FragmentFullscreenSliderImageCloze : DialogFragment() {
 
-    private lateinit var binding: FragmentFullscreenSliderBinding
+    private lateinit var binding: FragmentFullscreenSliderImageClozeBinding
     private val handelErrorTools: HandelErrorTools by inject()
     private val glideTools: GlideTools by inject()
     private lateinit var image: String
@@ -38,7 +38,7 @@ class FragmentFullscreenSlider : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = FragmentFullscreenSliderBinding.inflate(layoutInflater)
+        binding = FragmentFullscreenSliderImageClozeBinding.inflate(layoutInflater)
         return binding.root
     }
 

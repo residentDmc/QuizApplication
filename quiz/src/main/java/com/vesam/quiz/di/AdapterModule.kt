@@ -6,7 +6,7 @@ import com.vesam.quiz.ui.view.adapter.question_cloze_list.QuestionClozeAdapter
 import org.koin.dsl.module
 
 val adapterModule = module {
-    single { return@single AnswerAdapter() }
+    single { return@single AnswerAdapter(get()) }
     single { return@single AnswerResultAdapter(get()) }
     single { return@single QuestionClozeAdapter(get(),get()) }
 }

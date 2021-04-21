@@ -41,6 +41,7 @@ color background
 color background_x1
 color background_x2
 color black
+color blackTransparent
 color blue_100
 color blue_200
 color blue_300
@@ -76,21 +77,30 @@ color brown_700
 color brown_800
 color brown_900
 color colorBlack
+color colorGrayLight
 color colorGreyDashGap
 color colorOrange
 color color_blue_button
 color color_blue_item
 color color_blue_item_answer_cloze
+color color_blue_light_radio_button
 color color_blue_question
+color color_blue_radio_button
 color color_blue_sound
 color color_blue_title_cloze
+color color_default_light_radio_button
+color color_default_radio_button
 color color_green_item
+color color_green_light_radio_button
 color color_green_progress
+color color_green_radio_button
 color color_green_state_correct_sound
 color color_grey_item
 color color_grey_text_answer
 color color_grey_white_shape
 color color_red_item
+color color_red_light_radio_button
+color color_red_radio_button
 color color_red_state_correct_sound
 color color_stroke_blue_state_correct_sound
 color color_success_green_progress
@@ -140,6 +150,7 @@ color deep_purple_A100
 color deep_purple_A200
 color deep_purple_A400
 color deep_purple_A700
+color dialog_bg
 color divider
 color filter_color
 color greenColor
@@ -401,6 +412,8 @@ dimen margin_80
 dimen margin_90
 dimen nav_header_height
 dimen nav_header_vertical_spacing
+dimen player_base_height
+dimen player_controller_base_height
 dimen spacing_large
 dimen spacing_medium
 dimen spacing_middle
@@ -484,6 +497,7 @@ id cvAnswerVideo
 id cvQuestionVideo
 id cvVideo
 id image
+id imageView
 id imgAnswer
 id imgAnswerPauseSound
 id imgAnswerPlaySound
@@ -547,6 +561,7 @@ id nav_graph
 id nav_graph.xml
 id nestedContent
 id nestedScrollView
+id niceVideoPlayer
 id progressBar
 id progressClozeTest
 id progressPeriodImageTime
@@ -557,6 +572,8 @@ id progressStepByStep
 id progressSuccess
 id progressUnSuccess
 id questionsFragment
+id radioButtonEnd
+id radioButtonStart
 id rcAnswerCloze
 id rcCloze
 id rcQuestion
@@ -583,6 +600,7 @@ id txtTitleStart
 id txtUnSuccessAnswer
 id txtUnSuccessTitleEnd
 id txtUnSuccessTitleStart
+id videoView
 id viewVideo
 id viewVideoQuestion
 id waveformSeekBarAnswer
@@ -595,7 +613,8 @@ layout answer_text_layout
 layout answer_video_layout
 layout cloze_image_layout
 layout fragment_cloze
-layout fragment_fullscreen_slider
+layout fragment_fullscreen_slider_image_cloze
+layout fragment_fullscreen_slider_image_question
 layout fragment_item_questions
 layout fragment_loading
 layout fragment_questions
@@ -619,6 +638,7 @@ layout toast_layout
 navigation nav_graph_cloze
 navigation nav_graph_quiz
 raw quiz
+string buffer
 string cloze_results
 string correct
 string current_history_question
@@ -629,15 +649,22 @@ string next_question
 string no_connection
 string not_cloze
 string not_multimedia
+string play
+string playback_error_please_try_again
 string proceed
 string question
 string question_number
 string quiz_list
 string retest
+string retry
+string sd_720
+string share_it
 string submit
 string time_out
+string title_retry
 string wrong
 style AppTheme
+style dialog_change_clarity
 styleable MultiProgressBar lineColor progressColor progressSteps progressPadding progressWidth progressPercents isNeedRestoreProgress singleDisplayedTime
 styleable ZoomageView zoomage_zoomable zoomage_translatable zoomage_restrictBounds zoomage_animateOnReset zoomage_doubleTapToZoom zoomage_doubleTapToZoomScaleFactor zoomage_autoCenter zoomage_minScale zoomage_maxScale zoomage_autoResetMode
 xml network_security_config

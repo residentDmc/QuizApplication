@@ -1,6 +1,7 @@
 package com.vesam.quiz.ui.view.adapter.answer_quiz_list
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.interfaces.OnClickListenerAny
-import com.vesam.quiz.utils.build_config.BuildConfig
-import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FINAL_LEVEL
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.HOW_DISPLAY_CORRECT_ANSWER
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.STEP_BY_STEP
 import com.vesam.quiz.utils.extention.checkPersianCharacter
+import com.vesam.quiz.utils.extention.setCircleColor
 import java.util.*
 
-class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
+class AnswerAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolderAnswer>() {
 
     lateinit var onClickListenerAny: OnClickListenerAny
     private val list: ArrayList<Answer> = ArrayList()
@@ -50,10 +50,11 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
         viewHolderAnswer.lnParentEnd.setOnClickListener { onClickListenerAny.onClickListener(answer) }
     }
 
-    private fun initType(viewHolderAnswer: ViewHolderAnswer, answer: Answer) = when (HOW_DISPLAY_CORRECT_ANSWER) {
-        STEP_BY_STEP -> initStateCorrect(viewHolderAnswer, answer)
-        else -> initStateCheckLevel(viewHolderAnswer, answer)
-    }
+    private fun initType(viewHolderAnswer: ViewHolderAnswer, answer: Answer) =
+        when (HOW_DISPLAY_CORRECT_ANSWER) {
+            STEP_BY_STEP -> initStateCorrect(viewHolderAnswer, answer)
+            else -> initStateCheckLevel(viewHolderAnswer, answer)
+        }
 
     private fun initStateCheckLevel(viewHolderAnswer: ViewHolderAnswer, answer: Answer) {
         when (answer.isCheckLevel) {
@@ -65,11 +66,23 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     private fun initDefaultCheckLevel(viewHolderAnswer: ViewHolderAnswer) {
         viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.radioButtonStart.isChecked = false
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonStart,
+            R.color.color_default_radio_button
+        )
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_white_shape)
 
 
         viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.radioButtonEnd.isChecked = false
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonEnd,
+            R.color.color_default_radio_button
+        )
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_white_shape)
 
     }
@@ -77,11 +90,23 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     private fun initCheckLevel(viewHolderAnswer: ViewHolderAnswer) {
         viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.radioButtonStart.isChecked = true
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonStart,
+            R.color.color_blue_radio_button
+        )
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_blue_shape)
 
 
         viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.radioButtonEnd.isChecked = true
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonEnd,
+            R.color.color_default_radio_button
+        )
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_blue_shape)
 
     }
@@ -102,11 +127,23 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     private fun initDefault(viewHolderAnswer: ViewHolderAnswer) {
         viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.radioButtonStart.isChecked = false
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonStart,
+            R.color.color_default_radio_button
+        )
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_white_shape)
 
 
         viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.radioButtonEnd.isChecked = false
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonEnd,
+            R.color.color_default_radio_button
+        )
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_white_shape)
 
     }
@@ -114,20 +151,46 @@ class AnswerAdapter : RecyclerView.Adapter<ViewHolderAnswer>() {
     private fun initSuccess(viewHolderAnswer: ViewHolderAnswer) {
         viewHolderAnswer.imgBtnSuccessStart.visibility = View.VISIBLE
         viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.GONE
+        viewHolderAnswer.radioButtonStart.isChecked = true
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonStart,
+            R.color.color_green_radio_button
+        )
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_green_shape)
 
         viewHolderAnswer.imgBtnSuccessEnd.visibility = View.VISIBLE
         viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.GONE
+        viewHolderAnswer.radioButtonEnd.isChecked = true
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonEnd,
+            R.color.color_green_radio_button
+        )
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_green_shape)
     }
+
+
 
     private fun initUnSuccess(viewHolderAnswer: ViewHolderAnswer) {
         viewHolderAnswer.imgBtnSuccessStart.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessStart.visibility = View.VISIBLE
+        viewHolderAnswer.radioButtonStart.isChecked = true
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonStart,
+            R.color.color_red_radio_button
+        )
         viewHolderAnswer.lnParentStart.setBackgroundResource(R.drawable.rounded_red_shape)
 
         viewHolderAnswer.imgBtnSuccessEnd.visibility = View.GONE
         viewHolderAnswer.imgBtnUnSuccessEnd.visibility = View.VISIBLE
+        viewHolderAnswer.radioButtonEnd.isChecked = true
+        setCircleColor(
+            context,
+            viewHolderAnswer.radioButtonEnd,
+            R.color.color_red_radio_button
+        )
         viewHolderAnswer.lnParentEnd.setBackgroundResource(R.drawable.rounded_red_shape)
     }
 

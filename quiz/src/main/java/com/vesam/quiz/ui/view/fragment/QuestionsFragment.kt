@@ -15,6 +15,8 @@ import android.widget.MediaController
 import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.danikula.videocache.HttpProxyCacheServer
@@ -53,13 +55,14 @@ import com.vesam.quiz.utils.tools.ThrowableTools
 import com.vesam.quiz.utils.tools.ToastTools
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 
 class QuestionsFragment : Fragment() {
@@ -96,10 +99,6 @@ class QuestionsFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        initResumeVideo()
-    }
 
     override fun onPause() {
         super.onPause()
@@ -126,6 +125,30 @@ class QuestionsFragment : Fragment() {
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.setOnClickListener { initPauseSoundQuestion() }
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.setOnClickListener { initPlaySoundAnswer() }
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.setOnClickListener { initPauseSoundAnswer() }
+        binding.lnQuestionImageLayout.imgQuestion.setOnClickListener { initQuestionImage() }
+        binding.lnAnswerImageLayout.imgAnswer.setOnClickListener { initAnswerImage() }
+    }
+
+    private fun initQuestionImage() {
+        val urlContent: String = binding.lnQuestionImageLayout.imgQuestion.tag as String
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentFullscreenSlider = FragmentFullscreenSliderImageQuestion()
+        val transaction = fragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        transaction.add(android.R.id.content, fragmentFullscreenSlider).addToBackStack(null)
+            .commit()
+        fragmentFullscreenSlider.setImage(urlContent)
+    }
+
+    private fun initAnswerImage() {
+        val urlContent: String = binding.lnAnswerImageLayout.imgAnswer.tag as String
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentFullscreenSlider = FragmentFullscreenSliderImageQuestion()
+        val transaction = fragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        transaction.add(android.R.id.content, fragmentFullscreenSlider).addToBackStack(null)
+            .commit()
+        fragmentFullscreenSlider.setImage(urlContent)
     }
 
     private fun initRequestQuiz() {
@@ -253,10 +276,15 @@ class QuestionsFragment : Fragment() {
     private fun initQuestionFormatImage(question: Question) {
         initShowQuestionFormatImage()
         initPeriodImageTime(question)
+        initSetTag(binding.lnQuestionImageLayout.imgQuestion, question.quizDescription.urlContent)
         glideTools.displayImageOriginal(
             binding.lnQuestionImageLayout.imgQuestion,
             question.quizDescription.urlContent
         )
+    }
+
+    private fun initSetTag(view: View, urlContent: String) {
+        view.tag = urlContent
     }
 
     private fun initQuestionFormatAudio(question: Question) {
@@ -331,11 +359,7 @@ class QuestionsFragment : Fragment() {
     private fun initVideoQuestion(content: String) {
         val proxy: HttpProxyCacheServer = getProxy(requireContext())
         val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(proxyUrl)
-        val mediaController = MediaController(requireContext())
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setMediaController(mediaController)
-        mediaController.setAnchorView(binding.lnQuestionVideoLayout.viewVideoQuestion)
-        binding.lnQuestionVideoLayout.viewVideoQuestion.start()
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(proxyUrl).player.start()
     }
 
     private fun initQuestionFormatText(question: Question) {
@@ -663,39 +687,47 @@ class QuestionsFragment : Fragment() {
     private fun initVideoView(content: String) {
         val proxy: HttpProxyCacheServer = getProxy(requireContext())
         val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnAnswerVideoLayout.viewVideo.setVideoPath(proxyUrl)
-        val mediaController = MediaController(requireContext())
-        binding.lnAnswerVideoLayout.viewVideo.setMediaController(mediaController)
-        mediaController.setAnchorView(binding.lnAnswerVideoLayout.viewVideo)
-        binding.lnAnswerVideoLayout.viewVideo.start()
+        binding.lnAnswerVideoLayout.videoView.setVideoPath(proxyUrl).player.start()
     }
 
     private fun initStopVideoQuestion() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        try {
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
+        }catch (e:Exception){
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initStopVideo() {
-        if (binding.lnAnswerVideoLayout.viewVideo.isPlaying)
-            binding.lnAnswerVideoLayout.viewVideo.pause()
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        try {
+            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.player.pause()
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
+        }catch (e:Exception){
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initStopQuestionVideo() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        try {
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
+        }catch (e:Exception){
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initPauseVideo() {
-        if (binding.lnAnswerVideoLayout.viewVideo.isPlaying)
-            binding.lnAnswerVideoLayout.viewVideo.pause()
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
-    }
-
-    private fun initResumeVideo() {
-        binding.lnAnswerVideoLayout.viewVideo.resume()
+        try {
+            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.player.pause()
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
+        }catch (e:Exception){
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initListFormatSound(answer: Answer) {
@@ -709,6 +741,7 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatImage()
         initStopQuestionVideo()
+        initSetTag(binding.lnAnswerImageLayout.imgAnswer, answer.description.urlContent)
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,
             answer.description.urlContent
@@ -737,14 +770,15 @@ class QuestionsFragment : Fragment() {
         var differentTime = time.toLong() * 8
         progressBar.max = differentTime.toInt()
         progressBar.progress = differentTime.toInt()
-        disposableObserver= Observable.intervalRange(0, differentTime, 0, 50, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnComplete(onClickListener::onClickListener)
-            .subscribe {
-                differentTime--
-                progressBar.progress = (differentTime).toInt()
-            }
+        disposableObserver =
+            Observable.intervalRange(0, differentTime, 0, 50, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete(onClickListener::onClickListener)
+                .subscribe {
+                    differentTime--
+                    progressBar.progress = (differentTime).toInt()
+                }
     }
 
     private fun initDispose() {

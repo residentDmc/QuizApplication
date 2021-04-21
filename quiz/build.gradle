@@ -120,8 +120,11 @@ dependencies {
     implementation 'com.danikula:videocache:2.7.1'
 
     // navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    // giraffeplayer2
+    implementation 'com.github.tcking:giraffeplayer2:0.1.25'
 
     // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"

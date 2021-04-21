@@ -20,16 +20,11 @@
         </activity>
 
         <activity android:name=".ui.view.activity.QuizActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.QuizSystem"
             android:windowSoftInputMode="adjustResize"/>
 
-        <activity android:name=".ui.view.activity.ClozeActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.QuizSystem"
-            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

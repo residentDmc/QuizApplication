@@ -108,6 +108,11 @@
     <item name="txtCounter" type="id" />
     <item name="lnQuestion" type="id" />
     <item name="lnItemQuestion" type="id" />
+    <item name="radioButtonEnd" type="id" />
+    <item name="radioButtonStart" type="id" />
+    <item name="imageView" type="id" />
+    <item name="niceVideoPlayer" type="id" />
+    <item name="videoView" type="id" />
 
 
 </resources>

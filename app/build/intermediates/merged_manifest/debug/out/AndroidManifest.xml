@@ -35,17 +35,16 @@
         </activity>
         <activity
             android:name="com.vesam.quiz.ui.view.activity.QuizActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.QuizSystem"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.vesam.quiz.ui.view.activity.ClozeActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.QuizSystem"
-            android:windowSoftInputMode="adjustResize" />
+            android:name="tcking.github.com.giraffeplayer2.PlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="fullSensor" />
 
+        <service android:name="tcking.github.com.giraffeplayer2.LazyLoadManager" />
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
             android:directBootAware="true"

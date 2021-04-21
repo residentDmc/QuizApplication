@@ -17,6 +17,7 @@
     <color name="color_green_item">#E5EDE6</color>
     <color name="color_green_progress">#4DA248</color>
     <color name="colorOrange">@android:color/holo_orange_dark</color>
+    <color name="colorGrayLight">#D3D7D8</color>
     <color name="color_success_green_progress">#09A62B</color>
     <color name="color_text_success_green_progress">#09A62B</color>
     <color name="color_un_success_red_progress">#C6071F</color>
@@ -33,6 +34,18 @@
     <color name="color_stroke_blue_state_correct_sound">#45BFC1</color>
     <color name="color_green_state_correct_sound">#15B337</color>
     <color name="color_red_state_correct_sound">#DB403C</color>
+
+    <color name="color_blue_radio_button">#11CCFF</color>
+    <color name="color_red_radio_button">#DB403C</color>
+    <color name="color_green_radio_button">#15B337</color>
+    <color name="color_default_radio_button">#FF888888</color>
+
+    <color name="color_blue_light_radio_button">#EAFAFF</color>
+    <color name="color_red_light_radio_button">#FFEEEB</color>
+    <color name="color_green_light_radio_button">#E5EDE6</color>
+    <color name="color_default_light_radio_button">#FF888888</color>
+
+    <color name="dialog_bg">#bc000000</color>
 
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
@@ -354,6 +367,7 @@
     <color name="yellowColor">#ffcc00</color>
     <color name="whiteDialogColor">#00EEF4F6</color>
     <color name="filter_color">#330000ff</color>
+    <color name="blackTransparent">#07DDDDDD</color>
 
 
     <!--for random color generator -->

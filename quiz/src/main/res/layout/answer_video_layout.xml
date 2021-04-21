@@ -6,17 +6,19 @@
     android:layout_width="@dimen/margin_250"
     android:layout_height="@dimen/margin_150"
     android:layout_gravity="center_horizontal"
-    android:visibility="gone"
+    android:visibility="visible"
     app:cardCornerRadius="@dimen/margin_8">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#000000">
-        <VideoView
-            android:id="@id/viewVideo"
+
+        <tcking.github.com.giraffeplayer2.VideoView
+            android:id="@id/videoView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
     </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

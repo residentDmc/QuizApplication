@@ -76,4 +76,6 @@
     <dimen name="margin_48">48dp</dimen>
     <dimen name="margin_160">160dp</dimen>
     <dimen name="margin_170">170dp</dimen>
+    <dimen name="player_controller_base_height">40dp</dimen>
+    <dimen name="player_base_height">220dp</dimen>
 </resources>

@@ -113,6 +113,7 @@
     <item name="imageView" type="id" />
     <item name="niceVideoPlayer" type="id" />
     <item name="videoView" type="id" />
+    <item name="lnLoading" type="id" />
 
 
 </resources>

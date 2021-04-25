@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
-MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-25:12
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
+MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-22:12
 MERGED from [androidx.databinding:databinding-adapters:4.1.3] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\c99e5452dfdf5d306bd375b654b80280\databinding-adapters-4.1.3\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:4.1.3] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\5bdd1a70f042a0e9e356f1f94c5a9742\databinding-runtime-4.1.3\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:viewbinding:4.1.3] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\64a11fdc278561de5d78e5bcbe5e658a\jetified-viewbinding-4.1.3\AndroidManifest.xml:17:1-22:12
@@ -88,29 +88,29 @@ MERGED from [com.danikula:videocache:2.7.1] C:\Users\Android\.gradle\caches\tran
 MERGED from [com.github.tcking:viewquery:1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\d8668c23aa6f785bae8630b496d3cbe5\jetified-viewquery-1.6\AndroidManifest.xml:2:1-16:12
 MERGED from [com.github.tcking:ijkplayer-java:0.8.8] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\9971b0e6fda0cb1cfe5e2e954b558bc3\jetified-ijkplayer-java-0.8.8\AndroidManifest.xml:2:1-9:12
 MERGED from [com.github.tcking:ijkplayer-armv7a:0.8.8] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\955e30224d1deaf616de43c3f87c41b0\jetified-ijkplayer-armv7a-0.8.8\AndroidManifest.xml:2:1-9:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
+INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:4:5-29
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-30:12
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:1-31:12
 		INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:6:5-28:19
-MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-23:31
-MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-23:31
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:6:5-29:19
+MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-20:31
+MERGED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:5-20:31
 MERGED from [org.koin:koin-android-viewmodel:2.1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\70ac830a1ec989a9a781137d4c0d7e7c\jetified-koin-android-viewmodel-2.1.6\AndroidManifest.xml:7:5-20
 MERGED from [org.koin:koin-android-viewmodel:2.1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\70ac830a1ec989a9a781137d4c0d7e7c\jetified-koin-android-viewmodel-2.1.6\AndroidManifest.xml:7:5-20
 MERGED from [org.koin:koin-android-scope:2.1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\5a22b6cafd56648e9274312b00fd73f2\jetified-koin-android-scope-2.1.6\AndroidManifest.xml:7:5-20
@@ -142,55 +142,55 @@ MERGED from [com.danikula:videocache:2.7.1] C:\Users\Android\.gradle\caches\tran
 MERGED from [com.github.tcking:viewquery:1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\d8668c23aa6f785bae8630b496d3cbe5\jetified-viewquery-1.6\AndroidManifest.xml:11:5-14:19
 MERGED from [com.github.tcking:viewquery:1.6] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\d8668c23aa6f785bae8630b496d3cbe5\jetified-viewquery-1.6\AndroidManifest.xml:11:5-14:19
 	android:requestLegacyExternalStorage
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-52
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-52
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] C:\Users\Android\.gradle\caches\transforms-2\files-2.1\68600a5be4367d49d50b69b04e4caf8f\core-1.3.2\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:9:9-41
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:10:9-41
 	android:roundIcon
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:10:9-54
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:11:9-54
 	tools:targetApi
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:9-28
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-28
 	android:icon
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:8:9-43
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:9:9-43
 	android:allowBackup
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:7:9-35
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:8:9-35
 	android:networkSecurityConfig
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-69
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-69
 	android:theme
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:12:9-48
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:13:9-48
 	android:usesCleartextTraffic
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-44
+		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-44
 	android:name
-		ADDED from [:quiz] C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-64
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:7:9-66
 activity#com.vesam.quiz.ui.view.activity.MainActivity
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:14:9-20:20
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:15:9-21:20
 	android:name
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:14:19-64
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:15:19-64
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:15:13-19:29
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:16:13-20:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:16:17-69
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:17:17-69
 	android:name
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:16:25-66
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:17:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:18:17-77
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:19:17-77
 	android:name
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:18:27-74
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:19:27-74
 activity#com.vesam.quiz.ui.view.activity.QuizActivity
-ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:22:9-26:57
+ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:23:9-27:57
 	android:screenOrientation
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:24:13-49
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:25:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:26:13-55
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:27:13-55
 	android:configChanges
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:23:13-83
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:24:13-83
 	android:theme
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:25:13-52
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:26:13-52
 	android:name
-		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:22:19-64
+		ADDED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:23:19-64
 uses-sdk
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml

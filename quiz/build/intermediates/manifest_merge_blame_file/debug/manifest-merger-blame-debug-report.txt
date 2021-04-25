@@ -22,20 +22,14 @@
 14-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:8:22-63
 15
 16    <application
-16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:5-17:30
-17        android:name="com.vesam.quiz.utils.application.AppQuiz"
-17-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:11:9-50
-18        android:allowBackup="true"
-18-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:12:9-35
-19        android:networkSecurityConfig="@xml/network_security_config"
-19-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:13:9-69
-20        android:requestLegacyExternalStorage="true"
-20-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-52
-21        android:supportsRtl="true"
-21-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:15:9-35
-22        android:usesCleartextTraffic="true"
-22-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:16:9-44
-23        tools:targetApi="n" />
-23-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:9-28
-24
-25</manifest>
+16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:5-14:30
+17        android:networkSecurityConfig="@xml/network_security_config"
+17-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:11:9-69
+18        android:requestLegacyExternalStorage="true"
+18-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:12:9-52
+19        android:usesCleartextTraffic="true"
+19-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:13:9-44
+20        tools:targetApi="n" />
+20-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-28
+21
+22</manifest>

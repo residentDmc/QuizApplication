@@ -2225,6 +2225,7 @@ int drawable ic_fullscreen_exit_white_36dp 0x0
 int drawable ic_fullscreen_white_24dp 0x0
 int drawable ic_keyboard_black_24dp 0x0
 int drawable ic_load_pic 0x0
+int drawable ic_loading 0x0
 int drawable ic_logo 0x0
 int drawable ic_mtrl_checked_circle 0x0
 int drawable ic_mtrl_chip_checked_black 0x0
@@ -2565,6 +2566,7 @@ int id lnClozeImageLayout 0x0
 int id lnCurrentHistoryQuestion 0x0
 int id lnImage 0x0
 int id lnItemQuestion 0x0
+int id lnLoading 0x0
 int id lnNavFragment 0x0
 int id lnNextQuestion 0x0
 int id lnParent 0x0

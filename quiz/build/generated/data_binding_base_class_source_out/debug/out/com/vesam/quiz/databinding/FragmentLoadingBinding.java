@@ -25,6 +25,9 @@ public final class FragmentLoadingBinding implements ViewBinding {
   public final ImageView imgLogo;
 
   @NonNull
+  public final ConstraintLayout lnParent;
+
+  @NonNull
   public final LottieAnimationView lottieAnimationView;
 
   @NonNull
@@ -34,10 +37,11 @@ public final class FragmentLoadingBinding implements ViewBinding {
   public final TextView txtProgress;
 
   private FragmentLoadingBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imgLogo,
-      @NonNull LottieAnimationView lottieAnimationView,
+      @NonNull ConstraintLayout lnParent, @NonNull LottieAnimationView lottieAnimationView,
       @NonNull ContentLoadingProgressBar progressBar, @NonNull TextView txtProgress) {
     this.rootView = rootView;
     this.imgLogo = imgLogo;
+    this.lnParent = lnParent;
     this.lottieAnimationView = lottieAnimationView;
     this.progressBar = progressBar;
     this.txtProgress = txtProgress;
@@ -76,6 +80,8 @@ public final class FragmentLoadingBinding implements ViewBinding {
         break missingId;
       }
 
+      ConstraintLayout lnParent = (ConstraintLayout) rootView;
+
       id = R.id.lottieAnimationView;
       LottieAnimationView lottieAnimationView = rootView.findViewById(id);
       if (lottieAnimationView == null) {
@@ -94,8 +100,8 @@ public final class FragmentLoadingBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentLoadingBinding((ConstraintLayout) rootView, imgLogo, lottieAnimationView,
-          progressBar, txtProgress);
+      return new FragmentLoadingBinding((ConstraintLayout) rootView, imgLogo, lnParent,
+          lottieAnimationView, progressBar, txtProgress);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

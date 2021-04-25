@@ -11,7 +11,6 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
 import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -30,7 +29,7 @@ import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
-import com.vesam.quiz.utils.application.AppQuiz
+import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.CORRECT_ANSWER
@@ -798,6 +797,6 @@ class QuestionsFragment : Fragment() {
         initPauseVideo()
         releaseMPQuestion()
         releaseMPAnswer()
-        AppQuiz.activity.finish()
+        BaseActivity.activity.finish()
     }
 }

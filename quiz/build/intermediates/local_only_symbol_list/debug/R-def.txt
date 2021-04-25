@@ -448,6 +448,7 @@ drawable ic_forward
 drawable ic_fullscreen
 drawable ic_fullscreen_exit
 drawable ic_load_pic
+drawable ic_loading
 drawable ic_logo
 drawable ic_next_question
 drawable ic_no_pic_detail
@@ -530,6 +531,7 @@ id lnClozeImageLayout
 id lnCurrentHistoryQuestion
 id lnImage
 id lnItemQuestion
+id lnLoading
 id lnNavFragment
 id lnNextQuestion
 id lnParent

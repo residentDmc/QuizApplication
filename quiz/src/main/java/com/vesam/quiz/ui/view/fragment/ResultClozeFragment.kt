@@ -10,10 +10,8 @@ import androidx.activity.OnBackPressedCallback
 import com.google.gson.Gson
 import com.vesam.quiz.data.model.set_quiz_result.ResponseSetQuizResultModel
 import com.vesam.quiz.databinding.FragmentResultClozeBinding
-import com.vesam.quiz.ui.view.fragment.ItemQuestionsFragment
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
-import com.vesam.quiz.utils.application.AppQuiz
-import com.vesam.quiz.utils.build_config.BuildConfig
+import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
@@ -73,7 +71,7 @@ class ResultClozeFragment : Fragment() {
     }
 
     private fun initFinishActivity() {
-        AppQuiz.activity.finish()
+        BaseActivity.activity.finish()
     }
 
 

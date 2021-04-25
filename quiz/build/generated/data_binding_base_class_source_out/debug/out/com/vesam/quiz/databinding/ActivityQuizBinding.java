@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -20,16 +19,16 @@ public final class ActivityQuizBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout lnNavFragment;
+  public final FragmentLoadingBinding lnLoading;
 
   @NonNull
-  public final ProgressBar progressBar;
+  public final LinearLayout lnNavFragment;
 
   private ActivityQuizBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout lnNavFragment, @NonNull ProgressBar progressBar) {
+      @NonNull FragmentLoadingBinding lnLoading, @NonNull LinearLayout lnNavFragment) {
     this.rootView = rootView;
+    this.lnLoading = lnLoading;
     this.lnNavFragment = lnNavFragment;
-    this.progressBar = progressBar;
   }
 
   @Override
@@ -59,19 +58,20 @@ public final class ActivityQuizBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.lnLoading;
+      View lnLoading = rootView.findViewById(id);
+      if (lnLoading == null) {
+        break missingId;
+      }
+      FragmentLoadingBinding binding_lnLoading = FragmentLoadingBinding.bind(lnLoading);
+
       id = R.id.lnNavFragment;
       LinearLayout lnNavFragment = rootView.findViewById(id);
       if (lnNavFragment == null) {
         break missingId;
       }
 
-      id = R.id.progressBar;
-      ProgressBar progressBar = rootView.findViewById(id);
-      if (progressBar == null) {
-        break missingId;
-      }
-
-      return new ActivityQuizBinding((ConstraintLayout) rootView, lnNavFragment, progressBar);
+      return new ActivityQuizBinding((ConstraintLayout) rootView, binding_lnLoading, lnNavFragment);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

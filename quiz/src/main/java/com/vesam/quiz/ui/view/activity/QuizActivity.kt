@@ -5,24 +5,19 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.ProgressBar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
 import com.vesam.quiz.databinding.ActivityQuizBinding
-import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
-import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.base.BaseActivity
-import com.vesam.quiz.utils.build_config.BuildConfig
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BASE_URL
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BASE_URL_IMAGE_AND_VIDEO_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MULTIMEDIA
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
-import com.vesam.quiz.utils.option.Option
 import com.vesam.quiz.utils.option.Option.Companion.BUNDLE_BASE_URL_IMAGE_AND_VIDEO_VALUE
 import com.vesam.quiz.utils.option.Option.Companion.BUNDLE_BASE_URL_VALUE
 import com.vesam.quiz.utils.option.Option.Companion.BUNDLE_QUIZ_ID_VALUE
@@ -31,13 +26,8 @@ import com.vesam.quiz.utils.option.Option.Companion.BUNDLE_USER_UUID_VALUE
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
 import com.vesam.quiz.utils.tools.ToastTools
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.concurrent.TimeUnit
 
 class QuizActivity : BaseActivity() {
 
@@ -78,7 +68,7 @@ class QuizActivity : BaseActivity() {
     }
 
     private fun initNavController() {
-        navController = Navigation.findNavController(AppQuiz.activity, R.id.my_nav_fragment)
+        navController = Navigation.findNavController(this, R.id.my_nav_fragment)
     }
 
     private fun initRequest() {

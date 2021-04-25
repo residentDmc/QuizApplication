@@ -9,7 +9,7 @@ import com.vesam.quiz.R
 import com.vesam.quiz.data.api.ApiHelper
 import com.vesam.quiz.data.api.ApiHelperImpl
 import com.vesam.quiz.data.api.ApiService
-import com.vesam.quiz.utils.base.BaseActivity.Companion.activity
+import com.vesam.quiz.utils.application.AppQuiz.Companion.activity
 import com.vesam.quiz.utils.type_converters.ToStringConverterFactory
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.APPLICATION_JSON_HEADER
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BASE_URL

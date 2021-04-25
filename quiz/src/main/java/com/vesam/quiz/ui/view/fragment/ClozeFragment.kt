@@ -23,6 +23,7 @@ import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.question_cloze_list.QuestionClozeAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
+import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
@@ -341,6 +342,6 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initOnBackPressed() {
-        BaseActivity.activity.finish()
+        AppQuiz.activity.finish()
     }
 }

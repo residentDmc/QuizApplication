@@ -29,6 +29,7 @@ import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
+import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
@@ -797,6 +798,6 @@ class QuestionsFragment : Fragment() {
         initPauseVideo()
         releaseMPQuestion()
         releaseMPAnswer()
-        BaseActivity.activity.finish()
+        AppQuiz.activity.finish()
     }
 }

@@ -100,6 +100,7 @@ class AnswerClozeAdapter(private val context: Context) :
         viewHolderAnswerCloze.lnParentEnd.setBackgroundResource(R.drawable.rounded_white_shape)
         viewHolderAnswerCloze.lnParentStart.setBackgroundResource(R.drawable.rounded_white_shape)
         viewHolderAnswerCloze.radioButtonStart.isChecked = false
+        viewHolderAnswerCloze.radioButtonEnd.isChecked = false
         setCircleColor(
             context,
             viewHolderAnswerCloze.radioButtonStart,
@@ -119,6 +120,7 @@ class AnswerClozeAdapter(private val context: Context) :
         viewHolderAnswerCloze.lnParentStart.setBackgroundResource(R.drawable.rounded_blue_item_answer_cloze_shape)
         viewHolderAnswerCloze.lnParentEnd.setBackgroundResource(R.drawable.rounded_blue_item_answer_cloze_shape)
         viewHolderAnswerCloze.radioButtonStart.isChecked = true
+        viewHolderAnswerCloze.radioButtonEnd.isChecked = true
         setCircleColor(
             context,
             viewHolderAnswerCloze.radioButtonStart,
@@ -138,6 +140,7 @@ class AnswerClozeAdapter(private val context: Context) :
         viewHolderAnswerCloze.lnParentEnd.setBackgroundResource(R.drawable.rounded_correct_shape)
         viewHolderAnswerCloze.lnParentStart.setBackgroundResource(R.drawable.rounded_correct_shape)
         viewHolderAnswerCloze.radioButtonStart.isChecked = true
+        viewHolderAnswerCloze.radioButtonEnd.isChecked = true
         setCircleColor(
             context,
             viewHolderAnswerCloze.radioButtonStart,
@@ -157,6 +160,7 @@ class AnswerClozeAdapter(private val context: Context) :
         viewHolderAnswerCloze.lnParentStart.setBackgroundResource(R.drawable.rounded_in_correct_shape)
         viewHolderAnswerCloze.lnParentEnd.setBackgroundResource(R.drawable.rounded_in_correct_shape)
         viewHolderAnswerCloze.radioButtonStart.isChecked = true
+        viewHolderAnswerCloze.radioButtonEnd.isChecked = true
         setCircleColor(
             context,
             viewHolderAnswerCloze.radioButtonStart,

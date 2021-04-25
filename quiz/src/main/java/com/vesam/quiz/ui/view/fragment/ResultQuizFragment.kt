@@ -17,6 +17,7 @@ import com.vesam.quiz.databinding.FragmentResultQuizBinding
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_quiz_result_list.AnswerResultAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
+import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
@@ -108,7 +109,7 @@ class ResultQuizFragment : Fragment() {
     }
 
     private fun initFinishActivity() {
-        BaseActivity.activity.finish()
+        AppQuiz.activity.finish()
     }
 
 

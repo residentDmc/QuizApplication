@@ -1,2 +1,2 @@
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
--keep class com.vesam.quiz.ui.view.application.AppQuiz { <init>(); }
+-keep class com.vesam.quiz.ui.view.application.AppParent { <init>(); }

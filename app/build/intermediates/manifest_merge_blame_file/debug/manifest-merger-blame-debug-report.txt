@@ -22,8 +22,8 @@
 14
 15    <application
 15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:6:5-29:19
-16        android:name="com.vesam.quiz.ui.view.application.AppQuiz"
-16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:7:9-66
+16        android:name="com.vesam.quiz.ui.view.application.AppParent"
+16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:7:9-54
 17        android:allowBackup="true"
 17-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\app\src\main\AndroidManifest.xml:8:9-35
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"

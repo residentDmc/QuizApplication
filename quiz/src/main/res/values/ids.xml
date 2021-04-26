@@ -114,6 +114,10 @@
     <item name="niceVideoPlayer" type="id" />
     <item name="videoView" type="id" />
     <item name="lnLoading" type="id" />
+    <item name="lnProgress" type="id" />
+    <item name="txtProgress" type="id" />
+    <item name="progressBar" type="id" />
+    <item name="progressBarLoading" type="id" />
 
 
 </resources>

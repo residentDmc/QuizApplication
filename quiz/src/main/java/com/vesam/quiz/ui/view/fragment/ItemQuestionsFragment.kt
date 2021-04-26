@@ -14,7 +14,6 @@ import android.widget.MediaController
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.danikula.videocache.HttpProxyCacheServer
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.Question
@@ -24,7 +23,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
 import com.vesam.quiz.utils.extention.checkPersianCharacter
-import com.vesam.quiz.utils.extention.getProxy
+import com.vesam.quiz.utils.extention.initFindFileInStorage
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import org.koin.android.ext.android.inject
@@ -40,7 +39,7 @@ class ItemQuestionsFragment : DialogFragment() {
     private lateinit var question: Question
 
     fun setQuestion(question: Question) {
-        this.question=question
+        this.question = question
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,16 +116,17 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initQuestionFormatAudio(question: Question) {
         initShowQuestionFormatSound()
-        initSoundQuestion(question.quizDescription.urlContent)
+        initSoundQuestion(question.uriPath)
     }
 
     private fun initSoundQuestion(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
         releaseMPQuestion()
         mediaPlayerQuestion = MediaPlayer()
         try {
-            mediaPlayerQuestion.setDataSource(requireContext(), Uri.parse(proxyUrl))
+            mediaPlayerQuestion.setDataSource(
+                requireContext(),
+                Uri.parse(initFindFileInStorage(content))
+            )
             mediaPlayerQuestion.prepare()
             mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {
@@ -177,13 +177,11 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initQuestionFormatVideo(question: Question) {
         initShowQuestionFormatVideo()
-        initVideoQuestion(question.quizDescription.urlContent)
+        initVideoQuestion(question.uriPath)
     }
 
     private fun initVideoQuestion(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(proxyUrl)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(initFindFileInStorage(content))
         val mediaController = MediaController(requireContext())
         binding.lnQuestionVideoLayout.viewVideoQuestion.setMediaController(mediaController)
         mediaController.setAnchorView(binding.lnQuestionVideoLayout.viewVideoQuestion)
@@ -283,13 +281,11 @@ class ItemQuestionsFragment : DialogFragment() {
     private fun initListFormatVideo(answer: Answer) {
         initShowAnswerFormatVideo()
         initStopVideoQuestion()
-        initVideoView(answer.description.urlContent)
+        initVideoView(answer.uriPath)
     }
 
     private fun initVideoView(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnAnswerVideoLayout.videoView.setVideoPath(proxyUrl).player.start()
+        binding.lnAnswerVideoLayout.videoView.setVideoPath(initFindFileInStorage(content)).player.start()
     }
 
     private fun initStopVideoQuestion() {
@@ -298,22 +294,30 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initStopVideo() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.pause()
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        try {
+            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.player.pause()
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initPauseVideo() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.pause()
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        try {
+            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.player.pause()
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initListFormatSound(answer: Answer) {
         initShowAnswerFormatSound()
-        initSoundAnswer(answer.description.urlContent)
+        initSoundAnswer(answer.uriPath)
     }
 
     private fun initListFormatImage(answer: Answer) {
@@ -325,12 +329,13 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initSoundAnswer(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
         releaseMPAnswer()
         try {
             mediaPlayerAnswer = MediaPlayer()
-            mediaPlayerAnswer.setDataSource(requireContext(), Uri.parse(proxyUrl))
+            mediaPlayerAnswer.setDataSource(
+                requireContext(),
+                Uri.parse(initFindFileInStorage(content))
+            )
             mediaPlayerQuestion.prepare()
             mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {

@@ -51,10 +51,14 @@ class BuildConfig {
         const val FORMAT_VIDEO = "video"
         const val FORMAT_AUDIO = "audio"
         const val FORMAT_IMAGE = "image"
+        const val MIM_TYPE_VIDEO = ".mp4"
+        const val MIM_TYPE_AUDIO = ".mp3"
 
         // state type
         const val MULTIMEDIA = "multimedia"
         const val CLOZE = "cloze"
+
+        const val QUIZ_FOLDER = "quiz_folder"
 
         // sound
         const val CORRECT_ANSWER = "correct_answer.wav"
@@ -63,6 +67,10 @@ class BuildConfig {
 
         // animation
         const val HIDE_THRESHOLD = 20
+
+
+        //permission
+        const val REQUEST_ID_MULTIPLE_PERMISSIONS = 4
 
         // state question
         const val STEP_BY_STEP = "stepByStep"

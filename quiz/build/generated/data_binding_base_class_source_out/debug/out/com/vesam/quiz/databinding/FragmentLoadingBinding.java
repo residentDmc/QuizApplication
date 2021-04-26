@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,22 +30,36 @@ public final class FragmentLoadingBinding implements ViewBinding {
   public final ConstraintLayout lnParent;
 
   @NonNull
+  public final LinearLayout lnProgress;
+
+  @NonNull
   public final LottieAnimationView lottieAnimationView;
 
   @NonNull
   public final ContentLoadingProgressBar progressBar;
 
   @NonNull
+  public final ProgressBar progressBarLoading;
+
+  @NonNull
+  public final TextView txtCounter;
+
+  @NonNull
   public final TextView txtProgress;
 
   private FragmentLoadingBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView imgLogo,
-      @NonNull ConstraintLayout lnParent, @NonNull LottieAnimationView lottieAnimationView,
-      @NonNull ContentLoadingProgressBar progressBar, @NonNull TextView txtProgress) {
+      @NonNull ConstraintLayout lnParent, @NonNull LinearLayout lnProgress,
+      @NonNull LottieAnimationView lottieAnimationView,
+      @NonNull ContentLoadingProgressBar progressBar, @NonNull ProgressBar progressBarLoading,
+      @NonNull TextView txtCounter, @NonNull TextView txtProgress) {
     this.rootView = rootView;
     this.imgLogo = imgLogo;
     this.lnParent = lnParent;
+    this.lnProgress = lnProgress;
     this.lottieAnimationView = lottieAnimationView;
     this.progressBar = progressBar;
+    this.progressBarLoading = progressBarLoading;
+    this.txtCounter = txtCounter;
     this.txtProgress = txtProgress;
   }
 
@@ -82,6 +98,12 @@ public final class FragmentLoadingBinding implements ViewBinding {
 
       ConstraintLayout lnParent = (ConstraintLayout) rootView;
 
+      id = R.id.lnProgress;
+      LinearLayout lnProgress = rootView.findViewById(id);
+      if (lnProgress == null) {
+        break missingId;
+      }
+
       id = R.id.lottieAnimationView;
       LottieAnimationView lottieAnimationView = rootView.findViewById(id);
       if (lottieAnimationView == null) {
@@ -94,14 +116,26 @@ public final class FragmentLoadingBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBarLoading;
+      ProgressBar progressBarLoading = rootView.findViewById(id);
+      if (progressBarLoading == null) {
+        break missingId;
+      }
+
+      id = R.id.txtCounter;
+      TextView txtCounter = rootView.findViewById(id);
+      if (txtCounter == null) {
+        break missingId;
+      }
+
       id = R.id.txtProgress;
       TextView txtProgress = rootView.findViewById(id);
       if (txtProgress == null) {
         break missingId;
       }
 
-      return new FragmentLoadingBinding((ConstraintLayout) rootView, imgLogo, lnParent,
-          lottieAnimationView, progressBar, txtProgress);
+      return new FragmentLoadingBinding((ConstraintLayout) rootView, imgLogo, lnParent, lnProgress,
+          lottieAnimationView, progressBar, progressBarLoading, txtCounter, txtProgress);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

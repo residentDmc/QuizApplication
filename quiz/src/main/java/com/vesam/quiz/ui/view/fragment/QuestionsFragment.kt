@@ -18,7 +18,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.danikula.videocache.HttpProxyCacheServer
 import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
@@ -30,7 +29,6 @@ import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
-import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.CORRECT_ANSWER
@@ -47,7 +45,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALU
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.WRONG_ANSWER
 import com.vesam.quiz.utils.extention.checkPersianCharacter
-import com.vesam.quiz.utils.extention.getProxy
+import com.vesam.quiz.utils.extention.initFindFileInStorage
 import com.vesam.quiz.utils.music_manager.BeatBox
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
@@ -291,16 +289,14 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowQuestionFormatSound()
         initPeriodSoundTime(question)
-        initSoundQuestion(question.quizDescription.urlContent)
+        initSoundQuestion(question.uriPath)
     }
 
     private fun initSoundQuestion(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
         releaseMPQuestion()
         mediaPlayerQuestion = MediaPlayer()
         try {
-            mediaPlayerQuestion.setDataSource(requireContext(), Uri.parse(proxyUrl))
+            mediaPlayerQuestion.setDataSource(requireContext(), Uri.parse(initFindFileInStorage(content)))
             mediaPlayerQuestion.prepare()
             mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {
@@ -353,13 +349,11 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowQuestionFormatVideo()
         initPeriodVideoTime(question)
-        initVideoQuestion(question.quizDescription.urlContent)
+        initVideoQuestion(question.uriPath)
     }
 
     private fun initVideoQuestion(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(proxyUrl).player.start()
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(initFindFileInStorage(content)).player.start()
     }
 
     private fun initQuestionFormatText(question: Question) {
@@ -680,21 +674,20 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatVideo()
         initStopVideoQuestion()
-        initVideoView(answer.description.urlContent)
+        initVideoView(answer.uriPath)
         initStopQuestionVideo()
     }
 
     private fun initVideoView(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
-        binding.lnAnswerVideoLayout.videoView.setVideoPath(proxyUrl).player.start()
+        val url=initFindFileInStorage(content)
+        binding.lnAnswerVideoLayout.videoView.setVideoPath(url).player.start()
     }
 
     private fun initStopVideoQuestion() {
         try {
             if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
                 binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
@@ -705,7 +698,7 @@ class QuestionsFragment : Fragment() {
                 binding.lnAnswerVideoLayout.videoView.player.pause()
             if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
                 binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
@@ -714,7 +707,7 @@ class QuestionsFragment : Fragment() {
         try {
             if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
                 binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
@@ -725,7 +718,7 @@ class QuestionsFragment : Fragment() {
                 binding.lnAnswerVideoLayout.videoView.player.pause()
             if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
                 binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
@@ -733,7 +726,7 @@ class QuestionsFragment : Fragment() {
     private fun initListFormatSound(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatSound()
-        initSoundAnswer(answer.description.urlContent)
+        initSoundAnswer(answer.uriPath)
         initStopQuestionVideo()
     }
 
@@ -749,12 +742,10 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initSoundAnswer(content: String) {
-        val proxy: HttpProxyCacheServer = getProxy(requireContext())
-        val proxyUrl = proxy.getProxyUrl(content)
         releaseMPAnswer()
         try {
             mediaPlayerAnswer = MediaPlayer()
-            mediaPlayerAnswer.setDataSource(requireContext(), Uri.parse(proxyUrl))
+            mediaPlayerAnswer.setDataSource(requireContext(), Uri.parse(initFindFileInStorage(content)))
             mediaPlayerQuestion.prepare()
             mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {

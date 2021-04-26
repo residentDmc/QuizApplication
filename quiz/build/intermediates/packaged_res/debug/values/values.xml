@@ -491,6 +491,7 @@
     <item name="lnParentSuccessStart" type="id"/>
     <item name="lnParentUnSuccessEnd" type="id"/>
     <item name="lnParentUnSuccessStart" type="id"/>
+    <item name="lnProgress" type="id"/>
     <item name="lnQuestion" type="id"/>
     <item name="lnQuestionImageLayout" type="id"/>
     <item name="lnQuestionResultEnd" type="id"/>
@@ -508,6 +509,8 @@
     <item name="nestedContent" type="id"/>
     <item name="nestedScrollView" type="id"/>
     <item name="niceVideoPlayer" type="id"/>
+    <item name="progressBar" type="id"/>
+    <item name="progressBarLoading" type="id"/>
     <item name="progressClozeTest" type="id"/>
     <item name="progressPeriodImageTime" type="id"/>
     <item name="progressPeriodSoundTime" type="id"/>
@@ -528,6 +531,7 @@
     <item name="txtDefaultTitleEnd" type="id"/>
     <item name="txtDefaultTitleStart" type="id"/>
     <item name="txtNumber" type="id"/>
+    <item name="txtProgress" type="id"/>
     <item name="txtQuestion" type="id"/>
     <item name="txtSuccessQuestionResult" type="id"/>
     <item name="txtSuccessTitleEnd" type="id"/>
@@ -571,7 +575,7 @@
     <string name="title_retry">Try Again!</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        
+        <!-- Customize your theme here. -->
         <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">

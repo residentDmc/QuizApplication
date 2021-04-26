@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/txtProgress"
+        app:layout_constraintBottom_toTopOf="@+id/lnProgress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgLogo"
@@ -37,33 +37,57 @@
         app:lottie_scale="0.1"
         app:lottie_rawRes="@raw/quiz" />
 
-    <TextView
-        android:id="@id/txtProgress"
+    <LinearLayout
+        android:id="@id/lnProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:lineSpacingExtra="@dimen/line_spacing_extra_5"
-        android:textColor="@color/accent"
-        android:textSize="@dimen/text_size_16"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"/>
-
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@id/progressBar"
-        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-        android:layout_width="@dimen/margin_330"
-        android:layout_height="@dimen/margin_15"
-        android:progress="0"
-        android:max="100"
-        android:progressDrawable="@drawable/progressbar_blue"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@id/txtProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:lineSpacingExtra="@dimen/line_spacing_extra_5"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@id/txtCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:lineSpacingExtra="@dimen/line_spacing_extra_5"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/text_size_14" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@id/progressBar"
+            style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+            android:layout_width="@dimen/margin_330"
+            android:layout_height="@dimen/margin_15"
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@drawable/progressbar_blue" />
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@id/progressBarLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lnProgress"
+        app:layout_constraintEnd_toEndOf="@+id/lnProgress"
+        app:layout_constraintStart_toStartOf="@+id/lnProgress"
+        app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

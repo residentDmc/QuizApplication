@@ -1,5 +1,8 @@
 package com.vesam.quiz.data.api
 
+import okhttp3.ResponseBody
+import retrofit2.Response
+
 class ApiHelperImpl(private val apiService: ApiService) : ApiHelper {
 
     // quiz ----------------------------------

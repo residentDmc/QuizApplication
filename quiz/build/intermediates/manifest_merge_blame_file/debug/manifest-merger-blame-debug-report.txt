@@ -12,24 +12,36 @@
 10-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml
 11
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:6:5-79
+12-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:6:5-78
 12-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:6:22-76
-13    <uses-permission android:name="android.permission.INTERNET" />
-13-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:7:5-67
-13-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:7:22-64
-14    <uses-permission android:name="android.permission.VIBRATE" />
-14-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:8:5-65
-14-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:8:22-63
-15
-16    <application
-16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:5-14:30
-17        android:networkSecurityConfig="@xml/network_security_config"
-17-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:11:9-69
-18        android:requestLegacyExternalStorage="true"
-18-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:12:9-52
-19        android:usesCleartextTraffic="true"
-19-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:13:9-44
-20        tools:targetApi="n" />
-20-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-28
-21
-22</manifest>
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:7:5-75
+13-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:7:22-73
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:8:5-66
+14-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:8:22-64
+15    <uses-permission android:name="android.permission.VIBRATE" />
+15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:9:5-66
+15-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:9:22-63
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:5-80
+16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:22-77
+17    <uses-permission
+17-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:12:5-14:40
+18        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+18-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:13:9-65
+19        tools:ignore="ScopedStorage" />
+19-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-37
+20
+21    <application
+21-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:16:5-20:30
+22        android:networkSecurityConfig="@xml/network_security_config"
+22-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:9-69
+23        android:requestLegacyExternalStorage="true"
+23-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:18:9-52
+24        android:usesCleartextTraffic="true"
+24-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:19:9-44
+25        tools:targetApi="n" />
+25-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:20:9-28
+26
+27</manifest>

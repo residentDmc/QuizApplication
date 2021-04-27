@@ -57,7 +57,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
@@ -97,17 +96,66 @@ class QuestionsFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        initResumeVideo()
+        initResumeSound()
+    }
+
+    private fun initResumeSound() {
+        initPlaySoundQuestion()
+        initPlaySoundAnswer()
+    }
+
+    private fun initResumeVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoResumed()
+            else -> initShowQuestionVideoResumed()
+        }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowAnswerVideoResumed() {
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.onActivityResumed()
+    }
+
+    private fun initShowQuestionVideoResumed() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityResumed()
+    }
 
     override fun onPause() {
         super.onPause()
         initPauseVideo()
-
+        initPauseSoundAnswer()
+        initPauseSoundQuestion()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        releaseMPQuestion()
-        releaseMPAnswer()
+        initDestroyVideo()
+        initStateAudio()
+    }
+
+    private fun initDestroyVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoDestroy()
+            else -> initShowQuestionVideoDestroy()
+        }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowQuestionVideoDestroy() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityDestroyed()
+    }
+
+    private fun initShowAnswerVideoDestroy() {
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.onActivityDestroyed()
     }
 
     private fun initAction() {
@@ -210,10 +258,14 @@ class QuestionsFragment : Fragment() {
 
     private fun initResult() {
         initPauseVideo()
-        releaseMPQuestion()
-        releaseMPAnswer()
+        initStateAudio()
         initResultFragment()
     }
+
+    private fun initStateAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {
+            View.VISIBLE -> releaseMPAnswer()
+            else -> releaseMPQuestion()
+        }
 
     private fun initResultFragment() {
         val executor = Executors.newSingleThreadScheduledExecutor()
@@ -296,7 +348,13 @@ class QuestionsFragment : Fragment() {
         releaseMPQuestion()
         mediaPlayerQuestion = MediaPlayer()
         try {
-            mediaPlayerQuestion.setDataSource(requireContext(), Uri.parse(initFindFileInStorage(content)))
+            mediaPlayerQuestion.setDataSource(
+                requireContext(), Uri.parse(
+                    initFindFileInStorage(
+                        content
+                    )
+                )
+            )
             mediaPlayerQuestion.prepare()
             mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {
@@ -324,24 +382,42 @@ class QuestionsFragment : Fragment() {
     private fun initPlaySoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
+        if (::mediaPlayerQuestion.isInitialized)
         mediaPlayerQuestion.start()
     }
 
     private fun initPauseSoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.GONE
-        mediaPlayerQuestion.pause()
+        if (::mediaPlayerQuestion.isInitialized){
+            try {
+                if (mediaPlayerQuestion.isPlaying) {
+                    mediaPlayerQuestion.pause()
+                }
+            } catch (e: Exception) {
+                handelErrorTools.handelError(e)
+            }
+        }
     }
 
     private fun initPlaySoundAnswer() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
-        mediaPlayerAnswer.start()
+        if (::mediaPlayerAnswer.isInitialized){
+            try {
+                if (mediaPlayerAnswer.isPlaying) {
+                    mediaPlayerAnswer.pause()
+                }
+            } catch (e: Exception) {
+                handelErrorTools.handelError(e)
+            }
+        }
     }
 
     private fun initPauseSoundAnswer() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
+        if (::mediaPlayerAnswer.isInitialized)
         mediaPlayerAnswer.pause()
     }
 
@@ -679,7 +755,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initVideoView(content: String) {
-        val url=initFindFileInStorage(content)
+        val url = initFindFileInStorage(content)
         binding.lnAnswerVideoLayout.videoView.setVideoPath(url).player.start()
     }
 
@@ -692,35 +768,51 @@ class QuestionsFragment : Fragment() {
         }
     }
 
-    private fun initStopVideo() {
-        try {
-            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.pause()
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        } catch (e: Exception) {
-            handelErrorTools.handelError(e)
+    private fun initStopVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoStop()
+            else -> initShowQuestionVideoStop()
         }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowQuestionVideoStop() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+    }
+
+    private fun initShowAnswerVideoStop() {
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
     }
 
     private fun initStopQuestionVideo() {
         try {
             if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
 
-    private fun initPauseVideo() {
-        try {
-            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.pause()
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        } catch (e: Exception) {
-            handelErrorTools.handelError(e)
+    private fun initPauseVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoPause()
+            else -> initShowQuestionVideoPause()
         }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowQuestionVideoPause() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+    }
+
+    private fun initShowAnswerVideoPause() {
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
     }
 
     private fun initListFormatSound(answer: Answer) {
@@ -745,7 +837,13 @@ class QuestionsFragment : Fragment() {
         releaseMPAnswer()
         try {
             mediaPlayerAnswer = MediaPlayer()
-            mediaPlayerAnswer.setDataSource(requireContext(), Uri.parse(initFindFileInStorage(content)))
+            mediaPlayerAnswer.setDataSource(
+                requireContext(), Uri.parse(
+                    initFindFileInStorage(
+                        content
+                    )
+                )
+            )
             mediaPlayerQuestion.prepare()
             mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {
@@ -786,9 +884,15 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initOnBackPressed() {
+        when (requireActivity().requestedOrientation) {
+            1 -> initNormalScreen()
+        }
+    }
+
+
+    private fun initNormalScreen() {
         initPauseVideo()
-        releaseMPQuestion()
-        releaseMPAnswer()
+        initStateAudio()
         AppQuiz.activity.finish()
     }
 }

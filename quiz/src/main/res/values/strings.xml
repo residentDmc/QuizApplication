@@ -25,4 +25,5 @@
     <string name="share_it">Share Tt</string>
     <string name="playback_error_please_try_again">Playback error, please try again</string>
     <string name="retry">Retry</string>
+    <string name="file_not_found">File not found</string>
 </resources>

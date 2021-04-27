@@ -554,6 +554,7 @@
     <string name="correct">Correct</string>
     <string name="current_history_question">Current History Question</string>
     <string name="exam_results">Exam Results</string>
+    <string name="file_not_found">File not found</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="is_empty_list">Quiz list is empty</string>
     <string name="next_question">Next Question</string>
@@ -575,7 +576,7 @@
     <string name="title_retry">Try Again!</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        
         <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">

@@ -647,6 +647,7 @@ string cloze_results
 string correct
 string current_history_question
 string exam_results
+string file_not_found
 string hello_blank_fragment
 string is_empty_list
 string next_question

@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.*
-import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -25,6 +24,8 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BASE_URL
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BASE_URL_IMAGE_AND_VIDEO_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MIM_TYPE_AUDIO
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MIM_TYPE_VIDEO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MULTIMEDIA
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.REQUEST_ID_MULTIPLE_PERMISSIONS
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
@@ -209,10 +210,17 @@ class QuizActivity : BaseActivity() {
     }
 
     private fun initAddList(fileDownload: FileDownload) {
-        val hasFile = getAllFileInStorage(fileDownload.name)
+        val hasFile = getAllFileInStorage(initFileDownload(fileDownload))
         if (!hasFile)
             urlList.add(fileDownload)
 
+    }
+
+    private fun initFileDownload(fileDownload: FileDownload): String {
+        return when (fileDownload.format) {
+            FORMAT_VIDEO -> "${fileDownload.title}${MIM_TYPE_VIDEO}"
+            else -> "${fileDownload.title}${MIM_TYPE_AUDIO}"
+        }
     }
 
     private fun getAllFileInStorage(name: String): Boolean {
@@ -311,7 +319,7 @@ class QuizActivity : BaseActivity() {
         it: FileDownload,
         responseQuizDetailModel: ResponseQuizDetailModel
     ) {
-        downloadId = PRDownloader.download(it.url, getDirPath(), it.name)
+        downloadId = PRDownloader.download(it.url, getDirPath(), initFileDownload(it))
             .build()
             .setOnProgressListener { initOnProgress(it) }
             .start(object : OnDownloadListener {
@@ -320,9 +328,20 @@ class QuizActivity : BaseActivity() {
                     responseQuizDetailModel
                 )
 
-                override fun onError(error: com.downloader.Error?) =
-                    handelErrorTools.handelError(error!!.connectionException)
+                override fun onError(error: com.downloader.Error?) {
+                    error!!.connectionException.let {
+                        if (it != null) handelErrorTools.handelError(
+                            it
+                        )
+                    }
+                    toastTools.toast(resources.getString(R.string.file_not_found))
+                    initFinish()
+                }
             })
+    }
+
+    private fun initFinish() {
+        finish()
     }
 
     private fun initDownloadComplete(
@@ -408,7 +427,7 @@ class QuizActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-//        PRDownloader.pause(downloadId);
-//        PRDownloader.cancel(downloadId);
+        PRDownloader.pause(downloadId)
+        PRDownloader.cancel(downloadId)
     }
 }

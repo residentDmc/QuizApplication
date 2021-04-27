@@ -10,7 +10,6 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -64,15 +63,51 @@ class ItemQuestionsFragment : DialogFragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        initResumeVideo()
+        initResumeSound()
+    }
+
+    private fun initResumeSound() {
+        initPlaySoundQuestion()
+        initPlaySoundAnswer()
+    }
+
+    private fun initResumeVideo() {
+        try {
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityResumed()
+            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.player.onActivityResumed()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
     override fun onPause() {
         super.onPause()
         initPauseVideo()
+        initPauseSoundAnswer()
+        initPauseSoundQuestion()
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        initDestroyVideo()
         releaseMPQuestion()
         releaseMPAnswer()
+    }
+
+    private fun initDestroyVideo() {
+        try {
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityDestroyed()
+            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.player.onActivityDestroyed()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initAction() {
@@ -154,24 +189,38 @@ class ItemQuestionsFragment : DialogFragment() {
     private fun initPlaySoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
+        if (::mediaPlayerQuestion.isInitialized)
         mediaPlayerQuestion.start()
     }
 
     private fun initPauseSoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.GONE
-        mediaPlayerQuestion.pause()
+        if (::mediaPlayerQuestion.isInitialized) try {
+            mediaPlayerQuestion.release()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initPlaySoundAnswer() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
-        mediaPlayerAnswer.start()
+        if (::mediaPlayerAnswer.isInitialized){
+            try {
+                if (mediaPlayerAnswer.isPlaying) {
+                    mediaPlayerAnswer.pause()
+                }
+            } catch (e: Exception) {
+                handelErrorTools.handelError(e)
+            }
+        }
     }
 
     private fun initPauseSoundAnswer() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
+        if (::mediaPlayerAnswer.isInitialized)
         mediaPlayerAnswer.pause()
     }
 
@@ -181,11 +230,7 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initVideoQuestion(content: String) {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(initFindFileInStorage(content))
-        val mediaController = MediaController(requireContext())
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setMediaController(mediaController)
-        mediaController.setAnchorView(binding.lnQuestionVideoLayout.viewVideoQuestion)
-        binding.lnQuestionVideoLayout.viewVideoQuestion.start()
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(initFindFileInStorage(content)).player.start()
     }
 
     private fun initQuestionFormatText(question: Question) {
@@ -289,16 +334,11 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initStopVideoQuestion() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
-    }
-
-    private fun initStopVideo() {
         try {
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
             if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.pause()
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+                binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -306,10 +346,10 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initPauseVideo() {
         try {
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
             if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.pause()
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+                binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -352,10 +392,19 @@ class ItemQuestionsFragment : DialogFragment() {
             })
     }
 
+
     private fun initOnBackPressed() {
-        initStopVideo()
+        when (requireActivity().requestedOrientation) {
+            1 -> initNormalScreen()
+        }
+    }
+
+
+    private fun initNormalScreen() {
+        initPauseVideo()
         releaseMPQuestion()
         releaseMPAnswer()
-        dismissAllowingStateLoss()
+        dismiss()
     }
+
 }

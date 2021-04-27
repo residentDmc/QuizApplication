@@ -69,6 +69,7 @@ class FragmentFullscreenSliderImageCloze : DialogFragment() {
 
     private fun initOnClick() {
         binding.imgBtnClose.setOnClickListener { dismiss() }
+        binding.lnParent.setOnClickListener {  }
     }
 
     private fun initOnBackPress() {

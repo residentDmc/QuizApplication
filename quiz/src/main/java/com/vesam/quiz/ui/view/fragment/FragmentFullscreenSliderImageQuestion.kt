@@ -53,6 +53,11 @@ class FragmentFullscreenSliderImageQuestion : DialogFragment() {
     private fun initAction() {
         initSetView()
         initOnBackPress()
+        initOnClick()
+    }
+
+    private fun initOnClick() {
+        binding.lnParent.setOnClickListener {  }
     }
 
     private fun initSetView() {

@@ -1,6 +1,7 @@
 package com.vesam.quiz.ui.view.fragment
 
 import android.content.Context.VIBRATOR_SERVICE
+import android.content.pm.ActivityInfo
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
@@ -57,9 +58,10 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import tcking.github.com.giraffeplayer2.GiraffePlayer
+import tcking.github.com.giraffeplayer2.VideoInfo
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
 
 
 class QuestionsFragment : Fragment() {
@@ -263,7 +265,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initStateAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {
-            View.VISIBLE -> releaseMPAnswer()
+        View.VISIBLE -> releaseMPAnswer()
             else -> releaseMPQuestion()
         }
 
@@ -885,8 +887,25 @@ class QuestionsFragment : Fragment() {
 
     private fun initOnBackPressed() {
         when (requireActivity().requestedOrientation) {
+            0 -> initFullScreen()
             1 -> initNormalScreen()
         }
+    }
+
+    private fun initFullScreen() {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initExitFullScreenAnswerVideo()
+            else -> initExitFullScreenQuestionVideo()
+        }
+    }
+
+    private fun initExitFullScreenQuestionVideo() {
+        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
+    }
+
+    private fun initExitFullScreenAnswerVideo() {
+        binding.lnAnswerVideoLayout.videoView.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
+
     }
 
 

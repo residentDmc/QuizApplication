@@ -26,6 +26,7 @@ import com.vesam.quiz.utils.extention.initFindFileInStorage
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import org.koin.android.ext.android.inject
+import tcking.github.com.giraffeplayer2.GiraffePlayer
 
 
 class ItemQuestionsFragment : DialogFragment() {
@@ -74,15 +75,23 @@ class ItemQuestionsFragment : DialogFragment() {
         initPlaySoundAnswer()
     }
 
-    private fun initResumeVideo() {
-        try {
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityResumed()
-            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.onActivityResumed()
-        } catch (e: Exception) {
-            handelErrorTools.handelError(e)
+    private fun initResumeVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoResumed()
+            else -> initShowQuestionVideoResumed()
         }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowAnswerVideoResumed() {
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.onActivityResumed()
+    }
+
+    private fun initShowQuestionVideoResumed() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityResumed()
     }
 
     override fun onPause() {
@@ -95,8 +104,7 @@ class ItemQuestionsFragment : DialogFragment() {
     override fun onDestroy() {
         super.onDestroy()
         initDestroyVideo()
-        releaseMPQuestion()
-        releaseMPAnswer()
+        initStateAudio()
     }
 
     private fun initDestroyVideo() {
@@ -344,15 +352,23 @@ class ItemQuestionsFragment : DialogFragment() {
         }
     }
 
-    private fun initPauseVideo() {
-        try {
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
-            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
-        } catch (e: Exception) {
-            handelErrorTools.handelError(e)
+    private fun initPauseVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoPause()
+            else -> initShowQuestionVideoPause()
         }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowQuestionVideoPause() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+    }
+
+    private fun initShowAnswerVideoPause() {
+        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
     }
 
     private fun initListFormatSound(answer: Answer) {
@@ -395,16 +411,36 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initOnBackPressed() {
         when (requireActivity().requestedOrientation) {
+            0 -> initFullScreen()
             1 -> initNormalScreen()
         }
+    }
+
+    private fun initFullScreen() {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initExitFullScreenAnswerVideo()
+            else -> initExitFullScreenQuestionVideo()
+        }
+    }
+
+    private fun initExitFullScreenQuestionVideo() {
+        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
+    }
+
+    private fun initExitFullScreenAnswerVideo() {
+        binding.lnAnswerVideoLayout.videoView.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
     }
 
 
     private fun initNormalScreen() {
         initPauseVideo()
-        releaseMPQuestion()
-        releaseMPAnswer()
+        initStateAudio()
         dismiss()
+    }
+
+    private fun initStateAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {
+        View.VISIBLE -> releaseMPAnswer()
+        else -> releaseMPQuestion()
     }
 
 }

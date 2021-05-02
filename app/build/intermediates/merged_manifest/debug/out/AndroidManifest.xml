@@ -42,17 +42,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.QuizSystem"
             android:windowSoftInputMode="adjustResize" />
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.vesam.quiz.provider"
-            android:exported="false"
-            android:grantUriPermissions="true" >
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths" />
-        </provider>
-
         <activity
             android:name="tcking.github.com.giraffeplayer2.PlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

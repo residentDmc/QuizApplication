@@ -11,7 +11,9 @@ import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.LinearInterpolator
 import android.widget.ProgressBar
+import android.widget.ScrollView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -442,7 +444,7 @@ class QuestionsFragment : Fragment() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerAnswer.isInitialized)
-                mediaPlayerAnswer.start()
+            mediaPlayerAnswer.start()
     }
 
     private fun initPauseSoundAnswer() {
@@ -681,7 +683,7 @@ class QuestionsFragment : Fragment() {
         currentProgress += 1
         binding.progressStepByStep.progress = currentProgress
         when (PASS_CONDITION) {
-            currentProgress -> binding.btnNextQuestion.visibility=View.VISIBLE
+            currentProgress -> binding.btnNextQuestion.visibility = View.VISIBLE
         }
     }
 

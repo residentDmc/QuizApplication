@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.*
+import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.Progress
+import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.file_download.FileDownload
 import com.vesam.quiz.data.model.quiz_detail.Answer
@@ -261,6 +263,7 @@ class QuizActivity : BaseActivity() {
     }
 
     private fun initAnswerResult(answer: Answer) {
+
         when (answer.description.format) {
             FORMAT_VIDEO -> initAnswerFormatVideo(answer)
             FORMAT_AUDIO -> initAnswerFormatAudio(answer)

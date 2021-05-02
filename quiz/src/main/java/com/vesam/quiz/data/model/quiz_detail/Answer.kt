@@ -17,7 +17,7 @@ data class Answer(
     @SerializedName("sort")
     val sort: Int,
     @SerializedName("title")
-    val title: String
+    var title: String
 ) {
     var isSuccess = 0
     var isCheckLevel = 0

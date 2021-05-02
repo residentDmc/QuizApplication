@@ -1,7 +1,6 @@
 package com.vesam.quiz.ui.view.fragment
 
 import android.content.Context.VIBRATOR_SERVICE
-import android.content.pm.ActivityInfo
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
@@ -59,7 +58,6 @@ import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import tcking.github.com.giraffeplayer2.GiraffePlayer
-import tcking.github.com.giraffeplayer2.VideoInfo
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
@@ -105,8 +103,18 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initResumeSound() {
-        initPlaySoundQuestion()
-        initPlaySoundAnswer()
+        initResumeSoundQuestion()
+        initResumeSoundAnswer()
+    }
+
+    private fun initResumeSoundQuestion() {
+        binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
+        binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
+    }
+
+    private fun initResumeSoundAnswer() {
+        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
+        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
     }
 
     private fun initResumeVideo() = try {
@@ -266,8 +274,8 @@ class QuestionsFragment : Fragment() {
 
     private fun initStateAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {
         View.VISIBLE -> releaseMPAnswer()
-            else -> releaseMPQuestion()
-        }
+        else -> releaseMPQuestion()
+    }
 
     private fun initResultFragment() {
         val executor = Executors.newSingleThreadScheduledExecutor()
@@ -294,12 +302,38 @@ class QuestionsFragment : Fragment() {
     private fun initResultList() {
         question = questionList.first()
         questionList.removeFirst()
+        initStopAudio()
         initStopVideo()
         initHideAllAnswer()
         initStateQuestionFormat()
         checkPersianCharacter(question.title, binding.lnQuestionTextLayout.txtQuestion)
         initHideAnswerQuestion()
         answerAdapter.updateList(question.answers)
+    }
+
+    private fun initStopAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {
+        View.VISIBLE -> stopMPAnswer()
+        else -> stopMPQuestion()
+    }
+
+    private fun stopMPAnswer() {
+        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
+        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
+        if (::mediaPlayerAnswer.isInitialized) try {
+            mediaPlayerAnswer.stop()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
+    private fun stopMPQuestion() {
+        binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
+        binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.GONE
+        if (::mediaPlayerQuestion.isInitialized) try {
+            mediaPlayerQuestion.stop()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initEmptyList() {
@@ -382,16 +416,17 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initPlaySoundQuestion() {
+        initPauseSoundAnswer()
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerQuestion.isInitialized)
-        mediaPlayerQuestion.start()
+            mediaPlayerQuestion.start()
     }
 
     private fun initPauseSoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.GONE
-        if (::mediaPlayerQuestion.isInitialized){
+        if (::mediaPlayerQuestion.isInitialized) {
             try {
                 if (mediaPlayerQuestion.isPlaying) {
                     mediaPlayerQuestion.pause()
@@ -403,24 +438,18 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initPlaySoundAnswer() {
-        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
-        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
-        if (::mediaPlayerAnswer.isInitialized){
-            try {
-                if (mediaPlayerAnswer.isPlaying) {
-                    mediaPlayerAnswer.pause()
-                }
-            } catch (e: Exception) {
-                handelErrorTools.handelError(e)
-            }
-        }
-    }
-
-    private fun initPauseSoundAnswer() {
+        initPauseSoundQuestion()
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerAnswer.isInitialized)
-        mediaPlayerAnswer.pause()
+                mediaPlayerAnswer.start()
+    }
+
+    private fun initPauseSoundAnswer() {
+        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
+        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
+        if (::mediaPlayerAnswer.isInitialized)
+            mediaPlayerAnswer.pause()
     }
 
     private fun initQuestionFormatVideo(question: Question) {
@@ -652,7 +681,7 @@ class QuestionsFragment : Fragment() {
         currentProgress += 1
         binding.progressStepByStep.progress = currentProgress
         when (PASS_CONDITION) {
-            currentProgress -> initResultPassCondition()
+            currentProgress -> binding.btnNextQuestion.visibility=View.VISIBLE
         }
     }
 
@@ -704,7 +733,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initShowAnswerFormatText() {
-        binding.lnAnswerImageLayout.imgAnswer.visibility = View.GONE
+        binding.lnAnswerImageLayout.lnAnswerImage.visibility = View.GONE
         binding.lnAnswerVideoLayout.cvAnswerVideo.visibility = View.GONE
         binding.lnAnswerTextLayout.lnAnswerText.visibility = View.VISIBLE
         binding.lnAnswerSoundLayout.lnAnswerSound.visibility = View.GONE
@@ -820,8 +849,8 @@ class QuestionsFragment : Fragment() {
     private fun initListFormatSound(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatSound()
-        initSoundAnswer(answer.uriPath)
         initStopQuestionVideo()
+        initSoundAnswer(answer.uriPath)
     }
 
     private fun initListFormatImage(answer: Answer) {
@@ -846,8 +875,8 @@ class QuestionsFragment : Fragment() {
                     )
                 )
             )
-            mediaPlayerQuestion.prepare()
-            mediaPlayerQuestion.prepareAsync()
+            mediaPlayerAnswer.prepare()
+            mediaPlayerAnswer.prepareAsync()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -900,7 +929,8 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initExitFullScreenQuestionVideo() {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
+        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel =
+            GiraffePlayer.DISPLAY_NORMAL
     }
 
     private fun initExitFullScreenAnswerVideo() {

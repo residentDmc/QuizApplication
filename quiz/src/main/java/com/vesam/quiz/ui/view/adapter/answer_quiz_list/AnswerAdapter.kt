@@ -2,10 +2,12 @@ package com.vesam.quiz.ui.view.adapter.answer_quiz_list
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.interfaces.OnClickListenerAny
@@ -219,6 +221,7 @@ class AnswerAdapter(private val context: Context) : RecyclerView.Adapter<ViewHol
     }
 
     fun initFindIsCorrectAnswer(): Answer? {
+        Log.d("TAG", "initFindIsCorrectAnswer: "+ Gson().toJson(list))
         list.forEach {
             when (it.isCorrect) {
                 1 -> return it

@@ -5696,6 +5696,7 @@ int styleable ZoomageView_zoomage_restrictBounds 7
 int styleable ZoomageView_zoomage_translatable 8
 int styleable ZoomageView_zoomage_zoomable 9
 int xml external_files 0x0
+int xml filepaths 0x0
 int xml network_security_config 0x0
 int xml standalone_badge 0x0
 int xml standalone_badge_gravity_bottom_end 0x0

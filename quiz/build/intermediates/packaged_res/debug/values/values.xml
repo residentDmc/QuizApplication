@@ -576,7 +576,7 @@
     <string name="title_retry">Try Again!</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        
+        <!-- Customize your theme here. -->
         <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">

@@ -71,8 +71,18 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initResumeSound() {
-        initPlaySoundQuestion()
-        initPlaySoundAnswer()
+        initResumeSoundQuestion()
+        initResumeSoundAnswer()
+    }
+
+    private fun initResumeSoundQuestion() {
+        binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
+        binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
+    }
+
+    private fun initResumeSoundAnswer() {
+        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
+        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
     }
 
     private fun initResumeVideo() = try {
@@ -136,6 +146,10 @@ class ItemQuestionsFragment : DialogFragment() {
         initStateQuestionFormat(question)
         checkPersianCharacter(question.title, binding.lnQuestionTextLayout.txtQuestion)
         answerAdapter.updateList(question.answers)
+        val answer = answerAdapter.initFindIsCorrectAnswer()!!
+        answer.description.format = question.quizDescription.format
+        answer.description.content = question.quizDescription.content
+        answer.title = question.title
         initStateListFormat(answerAdapter.initFindIsCorrectAnswer()!!)
     }
 
@@ -167,11 +181,9 @@ class ItemQuestionsFragment : DialogFragment() {
         mediaPlayerQuestion = MediaPlayer()
         try {
             mediaPlayerQuestion.setDataSource(
-                requireContext(),
-                Uri.parse(initFindFileInStorage(content))
+                initFindFileInStorage(content)
             )
             mediaPlayerQuestion.prepare()
-            mediaPlayerQuestion.prepareAsync()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -195,41 +207,39 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initPlaySoundQuestion() {
+        initPauseSoundAnswer()
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerQuestion.isInitialized)
-        mediaPlayerQuestion.start()
+            mediaPlayerQuestion.start()
     }
 
     private fun initPauseSoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.GONE
         if (::mediaPlayerQuestion.isInitialized) try {
-            mediaPlayerQuestion.release()
+            mediaPlayerQuestion.pause()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
     }
 
     private fun initPlaySoundAnswer() {
-        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
-        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
-        if (::mediaPlayerAnswer.isInitialized){
-            try {
-                if (mediaPlayerAnswer.isPlaying) {
-                    mediaPlayerAnswer.pause()
-                }
-            } catch (e: Exception) {
-                handelErrorTools.handelError(e)
-            }
-        }
-    }
-
-    private fun initPauseSoundAnswer() {
+        initPauseSoundQuestion()
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerAnswer.isInitialized)
-        mediaPlayerAnswer.pause()
+            mediaPlayerAnswer.start()
+    }
+
+    private fun initPauseSoundAnswer() {
+        binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
+        binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
+        if (::mediaPlayerAnswer.isInitialized) try {
+            mediaPlayerAnswer.pause()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
     }
 
     private fun initQuestionFormatVideo(question: Question) {
@@ -389,11 +399,9 @@ class ItemQuestionsFragment : DialogFragment() {
         try {
             mediaPlayerAnswer = MediaPlayer()
             mediaPlayerAnswer.setDataSource(
-                requireContext(),
-                Uri.parse(initFindFileInStorage(content))
+                initFindFileInStorage(content)
             )
-            mediaPlayerQuestion.prepare()
-            mediaPlayerQuestion.prepareAsync()
+            mediaPlayerAnswer.prepare()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -424,7 +432,8 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initExitFullScreenQuestionVideo() {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
+        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel =
+            GiraffePlayer.DISPLAY_NORMAL
     }
 
     private fun initExitFullScreenAnswerVideo() {

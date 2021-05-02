@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Android\\AndroidStudioProjects\\QuizSystemApplication\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-small-v4\\values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\85bc523d77ea13d75b0985cdac978c6b\\material-1.4.0-alpha02\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\Android\\.gradle\\caches\\transforms-2\\files-2.1\\ecd2c4eb615796dea0c4ed69c3e33353\\material-1.4.0-alpha02\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

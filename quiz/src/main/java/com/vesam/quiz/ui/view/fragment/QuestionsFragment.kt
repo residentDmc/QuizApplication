@@ -1,19 +1,15 @@
 package com.vesam.quiz.ui.view.fragment
 
+import android.R.attr.name
 import android.content.Context.VIBRATOR_SERVICE
 import android.media.MediaPlayer
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.VibrationEffect
-import android.os.Vibrator
+import android.os.*
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
 import android.widget.ProgressBar
-import android.widget.ScrollView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -450,8 +446,14 @@ class QuestionsFragment : Fragment() {
     private fun initPauseSoundAnswer() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
-        if (::mediaPlayerAnswer.isInitialized)
-            mediaPlayerAnswer.pause()
+        if (::mediaPlayerAnswer.isInitialized){
+            try {
+                if (mediaPlayerAnswer.isPlaying)
+                mediaPlayerAnswer.pause()
+            } catch (e:Exception) {
+                handelErrorTools.handelError(e)
+            }
+        }
     }
 
     private fun initQuestionFormatVideo(question: Question) {
@@ -469,6 +471,18 @@ class QuestionsFragment : Fragment() {
         initShowQuestionFormatText()
         initPeriodTextTime(question)
         binding.lnQuestionTextLayout.txtQuestion.text = question.title
+    }
+
+    private fun initAutomaticAnimationScroll() = Thread {
+        Handler(Looper.getMainLooper()).postDelayed({
+            initScrollDown()
+        }, 1000)
+    }.start()
+
+    private fun initScrollDown() {
+        val scrollTo: Int =
+            (binding.childNestedScrollView.parent.parent as View).bottom + binding.childNestedScrollView.bottom
+        binding.nestedScrollView.smoothScrollTo(0, scrollTo)
     }
 
     private fun initShowQuestionFormatText() {
@@ -687,11 +701,6 @@ class QuestionsFragment : Fragment() {
         }
     }
 
-    private fun initResultPassCondition() {
-        initPlayExamPass()
-        initResult()
-    }
-
     private fun initUnSuccessAnswerStepByStep(answer: Answer) {
         val isCorrectAnswer = answerAdapter.initFindIsCorrectAnswer()
         answerAdapter.answerUnSuccessQuestion(answer)
@@ -766,7 +775,9 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initConvertHtml(answer)
         initShowAnswerFormatText()
+        initAutomaticAnimationScroll()
         initStopQuestionVideo()
+        initPauseSoundQuestion()
     }
 
     private fun initConvertHtml(answer: Answer) {
@@ -782,23 +793,14 @@ class QuestionsFragment : Fragment() {
     private fun initListFormatVideo(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatVideo()
-        initStopVideoQuestion()
         initVideoView(answer.uriPath)
         initStopQuestionVideo()
+        initPauseSoundQuestion()
     }
 
     private fun initVideoView(content: String) {
         val url = initFindFileInStorage(content)
         binding.lnAnswerVideoLayout.videoView.setVideoPath(url).player.start()
-    }
-
-    private fun initStopVideoQuestion() {
-        try {
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.pause()
-        } catch (e: Exception) {
-            handelErrorTools.handelError(e)
-        }
     }
 
     private fun initStopVideo() = try {
@@ -852,6 +854,7 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatSound()
         initStopQuestionVideo()
+        initPauseSoundQuestion()
         initSoundAnswer(answer.uriPath)
     }
 
@@ -859,6 +862,7 @@ class QuestionsFragment : Fragment() {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatImage()
         initStopQuestionVideo()
+        initPauseSoundQuestion()
         initSetTag(binding.lnAnswerImageLayout.imgAnswer, answer.description.urlContent)
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,

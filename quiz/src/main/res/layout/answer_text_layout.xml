@@ -4,18 +4,34 @@
     android:id="@id/lnAnswerText"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_white_shape"
     android:orientation="vertical"
     android:visibility="gone">
-
     <TextView
-        android:id="@+id/txtTextAnswer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_4"
-        android:gravity="start|top"
+        android:text="@string/descriptive_answer"
         android:padding="@dimen/margin_8"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_marginLeft="@dimen/margin_16"
         android:textColor="@color/black"
-        android:textSize="@dimen/margin_16"
+        android:textSize="@dimen/text_size_14"
         android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_white_shape">
+
+        <TextView
+            android:id="@+id/txtTextAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4"
+            android:gravity="start|top"
+            android:padding="@dimen/margin_8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>

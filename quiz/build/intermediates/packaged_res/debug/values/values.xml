@@ -553,6 +553,7 @@
     <string name="cloze_results">Cloze Result</string>
     <string name="correct">Correct</string>
     <string name="current_history_question">Current History Question</string>
+    <string name="descriptive_answer">پاسخ تشریحی</string>
     <string name="exam_results">Exam Results</string>
     <string name="file_not_found">File not found</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

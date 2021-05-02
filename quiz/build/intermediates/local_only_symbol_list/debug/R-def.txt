@@ -491,6 +491,7 @@ id btnRetest
 id btnRetestEnd
 id btnState
 id btnSubmit
+id childNestedScrollView
 id clozeFragment
 id collapsingImageLayout
 id custom_toast_layout_id
@@ -646,6 +647,7 @@ string buffer
 string cloze_results
 string correct
 string current_history_question
+string descriptive_answer
 string exam_results
 string file_not_found
 string hello_blank_fragment

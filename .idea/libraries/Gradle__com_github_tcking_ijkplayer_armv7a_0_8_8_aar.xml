@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.tcking:ijkplayer-armv7a:0.8.8@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/955e30224d1deaf616de43c3f87c41b0/jetified-ijkplayer-armv7a-0.8.8/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/955e30224d1deaf616de43c3f87c41b0/jetified-ijkplayer-armv7a-0.8.8/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/955e30224d1deaf616de43c3f87c41b0/jetified-ijkplayer-armv7a-0.8.8/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8901c947c90866f936bb2504a5b48101/jetified-ijkplayer-armv7a-0.8.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8901c947c90866f936bb2504a5b48101/jetified-ijkplayer-armv7a-0.8.8/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8901c947c90866f936bb2504a5b48101/jetified-ijkplayer-armv7a-0.8.8/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

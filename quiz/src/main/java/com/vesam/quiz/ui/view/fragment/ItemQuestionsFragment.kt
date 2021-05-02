@@ -4,13 +4,13 @@ package com.vesam.quiz.ui.view.fragment
 
 
 import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vesam.quiz.R
@@ -18,9 +18,11 @@ import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.databinding.FragmentItemQuestionsBinding
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
+import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.ITEM_QUESTION
 import com.vesam.quiz.utils.extention.checkPersianCharacter
 import com.vesam.quiz.utils.extention.initFindFileInStorage
 import com.vesam.quiz.utils.tools.GlideTools
@@ -136,6 +138,7 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initOnClick() {
+        binding.lnParent.setOnClickListener {}
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.setOnClickListener { initPlaySoundQuestion() }
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.setOnClickListener { initPauseSoundQuestion() }
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.setOnClickListener { initPlaySoundAnswer() }
@@ -146,10 +149,6 @@ class ItemQuestionsFragment : DialogFragment() {
         initStateQuestionFormat(question)
         checkPersianCharacter(question.title, binding.lnQuestionTextLayout.txtQuestion)
         answerAdapter.updateList(question.answers)
-        val answer = answerAdapter.initFindIsCorrectAnswer()!!
-        answer.description.format = question.quizDescription.format
-        answer.description.content = question.quizDescription.content
-        answer.title = question.title
         initStateListFormat(answerAdapter.initFindIsCorrectAnswer()!!)
     }
 
@@ -444,7 +443,12 @@ class ItemQuestionsFragment : DialogFragment() {
     private fun initNormalScreen() {
         initPauseVideo()
         initStateAudio()
-        dismiss()
+        initDestroy()
+    }
+
+    private fun initDestroy() {
+        val itemQuestionsFragment: ItemQuestionsFragment? = (AppQuiz.activity as AppCompatActivity).supportFragmentManager.findFragmentByTag(ITEM_QUESTION) as ItemQuestionsFragment?
+        if (itemQuestionsFragment != null && itemQuestionsFragment.isVisible) itemQuestionsFragment.dismiss() else  AppQuiz.activity.finish()
     }
 
     private fun initStateAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {

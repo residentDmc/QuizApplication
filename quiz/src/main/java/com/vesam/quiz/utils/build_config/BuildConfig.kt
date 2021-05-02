@@ -46,6 +46,10 @@ class BuildConfig {
         const val BUNDLE_USER_ANSWER_LIST_ID = "userAnswerListId"
         const val BUNDLE_MULTIMEDIA = "multimedia"
 
+        // tag fragment
+        const val ITEM_QUESTION = "item_question"
+
+
         // state format
         const val FORMAT_TEXT = "text"
         const val FORMAT_VIDEO = "video"

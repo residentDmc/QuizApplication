@@ -2436,6 +2436,7 @@ int id center 0x0
 int id chain 0x0
 int id checkbox 0x0
 int id checked 0x0
+int id childNestedScrollView 0x0
 int id chip 0x0
 int id chip1 0x0
 int id chip2 0x0
@@ -3111,6 +3112,7 @@ int string clear_text_end_icon_content_description 0x0
 int string cloze_results 0x0
 int string correct 0x0
 int string current_history_question 0x0
+int string descriptive_answer 0x0
 int string error_icon_content_description 0x0
 int string exam_results 0x0
 int string exposed_dropdown_menu_content_description 0x0

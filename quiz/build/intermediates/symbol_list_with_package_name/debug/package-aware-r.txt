@@ -2437,6 +2437,7 @@ id center
 id chain
 id checkbox
 id checked
+id childNestedScrollView
 id chip
 id chip1
 id chip2
@@ -3112,6 +3113,7 @@ string clear_text_end_icon_content_description
 string cloze_results
 string correct
 string current_history_question
+string descriptive_answer
 string error_icon_content_description
 string exam_results
 string exposed_dropdown_menu_content_description

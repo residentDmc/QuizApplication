@@ -43,6 +43,16 @@
             android:theme="@style/Theme.QuizSystem"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name="com.developer.crashx.activity.DefaultErrorActivity"
+            android:process=":error_activity" />
+
+        <provider
+            android:name="com.developer.crashx.provider.CrashInitProvider"
+            android:authorities="com.vesam.quiz.crashinitprovider"
+            android:exported="false"
+            android:initOrder="101" />
+
+        <activity
             android:name="tcking.github.com.giraffeplayer2.PlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="fullSensor" />

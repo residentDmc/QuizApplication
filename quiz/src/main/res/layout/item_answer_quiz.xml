@@ -43,22 +43,20 @@
         </LinearLayout>
 
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@id/imgBtnSuccessStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="@dimen/margin_16"
+            android:layout_margin="@dimen/margin_16"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_success"
             app:tint="@color/greenColor" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@id/imgBtnUnSuccessStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="@dimen/margin_16"
+            android:layout_margin="@dimen/margin_16"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_un_success"
             app:tint="@color/redColor" />
@@ -73,22 +71,20 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@id/imgBtnSuccessEnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="@dimen/margin_16"
+            android:layout_margin="@dimen/margin_16"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_success"
             app:tint="@color/greenColor" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@id/imgBtnUnSuccessEnd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="@dimen/margin_16"
+            android:layout_margin="@dimen/margin_16"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_un_success"
             app:tint="@color/redColor" />

@@ -68,6 +68,8 @@ com/vesam/quiz/databinding/FragmentClozeBinding.java
  com.vesam.quiz.databinding.FragmentClozeBinding
 com/vesam/quiz/databinding/AnswerSoundLayoutBinding.java
  com.vesam.quiz.databinding.AnswerSoundLayoutBinding
+com/vesam/quiz/utils/custom_view/nested_scroll_view/OverScrollBounceBehavior.java
+ com.vesam.quiz.utils.custom_view.nested_scroll_view.OverScrollBounceBehavior
 com/vesam/quiz/databinding/QuestionImageResultLayoutBinding.java
  com.vesam.quiz.databinding.QuestionImageResultLayoutBinding
 com/vesam/quiz/utils/custom_view/progress_bar/CustomProgressBar.java

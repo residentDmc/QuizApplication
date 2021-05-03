@@ -1,6 +1,5 @@
 package com.vesam.quiz.ui.view.fragment
 
-import android.R.attr.name
 import android.content.Context.VIBRATOR_SERVICE
 import android.media.MediaPlayer
 import android.net.Uri
@@ -348,7 +347,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initStateQuestionFormat() {
-        when (question.quizDescription.format) {
+        when (question.quizDescription!!.format) {
             FORMAT_TEXT -> initQuestionFormatText(question)
             FORMAT_VIDEO -> initQuestionFormatVideo(question)
             FORMAT_AUDIO -> initQuestionFormatAudio(question)
@@ -360,7 +359,7 @@ class QuestionsFragment : Fragment() {
     private fun initQuestionFormatImage(question: Question) {
         initShowQuestionFormatImage()
         initPeriodImageTime(question)
-        initSetTag(binding.lnQuestionImageLayout.imgQuestion, question.quizDescription.urlContent)
+        initSetTag(binding.lnQuestionImageLayout.imgQuestion, question.quizDescription!!.urlContent)
         glideTools.displayImageOriginal(
             binding.lnQuestionImageLayout.imgQuestion,
             question.quizDescription.urlContent
@@ -729,7 +728,7 @@ class QuestionsFragment : Fragment() {
         answerAdapter.answerCheckLevel(answer)
     }
 
-    private fun initStateListFormat(answer: Answer) = when (answer.description.format) {
+    private fun initStateListFormat(answer: Answer) = when (answer.description!!.format) {
         FORMAT_TEXT -> initListFormatText(answer)
         FORMAT_VIDEO -> initListFormatVideo(answer)
         FORMAT_AUDIO -> initListFormatSound(answer)
@@ -781,7 +780,7 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initConvertHtml(answer: Answer) {
-        answer.description.content.let {
+        answer.description!!.content.let {
             if (!it.isNullOrEmpty()) {
                 val plainText = Html.fromHtml(it).toString()
                 binding.lnAnswerTextLayout.txtTextAnswer.text = plainText
@@ -863,7 +862,7 @@ class QuestionsFragment : Fragment() {
         initShowAnswerFormatImage()
         initStopQuestionVideo()
         initPauseSoundQuestion()
-        initSetTag(binding.lnAnswerImageLayout.imgAnswer, answer.description.urlContent)
+        initSetTag(binding.lnAnswerImageLayout.imgAnswer, answer.description!!.urlContent)
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,
             answer.description.urlContent

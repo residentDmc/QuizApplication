@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -24,7 +25,6 @@ import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.question_cloze_list.QuestionClozeAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
-import com.vesam.quiz.utils.base.BaseActivity
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
@@ -106,7 +106,7 @@ class ClozeFragment : Fragment() {
 
     private fun initAdapter() {
         binding.rcCloze.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(AppQuiz.context, LinearLayoutManager.VERTICAL, false)
         binding.rcCloze.setHasFixedSize(true)
         binding.rcCloze.adapter = questionClozeAdapter
         questionClozeAdapter.setOnItemClickListener(object : OnClickListenerAny {
@@ -193,7 +193,7 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initStateBtn() = when (binding.btnState.text.toString()) {
-        resources.getString(R.string.submit) -> initSubmit()
+        AppQuiz.context.resources.getString(R.string.submit) -> initSubmit()
         else -> initProceed()
     }
 
@@ -212,7 +212,7 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initChangeTextBtnSubmit() {
-        binding.btnState.text = resources.getString(R.string.proceed)
+        binding.btnState.text = AppQuiz.context.resources.getString(R.string.proceed)
     }
 
     private fun initResultFragment() {
@@ -233,7 +233,7 @@ class ClozeFragment : Fragment() {
 
     private fun initFullScreenImage(isShowBtnClose: Boolean) {
         val urlContent: String = binding.lnClozeImageLayout.lnImage.tag as String
-        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentManager: FragmentManager = (AppQuiz.activity as AppCompatActivity).supportFragmentManager
         val fragmentFullscreenSlider = FragmentFullscreenSliderImageCloze()
         val transaction = fragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -334,8 +334,8 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initOnBackPress() {
-        requireActivity().onBackPressedDispatcher.addCallback(
-            requireActivity(),
+        (AppQuiz.activity as AppCompatActivity).onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() = initOnBackPressed()
             })

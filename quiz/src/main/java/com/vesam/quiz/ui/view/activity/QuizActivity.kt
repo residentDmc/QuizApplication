@@ -3,8 +3,10 @@ package com.vesam.quiz.ui.view.activity
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.os.*
-import android.util.Log
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -13,7 +15,6 @@ import androidx.navigation.Navigation
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.Progress
-import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.file_download.FileDownload
 import com.vesam.quiz.data.model.quiz_detail.Answer
@@ -190,13 +191,13 @@ class QuizActivity : BaseActivity() {
         initDownloadFile(it)
     }
 
-    private fun initQuestions(it: Question) {
-        initQuestionsResult(it)
-        initQuestionList(it)
+    private fun initQuestions(question: Question) {
+        question.quizDescription.let { if (it != null) initQuestionsResult(question) }
+        initQuestionList(question)
     }
 
     private fun initQuestionsResult(question: Question) {
-        when (question.quizDescription.format) {
+        when (question.quizDescription!!.format) {
             FORMAT_VIDEO -> initQuestionsFormatVideo(question)
             FORMAT_AUDIO -> initQuestionsFormatAudio(question)
         }
@@ -205,7 +206,7 @@ class QuizActivity : BaseActivity() {
     private fun initQuestionsFormatAudio(question: Question) {
         val fileDownload = FileDownload(
             question.title,
-            question.quizDescription.format,
+            question.quizDescription!!.format,
             question.quizDescription.urlContent
         )
         initAddList(fileDownload)
@@ -252,19 +253,22 @@ class QuizActivity : BaseActivity() {
     private fun initQuestionsFormatVideo(question: Question) {
         val fileDownload = FileDownload(
             question.title,
-            question.quizDescription.format,
+            question.quizDescription!!.format,
             question.quizDescription.urlContent
         )
         initAddList(fileDownload)
     }
 
     private fun initQuestionList(question: Question) {
-        question.answers.forEach { initAnswerResult(it) }
+        question.answers.forEach { initCheckDescription(it) }
+    }
+
+    private fun initCheckDescription(answer: Answer) {
+        answer.description.let { if (it != null) initAnswerResult(answer) }
     }
 
     private fun initAnswerResult(answer: Answer) {
-
-        when (answer.description.format) {
+        when (answer.description!!.format) {
             FORMAT_VIDEO -> initAnswerFormatVideo(answer)
             FORMAT_AUDIO -> initAnswerFormatAudio(answer)
         }
@@ -272,13 +276,13 @@ class QuizActivity : BaseActivity() {
 
     private fun initAnswerFormatVideo(answer: Answer) {
         val fileDownload =
-            FileDownload(answer.title, answer.description.format, answer.description.urlContent)
+            FileDownload(answer.title, answer.description!!.format, answer.description.urlContent)
         initAddList(fileDownload)
     }
 
     private fun initAnswerFormatAudio(answer: Answer) {
         val fileDownload =
-            FileDownload(answer.title, answer.description.format, answer.description.urlContent)
+            FileDownload(answer.title, answer.description!!.format, answer.description.urlContent)
         initAddList(fileDownload)
     }
 

@@ -153,7 +153,7 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initStateQuestionFormat(question: Question) {
-        when (question.quizDescription.format) {
+        when (question.quizDescription!!.format) {
             FORMAT_TEXT -> initQuestionFormatText(question)
             FORMAT_VIDEO -> initQuestionFormatVideo(question)
             FORMAT_AUDIO -> initQuestionFormatAudio(question)
@@ -166,7 +166,7 @@ class ItemQuestionsFragment : DialogFragment() {
         initShowQuestionFormatImage()
         glideTools.displayImageOriginal(
             binding.lnQuestionImageLayout.imgQuestion,
-            question.quizDescription.urlContent
+            question.quizDescription!!.urlContent
         )
     }
 
@@ -290,7 +290,7 @@ class ItemQuestionsFragment : DialogFragment() {
         binding.rcQuestion.adapter = answerAdapter
     }
 
-    private fun initStateListFormat(answer: Answer) = when (answer.description.format) {
+    private fun initStateListFormat(answer: Answer) = when (answer.description!!.format) {
         FORMAT_TEXT -> initListFormatText(answer)
         FORMAT_VIDEO -> initListFormatVideo(answer)
         FORMAT_AUDIO -> initListFormatSound(answer)
@@ -331,7 +331,7 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initConvertHtml(answer: Answer) {
-        answer.description.content.let {
+        answer.description!!.content.let {
             if (!it.isNullOrEmpty()) {
                 val plainText = Html.fromHtml(it).toString()
                 binding.lnAnswerTextLayout.txtTextAnswer.text = plainText
@@ -389,7 +389,7 @@ class ItemQuestionsFragment : DialogFragment() {
         initShowAnswerFormatImage()
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,
-            answer.description.urlContent
+            answer.description!!.urlContent
         )
     }
 

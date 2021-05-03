@@ -9,7 +9,7 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MIM_TYPE_VIDEO
 
 data class Answer(
     @SerializedName("description")
-    val description: Description,
+    val description: Description?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("is_correct")
@@ -26,7 +26,7 @@ data class Answer(
     var isCorrectItem = false
     var uriPath = ""
         get() {
-            return when (description.format) {
+            return when (description!!.format) {
                 FORMAT_VIDEO -> title + MIM_TYPE_VIDEO
                 else -> title + MIM_TYPE_AUDIO
             }

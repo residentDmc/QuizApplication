@@ -15,7 +15,7 @@ data class Question(
     val answers: ArrayList<Answer>,
     @SerializedName("description")
     @ColumnInfo(name = "description")
-    val quizDescription: QuizDescription,
+    val quizDescription: QuizDescription?,
     @SerializedName("id")
     @ColumnInfo(name = "id")
     val id: Int,
@@ -32,7 +32,7 @@ data class Question(
     var isSelected = false
     var uriPath = ""
         get() {
-            return when (quizDescription.format) {
+            return when (quizDescription!!.format) {
                 FORMAT_VIDEO -> title + MIM_TYPE_VIDEO
                 else -> title + MIM_TYPE_AUDIO
             }

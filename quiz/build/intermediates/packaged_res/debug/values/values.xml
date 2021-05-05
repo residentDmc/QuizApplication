@@ -508,6 +508,7 @@
     <item name="lottieAnimationView" type="id"/>
     <item name="nestedContent" type="id"/>
     <item name="nestedScrollView" type="id"/>
+    <item name="nestedScrollViewTitleImage" type="id"/>
     <item name="niceVideoPlayer" type="id"/>
     <item name="progressBar" type="id"/>
     <item name="progressBarLoading" type="id"/>
@@ -539,6 +540,7 @@
     <item name="txtTextAnswer" type="id"/>
     <item name="txtTitle" type="id"/>
     <item name="txtTitleEnd" type="id"/>
+    <item name="txtTitleImage" type="id"/>
     <item name="txtTitleStart" type="id"/>
     <item name="txtUnSuccessAnswer" type="id"/>
     <item name="txtUnSuccessTitleEnd" type="id"/>
@@ -577,7 +579,7 @@
     <string name="title_retry">Try Again!</string>
     <string name="wrong">Wrong</string>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        
         <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="dialog_change_clarity" parent="@style/Theme.AppCompat.Light.Dialog">

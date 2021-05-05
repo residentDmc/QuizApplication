@@ -565,6 +565,7 @@ id nav_graph
 id nav_graph.xml
 id nestedContent
 id nestedScrollView
+id nestedScrollViewTitleImage
 id niceVideoPlayer
 id progressBar
 id progressBarLoading
@@ -601,6 +602,7 @@ id txtSuccessTitleStart
 id txtTextAnswer
 id txtTitle
 id txtTitleEnd
+id txtTitleImage
 id txtTitleStart
 id txtUnSuccessAnswer
 id txtUnSuccessTitleEnd

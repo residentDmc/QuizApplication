@@ -84,23 +84,23 @@
                         android:id="@id/lnAnswerImageLayout"
                         layout="@layout/answer_image_layout" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@id/btnNextQuestion"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/margin_55"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_32"
-                        android:layout_marginBottom="@dimen/margin_4"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/margin_53"
-                        android:paddingRight="@dimen/margin_53"
-                        android:text="@string/next_question"
-                        android:textColor="@color/white"
-                        android:visibility="gone"
-                        app:backgroundTint="@color/color_blue_button"
-                        app:cornerRadius="@dimen/margin_32"
-                        app:rippleColor="@color/accent" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@id/btnNextQuestion"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/margin_55"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_32"
+                            android:layout_marginBottom="@dimen/margin_4"
+                            android:orientation="vertical"
+                            android:paddingLeft="@dimen/margin_53"
+                            android:paddingRight="@dimen/margin_53"
+                            android:text="@string/next_question"
+                            android:textColor="@color/white"
+                            android:visibility="gone"
+                            app:backgroundTint="@color/color_blue_button"
+                            app:cornerRadius="@dimen/margin_32"
+                            app:rippleColor="@color/accent" />
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>

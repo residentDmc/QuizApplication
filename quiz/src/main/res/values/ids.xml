@@ -118,6 +118,8 @@
     <item name="txtProgress" type="id" />
     <item name="progressBar" type="id" />
     <item name="progressBarLoading" type="id" />
+    <item name="txtTitleImage" type="id" />
+    <item name="nestedScrollViewTitleImage" type="id" />
 
 
 </resources>

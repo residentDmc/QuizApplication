@@ -5,6 +5,8 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.*
 import android.text.Html
+import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -360,10 +362,19 @@ class QuestionsFragment : Fragment() {
         initShowQuestionFormatImage()
         initPeriodImageTime(question)
         initSetTag(binding.lnQuestionImageLayout.imgQuestion, question.quizDescription!!.urlContent)
+        initTitleImageView(question)
         glideTools.displayImageOriginal(
             binding.lnQuestionImageLayout.imgQuestion,
             question.quizDescription.urlContent
         )
+    }
+
+    private fun initTitleImageView(question: Question) = when {
+        question.title.isEmpty() -> binding.lnQuestionImageLayout.txtTitleImage.visibility=View.GONE
+        else -> {
+            binding.lnQuestionImageLayout.txtTitleImage.text = question.title
+            binding.lnQuestionImageLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
+        }
     }
 
     private fun initSetTag(view: View, urlContent: String) {

@@ -12,8 +12,8 @@ com/vesam/quiz/databinding/ItemSlidingimagesBinding.java
  com.vesam.quiz.databinding.ItemSlidingimagesBinding
 com/vesam/quiz/databinding/FragmentLoadingBinding.java
  com.vesam.quiz.databinding.FragmentLoadingBinding
-com/vesam/quiz/databinding/FragmentQuestionsBinding.java
- com.vesam.quiz.databinding.FragmentQuestionsBinding
+com/vesam/quiz/databinding/AnswerVideoLayoutBinding.java
+ com.vesam.quiz.databinding.AnswerVideoLayoutBinding
 com/vesam/quiz/databinding/ItemAnswerClozeBinding.java
  com.vesam.quiz.databinding.ItemAnswerClozeBinding
 com/vesam/quiz/data/database/DetailsDAO_Impl.java
@@ -94,8 +94,8 @@ com/vesam/quiz/databinding/ItemQuestionClozeBinding.java
 com/vesam/quiz/utils/zoomage/AutoResetMode.java
  com.vesam.quiz.utils.zoomage.AutoResetMode
  com.vesam.quiz.utils.zoomage.AutoResetMode$Parser
-com/vesam/quiz/databinding/QuestionImageLayoutBinding.java
- com.vesam.quiz.databinding.QuestionImageLayoutBinding
+com/vesam/quiz/databinding/QuestionSoundResultLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionSoundResultLayoutBinding
 com/vesam/quiz/utils/type_converters/ToStringConverterFactory.java
  com.vesam.quiz.utils.type_converters.ToStringConverterFactory
 com/vesam/quiz/DataBindingTriggerClass.java
@@ -108,7 +108,7 @@ com/vesam/quiz/databinding/ToastLayoutBinding.java
  com.vesam.quiz.databinding.ToastLayoutBinding
 androidx/databinding/DataBindingComponent.java
  androidx.databinding.DataBindingComponent
-com/vesam/quiz/databinding/AnswerVideoLayoutBinding.java
- com.vesam.quiz.databinding.AnswerVideoLayoutBinding
-com/vesam/quiz/databinding/QuestionSoundResultLayoutBinding.java
- com.vesam.quiz.databinding.QuestionSoundResultLayoutBinding
+com/vesam/quiz/databinding/QuestionImageLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionImageLayoutBinding
+com/vesam/quiz/databinding/FragmentQuestionsBinding.java
+ com.vesam.quiz.databinding.FragmentQuestionsBinding

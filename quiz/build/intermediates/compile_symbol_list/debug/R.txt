@@ -2663,6 +2663,7 @@ int id navigation_bar_item_small_label_view 0x0
 int id navigation_header_container 0x0
 int id nestedContent 0x0
 int id nestedScrollView 0x0
+int id nestedScrollViewTitleImage 0x0
 int id niceVideoPlayer 0x0
 int id none 0x0
 int id normal 0x0
@@ -2832,6 +2833,7 @@ int id txtSuccessTitleStart 0x0
 int id txtTextAnswer 0x0
 int id txtTitle 0x0
 int id txtTitleEnd 0x0
+int id txtTitleImage 0x0
 int id txtTitleStart 0x0
 int id txtUnSuccessAnswer 0x0
 int id txtUnSuccessTitleEnd 0x0

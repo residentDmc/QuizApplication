@@ -2764,6 +2764,7 @@ id navigation_bar_item_small_label_view
 id navigation_header_container
 id nestedContent
 id nestedScrollView
+id nestedScrollViewTitleImage
 id never
 id niceVideoPlayer
 id noScroll
@@ -2956,6 +2957,7 @@ id txtSuccessTitleStart
 id txtTextAnswer
 id txtTitle
 id txtTitleEnd
+id txtTitleImage
 id txtTitleStart
 id txtUnSuccessAnswer
 id txtUnSuccessTitleEnd

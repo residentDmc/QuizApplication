@@ -186,8 +186,8 @@ class QuizActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initDelayQuizDetailModel(it: ResponseQuizDetailModel) {
-        initCounter(counterFile, urlList.size)
         it.questions.forEach(this::initQuestions)
+        initCounter(counterFile, urlList.size)
         initDownloadFile(it)
     }
 

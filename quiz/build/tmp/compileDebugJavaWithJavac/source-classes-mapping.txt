@@ -36,8 +36,8 @@ com/vesam/quiz/databinding/FragmentFullscreenSliderImageClozeBinding.java
  com.vesam.quiz.databinding.FragmentFullscreenSliderImageClozeBinding
 androidx/databinding/library/baseAdapters/BR.java
  androidx.databinding.library.baseAdapters.BR
-com/vesam/quiz/databinding/QuestionSoundLayoutBinding.java
- com.vesam.quiz.databinding.QuestionSoundLayoutBinding
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
 com/vesam/quiz/DataBinderMapperImpl.java
  com.vesam.quiz.DataBinderMapperImpl
  com.vesam.quiz.DataBinderMapperImpl$InnerBrLookup
@@ -56,8 +56,8 @@ com/vesam/quiz/BR.java
  com.vesam.quiz.BR
 com/vesam/quiz/databinding/ClozeImageLayoutBinding.java
  com.vesam.quiz.databinding.ClozeImageLayoutBinding
-com/vesam/quiz/databinding/QuestionTextLayoutBinding.java
- com.vesam.quiz.databinding.QuestionTextLayoutBinding
+com/vesam/quiz/databinding/ToastLayoutBinding.java
+ com.vesam.quiz.databinding.ToastLayoutBinding
 com/vesam/quiz/databinding/FragmentFullscreenSliderImageQuestionBinding.java
  com.vesam.quiz.databinding.FragmentFullscreenSliderImageQuestionBinding
 com/vesam/quiz/BuildConfig.java
@@ -87,15 +87,15 @@ com/vesam/quiz/databinding/FragmentResultClozeBinding.java
  com.vesam.quiz.databinding.FragmentResultClozeBinding
 com/vesam/quiz/databinding/AnswerTextLayoutBinding.java
  com.vesam.quiz.databinding.AnswerTextLayoutBinding
-com/vesam/quiz/databinding/QuestionVideoLayoutBinding.java
- com.vesam.quiz.databinding.QuestionVideoLayoutBinding
+com/vesam/quiz/databinding/QuestionSoundResultLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionSoundResultLayoutBinding
 com/vesam/quiz/databinding/ItemQuestionClozeBinding.java
  com.vesam.quiz.databinding.ItemQuestionClozeBinding
 com/vesam/quiz/utils/zoomage/AutoResetMode.java
  com.vesam.quiz.utils.zoomage.AutoResetMode
  com.vesam.quiz.utils.zoomage.AutoResetMode$Parser
-com/vesam/quiz/databinding/QuestionSoundResultLayoutBinding.java
- com.vesam.quiz.databinding.QuestionSoundResultLayoutBinding
+com/vesam/quiz/databinding/QuestionImageLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionImageLayoutBinding
 com/vesam/quiz/utils/type_converters/ToStringConverterFactory.java
  com.vesam.quiz.utils.type_converters.ToStringConverterFactory
 com/vesam/quiz/DataBindingTriggerClass.java
@@ -104,11 +104,11 @@ com/vesam/quiz/databinding/FragmentResultQuizBinding.java
  com.vesam.quiz.databinding.FragmentResultQuizBinding
 com/vesam/quiz/databinding/QuestionVideoResultLayoutBinding.java
  com.vesam.quiz.databinding.QuestionVideoResultLayoutBinding
-com/vesam/quiz/databinding/ToastLayoutBinding.java
- com.vesam.quiz.databinding.ToastLayoutBinding
-androidx/databinding/DataBindingComponent.java
- androidx.databinding.DataBindingComponent
-com/vesam/quiz/databinding/QuestionImageLayoutBinding.java
- com.vesam.quiz.databinding.QuestionImageLayoutBinding
+com/vesam/quiz/databinding/QuestionVideoLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionVideoLayoutBinding
 com/vesam/quiz/databinding/FragmentQuestionsBinding.java
  com.vesam.quiz.databinding.FragmentQuestionsBinding
+com/vesam/quiz/databinding/QuestionSoundLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionSoundLayoutBinding
+com/vesam/quiz/databinding/QuestionTextLayoutBinding.java
+ com.vesam.quiz.databinding.QuestionTextLayoutBinding

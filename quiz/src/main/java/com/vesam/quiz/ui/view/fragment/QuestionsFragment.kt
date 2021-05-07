@@ -369,11 +369,39 @@ class QuestionsFragment : Fragment() {
         )
     }
 
-    private fun initTitleImageView(question: Question) = when {
-        question.title.isEmpty() -> binding.lnQuestionImageLayout.txtTitleImage.visibility=View.GONE
+    private fun initTitleText(question: Question) = when {
+        question.title.isEmpty() -> binding.lnQuestionTextLayout.lnTitle.visibility=View.GONE
         else -> {
+            binding.lnQuestionTextLayout.lnTitle.visibility=View.VISIBLE
+            binding.lnQuestionTextLayout.txtTitleImage.text = question.title
+            binding.lnQuestionTextLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
+        }
+    }
+
+    private fun initTitleImageView(question: Question) = when {
+        question.title.isEmpty() -> binding.lnQuestionImageLayout.lnTitle.visibility=View.GONE
+        else -> {
+            binding.lnQuestionImageLayout.lnTitle.visibility=View.VISIBLE
             binding.lnQuestionImageLayout.txtTitleImage.text = question.title
             binding.lnQuestionImageLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
+        }
+    }
+
+    private fun initTitleAudio(question: Question) = when {
+        question.title.isEmpty() -> binding.lnQuestionSoundLayout.lnTitle.visibility=View.GONE
+        else -> {
+            binding.lnQuestionSoundLayout.lnTitle.visibility=View.VISIBLE
+            binding.lnQuestionSoundLayout.txtTitleImage.text = question.title
+            binding.lnQuestionSoundLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
+        }
+    }
+
+    private fun initTitleVideo(question: Question) = when {
+        question.title.isEmpty() -> binding.lnQuestionVideoLayout.lnTitle.visibility=View.GONE
+        else -> {
+            binding.lnQuestionVideoLayout.lnTitle.visibility=View.VISIBLE
+            binding.lnQuestionVideoLayout.txtTitleImage.text = question.title
+            binding.lnQuestionVideoLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
         }
     }
 
@@ -383,6 +411,7 @@ class QuestionsFragment : Fragment() {
 
     private fun initQuestionFormatAudio(question: Question) {
         binding.btnNextQuestion.visibility = View.VISIBLE
+        initTitleAudio(question)
         initShowQuestionFormatSound()
         initPeriodSoundTime(question)
         initSoundQuestion(question.uriPath)
@@ -468,6 +497,7 @@ class QuestionsFragment : Fragment() {
 
     private fun initQuestionFormatVideo(question: Question) {
         binding.btnNextQuestion.visibility = View.VISIBLE
+        initTitleVideo(question)
         initShowQuestionFormatVideo()
         initPeriodVideoTime(question)
         initVideoQuestion(question.uriPath)
@@ -478,9 +508,10 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initQuestionFormatText(question: Question) {
+        initTitleText(question)
         initShowQuestionFormatText()
         initPeriodTextTime(question)
-        binding.lnQuestionTextLayout.txtQuestion.text = question.title
+        binding.lnQuestionTextLayout.txtQuestion.text = question.quizDescription!!.content
     }
 
     private fun initAutomaticAnimationScroll() = Thread {
@@ -805,6 +836,7 @@ class QuestionsFragment : Fragment() {
         initShowAnswerFormatVideo()
         initVideoView(answer.uriPath)
         initStopQuestionVideo()
+        initAutomaticAnimationScroll()
         initPauseSoundQuestion()
     }
 
@@ -865,6 +897,7 @@ class QuestionsFragment : Fragment() {
         initShowAnswerFormatSound()
         initStopQuestionVideo()
         initPauseSoundQuestion()
+        initAutomaticAnimationScroll()
         initSoundAnswer(answer.uriPath)
     }
 
@@ -873,6 +906,7 @@ class QuestionsFragment : Fragment() {
         initShowAnswerFormatImage()
         initStopQuestionVideo()
         initPauseSoundQuestion()
+        initAutomaticAnimationScroll()
         initSetTag(binding.lnAnswerImageLayout.imgAnswer, answer.description!!.urlContent)
         glideTools.displayImageOriginal(
             binding.lnAnswerImageLayout.imgAnswer,

@@ -4,15 +4,40 @@
     xmlns:custom="http://schemas.android.com/tools"
     android:id="@id/lnSound"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_170"
+    android:layout_height="wrap_content"
     android:background="@drawable/rounded_white_shape"
     android:orientation="vertical"
     android:visibility="gone">
 
+    <LinearLayout
+        android:id="@id/lnTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@id/txtTitleImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="5"
+            android:padding="@dimen/margin_16"
+            android:scrollbars="vertical"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_1"
+            android:background="@color/background"/>
+
+        <View
+            android:layout_width="@dimen/margin_1"
+            android:layout_height="@dimen/margin_8"/>
+    </LinearLayout>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="@dimen/margin_170">
 
         <ImageView
             android:id="@id/imgQuestionPlaySound"

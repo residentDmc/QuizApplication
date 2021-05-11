@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.TutorialsAndroid'
+
+android {
+    compileSdkVersion 30
+    resourcePrefix 'crash_'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 30
+        versionCode 8
+        versionName "5.0.19"
+    }
+	buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+    buildToolsVersion '30.0.3'
+}
+
+dependencies {
+	implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    //ANDROIDX JETPACK LIBRARIES
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+}

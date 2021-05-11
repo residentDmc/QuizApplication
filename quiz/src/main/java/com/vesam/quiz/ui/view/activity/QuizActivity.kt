@@ -3,10 +3,8 @@ package com.vesam.quiz.ui.view.activity
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.os.Build
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.os.*
+import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -15,6 +13,7 @@ import androidx.navigation.Navigation
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.Progress
+import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.file_download.FileDownload
 import com.vesam.quiz.data.model.quiz_detail.Answer
@@ -221,8 +220,19 @@ class QuizActivity : BaseActivity() {
 
     private fun initFileDownload(fileDownload: FileDownload): String {
         return when (fileDownload.format) {
-            FORMAT_VIDEO -> "${fileDownload.title}${MIM_TYPE_VIDEO}"
-            else -> "${fileDownload.title}${MIM_TYPE_AUDIO}"
+            FORMAT_VIDEO -> "${nameFileEncrypt(fileDownload.url)}${MIM_TYPE_VIDEO}"
+            else -> "${nameFileEncrypt(fileDownload.url)}${MIM_TYPE_AUDIO}"
+        }
+    }
+
+    private fun nameFileEncrypt(filename: String): String {
+        val lastSlashChar = filename.lastIndexOf("/")
+        val lastSlashChars = filename.lastIndexOf(".mp4")
+        val lastSlashChara = filename.lastIndexOf(".mp3")
+        return when {
+            lastSlashChars > -1 -> filename.substring(lastSlashChar + 1, lastSlashChars - 1)
+            lastSlashChara > -1 -> filename.substring(lastSlashChar + 1, lastSlashChara - 1)
+            else -> filename.substring(lastSlashChar + 1)
         }
     }
 
@@ -276,13 +286,21 @@ class QuizActivity : BaseActivity() {
 
     private fun initAnswerFormatVideo(answer: Answer) {
         val fileDownload =
-            FileDownload(answer.title, answer.description!!.format, answer.description.urlContent)
+            FileDownload(
+                answer.title,
+                answer.description!!.format,
+                answer.description.urlContent
+            )
         initAddList(fileDownload)
     }
 
     private fun initAnswerFormatAudio(answer: Answer) {
         val fileDownload =
-            FileDownload(answer.title, answer.description!!.format, answer.description.urlContent)
+            FileDownload(
+                answer.title,
+                answer.description!!.format,
+                answer.description.urlContent
+            )
         initAddList(fileDownload)
     }
 
@@ -337,12 +355,13 @@ class QuizActivity : BaseActivity() {
 
                 override fun onError(error: com.downloader.Error?) {
                     error!!.connectionException.let {
-                        if (it != null) handelErrorTools.handelError(
-                            it
-                        )
+                        if (it != null) {
+                            handelErrorTools.handelError(
+                                it
+                            )
+                            toastTools.toast(it.message.toString())
+                        }
                     }
-                    toastTools.toast(resources.getString(R.string.file_not_found))
-                    initFinish()
                 }
             })
     }
@@ -363,7 +382,10 @@ class QuizActivity : BaseActivity() {
         if (counterFile == urlList.size) initQuizDetailModel(responseQuizDetailModel)
     }
 
-    private fun initCheckList(it: FileDownload, responseQuizDetailModel: ResponseQuizDetailModel) {
+    private fun initCheckList(
+        it: FileDownload,
+        responseQuizDetailModel: ResponseQuizDetailModel
+    ) {
         val indexOf = urlList.indexOf(it)
         val step = indexOf + 1
         if (step < urlList.size) {
@@ -393,6 +415,7 @@ class QuizActivity : BaseActivity() {
         val message = throwableTools.getThrowableError(it)
         handelErrorTools.handelError(it)
         toastTools.toast(message)
+        finish()
     }
 
     private fun initQuizDetailModel(it: ResponseQuizDetailModel) {

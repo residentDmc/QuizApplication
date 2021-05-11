@@ -151,6 +151,7 @@ color deep_purple_A200
 color deep_purple_A400
 color deep_purple_A700
 color dialog_bg
+color dim_foreground_dark
 color divider
 color filter_color
 color greenColor
@@ -450,6 +451,10 @@ drawable ic_fullscreen_exit
 drawable ic_load_pic
 drawable ic_loading
 drawable ic_logo
+drawable ic_media_fullscreen_shrink
+drawable ic_media_fullscreen_stretch
+drawable ic_media_pause
+drawable ic_media_play
 drawable ic_next_question
 drawable ic_no_pic_detail
 drawable ic_pause
@@ -496,6 +501,7 @@ id clozeFragment
 id collapsingImageLayout
 id custom_toast_layout_id
 id cvAnswerVideo
+id cvClozeVideo
 id cvQuestionVideo
 id cvVideo
 id image
@@ -511,6 +517,9 @@ id imgBtnUnSuccess
 id imgBtnUnSuccessEnd
 id imgBtnUnSuccessStart
 id imgCloze
+id imgClozePauseSound
+id imgClozePlaySound
+id imgExitFullScreen
 id imgFullScreen
 id imgLogo
 id imgPlay
@@ -520,6 +529,7 @@ id imgQuestionPauseSound
 id imgQuestionPlaySound
 id imgSuccess
 id imgUnSuccess
+id linearLayout
 id lnAction
 id lnAnswerImage
 id lnAnswerImageLayout
@@ -529,6 +539,9 @@ id lnAnswerText
 id lnAnswerTextLayout
 id lnAnswerVideoLayout
 id lnClozeImageLayout
+id lnClozeSoundLayout
+id lnClozeTextLayout
+id lnClozeVideoLayout
 id lnCurrentHistoryQuestion
 id lnImage
 id lnItemQuestion
@@ -604,6 +617,7 @@ id txtTitle
 id txtTitleEnd
 id txtTitleImage
 id txtTitleStart
+id txtTitleText
 id txtUnSuccessAnswer
 id txtUnSuccessTitleEnd
 id txtUnSuccessTitleStart
@@ -613,12 +627,14 @@ id viewVideoQuestion
 id waveformSeekBarAnswer
 id waveformSeekBarQuestion
 id zoomView
+layout activity_full_screen
 layout activity_quiz
 layout answer_image_layout
 layout answer_sound_layout
 layout answer_text_layout
 layout answer_video_layout
 layout cloze_image_layout
+layout cloze_text_layout
 layout fragment_cloze
 layout fragment_fullscreen_slider_image_cloze
 layout fragment_fullscreen_slider_image_question
@@ -649,6 +665,7 @@ string buffer
 string cloze_results
 string correct
 string current_history_question
+string description
 string descriptive_answer
 string exam_results
 string file_not_found
@@ -658,6 +675,7 @@ string next_question
 string no_connection
 string not_cloze
 string not_multimedia
+string permission_denied
 string play
 string playback_error_please_try_again
 string proceed
@@ -676,5 +694,4 @@ style AppTheme
 style dialog_change_clarity
 styleable MultiProgressBar lineColor progressColor progressSteps progressPadding progressWidth progressPercents isNeedRestoreProgress singleDisplayedTime
 styleable ZoomageView zoomage_zoomable zoomage_translatable zoomage_restrictBounds zoomage_animateOnReset zoomage_doubleTapToZoom zoomage_doubleTapToZoomScaleFactor zoomage_autoCenter zoomage_minScale zoomage_maxScale zoomage_autoResetMode
-xml external_files
 xml network_security_config

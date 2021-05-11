@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.pixplicity.sharp:library:1.1.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/51c6c80a6af8c6944893a2fdbc4e4018/jetified-library-1.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/51c6c80a6af8c6944893a2fdbc4e4018/jetified-library-1.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/51c6c80a6af8c6944893a2fdbc4e4018/jetified-library-1.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/17cbc33e18dbb53ff30f262f46767a4a/jetified-library-1.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/17cbc33e18dbb53ff30f262f46767a4a/jetified-library-1.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/17cbc33e18dbb53ff30f262f46767a4a/jetified-library-1.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.pixplicity.sharp/library/1.1.0/82eb108197d233795f087461429b3282f8fa6f98/library-1.1.0-javadoc.jar!/" />

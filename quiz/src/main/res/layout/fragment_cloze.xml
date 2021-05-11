@@ -39,6 +39,11 @@
                     android:id="@id/lnClozeImageLayout"
                     layout="@layout/cloze_image_layout" />
 
+                <include
+                    android:id="@id/lnClozeTextLayout"
+                    layout="@layout/cloze_text_layout" />
+
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@id/rcCloze"
                     android:layout_width="match_parent"

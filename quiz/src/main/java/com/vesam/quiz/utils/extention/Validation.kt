@@ -1,7 +1,6 @@
 package com.vesam.quiz.utils.extention
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout

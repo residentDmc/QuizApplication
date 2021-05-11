@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/battery_charging_full/baseline_battery_charging_full_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/fullscreen_exit/baseline_fullscreen_exit_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="battery_charging" />
+                            <entry key="outputName" value="ic_media_fullscreen_stretch" />
                             <entry key="sourceFile" value="C:\Users\Android\Desktop\pause(1).svg" />
                           </map>
                         </option>

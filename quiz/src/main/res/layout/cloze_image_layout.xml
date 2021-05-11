@@ -4,6 +4,7 @@
     android:id="@id/lnImage"
     android:layout_width="match_parent"
     android:layout_height="@dimen/margin_170"
+    android:visibility="gone"
     android:background="@drawable/rounded_white_shape">
 
     <com.google.android.material.imageview.ShapeableImageView

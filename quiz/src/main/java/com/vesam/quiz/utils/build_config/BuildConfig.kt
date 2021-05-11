@@ -45,6 +45,9 @@ class BuildConfig {
         const val BUNDLE_USER_QUESTION_LIST = "userQuestionList"
         const val BUNDLE_USER_ANSWER_LIST_ID = "userAnswerListId"
         const val BUNDLE_MULTIMEDIA = "multimedia"
+        const val BUNDLE_CURRENT_POSITION = "currentPosition"
+        const val BUNDLE_PATH = "path"
+
 
         // tag fragment
         const val ITEM_QUESTION = "item_question"
@@ -81,5 +84,10 @@ class BuildConfig {
         const val FINAL_LEVEL = "finalLevel"
         var HOW_DISPLAY_CORRECT_ANSWER = ""
         var PASS_CONDITION = -1
+
+        // requestCode
+        var REQUEST_CODE_FULL_SCREEN = 100
+
+
     }
 }

@@ -27,8 +27,19 @@ data class Answer(
     var uriPath = ""
         get() {
             return when (description!!.format) {
-                FORMAT_VIDEO -> title + MIM_TYPE_VIDEO
-                else -> title + MIM_TYPE_AUDIO
+                FORMAT_VIDEO ->"${nameFileEncrypt(description.urlContent)}${MIM_TYPE_VIDEO}"
+                else -> "${nameFileEncrypt(description.urlContent)}${MIM_TYPE_AUDIO}"
             }
         }
+
+    private fun nameFileEncrypt(filename: String): String {
+        val lastSlashChar = filename.lastIndexOf("/")
+        val lastSlashChars = filename.lastIndexOf(".mp4")
+        val lastSlashChara = filename.lastIndexOf(".mp3")
+        return when {
+            lastSlashChars > -1 -> filename.substring(lastSlashChar + 1, lastSlashChars - 1)
+            lastSlashChara > -1 -> filename.substring(lastSlashChar + 1, lastSlashChara - 1)
+            else -> filename.substring(lastSlashChar + 1)
+        }
+    }
 }

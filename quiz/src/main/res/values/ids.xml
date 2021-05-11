@@ -120,6 +120,14 @@
     <item name="progressBarLoading" type="id" />
     <item name="txtTitleImage" type="id" />
     <item name="nestedScrollViewTitleImage" type="id" />
+    <item name="lnClozeTextLayout" type="id" />
+    <item name="lnClozeSoundLayout" type="id" />
+    <item name="lnClozeVideoLayout" type="id" />
+    <item name="cvClozeVideo" type="id" />
+    <item name="imgClozePlaySound" type="id" />
+    <item name="imgClozePauseSound" type="id" />
+    <item name="imgExitFullScreen" type="id" />
+    <item name="txtTitleText" type="id" />
 
 
 </resources>

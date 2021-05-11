@@ -1,10 +1,2 @@
 com/vesam/quiz/BuildConfig.java
  com.vesam.quiz.BuildConfig
-com/vesam/quiz/DataBindingTriggerClass.java
- com.vesam.quiz.DataBindingTriggerClass
-com/vesam/quiz/databinding/ActivityMainBinding.java
- com.vesam.quiz.databinding.ActivityMainBinding
-com/vesam/quiz/databinding/FragmentDashboardBinding.java
- com.vesam.quiz.databinding.FragmentDashboardBinding
-com/vesam/quiz/databinding/ToastLayoutBinding.java
- com.vesam.quiz.databinding.ToastLayoutBinding

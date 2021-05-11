@@ -1,15 +1,17 @@
 package com.vesam.quiz.ui.view.fragment
 
+import android.app.Activity.RESULT_OK
 import android.content.Context.VIBRATOR_SERVICE
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.*
 import android.text.Html
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import android.widget.ProgressBar
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -25,9 +27,12 @@ import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
 import com.vesam.quiz.databinding.FragmentQuestionsBinding
 import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
+import com.vesam.quiz.ui.view.activity.FullScreenActivity
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_CURRENT_POSITION
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_PATH
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_QUESTION_LIST
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.CORRECT_ANSWER
@@ -38,14 +43,15 @@ import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.HOW_DISPLAY_CORRECT_ANSWER
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.MULTIMEDIA
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.PASS_CONDITION
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.REQUEST_CODE_FULL_SCREEN
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.STEP_BY_STEP
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.WRONG_ANSWER
-import com.vesam.quiz.utils.extention.checkPersianCharacter
 import com.vesam.quiz.utils.extention.initFindFileInStorage
 import com.vesam.quiz.utils.music_manager.BeatBox
+import com.vesam.quiz.utils.option.Option
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import com.vesam.quiz.utils.tools.ThrowableTools
@@ -56,7 +62,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
-import tcking.github.com.giraffeplayer2.GiraffePlayer
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
@@ -126,13 +131,13 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initShowAnswerVideoResumed() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.onActivityResumed()
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.resume()
     }
 
     private fun initShowQuestionVideoResumed() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityResumed()
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.resume()
     }
 
     override fun onPause() {
@@ -158,13 +163,13 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initShowQuestionVideoDestroy() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityDestroyed()
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.stopPlayback()
     }
 
     private fun initShowAnswerVideoDestroy() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.onActivityDestroyed()
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.stopPlayback()
     }
 
     private fun initAction() {
@@ -182,6 +187,37 @@ class QuestionsFragment : Fragment() {
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.setOnClickListener { initPauseSoundAnswer() }
         binding.lnQuestionImageLayout.imgQuestion.setOnClickListener { initQuestionImage() }
         binding.lnAnswerImageLayout.imgAnswer.setOnClickListener { initAnswerImage() }
+        binding.lnAnswerVideoLayout.imgFullScreen.setOnClickListener { initFullScreenVideo() }
+        binding.lnQuestionVideoLayout.imgFullScreen.setOnClickListener { initFullScreenVideo() }
+    }
+
+    private fun initFullScreenVideo() {
+        val intent = Intent()
+        intent.putExtra(BUNDLE_CURRENT_POSITION, initCurrentPosition())
+        intent.putExtra(BUNDLE_PATH, initPath())
+        intent.setClass(requireActivity(), FullScreenActivity::class.java)
+        requireActivity().startActivityForResult(intent, REQUEST_CODE_FULL_SCREEN)
+
+    }
+
+    private fun initCurrentPosition(): Int {
+        val currentPosition: Int
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> {
+                currentPosition = binding.lnAnswerVideoLayout.videoView.currentPosition
+                binding.lnAnswerVideoLayout.videoView.pause()
+            }
+            else -> {
+                currentPosition = binding.lnQuestionVideoLayout.viewVideoQuestion.currentPosition
+                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+            }
+        }
+        return currentPosition
+    }
+
+    private fun initPath(): String = when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+        View.VISIBLE -> binding.lnAnswerVideoLayout.videoView.tag as String
+        else -> binding.lnQuestionVideoLayout.viewVideoQuestion.tag as String
     }
 
     private fun initQuestionImage() {
@@ -305,7 +341,6 @@ class QuestionsFragment : Fragment() {
         initStopVideo()
         initHideAllAnswer()
         initStateQuestionFormat()
-        checkPersianCharacter(question.title, binding.lnQuestionTextLayout.txtQuestion)
         initHideAnswerQuestion()
         answerAdapter.updateList(question.answers)
     }
@@ -370,36 +405,36 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initTitleText(question: Question) = when {
-        question.title.isEmpty() -> binding.lnQuestionTextLayout.lnTitle.visibility=View.GONE
+        question.title.isEmpty() -> binding.lnQuestionTextLayout.lnTitle.visibility = View.GONE
         else -> {
-            binding.lnQuestionTextLayout.lnTitle.visibility=View.VISIBLE
-            binding.lnQuestionTextLayout.txtTitleImage.text = question.title
-            binding.lnQuestionTextLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
+            binding.lnQuestionTextLayout.lnTitle.visibility = View.VISIBLE
+            binding.lnQuestionTextLayout.txtTitleText.text = question.title
+            binding.lnQuestionTextLayout.txtTitleText.setMovementMethod(ScrollingMovementMethod.getInstance())
         }
     }
 
     private fun initTitleImageView(question: Question) = when {
-        question.title.isEmpty() -> binding.lnQuestionImageLayout.lnTitle.visibility=View.GONE
+        question.title.isEmpty() -> binding.lnQuestionImageLayout.lnTitle.visibility = View.GONE
         else -> {
-            binding.lnQuestionImageLayout.lnTitle.visibility=View.VISIBLE
+            binding.lnQuestionImageLayout.lnTitle.visibility = View.VISIBLE
             binding.lnQuestionImageLayout.txtTitleImage.text = question.title
             binding.lnQuestionImageLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
         }
     }
 
     private fun initTitleAudio(question: Question) = when {
-        question.title.isEmpty() -> binding.lnQuestionSoundLayout.lnTitle.visibility=View.GONE
+        question.title.isEmpty() -> binding.lnQuestionSoundLayout.lnTitle.visibility = View.GONE
         else -> {
-            binding.lnQuestionSoundLayout.lnTitle.visibility=View.VISIBLE
+            binding.lnQuestionSoundLayout.lnTitle.visibility = View.VISIBLE
             binding.lnQuestionSoundLayout.txtTitleImage.text = question.title
             binding.lnQuestionSoundLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
         }
     }
 
     private fun initTitleVideo(question: Question) = when {
-        question.title.isEmpty() -> binding.lnQuestionVideoLayout.lnTitle.visibility=View.GONE
+        question.title.isEmpty() -> binding.lnQuestionVideoLayout.lnTitle.visibility = View.GONE
         else -> {
-            binding.lnQuestionVideoLayout.lnTitle.visibility=View.VISIBLE
+            binding.lnQuestionVideoLayout.lnTitle.visibility = View.VISIBLE
             binding.lnQuestionVideoLayout.txtTitleImage.text = question.title
             binding.lnQuestionVideoLayout.txtTitleImage.setMovementMethod(ScrollingMovementMethod.getInstance());
         }
@@ -454,6 +489,7 @@ class QuestionsFragment : Fragment() {
 
     private fun initPlaySoundQuestion() {
         initPauseSoundAnswer()
+        initPauseAnswerVideo()
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerQuestion.isInitialized)
@@ -476,6 +512,7 @@ class QuestionsFragment : Fragment() {
 
     private fun initPlaySoundAnswer() {
         initPauseSoundQuestion()
+        initPauseQuestionVideo()
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerAnswer.isInitialized)
@@ -485,11 +522,11 @@ class QuestionsFragment : Fragment() {
     private fun initPauseSoundAnswer() {
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.VISIBLE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.GONE
-        if (::mediaPlayerAnswer.isInitialized){
+        if (::mediaPlayerAnswer.isInitialized) {
             try {
                 if (mediaPlayerAnswer.isPlaying)
-                mediaPlayerAnswer.pause()
-            } catch (e:Exception) {
+                    mediaPlayerAnswer.pause()
+            } catch (e: Exception) {
                 handelErrorTools.handelError(e)
             }
         }
@@ -504,14 +541,29 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initVideoQuestion(content: String) {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(initFindFileInStorage(content)).player.start()
+        val uri = initFindFileInStorage(content)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.tag = uri
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(uri)
+        val mediaController = MediaController(requireActivity())
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setMediaController(mediaController)
+        mediaController.setAnchorView(binding.lnQuestionVideoLayout.viewVideoQuestion)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.start()
     }
 
     private fun initQuestionFormatText(question: Question) {
         initTitleText(question)
         initShowQuestionFormatText()
+        initConvertHtmlQuestion(question)
         initPeriodTextTime(question)
-        binding.lnQuestionTextLayout.txtQuestion.text = question.quizDescription!!.content
+    }
+
+    private fun initConvertHtmlQuestion(question: Question) {
+        question.quizDescription!!.content.let {
+            if (!it.isNullOrEmpty()) {
+                val plainText = Html.fromHtml(it).toString()
+                binding.lnQuestionTextLayout.txtQuestion.text = plainText
+            }
+        }
     }
 
     private fun initAutomaticAnimationScroll() = Thread {
@@ -671,7 +723,6 @@ class QuestionsFragment : Fragment() {
         initStateListFormat(answer)
         answer.isSuccess = 1
         resultAnswerListId.add(answer.id)
-        initStopVideo()
         initPassCondition()
     }
 
@@ -738,14 +789,20 @@ class QuestionsFragment : Fragment() {
         currentProgress += 1
         binding.progressStepByStep.progress = currentProgress
         when (PASS_CONDITION) {
-            currentProgress -> binding.btnNextQuestion.visibility = View.VISIBLE
+            currentProgress -> initResultCondition()
         }
+    }
+
+    private fun initResultCondition() {
+        resultQuestionList.add(question)
+        initResult()
     }
 
     private fun initUnSuccessAnswerStepByStep(answer: Answer) {
         val isCorrectAnswer = answerAdapter.initFindIsCorrectAnswer()
         answerAdapter.answerUnSuccessQuestion(answer)
-        initStateListFormat(isCorrectAnswer!!)
+        answerAdapter.answerSuccessQuestion(isCorrectAnswer!!)
+        initStateListFormat(isCorrectAnswer)
         initPlayWrongAnswer()
         answer.isSuccess = 2
         resultAnswerListId.add(answer.id)
@@ -814,35 +871,39 @@ class QuestionsFragment : Fragment() {
 
     private fun initListFormatText(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
-        initConvertHtml(answer)
+        initConvertHtmlAnswer(answer)
         initShowAnswerFormatText()
         initAutomaticAnimationScroll()
-        initStopQuestionVideo()
+        initPauseQuestionVideo()
         initPauseSoundQuestion()
     }
 
-    private fun initConvertHtml(answer: Answer) {
+    private fun initConvertHtmlAnswer(answer: Answer) {
         answer.description!!.content.let {
             if (!it.isNullOrEmpty()) {
                 val plainText = Html.fromHtml(it).toString()
                 binding.lnAnswerTextLayout.txtTextAnswer.text = plainText
             }
         }
-
     }
 
     private fun initListFormatVideo(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatVideo()
         initVideoView(answer.uriPath)
-        initStopQuestionVideo()
+        initPauseQuestionVideo()
         initAutomaticAnimationScroll()
         initPauseSoundQuestion()
     }
 
     private fun initVideoView(content: String) {
-        val url = initFindFileInStorage(content)
-        binding.lnAnswerVideoLayout.videoView.setVideoPath(url).player.start()
+        val uri = initFindFileInStorage(content)
+        binding.lnAnswerVideoLayout.videoView.tag = uri
+        binding.lnAnswerVideoLayout.videoView.setVideoPath(uri)
+        val mediaController = MediaController(requireActivity())
+        binding.lnAnswerVideoLayout.videoView.setMediaController(mediaController)
+        mediaController.setAnchorView(binding.lnAnswerVideoLayout.videoView)
+        binding.lnAnswerVideoLayout.videoView.start()
     }
 
     private fun initStopVideo() = try {
@@ -855,19 +916,32 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initShowQuestionVideoStop() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying) {
+            binding.lnQuestionVideoLayout.viewVideoQuestion.stopPlayback()
+            binding.lnQuestionVideoLayout.viewVideoQuestion.setMediaController(null)
+        }
     }
 
     private fun initShowAnswerVideoStop() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying) {
+            binding.lnAnswerVideoLayout.videoView.stopPlayback()
+            binding.lnAnswerVideoLayout.videoView.setMediaController(null)
+        }
     }
 
-    private fun initStopQuestionVideo() {
+    private fun initPauseQuestionVideo() {
         try {
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
+    private fun initPauseAnswerVideo() {
+        try {
+            if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.pause()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -883,19 +957,19 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initShowQuestionVideoPause() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
     }
 
     private fun initShowAnswerVideoPause() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.pause()
     }
 
     private fun initListFormatSound(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatSound()
-        initStopQuestionVideo()
+        initPauseQuestionVideo()
         initPauseSoundQuestion()
         initAutomaticAnimationScroll()
         initSoundAnswer(answer.uriPath)
@@ -904,7 +978,7 @@ class QuestionsFragment : Fragment() {
     private fun initListFormatImage(answer: Answer) {
         binding.btnNextQuestion.visibility = View.VISIBLE
         initShowAnswerFormatImage()
-        initStopQuestionVideo()
+        initPauseQuestionVideo()
         initPauseSoundQuestion()
         initAutomaticAnimationScroll()
         initSetTag(binding.lnAnswerImageLayout.imgAnswer, answer.description!!.urlContent)
@@ -916,8 +990,8 @@ class QuestionsFragment : Fragment() {
 
     private fun initSoundAnswer(content: String) {
         releaseMPAnswer()
+        mediaPlayerAnswer = MediaPlayer()
         try {
-            mediaPlayerAnswer = MediaPlayer()
             mediaPlayerAnswer.setDataSource(
                 requireContext(), Uri.parse(
                     initFindFileInStorage(
@@ -965,33 +1039,37 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initOnBackPressed() {
-        when (requireActivity().requestedOrientation) {
-            0 -> initFullScreen()
-            1 -> initNormalScreen()
-        }
-    }
-
-    private fun initFullScreen() {
-        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
-            View.VISIBLE -> initExitFullScreenAnswerVideo()
-            else -> initExitFullScreenQuestionVideo()
-        }
-    }
-
-    private fun initExitFullScreenQuestionVideo() {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel =
-            GiraffePlayer.DISPLAY_NORMAL
-    }
-
-    private fun initExitFullScreenAnswerVideo() {
-        binding.lnAnswerVideoLayout.videoView.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
-
-    }
-
-
-    private fun initNormalScreen() {
         initPauseVideo()
         initStateAudio()
+        initExit()
+    }
+
+    private fun initExit() {
         AppQuiz.activity.finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE_FULL_SCREEN) initResultIntent(
+            data
+        )
+    }
+
+    private fun initResultIntent(data: Intent?) {
+        val currentPosition = data!!.extras!!.getInt(BUNDLE_CURRENT_POSITION, 0)
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initResumeAnswerVideo(currentPosition)
+            else -> initResumeQuestionVideo(currentPosition)
+        }
+    }
+
+    private fun initResumeAnswerVideo(currentPosition: Int) {
+        binding.lnAnswerVideoLayout.videoView.seekTo(currentPosition)
+        binding.lnAnswerVideoLayout.videoView.start()
+    }
+
+    private fun initResumeQuestionVideo(currentPosition: Int) {
+        binding.lnQuestionVideoLayout.viewVideoQuestion.seekTo(currentPosition)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.start()
     }
 }

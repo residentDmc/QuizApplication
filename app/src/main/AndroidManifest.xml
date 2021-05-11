@@ -25,6 +25,10 @@
             android:theme="@style/Theme.QuizSystem"
             android:windowSoftInputMode="adjustResize"/>
 
+        <activity android:name=".ui.view.activity.FullScreenActivity"
+            android:theme="@style/Theme.QuizSystem"
+            android:screenOrientation="landscape"/>
+
     </application>
 
 </manifest>

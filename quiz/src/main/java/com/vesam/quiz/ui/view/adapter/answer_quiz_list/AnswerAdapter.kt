@@ -221,7 +221,6 @@ class AnswerAdapter(private val context: Context) : RecyclerView.Adapter<ViewHol
     }
 
     fun initFindIsCorrectAnswer(): Answer? {
-        Log.d("TAG", "initFindIsCorrectAnswer: "+ Gson().toJson(list))
         list.forEach {
             when (it.isCorrect) {
                 1 -> return it

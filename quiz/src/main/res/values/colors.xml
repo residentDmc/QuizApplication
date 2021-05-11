@@ -368,6 +368,7 @@
     <color name="whiteDialogColor">#00EEF4F6</color>
     <color name="filter_color">#330000ff</color>
     <color name="blackTransparent">#07DDDDDD</color>
+    <color name="dim_foreground_dark">#bebebe</color>
 
 
     <!--for random color generator -->

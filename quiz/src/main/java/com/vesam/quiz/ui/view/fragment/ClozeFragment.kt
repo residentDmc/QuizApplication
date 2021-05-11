@@ -1,7 +1,9 @@
 package com.vesam.quiz.ui.view.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +20,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
+import com.vesam.quiz.data.model.quiz_detail.Details
 import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
 import com.vesam.quiz.databinding.FragmentClozeBinding
 import com.vesam.quiz.interfaces.OnClickListener
 import com.vesam.quiz.interfaces.OnClickListenerAny
+import com.vesam.quiz.ui.view.activity.QuizActivity
 import com.vesam.quiz.ui.view.adapter.question_cloze_list.QuestionClozeAdapter
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.application.AppQuiz
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_USER_ANSWER_LIST_ID
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_IMAGE
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_API_TOKEN_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_QUIZ_ID_VALUE
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.USER_UUID_VALUE
@@ -83,11 +89,6 @@ class ClozeFragment : Fragment() {
 
     private fun initAnimationImage() {
         binding.nestedScrollView.setFadingEdgeLength(170)
-        binding.nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY: Int, _, _ ->
-            initOnScrollChangeListener(
-                scrollY
-            )
-        })
     }
 
     private fun initOnScrollChangeListener(scrollY: Int) = when {
@@ -277,9 +278,44 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initClozeQuiz(it: ResponseQuizDetailModel) {
-        initLoadImageQuestion(it)
+        initStateQuestion(it)
         initUpdateAdapter(it)
         initPeriod(it.details.periodTime)
+    }
+
+    private fun initStateQuestion(it: ResponseQuizDetailModel) {
+        if (it.details.questionDescription.format== FORMAT_IMAGE){
+            initShowImageView()
+            initLoadImageQuestion(it)
+            binding.nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY: Int, _, _ ->
+                initOnScrollChangeListener(
+                    scrollY
+                )
+            })
+        } else if (it.details.questionDescription.format== FORMAT_TEXT){
+            initShowTextView()
+            initConvertHtmlQuestion(it.details)
+        }
+    }
+
+    private fun initConvertHtmlQuestion(details: Details) {
+        details.questionDescription.content.let {
+            if (it!!.isNotEmpty()) {
+                val plainText = Html.fromHtml(it).toString()
+                binding.lnClozeTextLayout.txtQuestion.text = plainText
+            }
+        }
+    }
+
+
+    private fun initShowImageView() {
+        binding.lnClozeImageLayout.lnImage.visibility=View.VISIBLE
+        binding.lnClozeTextLayout.lnText.visibility=View.GONE
+    }
+
+    private fun initShowTextView() {
+        binding.lnClozeImageLayout.lnImage.visibility=View.GONE
+        binding.lnClozeTextLayout.lnText.visibility=View.VISIBLE
     }
 
     private fun initPeriod(it: Int) {

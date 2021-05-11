@@ -1,6 +1,7 @@
 package com.vesam.quiz.ui.view.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,7 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class ResultQuizFragment : Fragment() {
 
     private lateinit var binding: FragmentResultQuizBinding
+    private var itemQuestionsFragment = ItemQuestionsFragment()
     private val handelErrorTools: HandelErrorTools by inject()
     private val throwableTools: ThrowableTools by inject()
     private val toastTools: ToastTools by inject()
@@ -83,11 +85,12 @@ class ResultQuizFragment : Fragment() {
     private fun initShowItemResultQuestion(any: Any) {
         val question: Question = any as Question
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-        val itemQuestionsFragment = ItemQuestionsFragment()
+        itemQuestionsFragment = ItemQuestionsFragment()
         itemQuestionsFragment.setQuestion(question)
         val transaction = fragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        transaction.add(android.R.id.content, itemQuestionsFragment,ITEM_QUESTION).addToBackStack(null)
+        transaction.add(android.R.id.content, itemQuestionsFragment, ITEM_QUESTION)
+            .addToBackStack(null)
             .commit()
     }
 
@@ -166,5 +169,10 @@ class ResultQuizFragment : Fragment() {
 
     private fun initOnClick() {
         binding.btnRetest.setOnClickListener { initFinishActivity() }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        itemQuestionsFragment.onActivityResult(requestCode, resultCode, data)
     }
 }

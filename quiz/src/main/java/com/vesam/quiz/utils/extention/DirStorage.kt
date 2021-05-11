@@ -1,7 +1,7 @@
 package com.vesam.quiz.utils.extention
 
 import android.os.Environment
-import com.vesam.quiz.utils.build_config.BuildConfig
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.QUIZ_FOLDER
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -10,7 +10,7 @@ fun getDirPath(): String {
     val dic =
         Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_DOWNLOADS
-        ).absolutePath + File.separator + BuildConfig.QUIZ_FOLDER
+        ).absolutePath + File.separator + QUIZ_FOLDER
     val parentDir = File(dic)
     if (!parentDir.exists()) parentDir.mkdir()
     return dic
@@ -35,7 +35,7 @@ private fun initCheckFile(name: String, files: ArrayList<File>): String {
     var pathFile = ""
     for (index in 0 until files.size) {
         val fileName = files[index].name
-        val hasFile=(name == fileName)
+        val hasFile = (name == fileName)
         if (hasFile) {
             pathFile = files[index].path
             break

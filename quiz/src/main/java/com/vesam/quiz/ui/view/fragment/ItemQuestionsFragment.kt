@@ -3,12 +3,15 @@
 package com.vesam.quiz.ui.view.fragment
 
 
+import android.app.Activity
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.MediaController
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
@@ -17,8 +20,12 @@ import com.vesam.quiz.R
 import com.vesam.quiz.data.model.quiz_detail.Answer
 import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.databinding.FragmentItemQuestionsBinding
+import com.vesam.quiz.ui.view.activity.FullScreenActivity
 import com.vesam.quiz.ui.view.adapter.answer_quiz_list.AnswerAdapter
 import com.vesam.quiz.utils.application.AppQuiz
+import com.vesam.quiz.utils.build_config.BuildConfig
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_CURRENT_POSITION
+import com.vesam.quiz.utils.build_config.BuildConfig.Companion.BUNDLE_PATH
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_AUDIO
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_TEXT
 import com.vesam.quiz.utils.build_config.BuildConfig.Companion.FORMAT_VIDEO
@@ -28,7 +35,6 @@ import com.vesam.quiz.utils.extention.initFindFileInStorage
 import com.vesam.quiz.utils.tools.GlideTools
 import com.vesam.quiz.utils.tools.HandelErrorTools
 import org.koin.android.ext.android.inject
-import tcking.github.com.giraffeplayer2.GiraffePlayer
 
 
 class ItemQuestionsFragment : DialogFragment() {
@@ -97,13 +103,13 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initShowAnswerVideoResumed() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.onActivityResumed()
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.resume()
     }
 
     private fun initShowQuestionVideoResumed() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityResumed()
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.resume()
     }
 
     override fun onPause() {
@@ -119,15 +125,23 @@ class ItemQuestionsFragment : DialogFragment() {
         initStateAudio()
     }
 
-    private fun initDestroyVideo() {
-        try {
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityDestroyed()
-            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.onActivityDestroyed()
-        } catch (e: Exception) {
-            handelErrorTools.handelError(e)
+    private fun initDestroyVideo() = try {
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initShowAnswerVideoDestroy()
+            else -> initShowQuestionVideoDestroy()
         }
+    } catch (e: Exception) {
+        handelErrorTools.handelError(e)
+    }
+
+    private fun initShowQuestionVideoDestroy() {
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.stopPlayback()
+    }
+
+    private fun initShowAnswerVideoDestroy() {
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.stopPlayback()
     }
 
     private fun initAction() {
@@ -143,6 +157,28 @@ class ItemQuestionsFragment : DialogFragment() {
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.setOnClickListener { initPauseSoundQuestion() }
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.setOnClickListener { initPlaySoundAnswer() }
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.setOnClickListener { initPauseSoundAnswer() }
+        binding.lnAnswerVideoLayout.imgFullScreen.setOnClickListener { initFullScreenVideo() }
+        binding.lnQuestionVideoLayout.imgFullScreen.setOnClickListener { initFullScreenVideo() }
+    }
+
+    private fun initFullScreenVideo() {
+        val intent = Intent()
+        intent.putExtra(BUNDLE_CURRENT_POSITION, initCurrentPosition())
+        intent.putExtra(BUNDLE_PATH, initPath())
+        intent.setClass(requireActivity(), FullScreenActivity::class.java)
+        requireActivity().startActivityForResult(intent, BuildConfig.REQUEST_CODE_FULL_SCREEN)
+
+    }
+
+    private fun initCurrentPosition(): Int =
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> binding.lnAnswerVideoLayout.videoView.currentPosition
+            else -> binding.lnQuestionVideoLayout.viewVideoQuestion.currentPosition
+        }
+
+    private fun initPath(): String = when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+        View.VISIBLE -> binding.lnAnswerVideoLayout.videoView.tag as String
+        else -> binding.lnQuestionVideoLayout.viewVideoQuestion.tag as String
     }
 
     private fun initQuestion() {
@@ -207,11 +243,22 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initPlaySoundQuestion() {
         initPauseSoundAnswer()
+        initPauseAnswerVideo()
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
         binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerQuestion.isInitialized)
             mediaPlayerQuestion.start()
     }
+
+    private fun initPauseAnswerVideo() {
+        try {
+            if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+                binding.lnAnswerVideoLayout.videoView.pause()
+        } catch (e: Exception) {
+            handelErrorTools.handelError(e)
+        }
+    }
+
 
     private fun initPauseSoundQuestion() {
         binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
@@ -225,6 +272,7 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initPlaySoundAnswer() {
         initPauseSoundQuestion()
+        initPauseVideoQuestion()
         binding.lnAnswerSoundLayout.imgAnswerPlaySound.visibility = View.GONE
         binding.lnAnswerSoundLayout.imgAnswerPauseSound.visibility = View.VISIBLE
         if (::mediaPlayerAnswer.isInitialized)
@@ -247,7 +295,13 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initVideoQuestion(content: String) {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(initFindFileInStorage(content)).player.start()
+        val url=initFindFileInStorage(content)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.tag = url
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setVideoPath(url)
+        val mediaController = MediaController(requireActivity())
+        binding.lnQuestionVideoLayout.viewVideoQuestion.setMediaController(mediaController)
+        mediaController.setAnchorView(binding.lnQuestionVideoLayout.viewVideoQuestion)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.start()
     }
 
     private fun initQuestionFormatText(question: Question) {
@@ -342,20 +396,24 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initListFormatVideo(answer: Answer) {
         initShowAnswerFormatVideo()
-        initStopVideoQuestion()
+        initPauseVideoQuestion()
         initVideoView(answer.uriPath)
     }
 
     private fun initVideoView(content: String) {
-        binding.lnAnswerVideoLayout.videoView.setVideoPath(initFindFileInStorage(content)).player.start()
+        val url=initFindFileInStorage(content)
+        binding.lnAnswerVideoLayout.videoView.tag = url
+        binding.lnAnswerVideoLayout.videoView.setVideoPath(url)
+        val mediaController = MediaController(requireActivity())
+        binding.lnAnswerVideoLayout.videoView.setMediaController(mediaController)
+        mediaController.setAnchorView(binding.lnAnswerVideoLayout.videoView)
+        binding.lnAnswerVideoLayout.videoView.start()
     }
 
-    private fun initStopVideoQuestion() {
+    private fun initPauseVideoQuestion() {
         try {
-            if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-                binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
-            if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-                binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
+            if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+                binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
         } catch (e: Exception) {
             handelErrorTools.handelError(e)
         }
@@ -371,13 +429,13 @@ class ItemQuestionsFragment : DialogFragment() {
     }
 
     private fun initShowQuestionVideoPause() {
-        if (binding.lnQuestionVideoLayout.viewVideoQuestion.player.isPlaying)
-            binding.lnQuestionVideoLayout.viewVideoQuestion.player.onActivityPaused()
+        if (binding.lnQuestionVideoLayout.viewVideoQuestion.isPlaying)
+            binding.lnQuestionVideoLayout.viewVideoQuestion.pause()
     }
 
     private fun initShowAnswerVideoPause() {
-        if (binding.lnAnswerVideoLayout.videoView.player.isPlaying)
-            binding.lnAnswerVideoLayout.videoView.player.onActivityPaused()
+        if (binding.lnAnswerVideoLayout.videoView.isPlaying)
+            binding.lnAnswerVideoLayout.videoView.pause()
     }
 
     private fun initListFormatSound(answer: Answer) {
@@ -417,30 +475,6 @@ class ItemQuestionsFragment : DialogFragment() {
 
 
     private fun initOnBackPressed() {
-        when (requireActivity().requestedOrientation) {
-            0 -> initFullScreen()
-            1 -> initNormalScreen()
-        }
-    }
-
-    private fun initFullScreen() {
-        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
-            View.VISIBLE -> initExitFullScreenAnswerVideo()
-            else -> initExitFullScreenQuestionVideo()
-        }
-    }
-
-    private fun initExitFullScreenQuestionVideo() {
-        binding.lnQuestionVideoLayout.viewVideoQuestion.player.displayModel =
-            GiraffePlayer.DISPLAY_NORMAL
-    }
-
-    private fun initExitFullScreenAnswerVideo() {
-        binding.lnAnswerVideoLayout.videoView.player.displayModel = GiraffePlayer.DISPLAY_NORMAL
-    }
-
-
-    private fun initNormalScreen() {
         initPauseVideo()
         initStateAudio()
         initDestroy()
@@ -448,12 +482,40 @@ class ItemQuestionsFragment : DialogFragment() {
 
     private fun initDestroy() {
         val itemQuestionsFragment: ItemQuestionsFragment? = (AppQuiz.activity as AppCompatActivity).supportFragmentManager.findFragmentByTag(ITEM_QUESTION) as ItemQuestionsFragment?
-        if (itemQuestionsFragment != null && itemQuestionsFragment.isVisible) itemQuestionsFragment.dismiss() else  AppQuiz.activity.finish()
+        if (itemQuestionsFragment != null && itemQuestionsFragment.isVisible) itemQuestionsFragment.dismiss() else initExit()
+    }
+
+    private fun initExit() {
+        AppQuiz.activity.finish()
     }
 
     private fun initStateAudio() = when (binding.lnAnswerSoundLayout.lnAnswerSound.visibility) {
         View.VISIBLE -> releaseMPAnswer()
         else -> releaseMPQuestion()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == BuildConfig.REQUEST_CODE_FULL_SCREEN) initResultIntent(
+            data
+        )
+    }
+
+    private fun initResultIntent(data: Intent?) {
+        val currentPosition = data!!.extras!!.getInt(BUNDLE_CURRENT_POSITION, 0)
+        when (binding.lnAnswerVideoLayout.cvAnswerVideo.visibility) {
+            View.VISIBLE -> initResumeAnswerVideo(currentPosition)
+            else -> initResumeQuestionVideo(currentPosition)
+        }
+    }
+
+    private fun initResumeAnswerVideo(currentPosition: Int) {
+        binding.lnAnswerVideoLayout.videoView.seekTo(currentPosition)
+        binding.lnAnswerVideoLayout.videoView.start()
+    }
+
+    private fun initResumeQuestionVideo(currentPosition: Int) {
+        binding.lnQuestionVideoLayout.viewVideoQuestion.seekTo(currentPosition)
+        binding.lnQuestionVideoLayout.viewVideoQuestion.start()
     }
 
 }

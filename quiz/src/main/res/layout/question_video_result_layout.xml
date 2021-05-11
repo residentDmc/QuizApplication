@@ -17,10 +17,40 @@
             android:layout_weight="1"
             android:background="#000000">
 
-            <tcking.github.com.giraffeplayer2.VideoView
+            <VideoView
                 android:id="@id/viewVideoQuestion"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin_1"
+                    android:layout_weight="1" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@id/imgFullScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_fullscreen"
+                    app:tint="@color/white" />
+
+                <androidx.constraintlayout.utils.widget.ImageFilterView
+                    android:id="@id/imgExitFullScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/ic_fullscreen_exit"
+                    app:tint="@color/white" />
+            </LinearLayout>
         </RelativeLayout>
 
     </LinearLayout>

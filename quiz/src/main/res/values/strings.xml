@@ -27,4 +27,6 @@
     <string name="retry">Retry</string>
     <string name="file_not_found">File not found</string>
     <string name="descriptive_answer">پاسخ تشریحی</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="description">Media Controls</string>
 </resources>

@@ -15,7 +15,7 @@ data class Details(
     @ColumnInfo(name = "how_display_correct_answer")
     val howDisplayCorrectAnswer: String,
     @SerializedName("id")
-    val id: Int=-1,
+    val id: Int = -1,
     @SerializedName("is_active")
     @ColumnInfo(name = "is_active")
     val isActive: Int,
@@ -42,5 +42,7 @@ data class Details(
     val title: String,
     @SerializedName("type")
     @ColumnInfo(name = "type")
-    val type: String
+    val type: String,
+    @SerializedName("description_answer")
+    val descriptionAnswer: Description?,
 )

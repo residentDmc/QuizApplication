@@ -51,6 +51,22 @@
                     android:nestedScrollingEnabled="false"
                     tools:ignore="UnusedAttribute" />
 
+                <include
+                    android:id="@id/lnAnswerTextLayout"
+                    layout="@layout/answer_text_layout" />
+
+                <include
+                    android:id="@id/lnAnswerImageLayout"
+                    layout="@layout/answer_image_layout" />
+
+                <include
+                    android:id="@id/lnAnswerSoundLayout"
+                    layout="@layout/answer_sound_layout" />
+
+                <include
+                    android:id="@id/lnAnswerVideoLayout"
+                    layout="@layout/answer_video_layout" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@id/btnState"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -77,16 +93,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center"
             android:background="@drawable/rounded_question_white_shape"
+            android:gravity="center"
             android:paddingStart="@dimen/margin_24"
             android:paddingTop="@dimen/margin_4"
             android:paddingEnd="@dimen/margin_24"
             android:paddingBottom="@dimen/margin_4"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:visibility="gone"
             app:layout_constraintTop_toTopOf="@+id/nestedScrollView"
             app:layout_constraintVertical_bias="0.0">
 

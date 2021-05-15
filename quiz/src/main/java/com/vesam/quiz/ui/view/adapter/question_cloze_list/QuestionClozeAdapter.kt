@@ -13,6 +13,7 @@ import com.vesam.quiz.data.model.quiz_detail.Question
 import com.vesam.quiz.interfaces.OnClickListenerAny
 import com.vesam.quiz.ui.view.adapter.answer_cloze_list.AnswerClozeAdapter
 import com.vesam.quiz.utils.extention.checkPersianCharacter
+import com.vesam.quiz.utils.extention.checkPersianCharacterLayout
 import com.vesam.quiz.utils.manager.GridLayoutCountManager
 
 class QuestionClozeAdapter(
@@ -41,7 +42,7 @@ class QuestionClozeAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolderQuestionCloze: ViewHolderQuestionCloze, position: Int) {
         val question = list[position]
-        checkPersianCharacter(
+        checkPersianCharacterLayout(
             question.title,
             viewHolderQuestionCloze.lnTitle
         )

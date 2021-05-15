@@ -43,6 +43,19 @@ fun checkPersianCharacter(persianCharacter: String, view: LinearLayoutCompat) {
 }
 
 @SuppressLint("RtlHardcoded")
+fun checkPersianCharacterLayout(persianCharacter: String, view: LinearLayoutCompat) {
+    val rtlCharacter: Pattern =
+        Pattern.compile("[\u0600-\u06FF\u0750-\u077F\u0590-\u05FF\uFE70-\uFEFF]")
+    val matcher: Matcher = rtlCharacter.matcher(persianCharacter)
+    when {
+        matcher.find() -> (view.layoutParams as LinearLayoutCompat.LayoutParams).gravity =
+            Gravity.CENTER_VERTICAL or Gravity.RIGHT
+        else -> (view.layoutParams as LinearLayoutCompat.LayoutParams).gravity =
+            Gravity.CENTER_VERTICAL or Gravity.LEFT
+    }
+}
+
+@SuppressLint("RtlHardcoded")
 fun checkPersianCharacter(
     persianCharacter: String,
     viewStart: LinearLayout,

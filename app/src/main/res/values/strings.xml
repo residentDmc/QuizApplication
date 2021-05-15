@@ -12,7 +12,7 @@
     <string name="token_value">Z4NSp9eT7fxWnH1BjY1Suijlc4ZpjtKhjrWvDtO5EbUklhMYeZlqN3xPt2KlFXiMbWYDTJ1DyEt6zds2pgYG05BqbGPEsNYNBiui8BpOyBv15KYotWP6hFVhuEXhbu7COBA4BDHuHW6thCT5rdttEh</string>
     <string name="user_id_value">2118555a-ddf2-4edf-81b1-d6f153fb3fd6</string>
     <string name="quiz_id">Quiz Id</string>
-    <string name="four">11</string>
+    7<string name="four">7</string>
     <string name="cloze_test">Cloze Test</string>
     <string name="enter_test">Exam Test</string>
 </resources>

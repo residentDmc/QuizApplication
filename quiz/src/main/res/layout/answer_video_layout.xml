@@ -6,7 +6,7 @@
     android:layout_width="@dimen/margin_250"
     android:layout_height="@dimen/margin_150"
     android:layout_gravity="center_horizontal"
-    android:visibility="visible"
+    android:visibility="gone"
     app:cardCornerRadius="@dimen/margin_8">
 
     <RelativeLayout

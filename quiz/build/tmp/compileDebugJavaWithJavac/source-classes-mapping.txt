@@ -29,22 +29,14 @@ com/vesam/quiz/DataBinderMapperImpl.java
  com.vesam.quiz.DataBinderMapperImpl$InnerLayoutIdLookup
 com/vesam/quiz/interfaces/OnCreateCameraImageFile.java
  com.vesam.quiz.interfaces.OnCreateCameraImageFile
-com/vesam/quiz/data/database/DetailsDAO_Impl.java
- com.vesam.quiz.data.database.DetailsDAO_Impl
- com.vesam.quiz.data.database.DetailsDAO_Impl$1
- com.vesam.quiz.data.database.DetailsDAO_Impl$2
- com.vesam.quiz.data.database.DetailsDAO_Impl$3
- com.vesam.quiz.data.database.DetailsDAO_Impl$4
- com.vesam.quiz.data.database.DetailsDAO_Impl$5
- com.vesam.quiz.data.database.DetailsDAO_Impl$6
- com.vesam.quiz.data.database.DetailsDAO_Impl$7
+com/vesam/quiz/databinding/AnswerVideoLayoutBinding.java
+ com.vesam.quiz.databinding.AnswerVideoLayoutBinding
+com/vesam/quiz/databinding/ClozeTextLayoutBinding.java
+ com.vesam.quiz.databinding.ClozeTextLayoutBinding
 com/vesam/quiz/utils/converter/DetailsConverter.java
  com.vesam.quiz.utils.converter.DetailsConverter
  com.vesam.quiz.utils.converter.DetailsConverter$1
  com.vesam.quiz.utils.converter.DetailsConverter$2
-com/vesam/quiz/data/database/QuizDatabase_Impl.java
- com.vesam.quiz.data.database.QuizDatabase_Impl
- com.vesam.quiz.data.database.QuizDatabase_Impl$1
 com/vesam/quiz/databinding/QuestionTextResultLayoutBinding.java
  com.vesam.quiz.databinding.QuestionTextResultLayoutBinding
 com/vesam/quiz/databinding/ItemSlidingimagesZoomableBinding.java
@@ -84,8 +76,8 @@ com/vesam/quiz/databinding/FragmentFullscreenSliderImageQuestionBinding.java
  com.vesam.quiz.databinding.FragmentFullscreenSliderImageQuestionBinding
 com/vesam/quiz/databinding/AnswerImageLayoutBinding.java
  com.vesam.quiz.databinding.AnswerImageLayoutBinding
-com/vesam/quiz/databinding/FragmentClozeBinding.java
- com.vesam.quiz.databinding.FragmentClozeBinding
+com/vesam/quiz/databinding/ToastLayoutBinding.java
+ com.vesam.quiz.databinding.ToastLayoutBinding
 com/vesam/quiz/databinding/AnswerSoundLayoutBinding.java
  com.vesam.quiz.databinding.AnswerSoundLayoutBinding
 com/vesam/quiz/databinding/QuestionImageResultLayoutBinding.java
@@ -108,11 +100,19 @@ com/vesam/quiz/databinding/FragmentResultQuizBinding.java
  com.vesam.quiz.databinding.FragmentResultQuizBinding
 com/vesam/quiz/databinding/QuestionVideoResultLayoutBinding.java
  com.vesam.quiz.databinding.QuestionVideoResultLayoutBinding
-com/vesam/quiz/databinding/ToastLayoutBinding.java
- com.vesam.quiz.databinding.ToastLayoutBinding
-com/vesam/quiz/databinding/AnswerVideoLayoutBinding.java
- com.vesam.quiz.databinding.AnswerVideoLayoutBinding
-com/vesam/quiz/databinding/ClozeTextLayoutBinding.java
- com.vesam.quiz.databinding.ClozeTextLayoutBinding
+com/vesam/quiz/data/database/DetailsDAO_Impl.java
+ com.vesam.quiz.data.database.DetailsDAO_Impl
+ com.vesam.quiz.data.database.DetailsDAO_Impl$1
+ com.vesam.quiz.data.database.DetailsDAO_Impl$2
+ com.vesam.quiz.data.database.DetailsDAO_Impl$3
+ com.vesam.quiz.data.database.DetailsDAO_Impl$4
+ com.vesam.quiz.data.database.DetailsDAO_Impl$5
+ com.vesam.quiz.data.database.DetailsDAO_Impl$6
+ com.vesam.quiz.data.database.DetailsDAO_Impl$7
+com/vesam/quiz/data/database/QuizDatabase_Impl.java
+ com.vesam.quiz.data.database.QuizDatabase_Impl
+ com.vesam.quiz.data.database.QuizDatabase_Impl$1
+com/vesam/quiz/databinding/FragmentClozeBinding.java
+ com.vesam.quiz.databinding.FragmentClozeBinding
 com/vesam/quiz/utils/tools/NetworkTools.java
  com.vesam.quiz.utils.tools.NetworkTools

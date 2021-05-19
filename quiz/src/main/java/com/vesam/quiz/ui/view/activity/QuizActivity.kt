@@ -16,9 +16,7 @@ import com.downloader.Progress
 import com.google.gson.Gson
 import com.vesam.quiz.R
 import com.vesam.quiz.data.model.file_download.FileDownload
-import com.vesam.quiz.data.model.quiz_detail.Answer
-import com.vesam.quiz.data.model.quiz_detail.Question
-import com.vesam.quiz.data.model.quiz_detail.ResponseQuizDetailModel
+import com.vesam.quiz.data.model.quiz_detail.*
 import com.vesam.quiz.databinding.ActivityQuizBinding
 import com.vesam.quiz.ui.viewmodel.QuizViewModel
 import com.vesam.quiz.utils.base.BaseActivity
@@ -185,10 +183,26 @@ class QuizActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initDelayQuizDetailModel(it: ResponseQuizDetailModel) {
-        Log.d("TAG", "initDelayQuizDetailModel: "+Gson().toJson(it))
+        initDetail(it.details)
         it.questions.forEach(this::initQuestions)
         initCounter(counterFile, urlList.size)
         initDownloadFile(it)
+    }
+
+    private fun initDetail(details: Details) = details.descriptionAnswer.let {
+        when {
+            it!=null -> initResultDescriptionAnswer(it)
+        }
+    }
+
+    private fun initResultDescriptionAnswer(it: Description) {
+        val fileDownload =
+            FileDownload(
+                "",
+                it.format,
+                it.urlContent
+            )
+        initAddList(fileDownload)
     }
 
     private fun initQuestions(question: Question) {

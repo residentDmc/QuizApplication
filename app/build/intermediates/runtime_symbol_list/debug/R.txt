@@ -4084,6 +4084,7 @@ int style Widget_MaterialComponents_Tooltip 0x7f1202f7
 int style Widget_Support_CoordinatorLayout 0x7f1202f8
 int style dialog_change_clarity 0x7f1202f9
 int style error_appearance 0x7f1202fa
+int style roundedImageViewRounded 0x7f1202fb
 int[] styleable ActionBar { 0x7f040041, 0x7f040048, 0x7f040049, 0x7f0400d9, 0x7f0400da, 0x7f0400db, 0x7f0400dc, 0x7f0400dd, 0x7f0400de, 0x7f040104, 0x7f040120, 0x7f040121, 0x7f04013c, 0x7f040198, 0x7f04019f, 0x7f0401a5, 0x7f0401a6, 0x7f0401a9, 0x7f0401b5, 0x7f0401ca, 0x7f04023a, 0x7f04029c, 0x7f0402d3, 0x7f0402e4, 0x7f0402e5, 0x7f040341, 0x7f040345, 0x7f0403a8, 0x7f0403b4 }
 int styleable ActionBar_background 0
 int styleable ActionBar_backgroundSplit 1

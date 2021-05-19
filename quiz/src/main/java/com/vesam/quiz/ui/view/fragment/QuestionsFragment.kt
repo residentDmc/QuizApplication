@@ -112,8 +112,8 @@ class QuestionsFragment : Fragment() {
     }
 
     private fun initResumeSoundQuestion() {
-        binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.GONE
-        binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.VISIBLE
+        binding.lnQuestionSoundLayout.imgQuestionPlaySound.visibility = View.VISIBLE
+        binding.lnQuestionSoundLayout.imgQuestionPauseSound.visibility = View.GONE
     }
 
     private fun initResumeSoundAnswer() {

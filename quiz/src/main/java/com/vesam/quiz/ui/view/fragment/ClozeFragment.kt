@@ -1,6 +1,7 @@
 package com.vesam.quiz.ui.view.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
@@ -294,7 +295,7 @@ class ClozeFragment : Fragment() {
 
     private fun initSubmit() {
         initDispose()
-        initChangeTextBtnSubmit()
+        initChangeTextBtnProceed()
         initResultQuizInAdapter()
         initShowAnswer()
     }
@@ -338,7 +339,7 @@ class ClozeFragment : Fragment() {
 
     private fun initResultShowAnswerVideo(descriptionAnswer: Description) {
         initShowAnswerFormatVideo()
-        initVideoQuestion(descriptionAnswer.urlContent)
+        initVideoQuestion(descriptionAnswer.uriPath)
     }
 
     private fun initVideoQuestion(content: String) {
@@ -374,7 +375,7 @@ class ClozeFragment : Fragment() {
 
     private fun initResultShowAnswerSound(content: Description) {
         initShowAnswerFormatAudio()
-        initSoundAnswer(content.urlContent)
+        initSoundAnswer(content.uriPath)
     }
 
     private fun initSoundAnswer(content: String) {
@@ -450,6 +451,11 @@ class ClozeFragment : Fragment() {
     }
 
     private fun initChangeTextBtnSubmit() {
+        binding.btnState.text = AppQuiz.context.resources.getString(R.string.submit)
+    }
+
+
+    private fun initChangeTextBtnProceed() {
         binding.btnState.text = AppQuiz.context.resources.getString(R.string.proceed)
     }
 
@@ -618,5 +624,22 @@ class ClozeFragment : Fragment() {
 
     private fun initOnBackPressed() {
         AppQuiz.activity.finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == BuildConfig.REQUEST_CODE_FULL_SCREEN) initResultIntent(
+            data
+        )
+    }
+
+    private fun initResultIntent(data: Intent?) {
+        val currentPosition = data!!.extras!!.getInt(BUNDLE_CURRENT_POSITION, 0)
+        initResumeAnswerVideo(currentPosition)
+    }
+
+    private fun initResumeAnswerVideo(currentPosition: Int) {
+        binding.lnAnswerVideoLayout.videoView.seekTo(currentPosition)
+        binding.lnAnswerVideoLayout.videoView.start()
     }
 }

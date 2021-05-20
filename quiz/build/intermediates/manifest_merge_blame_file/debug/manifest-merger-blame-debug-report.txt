@@ -28,16 +28,14 @@
 16-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:10:22-63
 17
 18    <application
-18-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:12:5-17:30
+18-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:12:5-16:30
 19        android:networkSecurityConfig="@xml/network_security_config"
 19-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:13:9-69
-20        android:preserveLegacyExternalStorage="true"
-20-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-53
-21        android:requestLegacyExternalStorage="true"
-21-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:15:9-52
-22        android:usesCleartextTraffic="true"
-22-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:16:9-44
-23        tools:targetApi="n" />
-23-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:17:9-28
-24
-25</manifest>
+20        android:requestLegacyExternalStorage="true"
+20-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:14:9-52
+21        android:usesCleartextTraffic="true"
+21-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:15:9-44
+22        tools:targetApi="n" />
+22-->C:\Users\Android\AndroidStudioProjects\QuizSystemApplication\quiz\src\main\AndroidManifest.xml:16:9-28
+23
+24</manifest>

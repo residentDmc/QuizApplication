@@ -196,6 +196,13 @@ class QuizActivity : BaseActivity() {
     }
 
     private fun initResultDescriptionAnswer(it: Description) {
+        when (it.format) {
+            FORMAT_VIDEO -> initDetailFormat(it)
+            FORMAT_AUDIO -> initDetailFormat(it)
+        }
+    }
+
+    private fun initDetailFormat(it: Description) {
         val fileDownload =
             FileDownload(
                 "",
